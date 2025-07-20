@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslationService } from '../../services/translation.service';
 
 interface ChatMessage {
   id: number;
@@ -18,6 +19,8 @@ export class ChatbotComponent implements OnInit {
   currentMessage = '';
   isTyping = false;
   messageIdCounter = 1;
+
+  constructor(private translationService: TranslationService) {}
 
   // Predefined responses
   botResponses = [
@@ -122,5 +125,22 @@ export class ChatbotComponent implements OnInit {
         chatContainer.scrollTop = chatContainer.scrollHeight;
       }
     }, 100);
+  }
+
+  sendQuickMessage(type: string) {
+    let message = '';
+    switch (type) {
+      case 'services':
+        message = this.translationService.translate('chatbot.quickMessages.services');
+        break;
+      case 'quote':
+        message = this.translationService.translate('chatbot.quickMessages.quote');
+        break;
+      case 'contact':
+        message = this.translationService.translate('chatbot.quickMessages.contact');
+        break;
+    }
+    this.currentMessage = message;
+    this.sendMessage();
   }
 }

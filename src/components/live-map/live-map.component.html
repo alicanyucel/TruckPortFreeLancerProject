@@ -1,7 +1,7 @@
 <div class="live-map-container">
   <div class="map-header">
-    <h1>🗺️ Canlı Araç Takibi</h1>
-    <p>Filomuzun gerçek zamanlı konumunu takip edin</p>
+    <h1>🗺️ {{'liveMap.title' | translate}}</h1>
+    <p>{{'liveMap.subtitle' | translate}}</p>
   </div>
 
   <div class="map-content">
@@ -26,18 +26,18 @@
           </div>
           
           <div class="map-legend">
-            <h4>Durum Göstergeleri</h4>
+            <h4>{{'liveMap.statusIndicators' | translate}}</h4>
             <div class="legend-item">
               <span class="legend-color" style="background-color: #27ae60;"></span>
-              <span>Aktif</span>
+              <span>{{'liveMap.status.active' | translate}}</span>
             </div>
             <div class="legend-item">
               <span class="legend-color" style="background-color: #f39c12;"></span>
-              <span>Beklemede</span>
+              <span>{{'liveMap.status.idle' | translate}}</span>
             </div>
             <div class="legend-item">
               <span class="legend-color" style="background-color: #e74c3c;"></span>
-              <span>Bakımda</span>
+              <span>{{'liveMap.status.maintenance' | translate}}</span>
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="vehicle-list-section">
-      <h3>Araç Listesi</h3>
+      <h3>{{'liveMap.vehicleList' | translate}}</h3>
       <div class="vehicle-list">
         <div *ngFor="let vehicle of vehicles" 
              class="vehicle-card"
@@ -86,14 +86,14 @@
 
   <!-- Selected Vehicle Details -->
   <div class="vehicle-details" *ngIf="selectedVehicle">
-    <h3>Araç Detayları</h3>
+    <h3>{{'liveMap.vehicleDetails' | translate}}</h3>
     <div class="details-grid">
       <div class="detail-card">
-        <h4>Araç Bilgileri</h4>
+        <h4>{{'liveMap.details.vehicleInfo' | translate}}</h4>
         <p><strong>ID:</strong> {{selectedVehicle.id}}</p>
-        <p><strong>Model:</strong> {{selectedVehicle.name}}</p>
-        <p><strong>Sürücü:</strong> {{selectedVehicle.driver}}</p>
-        <p><strong>Durum:</strong> 
+        <p><strong>{{'liveMap.details.model' | translate}}:</strong> {{selectedVehicle.name}}</p>
+        <p><strong>{{'liveMap.details.driver' | translate}}:</strong> {{selectedVehicle.driver}}</p>
+        <p><strong>{{'liveMap.details.status' | translate}}:</strong> 
           <span [style.color]="getStatusColor(selectedVehicle.status)">
             {{getStatusText(selectedVehicle.status)}}
           </span>
@@ -101,17 +101,17 @@
       </div>
       
       <div class="detail-card">
-        <h4>Konum Bilgileri</h4>
-        <p><strong>Enlem:</strong> {{selectedVehicle.lat | number:'1.4-4'}}</p>
-        <p><strong>Boylam:</strong> {{selectedVehicle.lng | number:'1.4-4'}}</p>
-        <p><strong>Hız:</strong> {{selectedVehicle.speed | number:'1.0-0'}} km/h</p>
-        <p><strong>Son Güncelleme:</strong> {{selectedVehicle.lastUpdate | date:'dd/MM/yyyy HH:mm:ss'}}</p>
+        <h4>{{'liveMap.details.locationInfo' | translate}}</h4>
+        <p><strong>{{'liveMap.details.latitude' | translate}}:</strong> {{selectedVehicle.lat | number:'1.4-4'}}</p>
+        <p><strong>{{'liveMap.details.longitude' | translate}}:</strong> {{selectedVehicle.lng | number:'1.4-4'}}</p>
+        <p><strong>{{'liveMap.details.speed' | translate}}:</strong> {{selectedVehicle.speed | number:'1.0-0'}} km/h</p>
+        <p><strong>{{'liveMap.details.lastUpdate' | translate}}:</strong> {{selectedVehicle.lastUpdate | date:'dd/MM/yyyy HH:mm:ss'}}</p>
       </div>
       
       <div class="detail-card">
-        <h4>Yük Bilgileri</h4>
-        <p><strong>Hedef:</strong> {{selectedVehicle.destination}}</p>
-        <p><strong>Yük:</strong> {{selectedVehicle.cargo}}</p>
+        <h4>{{'liveMap.details.cargoInfo' | translate}}</h4>
+        <p><strong>{{'liveMap.details.destination' | translate}}:</strong> {{selectedVehicle.destination}}</p>
+        <p><strong>{{'liveMap.details.cargo' | translate}}:</strong> {{selectedVehicle.cargo}}</p>
       </div>
     </div>
   </div>

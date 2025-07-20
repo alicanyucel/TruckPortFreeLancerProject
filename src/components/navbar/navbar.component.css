@@ -45,6 +45,12 @@
   margin: 0;
 }
 
+.lang-switcher-item {
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
 .navbar-link {
   color: #ecf0f1;
   text-decoration: none;

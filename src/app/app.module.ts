@@ -9,11 +9,13 @@ import { NavbarComponent } from '../components/navbar/navbar.component';
 import { LiveMapComponent } from '../components/live-map/live-map.component';
 import { ChatbotComponent } from '../components/chatbot/chatbot.component';
 import { AdvertisementsComponent } from '../components/advertisements/advertisements.component';
+import { LanguageSwitcherComponent } from '../components/language-switcher/language-switcher.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { AboutComponent } from '../pages/about/about.component';
 import { ContactComponent } from '../pages/contact/contact.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { ServicesComponent } from '../pages/services/services.component';
+import { TranslatePipe } from '../pipes/translate.pipe';
 
 @NgModule({
   declarations: [
@@ -23,11 +25,13 @@ import { ServicesComponent } from '../pages/services/services.component';
     LiveMapComponent,
     ChatbotComponent,
     AdvertisementsComponent,
+    LanguageSwitcherComponent,
     HomeComponent,
     AboutComponent,
     ContactComponent,
     LoginComponent,
-    ServicesComponent
+    ServicesComponent,
+    TranslatePipe
   ],
   imports: [
     BrowserModule,

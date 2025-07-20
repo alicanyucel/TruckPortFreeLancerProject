@@ -1,8 +1,8 @@
 <div class="contact-container">
   <section class="contact-hero">
     <div class="container">
-      <h1>İletişim</h1>
-      <p class="hero-text">Bizimle iletişime geçin, size en iyi hizmeti sunalım.</p>
+      <h1>{{'contact.title' | translate}}</h1>
+      <p class="hero-text">{{'contact.heroText' | translate}}</p>
     </div>
   </section>
 
@@ -10,69 +10,69 @@
     <div class="container">
       <div class="contact-grid">
         <div class="contact-info">
-          <h2>İletişim Bilgileri</h2>
+          <h2>{{'contact.info.title' | translate}}</h2>
           
           <div class="info-item">
-            <h3>📍 Adres</h3>
-            <p>Örnek Mahallesi, Lojistik Caddesi No:123<br>34000 İstanbul/Türkiye</p>
+            <h3>📍 {{'contact.info.address.title' | translate}}</h3>
+            <p>{{'contact.info.address.text' | translate}}</p>
           </div>
           
           <div class="info-item">
-            <h3>📞 Telefon</h3>
+            <h3>📞 {{'contact.info.phone.title' | translate}}</h3>
             <p>+90 (212) 123 45 67</p>
           </div>
           
           <div class="info-item">
-            <h3>📱 Mobil</h3>
+            <h3>📱 {{'contact.info.mobile.title' | translate}}</h3>
             <p>+90 (555) 123 45 67</p>
           </div>
           
           <div class="info-item">
-            <h3>📧 E-posta</h3>
+            <h3>📧 {{'contact.info.email.title' | translate}}</h3>
             <p>info&#64;truckport.com</p>
           </div>
           
           <div class="info-item">
-            <h3>🕒 Çalışma Saatleri</h3>
-            <p>Pazartesi - Cuma: 08:00 - 18:00<br>Cumartesi: 09:00 - 15:00</p>
+            <h3>🕒 {{'contact.info.hours.title' | translate}}</h3>
+            <p>{{'contact.info.hours.text' | translate}}</p>
           </div>
         </div>
         
         <div class="contact-form">
-          <h2>Bize Ulaşın</h2>
+          <h2>{{'contact.form.title' | translate}}</h2>
           <form (ngSubmit)="onSubmit()">
             <div class="form-group">
-              <label for="name">Ad Soyad *</label>
+              <label for="name">{{'contact.form.name' | translate}} *</label>
               <input type="text" id="name" name="name" required>
             </div>
             
             <div class="form-group">
-              <label for="email">E-posta *</label>
+              <label for="email">{{'contact.form.email' | translate}} *</label>
               <input type="email" id="email" name="email" required>
             </div>
             
             <div class="form-group">
-              <label for="phone">Telefon</label>
+              <label for="phone">{{'contact.form.phone' | translate}}</label>
               <input type="tel" id="phone" name="phone">
             </div>
             
             <div class="form-group">
-              <label for="subject">Konu *</label>
+              <label for="subject">{{'contact.form.subject' | translate}} *</label>
               <select id="subject" name="subject" required>
-                <option value="">Konu Seçiniz</option>
-                <option value="general">Genel Bilgi</option>
-                <option value="quote">Fiyat Teklifi</option>
-                <option value="support">Destek</option>
-                <option value="complaint">Şikayet</option>
+                <option value="">{{'contact.form.selectSubject' | translate}}</option>
+                <option value="general">{{'contact.form.subjects.general' | translate}}</option>
+                <option value="quote">{{'contact.form.subjects.quote' | translate}}</option>
+                <option value="support">{{'contact.form.subjects.support' | translate}}</option>
+                <option value="complaint">{{'contact.form.subjects.complaint' | translate}}</option>
               </select>
             </div>
             
             <div class="form-group">
-              <label for="message">Mesaj *</label>
+              <label for="message">{{'contact.form.message' | translate}} *</label>
               <textarea id="message" name="message" rows="5" required></textarea>
             </div>
             
-            <button type="submit" class="submit-btn">Mesaj Gönder</button>
+            <button type="submit" class="submit-btn">{{'contact.form.submit' | translate}}</button>
           </form>
         </div>
       </div>

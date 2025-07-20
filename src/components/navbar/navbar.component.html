@@ -6,22 +6,25 @@
     
     <ul class="navbar-menu">
       <li class="navbar-item">
-        <a routerLink="/" class="navbar-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Ana Sayfa</a>
+        <a routerLink="/" class="navbar-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'navbar.home' | translate}}</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/hizmetler" class="navbar-link" routerLinkActive="active">Hizmetler</a>
+        <a routerLink="/hizmetler" class="navbar-link" routerLinkActive="active">{{'navbar.services' | translate}}</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/hakkimizda" class="navbar-link" routerLinkActive="active">Hakkımızda</a>
+        <a routerLink="/hakkimizda" class="navbar-link" routerLinkActive="active">{{'navbar.about' | translate}}</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/canli-takip" class="navbar-link" routerLinkActive="active">Canlı Takip</a>
+        <a routerLink="/canli-takip" class="navbar-link" routerLinkActive="active">{{'navbar.liveTracking' | translate}}</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/iletisim" class="navbar-link" routerLinkActive="active">İletişim</a>
+        <a routerLink="/iletisim" class="navbar-link" routerLinkActive="active">{{'navbar.contact' | translate}}</a>
+      </li>
+      <li class="navbar-item lang-switcher-item">
+        <app-language-switcher></app-language-switcher>
       </li>
       <li class="navbar-item">
-        <a routerLink="/giris" class="navbar-link login-btn" routerLinkActive="active">Giriş Yap</a>
+        <a routerLink="/giris" class="navbar-link login-btn" routerLinkActive="active">{{'navbar.login' | translate}}</a>
       </li>
     </ul>
   </div>

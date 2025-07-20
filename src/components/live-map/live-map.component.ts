@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { TranslationService } from '../../services/translation.service';
 
 interface Vehicle {
   id: string;
@@ -22,6 +23,8 @@ export class LiveMapComponent implements OnInit, OnDestroy {
   vehicles: Vehicle[] = [];
   selectedVehicle: Vehicle | null = null;
   private updateInterval: any;
+
+  constructor(private translationService: TranslationService) {}
 
   ngOnInit() {
     this.initializeVehicles();
@@ -130,10 +133,10 @@ export class LiveMapComponent implements OnInit, OnDestroy {
 
   getStatusText(status: string): string {
     switch (status) {
-      case 'active': return 'Aktif';
-      case 'idle': return 'Beklemede';
-      case 'maintenance': return 'Bakımda';
-      default: return 'Bilinmiyor';
+      case 'active': return this.translationService.translate('liveMap.status.active');
+      case 'idle': return this.translationService.translate('liveMap.status.idle');
+      case 'maintenance': return this.translationService.translate('liveMap.status.maintenance');
+      default: return this.translationService.translate('liveMap.status.unknown');
     }
   }
 }

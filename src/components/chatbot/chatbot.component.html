@@ -18,8 +18,8 @@
       <div class="header-info">
         <div class="bot-avatar">🤖</div>
         <div class="bot-details">
-          <h4>TruckPort Destek</h4>
-          <span class="status">Çevrimiçi</span>
+          <h4>{{'chatbot.title' | translate}}</h4>
+          <span class="status">{{'chatbot.online' | translate}}</span>
         </div>
       </div>
       <button class="minimize-btn" (click)="toggleChat()">−</button>
@@ -68,7 +68,7 @@
           type="text" 
           [(ngModel)]="currentMessage"
           (keypress)="onKeyPress($event)"
-          placeholder="Mesajınızı yazın..."
+          [placeholder]="'chatbot.placeholder' | translate"
           class="message-input">
         <button 
           class="send-btn" 
@@ -81,14 +81,14 @@
 
     <!-- Quick Actions -->
     <div class="quick-actions">
-      <button class="quick-btn" (click)="currentMessage = 'Hizmetleriniz nelerdir?'; sendMessage()">
-        🚛 Hizmetler
+      <button class="quick-btn" (click)="sendQuickMessage('services')">
+        🚛 {{'chatbot.quick.services' | translate}}
       </button>
-      <button class="quick-btn" (click)="currentMessage = 'Fiyat teklifi istiyorum'; sendMessage()">
-        💰 Fiyat Teklifi
+      <button class="quick-btn" (click)="sendQuickMessage('quote')">
+        💰 {{'chatbot.quick.quote' | translate}}
       </button>
-      <button class="quick-btn" (click)="currentMessage = 'İletişim bilgileri'; sendMessage()">
-        📞 İletişim
+      <button class="quick-btn" (click)="sendQuickMessage('contact')">
+        📞 {{'chatbot.quick.contact' | translate}}
       </button>
     </div>
   </div>
