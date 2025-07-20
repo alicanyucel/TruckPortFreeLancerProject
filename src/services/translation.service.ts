@@ -245,7 +245,28 @@ export class TranslationService {
     'common.success': { tr: 'Başarılı', en: 'Success' },
     'common.save': { tr: 'Kaydet', en: 'Save' },
     'common.cancel': { tr: 'İptal', en: 'Cancel' },
-    'common.close': { tr: 'Kapat', en: 'Close' }
+    'common.close': { tr: 'Kapat', en: 'Close' },
+
+    // Advertisements
+    'ads.sponsoredContent': { tr: 'Sponsorlu İçerikler', en: 'Sponsored Content' },
+    
+    // Banner Ads
+    'ads.banner.mercedes.title': { tr: 'Mercedes-Benz Kamyonlar', en: 'Mercedes-Benz Trucks' },
+    'ads.banner.mercedes.description': { tr: 'Yeni Actros serisi ile güçlü ve ekonomik taşımacılık', en: 'Powerful and economical transportation with the new Actros series' },
+    'ads.banner.shell.title': { tr: 'Shell Yakıtları', en: 'Shell Fuels' },
+    'ads.banner.shell.description': { tr: 'Profesyonel sürücüler için özel yakıt çözümleri', en: 'Special fuel solutions for professional drivers' },
+    'ads.banner.bridgestone.title': { tr: 'Bridgestone Lastikleri', en: 'Bridgestone Tires' },
+    'ads.banner.bridgestone.description': { tr: 'Ağır vasıta için dayanıklı ve güvenli lastikler', en: 'Durable and safe tires for heavy vehicles' },
+    
+    // Sidebar Ads
+    'ads.sidebar.gps.title': { tr: 'GPS Takip Sistemi', en: 'GPS Tracking System' },
+    'ads.sidebar.gps.description': { tr: 'Araçlarınızı 7/24 takip edin', en: 'Track your vehicles 24/7' },
+    'ads.sidebar.insurance.title': { tr: 'Lojistik Sigortası', en: 'Logistics Insurance' },
+    'ads.sidebar.insurance.description': { tr: 'Yükünüzü güvence altına alın', en: 'Secure your cargo' },
+    'ads.sidebar.insurance.company': { tr: 'GüvenSigorta', en: 'SecureInsurance' },
+    'ads.sidebar.finance.title': { tr: 'Kamyon Finansmanı', en: 'Truck Financing' },
+    'ads.sidebar.finance.description': { tr: 'Uygun faizlerle araç kredisi', en: 'Vehicle loans with affordable rates' },
+    'ads.sidebar.finance.company': { tr: 'FinansBank', en: 'FinanceBank' }
   };
 
   constructor() {
