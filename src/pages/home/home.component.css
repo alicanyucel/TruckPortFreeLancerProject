@@ -26,6 +26,13 @@
   opacity: 0.9;
 }
 
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .cta-button {
   background-color: #e74c3c;
   color: white;
@@ -34,11 +41,22 @@
   border-radius: 5px;
   font-size: 1.1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .cta-button:hover {
   background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+  background-color: #3498db;
+}
+
+.cta-button.secondary:hover {
+  background-color: #2980b9;
 }
 
 .services-preview {

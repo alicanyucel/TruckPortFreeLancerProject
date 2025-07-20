@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
+import { LiveMapComponent } from '../components/live-map/live-map.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { AboutComponent } from '../pages/about/about.component';
 import { ContactComponent } from '../pages/contact/contact.component';
@@ -16,6 +17,7 @@ import { ServicesComponent } from '../pages/services/services.component';
     AppComponent,
     FooterComponent,
     NavbarComponent,
+    LiveMapComponent,
     HomeComponent,
     AboutComponent,
     ContactComponent,

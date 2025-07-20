@@ -1,0 +1,118 @@
+<div class="live-map-container">
+  <div class="map-header">
+    <h1>🗺️ Canlı Araç Takibi</h1>
+    <p>Filomuzun gerçek zamanlı konumunu takip edin</p>
+  </div>
+
+  <div class="map-content">
+    <div class="map-section">
+      <div class="map-container">
+        <div class="map-placeholder">
+          <div class="map-background">
+            <!-- Simulated map background -->
+            <div class="map-grid"></div>
+            
+            <!-- Vehicle markers on map -->
+            <div *ngFor="let vehicle of vehicles" 
+                 class="vehicle-marker"
+                 [style.left.%]="((vehicle.lng - 26) / 8) * 100"
+                 [style.top.%]="(1 - (vehicle.lat - 36) / 6) * 100"
+                 [style.background-color]="getStatusColor(vehicle.status)"
+                 (click)="selectVehicle(vehicle)"
+                 [class.selected]="selectedVehicle?.id === vehicle.id">
+              <span class="marker-label">{{vehicle.id}}</span>
+              <div class="pulse-ring" *ngIf="vehicle.status === 'active'"></div>
+            </div>
+          </div>
+          
+          <div class="map-legend">
+            <h4>Durum Göstergeleri</h4>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #27ae60;"></span>
+              <span>Aktif</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #f39c12;"></span>
+              <span>Beklemede</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #e74c3c;"></span>
+              <span>Bakımda</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vehicle-list-section">
+      <h3>Araç Listesi</h3>
+      <div class="vehicle-list">
+        <div *ngFor="let vehicle of vehicles" 
+             class="vehicle-card"
+             [class.selected]="selectedVehicle?.id === vehicle.id"
+             (click)="selectVehicle(vehicle)">
+          <div class="vehicle-header">
+            <div class="vehicle-id">{{vehicle.id}}</div>
+            <div class="vehicle-status" 
+                 [style.background-color]="getStatusColor(vehicle.status)">
+              {{getStatusText(vehicle.status)}}
+            </div>
+          </div>
+          
+          <div class="vehicle-info">
+            <div class="info-row">
+              <strong>{{vehicle.name}}</strong>
+            </div>
+            <div class="info-row">
+              👤 {{vehicle.driver}}
+            </div>
+            <div class="info-row">
+              📍 {{vehicle.destination}}
+            </div>
+            <div class="info-row">
+              📦 {{vehicle.cargo}}
+            </div>
+            <div class="info-row" *ngIf="vehicle.status === 'active'">
+              🚀 {{vehicle.speed | number:'1.0-0'}} km/h
+            </div>
+            <div class="info-row timestamp">
+              🕒 {{vehicle.lastUpdate | date:'HH:mm:ss'}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Selected Vehicle Details -->
+  <div class="vehicle-details" *ngIf="selectedVehicle">
+    <h3>Araç Detayları</h3>
+    <div class="details-grid">
+      <div class="detail-card">
+        <h4>Araç Bilgileri</h4>
+        <p><strong>ID:</strong> {{selectedVehicle.id}}</p>
+        <p><strong>Model:</strong> {{selectedVehicle.name}}</p>
+        <p><strong>Sürücü:</strong> {{selectedVehicle.driver}}</p>
+        <p><strong>Durum:</strong> 
+          <span [style.color]="getStatusColor(selectedVehicle.status)">
+            {{getStatusText(selectedVehicle.status)}}
+          </span>
+        </p>
+      </div>
+      
+      <div class="detail-card">
+        <h4>Konum Bilgileri</h4>
+        <p><strong>Enlem:</strong> {{selectedVehicle.lat | number:'1.4-4'}}</p>
+        <p><strong>Boylam:</strong> {{selectedVehicle.lng | number:'1.4-4'}}</p>
+        <p><strong>Hız:</strong> {{selectedVehicle.speed | number:'1.0-0'}} km/h</p>
+        <p><strong>Son Güncelleme:</strong> {{selectedVehicle.lastUpdate | date:'dd/MM/yyyy HH:mm:ss'}}</p>
+      </div>
+      
+      <div class="detail-card">
+        <h4>Yük Bilgileri</h4>
+        <p><strong>Hedef:</strong> {{selectedVehicle.destination}}</p>
+        <p><strong>Yük:</strong> {{selectedVehicle.cargo}}</p>
+      </div>
+    </div>
+  </div>
+</div>

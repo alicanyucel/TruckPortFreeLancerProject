@@ -5,6 +5,7 @@ import { AboutComponent } from '../pages/about/about.component';
 import { ContactComponent } from '../pages/contact/contact.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { ServicesComponent } from '../pages/services/services.component';
+import { LiveMapComponent } from '../components/live-map/live-map.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'hakkimizda', component: AboutComponent },
   { path: 'iletisim', component: ContactComponent },
   { path: 'giris', component: LoginComponent },
+  { path: 'canli-takip', component: LiveMapComponent },
   { path: '**', redirectTo: '' }
 ];
 
