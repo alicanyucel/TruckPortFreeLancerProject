@@ -314,3 +314,11 @@
     padding: 10px;
   }
 }
+
+/* Reklam Bölümü */
+.advertisements-section {
+  margin-top: 40px;
+  padding: 30px 0;
+  border-top: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
+}

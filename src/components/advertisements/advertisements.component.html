@@ -1,0 +1,52 @@
+<div class="advertisements-container">
+  <!-- Banner Reklamları (Üst kısım) -->
+  <div class="banner-ads-section">
+    <div class="banner-carousel">
+      <div class="banner-ad" 
+           *ngFor="let ad of bannerAds; let i = index"
+           [class.active]="i === currentBannerIndex"
+           (click)="onAdClick(ad)">
+        <div class="banner-content">
+          <div class="banner-image" [style.background-image]="'url(' + ad.imageUrl + ')'">
+            <div class="banner-overlay">
+              <div class="banner-text">
+                <h3>{{ad.title}}</h3>
+                <p>{{ad.description}}</p>
+                <span class="company-name">{{ad.company}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Banner Navigation Dots -->
+      <div class="banner-dots">
+        <span *ngFor="let ad of bannerAds; let i = index"
+              class="dot"
+              [class.active]="i === currentBannerIndex"
+              (click)="currentBannerIndex = i">
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Reklamları -->
+  <div class="sidebar-ads-section">
+    <h4>Sponsorlu İçerikler</h4>
+    <div class="sidebar-ads-grid">
+      <div class="sidebar-ad" 
+           *ngFor="let ad of sidebarAds"
+           (click)="onAdClick(ad)">
+        <div class="ad-image" [style.background-image]="'url(' + ad.imageUrl + ')'">
+          <div class="ad-overlay">
+            <div class="ad-content">
+              <h5>{{ad.title}}</h5>
+              <p>{{ad.description}}</p>
+              <span class="ad-company">{{ad.company}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
