@@ -1,0 +1,140 @@
+.contact-container {
+  min-height: 80vh;
+}
+
+.contact-hero {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-text {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-content {
+  padding: 80px 20px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+
+.contact-info h2,
+.contact-form h2 {
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+}
+
+.info-item {
+  margin-bottom: 25px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.info-item h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.info-item p {
+  color: #7f8c8d;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.contact-form {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-btn {
+  background-color: #27ae60;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: #229954;
+}
+
+@media (max-width: 768px) {
+  .contact-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-text {
+    font-size: 1.1rem;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .contact-form {
+    padding: 20px;
+  }
+}

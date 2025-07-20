@@ -1,0 +1,81 @@
+<div class="contact-container">
+  <section class="contact-hero">
+    <div class="container">
+      <h1>İletişim</h1>
+      <p class="hero-text">Bizimle iletişime geçin, size en iyi hizmeti sunalım.</p>
+    </div>
+  </section>
+
+  <section class="contact-content">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>İletişim Bilgileri</h2>
+          
+          <div class="info-item">
+            <h3>📍 Adres</h3>
+            <p>Örnek Mahallesi, Lojistik Caddesi No:123<br>34000 İstanbul/Türkiye</p>
+          </div>
+          
+          <div class="info-item">
+            <h3>📞 Telefon</h3>
+            <p>+90 (212) 123 45 67</p>
+          </div>
+          
+          <div class="info-item">
+            <h3>📱 Mobil</h3>
+            <p>+90 (555) 123 45 67</p>
+          </div>
+          
+          <div class="info-item">
+            <h3>📧 E-posta</h3>
+            <p>info@truckport.com</p>
+          </div>
+          
+          <div class="info-item">
+            <h3>🕒 Çalışma Saatleri</h3>
+            <p>Pazartesi - Cuma: 08:00 - 18:00<br>Cumartesi: 09:00 - 15:00</p>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <h2>Bize Ulaşın</h2>
+          <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="name">Ad Soyad *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">E-posta *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Telefon</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Konu *</label>
+              <select id="subject" name="subject" required>
+                <option value="">Konu Seçiniz</option>
+                <option value="general">Genel Bilgi</option>
+                <option value="quote">Fiyat Teklifi</option>
+                <option value="support">Destek</option>
+                <option value="complaint">Şikayet</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Mesaj *</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Mesaj Gönder</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

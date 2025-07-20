@@ -1,0 +1,37 @@
+<div class="login-container">
+  <div class="login-box">
+    <div class="login-header">
+      <h1>TruckPort</h1>
+      <h2>Giriş Yap</h2>
+      <p>Hesabınıza giriş yapın</p>
+    </div>
+    
+    <form class="login-form" (ngSubmit)="onLogin()">
+      <div class="form-group">
+        <label for="email">E-posta</label>
+        <input type="email" id="email" name="email" placeholder="E-posta adresinizi girin" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Şifre</label>
+        <input type="password" id="password" name="password" placeholder="Şifrenizi girin" required>
+      </div>
+      
+      <div class="form-options">
+        <label class="checkbox-container">
+          <input type="checkbox" name="remember">
+          <span class="checkmark"></span>
+          Beni hatırla
+        </label>
+        <a href="#" class="forgot-password">Şifremi unuttum</a>
+      </div>
+      
+      <button type="submit" class="login-btn">Giriş Yap</button>
+    </form>
+    
+    <div class="register-section">
+      <p>Hesabınız yok mu?</p>
+      <button type="button" class="register-btn" (click)="onRegister()">Kayıt Ol</button>
+    </div>
+  </div>
+</div>

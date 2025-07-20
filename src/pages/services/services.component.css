@@ -1,0 +1,161 @@
+.services-container {
+  min-height: 80vh;
+}
+
+.services-hero {
+  background: linear-gradient(135deg, #8e44ad, #9b59b6);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-text {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.services-content {
+  padding: 80px 20px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.service-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f0f0f0;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.service-card h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.service-card p {
+  color: #7f8c8d;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.service-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.service-card li {
+  color: #5a6c7d;
+  padding: 8px 0;
+  border-bottom: 1px solid #ecf0f1;
+  position: relative;
+  padding-left: 25px;
+}
+
+.service-card li:last-child {
+  border-bottom: none;
+}
+
+.service-card li:before {
+  content: "✓";
+  color: #27ae60;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.cta-section {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.cta-button {
+  background-color: #e74c3c;
+  color: white;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cta-button:hover {
+  background-color: #c0392b;
+}
+
+@media (max-width: 768px) {
+  .services-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-text {
+    font-size: 1.1rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .service-card {
+    padding: 20px;
+  }
+  
+  .cta-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .cta-section p {
+    font-size: 1rem;
+  }
+}
