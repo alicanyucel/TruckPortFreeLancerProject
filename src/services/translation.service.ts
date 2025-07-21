@@ -210,6 +210,7 @@ export class TranslationService {
 
     // Contact Page
     'contact.title': { tr: 'İletişim', en: 'Contact' },
+    'contact.heroText': { tr: 'Bizimle iletişime geçin, size en iyi hizmeti sunalım.', en: 'Contact us, let us provide you with the best service.' },
     'contact.subtitle': { tr: 'Bizimle iletişime geçin, size en iyi hizmeti sunalım.', en: 'Contact us, let us provide you with the best service.' },
     'contact.info': { tr: 'İletişim Bilgileri', en: 'Contact Information' },
     'contact.form': { tr: 'Bize Ulaşın', en: 'Contact Us' },
