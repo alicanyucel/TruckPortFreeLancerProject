@@ -1,0 +1,28 @@
+{
+  "liveMap": {
+    "title": "Canlı Takip Haritası",
+    "subtitle": "Araçlarınızın anlık konum ve durumunu izleyin.",
+    "statusIndicators": "Durum Göstergeleri",
+    "status": {
+      "active": "Aktif",
+      "idle": "Boşta",
+      "maintenance": "Bakımda"
+    },
+    "vehicleList": "Araç Listesi",
+    "vehicleDetails": "Araç Detayları",
+    "details": {
+      "vehicleInfo": "Araç Bilgisi",
+      "model": "Model",
+      "driver": "Sürücü",
+      "status": "Durum",
+      "locationInfo": "Konum Bilgisi",
+      "latitude": "Enlem",
+      "longitude": "Boylam",
+      "speed": "Hız",
+      "lastUpdate": "Son Güncelleme",
+      "cargoInfo": "Yük Bilgisi",
+      "destination": "Varış Noktası",
+      "cargo": "Yük"
+    }
+  }
+}
