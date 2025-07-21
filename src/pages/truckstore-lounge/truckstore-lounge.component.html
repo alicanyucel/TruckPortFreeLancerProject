@@ -1,0 +1,126 @@
+<div class="lounge-container">
+  <!-- Hero Section -->
+  <div class="lounge-hero">
+    <div class="hero-content">
+      <h1>{{'lounge.hero.title' | translate}}</h1>
+      <p>{{'lounge.hero.subtitle' | translate}}</p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">24/7</span>
+          <span class="stat-label">{{'lounge.hero.hours' | translate}}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">{{'lounge.hero.locations' | translate}}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">1000+</span>
+          <span class="stat-label">{{'lounge.hero.drivers' | translate}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Facilities Section -->
+  <div class="facilities-section">
+    <div class="section-header">
+      <h2>{{'lounge.facilities.title' | translate}}</h2>
+      <p>{{'lounge.facilities.subtitle' | translate}}</p>
+    </div>
+    
+    <div class="facilities-grid">
+      <div *ngFor="let facility of facilities" class="facility-card">
+        <div class="facility-icon">{{facility.iconKey}}</div>
+        <h3>{{getTranslation(facility.titleKey)}}</h3>
+        <p>{{getTranslation(facility.descriptionKey)}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing Section -->
+  <div class="pricing-section">
+    <div class="section-header">
+      <h2>{{'lounge.pricing.title' | translate}}</h2>
+      <p>{{'lounge.pricing.subtitle' | translate}}</p>
+    </div>
+    
+    <div class="pricing-grid">
+      <div *ngFor="let plan of pricingPlans; let i = index" 
+           class="pricing-card" 
+           [class.featured]="i === 1">
+        <div class="pricing-header">
+          <h3>{{getTranslation(plan.planKey)}}</h3>
+          <div class="price">{{getTranslation(plan.priceKey)}}</div>
+        </div>
+        <ul class="features-list">
+          <li *ngFor="let feature of plan.featuresKey">
+            ✓ {{getTranslation(feature)}}
+          </li>
+        </ul>
+        <button class="pricing-btn" [class.featured-btn]="i === 1">
+          {{'lounge.pricing.selectPlan' | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery Section -->
+  <div class="gallery-section">
+    <div class="section-header">
+      <h2>{{'lounge.gallery.title' | translate}}</h2>
+      <p>{{'lounge.gallery.subtitle' | translate}}</p>
+    </div>
+    
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400" alt="Restaurant Area">
+        <div class="gallery-overlay">
+          <span>{{'lounge.gallery.restaurant' | translate}}</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1571508601891-ca5e7a713859?w=400" alt="Rest Area">
+        <div class="gallery-overlay">
+          <span>{{'lounge.gallery.restArea' | translate}}</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400" alt="Parking">
+        <div class="gallery-overlay">
+          <span>{{'lounge.gallery.parking' | translate}}</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400" alt="Fuel Station">
+        <div class="gallery-overlay">
+          <span>{{'lounge.gallery.fuelStation' | translate}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="contact-section">
+    <div class="contact-content">
+      <h2>{{'lounge.contact.title' | translate}}</h2>
+      <p>{{'lounge.contact.subtitle' | translate}}</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <span>+90 (212) 555 01 23</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <span>lounge@truckport.com</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">🕐</span>
+          <span>{{'lounge.contact.hours' | translate}}</span>
+        </div>
+      </div>
+      <button class="contact-btn">
+        {{'lounge.contact.reserve' | translate}}
+      </button>
+    </div>
+  </div>
+</div>

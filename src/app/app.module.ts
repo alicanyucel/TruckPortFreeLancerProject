@@ -16,6 +16,7 @@ import { ContactComponent } from '../pages/contact/contact.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { ServicesComponent } from '../pages/services/services.component';
 import { TruckStoreComponent } from '../pages/truckstore/truckstore.component';
+import { TruckStoreLoungeComponent } from '../pages/truckstore-lounge/truckstore-lounge.component';
 import { VideoGalleryComponent } from '../pages/video-gallery/video-gallery.component';
 import { TranslatePipe } from '../pipes/translate.pipe';
 import { SafeHtmlPipe } from '../pipes/safe-html.pipe';
@@ -35,6 +36,7 @@ import { SafeHtmlPipe } from '../pipes/safe-html.pipe';
     LoginComponent,
     ServicesComponent,
     TruckStoreComponent,
+    TruckStoreLoungeComponent,
     VideoGalleryComponent,
     TranslatePipe,
     SafeHtmlPipe

@@ -6,6 +6,7 @@ import { ContactComponent } from '../pages/contact/contact.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { ServicesComponent } from '../pages/services/services.component';
 import { TruckStoreComponent } from '../pages/truckstore/truckstore.component';
+import { TruckStoreLoungeComponent } from '../pages/truckstore-lounge/truckstore-lounge.component';
 import { VideoGalleryComponent } from '../pages/video-gallery/video-gallery.component';
 import { LiveMapComponent } from '../components/live-map/live-map.component';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'hakkimizda', component: AboutComponent },
   { path: 'iletisim', component: ContactComponent },
   { path: 'truckstore', component: TruckStoreComponent },
+  { path: 'truckstore-lounge', component: TruckStoreLoungeComponent },
   { path: 'video-galeri', component: VideoGalleryComponent },
   { path: 'giris', component: LoginComponent },
   { path: 'canli-takip', component: LiveMapComponent },
