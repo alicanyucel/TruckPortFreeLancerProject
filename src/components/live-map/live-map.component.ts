@@ -1,16 +1,17 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
+import { Subscription } from 'rxjs';
 
 interface Vehicle {
   id: string;
   name: string;
-  driver: string;
+  driverKey: string;
   lat: number;
   lng: number;
   status: 'active' | 'idle' | 'maintenance';
   speed: number;
-  destination: string;
-  cargo: string;
+  destinationKey: string;
+  cargoKey: string;
   lastUpdate: Date;
 }
 
@@ -23,18 +24,25 @@ export class LiveMapComponent implements OnInit, OnDestroy {
   vehicles: Vehicle[] = [];
   selectedVehicle: Vehicle | null = null;
   private updateInterval: any;
+  private languageSubscription: Subscription = new Subscription();
 
   constructor(private translationService: TranslationService) {}
 
   ngOnInit() {
     this.initializeVehicles();
     this.startLocationUpdates();
+    
+    // Subscribe to language changes for reactive updates
+    this.languageSubscription = this.translationService.getLanguage$().subscribe(() => {
+      // Trigger change detection for translation updates
+    });
   }
 
   ngOnDestroy() {
     if (this.updateInterval) {
       clearInterval(this.updateInterval);
     }
+    this.languageSubscription.unsubscribe();
   }
 
   initializeVehicles() {
@@ -42,61 +50,61 @@ export class LiveMapComponent implements OnInit, OnDestroy {
       {
         id: 'TR-001',
         name: 'Mercedes Actros',
-        driver: 'Ahmet Yılmaz',
+        driverKey: 'vehicles.drivers.ahmet',
         lat: 41.0082,
         lng: 28.9784,
         status: 'active',
         speed: 85,
-        destination: 'Ankara',
-        cargo: 'Elektronik Eşya',
+        destinationKey: 'vehicles.destinations.ankara',
+        cargoKey: 'vehicles.cargo.electronics',
         lastUpdate: new Date()
       },
       {
         id: 'TR-002',
         name: 'Volvo FH16',
-        driver: 'Mehmet Kaya',
+        driverKey: 'vehicles.drivers.mehmet',
         lat: 39.9334,
         lng: 32.8597,
         status: 'active',
         speed: 70,
-        destination: 'İzmir',
-        cargo: 'Gıda Ürünleri',
+        destinationKey: 'vehicles.destinations.izmir',
+        cargoKey: 'vehicles.cargo.food',
         lastUpdate: new Date()
       },
       {
         id: 'TR-003',
         name: 'Scania R450',
-        driver: 'Ali Demir',
+        driverKey: 'vehicles.drivers.ali',
         lat: 38.4237,
         lng: 27.1428,
         status: 'idle',
         speed: 0,
-        destination: 'Bursa',
-        cargo: 'Tekstil Ürünleri',
+        destinationKey: 'vehicles.destinations.bursa',
+        cargoKey: 'vehicles.cargo.textile',
         lastUpdate: new Date()
       },
       {
         id: 'TR-004',
         name: 'MAN TGX',
-        driver: 'Osman Şahin',
+        driverKey: 'vehicles.drivers.osman',
         lat: 40.1885,
         lng: 29.0610,
         status: 'active',
         speed: 90,
-        destination: 'Adana',
-        cargo: 'İnşaat Malzemesi',
+        destinationKey: 'vehicles.destinations.adana',
+        cargoKey: 'vehicles.cargo.construction',
         lastUpdate: new Date()
       },
       {
         id: 'TR-005',
         name: 'DAF XF',
-        driver: 'Hasan Özkan',
+        driverKey: 'vehicles.drivers.hasan',
         lat: 36.8969,
         lng: 30.7133,
         status: 'maintenance',
         speed: 0,
-        destination: 'Antalya',
-        cargo: 'Boş',
+        destinationKey: 'vehicles.destinations.antalya',
+        cargoKey: 'vehicles.cargo.empty',
         lastUpdate: new Date()
       }
     ];
@@ -138,5 +146,17 @@ export class LiveMapComponent implements OnInit, OnDestroy {
       case 'maintenance': return this.translationService.translate('liveMap.status.maintenance');
       default: return this.translationService.translate('liveMap.status.unknown');
     }
+  }
+
+  getDriverName(driverKey: string): string {
+    return this.translationService.translate(driverKey);
+  }
+
+  getDestination(destinationKey: string): string {
+    return this.translationService.translate(destinationKey);
+  }
+
+  getCargo(cargoKey: string): string {
+    return this.translationService.translate(cargoKey);
   }
 }

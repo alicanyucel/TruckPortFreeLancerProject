@@ -132,6 +132,25 @@ export class TranslationService {
     'liveMap.details.destination': { tr: 'Hedef', en: 'Destination' },
     'liveMap.details.cargo': { tr: 'Yük', en: 'Cargo' },
 
+    // Vehicle Data Translations
+    'vehicles.drivers.ahmet': { tr: 'Ahmet Yılmaz', en: 'Ahmet Yılmaz' },
+    'vehicles.drivers.mehmet': { tr: 'Mehmet Kaya', en: 'Mehmet Kaya' },
+    'vehicles.drivers.ali': { tr: 'Ali Demir', en: 'Ali Demir' },
+    'vehicles.drivers.osman': { tr: 'Osman Şahin', en: 'Osman Şahin' },
+    'vehicles.drivers.hasan': { tr: 'Hasan Özkan', en: 'Hasan Özkan' },
+    
+    'vehicles.destinations.ankara': { tr: 'Ankara', en: 'Ankara' },
+    'vehicles.destinations.izmir': { tr: 'İzmir', en: 'Izmir' },
+    'vehicles.destinations.bursa': { tr: 'Bursa', en: 'Bursa' },
+    'vehicles.destinations.adana': { tr: 'Adana', en: 'Adana' },
+    'vehicles.destinations.antalya': { tr: 'Antalya', en: 'Antalya' },
+    
+    'vehicles.cargo.electronics': { tr: 'Elektronik Eşya', en: 'Electronic Goods' },
+    'vehicles.cargo.food': { tr: 'Gıda Ürünleri', en: 'Food Products' },
+    'vehicles.cargo.textile': { tr: 'Tekstil Ürünleri', en: 'Textile Products' },
+    'vehicles.cargo.construction': { tr: 'İnşaat Malzemesi', en: 'Construction Materials' },
+    'vehicles.cargo.empty': { tr: 'Boş', en: 'Empty' },
+
     // Chatbot specific translations
     'chatbot.title': { tr: 'TruckPort Destek', en: 'TruckPort Support' },
     'chatbot.online': { tr: 'Çevrimiçi', en: 'Online' },

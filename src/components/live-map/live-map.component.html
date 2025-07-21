@@ -64,13 +64,13 @@
               <strong>{{vehicle.name}}</strong>
             </div>
             <div class="info-row">
-              👤 {{vehicle.driver}}
+              👤 {{getDriverName(vehicle.driverKey)}}
             </div>
             <div class="info-row">
-              📍 {{vehicle.destination}}
+              📍 {{getDestination(vehicle.destinationKey)}}
             </div>
             <div class="info-row">
-              📦 {{vehicle.cargo}}
+              📦 {{getCargo(vehicle.cargoKey)}}
             </div>
             <div class="info-row" *ngIf="vehicle.status === 'active'">
               🚀 {{vehicle.speed | number:'1.0-0'}} km/h
@@ -92,7 +92,7 @@
         <h4>{{'liveMap.details.vehicleInfo' | translate}}</h4>
         <p><strong>ID:</strong> {{selectedVehicle.id}}</p>
         <p><strong>{{'liveMap.details.model' | translate}}:</strong> {{selectedVehicle.name}}</p>
-        <p><strong>{{'liveMap.details.driver' | translate}}:</strong> {{selectedVehicle.driver}}</p>
+        <p><strong>{{'liveMap.details.driver' | translate}}:</strong> {{getDriverName(selectedVehicle.driverKey)}}</p>
         <p><strong>{{'liveMap.details.status' | translate}}:</strong> 
           <span [style.color]="getStatusColor(selectedVehicle.status)">
             {{getStatusText(selectedVehicle.status)}}
@@ -110,8 +110,8 @@
       
       <div class="detail-card">
         <h4>{{'liveMap.details.cargoInfo' | translate}}</h4>
-        <p><strong>{{'liveMap.details.destination' | translate}}:</strong> {{selectedVehicle.destination}}</p>
-        <p><strong>{{'liveMap.details.cargo' | translate}}:</strong> {{selectedVehicle.cargo}}</p>
+        <p><strong>{{'liveMap.details.destination' | translate}}:</strong> {{getDestination(selectedVehicle.destinationKey)}}</p>
+        <p><strong>{{'liveMap.details.cargo' | translate}}:</strong> {{getCargo(selectedVehicle.cargoKey)}}</p>
       </div>
     </div>
   </div>
