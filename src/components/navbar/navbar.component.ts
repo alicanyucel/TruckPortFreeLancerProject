@@ -26,4 +26,8 @@ export class NavbarComponent {
     this.authService.logout();
     this.router.navigate(['/']);
   }
+
+  navigateToHome(): void {
+    this.router.navigate(['/']);
+  }
 }

@@ -1,7 +1,10 @@
 <nav class="navbar">
   <div class="navbar-container">
     <div class="navbar-brand">
-      <a routerLink="/" class="brand-link">
+      <a routerLink="/" 
+         class="brand-link" 
+         (click)="navigateToHome()"
+         [attr.aria-label]="'Ana sayfaya git'">
         <img src="assets/truck.png" alt="TruckPort Logo" class="brand-logo">
         TruckPort
       </a>
