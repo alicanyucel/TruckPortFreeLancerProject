@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,10 @@ import { TruckStoreLoungeComponent } from '../pages/truckstore-lounge/truckstore
 import { VideoGalleryComponent } from '../pages/video-gallery/video-gallery.component';
 import { TranslatePipe } from '../pipes/translate.pipe';
 import { SafeHtmlPipe } from '../pipes/safe-html.pipe';
+
+// Senior Level Services & Interceptors
+import { GlobalErrorHandler } from '../services/error-handler.service';
+import { ErrorInterceptor } from '../interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -44,9 +49,21 @@ import { SafeHtmlPipe } from '../pipes/safe-html.pipe';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: GlobalErrorHandler
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

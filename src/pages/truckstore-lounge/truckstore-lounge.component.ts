@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
+import { Subject, takeUntil } from 'rxjs';
 
 interface LoungeFacility {
   iconKey: string;
@@ -16,17 +17,34 @@ interface LoungePricing {
 @Component({
   selector: 'app-truckstore-lounge',
   templateUrl: './truckstore-lounge.component.html',
-  styleUrls: ['./truckstore-lounge.component.css']
+  styleUrls: ['./truckstore-lounge.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TruckStoreLoungeComponent implements OnInit {
+export class TruckStoreLoungeComponent implements OnInit, OnDestroy {
   facilities: LoungeFacility[] = [];
   pricingPlans: LoungePricing[] = [];
+  private destroy$ = new Subject<void>();
 
-  constructor(private translationService: TranslationService) { }
+  constructor(
+    private translationService: TranslationService,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
     this.initializeFacilities();
     this.initializePricing();
+    
+    // Subscribe to language changes for OnPush
+    this.translationService.getLanguage$()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.cdr.markForCheck();
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   initializeFacilities() {

@@ -9,17 +9,38 @@ import { TruckStoreComponent } from '../pages/truckstore/truckstore.component';
 import { TruckStoreLoungeComponent } from '../pages/truckstore-lounge/truckstore-lounge.component';
 import { VideoGalleryComponent } from '../pages/video-gallery/video-gallery.component';
 import { LiveMapComponent } from '../components/live-map/live-map.component';
+import { AuthGuard, AdminGuard } from '../services/auth.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'hizmetler', component: ServicesComponent },
   { path: 'hakkimizda', component: AboutComponent },
   { path: 'iletisim', component: ContactComponent },
-  { path: 'truckstore', component: TruckStoreComponent },
-  { path: 'truckstore-lounge', component: TruckStoreLoungeComponent },
+  { 
+    path: 'truckstore', 
+    component: TruckStoreComponent,
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'truckstore-lounge', 
+    component: TruckStoreLoungeComponent,
+    canActivate: [AuthGuard]
+  },
   { path: 'video-galeri', component: VideoGalleryComponent },
   { path: 'giris', component: LoginComponent },
-  { path: 'canli-takip', component: LiveMapComponent },
+  { 
+    path: 'canli-takip', 
+    component: LiveMapComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin',
+    canActivate: [AdminGuard],
+    children: [
+      // Admin routes can be added here
+      { path: '', redirectTo: '/admin/dashboard', pathMatch: 'full' }
+    ]
+  },
   { path: '**', redirectTo: '' }
 ];
 
