@@ -52,6 +52,7 @@
           <h3>{{getTranslation(plan.planKey)}}</h3>
           <div class="price">{{getTranslation(plan.priceKey)}}</div>
         </div>
+        
         <ul class="features-list">
           <li *ngFor="let feature of plan.featuresKey">
             ✓ {{getTranslation(feature)}}
