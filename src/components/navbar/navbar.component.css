@@ -27,10 +27,19 @@
   font-weight: bold;
   text-decoration: none;
   transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .brand-link:hover {
   color: #3498db;
+}
+
+.brand-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
 .navbar-menu {
