@@ -1,0 +1,147 @@
+.truckstore-container {
+  min-height: calc(100vh - 80px);
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.truckstore-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.truckstore-header h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.truckstore-header p {
+  font-size: 1.3rem;
+  opacity: 0.9;
+}
+
+.truckstore-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.info-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.info-card .icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.info-card h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.info-card p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.external-link-section {
+  text-align: center;
+  padding: 40px 30px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.external-link-section h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.external-link-section p {
+  margin-bottom: 25px;
+  color: #666;
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.external-link-btn {
+  display: inline-block;
+  padding: 15px 35px;
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+}
+
+.external-link-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .truckstore-container {
+    padding: 15px;
+  }
+  
+  .truckstore-header {
+    padding: 30px 15px;
+  }
+  
+  .truckstore-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .truckstore-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .info-card {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .truckstore-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .truckstore-header p {
+    font-size: 1.1rem;
+  }
+  
+  .external-link-btn {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+  }
+}

@@ -19,6 +19,7 @@ export class TranslationService {
     'navbar.about': { tr: 'Hakkımızda', en: 'About Us' },
     'navbar.contact': { tr: 'İletişim', en: 'Contact' },
     'navbar.liveTracking': { tr: 'Canlı Takip', en: 'Live Tracking' },
+    'navbar.truckStore': { tr: 'TruckStore', en: 'TruckStore' },
     'navbar.login': { tr: 'Giriş Yap', en: 'Login' },
 
     // Home Page
@@ -239,6 +240,19 @@ export class TranslationService {
     // Contact Page
     'contact.title': { tr: 'İletişim', en: 'Contact' },
     'contact.heroText': { tr: 'Bizimle iletişime geçin, size en iyi hizmeti sunalım.', en: 'Contact us, let us provide you with the best service.' },
+
+    // TruckStore Page
+    'truckstore.title': { tr: 'TruckStore', en: 'TruckStore' },
+    'truckstore.subtitle': { tr: 'Kamyon ve ticari araç alım satım platformu', en: 'Truck and commercial vehicle trading platform' },
+    'truckstore.feature1.title': { tr: 'Geniş Araç Yelpazesi', en: 'Wide Vehicle Range' },
+    'truckstore.feature1.description': { tr: 'Kamyonlar, çekiciler, yarı römorklar ve ticari araçların geniş koleksiyonu', en: 'Extensive collection of trucks, tractors, semi-trailers and commercial vehicles' },
+    'truckstore.feature2.title': { tr: 'Güvenli Alım Satım', en: 'Secure Trading' },
+    'truckstore.feature2.description': { tr: 'Doğrulanmış satıcılar ve güvenli ödeme sistemi ile güvenli işlemler', en: 'Secure transactions with verified sellers and safe payment system' },
+    'truckstore.feature3.title': { tr: 'Detaylı Araç Bilgileri', en: 'Detailed Vehicle Information' },
+    'truckstore.feature3.description': { tr: 'Her araç için kapsamlı teknik özellikler, fotoğraflar ve geçmiş bilgileri', en: 'Comprehensive technical specifications, photos and history for each vehicle' },
+    'truckstore.cta.title': { tr: 'TruckStore\'u Keşfedin', en: 'Explore TruckStore' },
+    'truckstore.cta.description': { tr: 'Binlerce kamyon ve ticari araç arasından ihtiyacınıza uygun olanı bulun. Profesyonel satıcılarımızla güvenle işlem yapın.', en: 'Find the right one for your needs among thousands of trucks and commercial vehicles. Trade safely with our professional sellers.' },
+    'truckstore.openNewTab': { tr: 'TruckStore\'u Ziyaret Et', en: 'Visit TruckStore' },
     'contact.subtitle': { tr: 'Bizimle iletişime geçin, size en iyi hizmeti sunalım.', en: 'Contact us, let us provide you with the best service.' },
     'contact.info': { tr: 'İletişim Bilgileri', en: 'Contact Information' },
     'contact.form': { tr: 'Bize Ulaşın', en: 'Contact Us' },

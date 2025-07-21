@@ -93,6 +93,22 @@
   background-color: #c0392b;
 }
 
+.external-link {
+  background-color: #27ae60;
+  color: #fff !important;
+  position: relative;
+}
+
+.external-link:hover {
+  background-color: #2ecc71;
+}
+
+.external-link::after {
+  content: "↗";
+  margin-left: 5px;
+  font-size: 12px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .navbar-container {

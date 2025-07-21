@@ -15,6 +15,7 @@ import { AboutComponent } from '../pages/about/about.component';
 import { ContactComponent } from '../pages/contact/contact.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { ServicesComponent } from '../pages/services/services.component';
+import { TruckStoreComponent } from '../pages/truckstore/truckstore.component';
 import { TranslatePipe } from '../pipes/translate.pipe';
 
 @NgModule({
@@ -31,6 +32,7 @@ import { TranslatePipe } from '../pipes/translate.pipe';
     ContactComponent,
     LoginComponent,
     ServicesComponent,
+    TruckStoreComponent,
     TranslatePipe
   ],
   imports: [
