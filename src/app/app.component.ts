@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TruckPort';
+
+  constructor() {
+    console.log('Ali Can Yücel - Her hakkı saklıdır.');
+    console.log('https://www.linkedin.com/in/ali-can-y%C3%BCcel-062b6517a/');
+  }
 }

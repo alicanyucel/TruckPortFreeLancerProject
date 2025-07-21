@@ -1,3 +1,296 @@
+/* =============================================================================
+   TRUCKSTORE (TIR MAĞAZASI) - MODERN SATIŞ SAYFASI TASARIMI
+   ============================================================================= */
+
+.ts-search-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.ts-header {
+  background: #1e293b;
+  color: #fff;
+  padding: 1.5rem 0 1rem 0;
+  box-shadow: 0 2px 8px 0 rgb(30 41 59 / 8%);
+}
+.ts-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.ts-logo img {
+  height: 40px;
+}
+.ts-nav {
+  display: flex;
+  gap: 2rem;
+}
+.ts-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  transition: background 0.2s;
+}
+.ts-nav a.active, .ts-nav a:hover {
+  background: #2563eb;
+}
+.ts-lang-switcher select {
+  background: #fff;
+  color: #1e293b;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-weight: 600;
+}
+
+.ts-breadcrumb {
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.ts-breadcrumb a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.ts-banner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: #e0e7ef;
+  border-radius: 1rem;
+  margin: 0 auto 2rem auto;
+  max-width: 1100px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 8px 0 rgb(30 41 59 / 6%);
+}
+.ts-banner img {
+  height: 80px;
+  border-radius: 0.5rem;
+}
+.ts-banner-text {
+  font-size: 1.1rem;
+  color: #1e293b;
+}
+
+.ts-main-content {
+  display: flex;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+  padding: 0 1.5rem;
+}
+.ts-filters {
+  flex: 0 0 260px;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.07);
+  padding: 2rem 1.5rem;
+  height: fit-content;
+}
+.ts-filters h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+}
+.ts-filter-group {
+  margin-bottom: 1.25rem;
+}
+.ts-filter-group label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #334155;
+}
+.ts-filter-group input,
+.ts-filter-group select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  background: #f8fafc;
+}
+.ts-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.ts-btn-primary {
+  background: #2563eb;
+  color: #fff;
+}
+.ts-btn-primary:hover {
+  background: #1d4ed8;
+}
+.ts-btn-secondary {
+  background: #fff;
+  color: #2563eb;
+  border: 1px solid #2563eb;
+}
+.ts-btn-secondary:hover {
+  background: #2563eb;
+  color: #fff;
+}
+
+.ts-vehicle-list {
+  flex: 1 1 0%;
+}
+.ts-vehicle-list h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #1e293b;
+}
+.ts-vehicle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+.ts-vehicle-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.07);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1.5px solid #e2e8f0;
+}
+.ts-vehicle-card:hover {
+  box-shadow: 0 8px 24px 0 rgb(30 41 59 / 10%);
+  transform: translateY(-6px) scale(1.03);
+  border-color: #2563eb;
+}
+.ts-vehicle-card img {
+  width: 100%;
+  max-width: 260px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+.ts-vehicle-info {
+  width: 100%;
+  text-align: left;
+}
+.ts-vehicle-info h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+}
+.ts-vehicle-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+.ts-vehicle-info li {
+  font-size: 0.98rem;
+  color: #334155;
+  margin-bottom: 0.25rem;
+}
+.ts-vehicle-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 1rem;
+}
+
+.ts-truckletter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f1f5f9;
+  border-radius: 1rem;
+  max-width: 1100px;
+  margin: 0 auto 2rem auto;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 8px 0 rgb(30 41 59 / 6%);
+  gap: 2rem;
+}
+.ts-truckletter-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.ts-truckletter-left img {
+  height: 60px;
+}
+.ts-truckletter-right ul {
+  list-style: disc inside;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+.ts-footer {
+  background: #1e293b;
+  color: #fff;
+  padding: 2rem 0 1rem 0;
+  margin-top: 2rem;
+}
+.ts-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+.ts-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+.ts-footer nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.ts-footer nav a:hover {
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .ts-main-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .ts-filters {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+@media (max-width: 600px) {
+  .ts-header-container, .ts-main-content, .ts-footer-container, .ts-banner, .ts-truckletter {
+    padding: 0 0.5rem;
+  }
+  .ts-banner, .ts-truckletter {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  .ts-vehicle-grid {
+    grid-template-columns: 1fr;
+  }
+}
 .truckstore-container {
   min-height: calc(100vh - 80px);
   padding: 20px;

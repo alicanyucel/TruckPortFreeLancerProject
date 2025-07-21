@@ -47,17 +47,21 @@ export class TruckStoreLoungeComponent implements OnInit, OnDestroy {
     // Performance monitoring
     this.renderStartTime = this.performanceService.markRenderStart();
     this.performanceService.incrementComponentCount();
-    
+
+    // Copyright log
+    console.log('Ali Can Yücel - Her hakkı saklıdır.');
+    console.log('https://www.linkedin.com/in/ali-can-y%C3%BCcel-062b6517a/');
+
     this.initializeFacilities();
     this.initializePricing();
-    
+
     // Subscribe to language changes for OnPush
     this.translationService.getLanguage$()
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
         this.cdr.markForCheck();
       });
-      
+
     // Performance monitoring - mark render end
     setTimeout(() => {
       this.performanceService.markRenderEnd(this.renderStartTime);
