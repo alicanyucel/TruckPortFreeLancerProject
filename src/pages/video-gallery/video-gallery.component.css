@@ -1,0 +1,271 @@
+.video-gallery-container {
+  min-height: calc(100vh - 80px);
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.video-gallery-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.video-gallery-header h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.video-gallery-header p {
+  font-size: 1.3rem;
+  opacity: 0.9;
+}
+
+.category-filter {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  padding: 12px 25px;
+  border: 2px solid #3498db;
+  background: white;
+  color: #3498db;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.category-btn:hover {
+  background: #3498db;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.category-btn.active {
+  background: #3498db;
+  color: white;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.video-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.video-thumbnail {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.video-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.video-card:hover .video-thumbnail img {
+  transform: scale(1.05);
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: rgba(231, 76, 60, 0.9);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.video-card:hover .play-button {
+  background: rgba(231, 76, 60, 1);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-info {
+  padding: 20px;
+}
+
+.video-info h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.video-info p {
+  color: #666;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* Video Modal */
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 15px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.close-btn:hover {
+  background: #c0392b;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  overflow: hidden;
+  border-radius: 15px 15px 0 0;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-details {
+  padding: 30px;
+}
+
+.video-details h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.video-details p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .video-gallery-container {
+    padding: 15px;
+  }
+  
+  .video-gallery-header {
+    padding: 30px 15px;
+  }
+  
+  .video-gallery-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .category-filter {
+    gap: 10px;
+  }
+  
+  .category-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-gallery-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .video-gallery-header p {
+    font-size: 1.1rem;
+  }
+  
+  .modal-content {
+    margin: 10px;
+    max-height: 95vh;
+  }
+  
+  .video-details {
+    padding: 20px;
+  }
+  
+  .video-details h2 {
+    font-size: 1.5rem;
+  }
+}

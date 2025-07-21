@@ -1,0 +1,52 @@
+<div class="video-gallery-container">
+  <div class="video-gallery-header">
+    <h1>{{'videoGallery.title' | translate}}</h1>
+    <p>{{'videoGallery.subtitle' | translate}}</p>
+  </div>
+
+  <!-- Category Filter -->
+  <div class="category-filter">
+    <button 
+      *ngFor="let category of categories"
+      [class.active]="selectedCategory === category"
+      (click)="filterByCategory(category)"
+      class="category-btn">
+      {{getCategoryName(category)}}
+    </button>
+  </div>
+
+  <!-- Video Grid -->
+  <div class="video-grid">
+    <div 
+      *ngFor="let video of getFilteredVideos()" 
+      class="video-card"
+      (click)="selectVideo(video)">
+      <div class="video-thumbnail">
+        <img [src]="video.thumbnailUrl" [alt]="getVideoTitle(video.titleKey)">
+        <div class="play-button">▶</div>
+      </div>
+      <div class="video-info">
+        <h3>{{getVideoTitle(video.titleKey)}}</h3>
+        <p>{{getVideoDescription(video.descriptionKey)}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Modal -->
+  <div class="video-modal" *ngIf="selectedVideo" (click)="closeVideoModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closeVideoModal()">×</button>
+      <div class="video-container">
+        <iframe 
+          [src]="'https://www.youtube.com/embed/' + selectedVideo.youtubeId | safeHtml"
+          frameborder="0"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-details">
+        <h2>{{getVideoTitle(selectedVideo.titleKey)}}</h2>
+        <p>{{getVideoDescription(selectedVideo.descriptionKey)}}</p>
+      </div>
+    </div>
+  </div>
+</div>

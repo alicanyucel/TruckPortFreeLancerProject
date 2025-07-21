@@ -20,6 +20,7 @@ export class TranslationService {
     'navbar.contact': { tr: 'İletişim', en: 'Contact' },
     'navbar.liveTracking': { tr: 'Canlı Takip', en: 'Live Tracking' },
     'navbar.truckStore': { tr: 'TruckStore', en: 'TruckStore' },
+    'navbar.videoGallery': { tr: 'Video Galeri', en: 'Video Gallery' },
     'navbar.login': { tr: 'Giriş Yap', en: 'Login' },
 
     // Home Page
@@ -309,7 +310,45 @@ export class TranslationService {
     'ads.sidebar.insurance.company': { tr: 'GüvenSigorta', en: 'SecureInsurance' },
     'ads.sidebar.finance.title': { tr: 'Kamyon Finansmanı', en: 'Truck Financing' },
     'ads.sidebar.finance.description': { tr: 'Uygun faizlerle araç kredisi', en: 'Vehicle loans with affordable rates' },
-    'ads.sidebar.finance.company': { tr: 'FinansBank', en: 'FinanceBank' }
+    'ads.sidebar.finance.company': { tr: 'FinansBank', en: 'FinanceBank' },
+
+    // Video Gallery Page
+    'videoGallery.title': { tr: 'Video Galeri', en: 'Video Gallery' },
+    'videoGallery.subtitle': { tr: 'TruckPort hizmetleri ve araç filosu hakkında videolar', en: 'Videos about TruckPort services and vehicle fleet' },
+    
+    // Video Categories
+    'videoGallery.categories.all': { tr: 'Tümü', en: 'All' },
+    'videoGallery.categories.trucks': { tr: 'Kamyonlar', en: 'Trucks' },
+    'videoGallery.categories.logistics': { tr: 'Lojistik', en: 'Logistics' },
+    'videoGallery.categories.testimonials': { tr: 'Müşteri Yorumları', en: 'Testimonials' },
+    
+    // Sample Videos
+    'videoGallery.videos.truckReview.title': { tr: 'Mercedes Actros İncelemesi', en: 'Mercedes Actros Review' },
+    'videoGallery.videos.truckReview.description': { tr: 'Filomuzun en yeni kamyonu Mercedes Actros\'un detaylı incelemesi', en: 'Detailed review of our fleet\'s newest truck Mercedes Actros' },
+    'videoGallery.videos.logistics.title': { tr: 'Lojistik Süreçlerimiz', en: 'Our Logistics Processes' },
+    'videoGallery.videos.logistics.description': { tr: 'TruckPort\'un modern lojistik ve kargo takip sistemleri', en: 'TruckPort\'s modern logistics and cargo tracking systems' },
+    'videoGallery.videos.testimonial.title': { tr: 'Müşteri Deneyimleri', en: 'Customer Experiences' },
+    'videoGallery.videos.testimonial.description': { tr: 'Memnun müşterilerimizin TruckPort deneyimleri', en: 'Satisfied customers\' TruckPort experiences' },
+    
+    // Additional Videos
+    'videoGallery.videos.volvoTruck.title': { tr: 'Volvo FH Serisi Tanıtımı', en: 'Volvo FH Series Introduction' },
+    'videoGallery.videos.volvoTruck.description': { tr: 'Volvo FH kamyonlarının güç ve teknoloji özellikleri', en: 'Power and technology features of Volvo FH trucks' },
+    'videoGallery.videos.safety.title': { tr: 'Güvenli Taşımacılık', en: 'Safe Transportation' },
+    'videoGallery.videos.safety.description': { tr: 'TruckPort\'ta güvenlik önceliğimiz, güvenli taşımacılık standartları', en: 'Safety is our priority at TruckPort, safe transportation standards' },
+    'videoGallery.videos.technology.title': { tr: 'Teknoloji ve Takip', en: 'Technology and Tracking' },
+    'videoGallery.videos.technology.description': { tr: 'Son teknoloji GPS takip ve filo yönetim sistemleri', en: 'Latest technology GPS tracking and fleet management systems' },
+    'videoGallery.videos.scaniaTruck.title': { tr: 'Scania R450 Performansı', en: 'Scania R450 Performance' },
+    'videoGallery.videos.scaniaTruck.description': { tr: 'Scania R450\'nin üstün performans ve yakıt ekonomisi', en: 'Superior performance and fuel economy of Scania R450' },
+    'videoGallery.videos.customerStory.title': { tr: 'Müşteri Hikayesi', en: 'Customer Story' },
+    'videoGallery.videos.customerStory.description': { tr: 'Uzun yıllardır TruckPort ile çalışan müşterimizin hikayesi', en: 'Story of our customer who has been working with TruckPort for years' },
+    'videoGallery.videos.warehousing.title': { tr: 'Depolama Hizmetleri', en: 'Warehousing Services' },
+    'videoGallery.videos.warehousing.description': { tr: 'Modern depolama tesisleri ve stok yönetim çözümleri', en: 'Modern warehousing facilities and inventory management solutions' },
+    'videoGallery.videos.manTruck.title': { tr: 'MAN TGX Özellikleri', en: 'MAN TGX Features' },
+    'videoGallery.videos.manTruck.description': { tr: 'MAN TGX kamyonlarının gelişmiş özellik ve teknolojileri', en: 'Advanced features and technologies of MAN TGX trucks' },
+    'videoGallery.videos.companyTour.title': { tr: 'TruckPort Şirket Turu', en: 'TruckPort Company Tour' },
+    'videoGallery.videos.companyTour.description': { tr: 'TruckPort tesisleri ve çalışma alanlarının tanıtımı', en: 'Introduction to TruckPort facilities and working areas' },
+    'videoGallery.videos.sustainableLogistics.title': { tr: 'Sürdürülebilir Lojistik', en: 'Sustainable Logistics' },
+    'videoGallery.videos.sustainableLogistics.description': { tr: 'Çevre dostu lojistik çözümleri ve yeşil taşımacılık', en: 'Eco-friendly logistics solutions and green transportation' }
   };
 
   constructor() {
