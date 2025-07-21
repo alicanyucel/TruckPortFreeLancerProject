@@ -143,6 +143,15 @@ export class TranslationService {
     'chatbot.quickMessages.quote': { tr: 'Fiyat teklifi istiyorum', en: 'I want a price quote' },
     'chatbot.quickMessages.contact': { tr: 'İletişim bilgileri', en: 'Contact information' },
 
+    // Chatbot Responses
+    'chatbot.responses.welcome': { tr: 'Merhaba! TruckPort müşteri destek chatbot\'uyum. Size nasıl yardımcı olabilirim? 🤖', en: 'Hello! I am TruckPort customer support chatbot. How can I help you? 🤖' },
+    'chatbot.responses.services': { tr: 'TruckPort olarak kamyon taşımacılığı, lojistik çözümleri, depolama ve uluslararası nakliye hizmetleri sunuyoruz. Hangi hizmetimiz hakkında bilgi almak istersiniz?', en: 'As TruckPort, we provide truck transportation, logistics solutions, storage and international shipping services. Which service would you like to know about?' },
+    'chatbot.responses.price': { tr: 'Fiyat teklifimiz için lütfen İletişim sayfamızdan bizimle iletişime geçin. Size özel teklifimizi hazırlayalım! 💰', en: 'For our price quote, please contact us through our Contact page. Let us prepare a special offer for you! 💰' },
+    'chatbot.responses.tracking': { tr: 'Canlı Takip sayfamızdan araçlarımızın gerçek zamanlı konumunu takip edebilirsiniz. 📍', en: 'You can track the real-time location of our vehicles from our Live Tracking page. 📍' },
+    'chatbot.responses.contact': { tr: 'İletişim bilgilerimiz: 📞 +90 (212) 123 45 67 | 📧 info@truckport.com | 📍 İstanbul/Türkiye', en: 'Our contact information: 📞 +90 (212) 123 45 67 | 📧 info@truckport.com | 📍 Istanbul/Turkey' },
+    'chatbot.responses.thanks': { tr: 'Rica ederim! Başka bir sorunuz varsa çekinmeden sorun. İyi günler! 😊', en: 'You\'re welcome! If you have any other questions, feel free to ask. Have a great day! 😊' },
+    'chatbot.responses.default': { tr: 'Üzgünüm, bu konuda size yardımcı olamıyorum. Daha detaylı bilgi için İletişim sayfamızdan bizimle iletişime geçebilirsiniz. 📞', en: 'Sorry, I can\'t help you with that. For more detailed information, you can contact us through our Contact page. 📞' },
+
     // Additional contact form translations
     'contact.info.title': { tr: 'İletişim Bilgileri', en: 'Contact Information' },
     'contact.info.address.title': { tr: 'Adres', en: 'Address' },

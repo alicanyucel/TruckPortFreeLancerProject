@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
+import { Subscription } from 'rxjs';
 
 interface ChatMessage {
   id: number;
@@ -13,47 +14,62 @@ interface ChatMessage {
   templateUrl: './chatbot.component.html',
   styleUrls: ['./chatbot.component.css']
 })
-export class ChatbotComponent implements OnInit {
+export class ChatbotComponent implements OnInit, OnDestroy {
   isOpen = false;
   messages: ChatMessage[] = [];
   currentMessage = '';
   isTyping = false;
   messageIdCounter = 1;
+  private languageSubscription: Subscription = new Subscription();
 
   constructor(private translationService: TranslationService) {}
 
   // Predefined responses
-  botResponses = [
-    {
-      keywords: ['merhaba', 'selam', 'hello', 'hi'],
-      response: 'Merhaba! TruckPort\'a hoş geldiniz. Size nasıl yardımcı olabilirim? 🚛'
-    },
-    {
-      keywords: ['hizmet', 'service', 'neler yapıyorsunuz'],
-      response: 'TruckPort olarak kamyon taşımacılığı, lojistik çözümleri, depolama ve uluslararası nakliye hizmetleri sunuyoruz. Hangi hizmetimiz hakkında bilgi almak istersiniz?'
-    },
-    {
-      keywords: ['fiyat', 'ücret', 'teklif', 'price'],
-      response: 'Fiyat teklifimiz için lütfen İletişim sayfamızdan bizimle iletişime geçin. Size özel teklifimizi hazırlayalım! 💰'
-    },
-    {
-      keywords: ['takip', 'track', 'kargo', 'araç'],
-      response: 'Canlı Takip sayfamızdan araçlarımızın gerçek zamanlı konumunu takip edebilirsiniz. 📍'
-    },
-    {
-      keywords: ['iletişim', 'telefon', 'adres', 'contact'],
-      response: 'İletişim bilgilerimiz: 📞 +90 (212) 123 45 67 | 📧 info@truckport.com | 📍 İstanbul/Türkiye'
-    },
-    {
-      keywords: ['teşekkür', 'sağol', 'thank'],
-      response: 'Rica ederim! Başka bir sorunuz varsa çekinmeden sorun. İyi günler! 😊'
-    }
-  ];
+  getBotResponses() {
+    return [
+      {
+        keywords: ['merhaba', 'selam', 'hello', 'hi'],
+        response: this.translationService.translate('chatbot.responses.welcome')
+      },
+      {
+        keywords: ['hizmet', 'service', 'neler yapıyorsunuz', 'what are your services'],
+        response: this.translationService.translate('chatbot.responses.services')
+      },
+      {
+        keywords: ['fiyat', 'ücret', 'teklif', 'price', 'quote'],
+        response: this.translationService.translate('chatbot.responses.price')
+      },
+      {
+        keywords: ['takip', 'track', 'kargo', 'araç', 'tracking', 'vehicle'],
+        response: this.translationService.translate('chatbot.responses.tracking')
+      },
+      {
+        keywords: ['iletişim', 'telefon', 'adres', 'contact', 'phone', 'address'],
+        response: this.translationService.translate('chatbot.responses.contact')
+      },
+      {
+        keywords: ['teşekkür', 'sağol', 'thank', 'thanks'],
+        response: this.translationService.translate('chatbot.responses.thanks')
+      }
+    ];
+  }
 
   ngOnInit() {
-    // Welcome message
+    // Welcome message - dil değişikliğinde güncellenecek
+    this.sendWelcomeMessage();
+
+    // Dil değişikliklerini dinle ve welcome mesajını güncelle
+    this.languageSubscription = this.translationService.getLanguage$().subscribe(() => {
+      // Mevcut mesajları temizle ve yeni welcome mesajı gönder
+      this.messages = [];
+      this.messageIdCounter = 1;
+      this.sendWelcomeMessage();
+    });
+  }
+
+  sendWelcomeMessage() {
     setTimeout(() => {
-      this.addBotMessage('Merhaba! TruckPort müşteri destek chatbot\'uyum. Size nasıl yardımcı olabilirim? 🤖');
+      this.addBotMessage(this.translationService.translate('chatbot.responses.welcome'));
     }, 1000);
   }
 
@@ -98,9 +114,10 @@ export class ChatbotComponent implements OnInit {
 
   processUserMessage(userMessage: string) {
     const lowerMessage = userMessage.toLowerCase();
+    const botResponses = this.getBotResponses();
     
     // Find matching response
-    const matchedResponse = this.botResponses.find(response => 
+    const matchedResponse = botResponses.find(response => 
       response.keywords.some(keyword => lowerMessage.includes(keyword))
     );
 
@@ -108,7 +125,7 @@ export class ChatbotComponent implements OnInit {
       this.addBotMessage(matchedResponse.response);
     } else {
       // Default response
-      this.addBotMessage('Üzgünüm, bu konuda size yardımcı olamıyorum. Daha detaylı bilgi için İletişim sayfamızdan bizimle iletişime geçebilirsiniz. 📞');
+      this.addBotMessage(this.translationService.translate('chatbot.responses.default'));
     }
   }
 
@@ -142,5 +159,9 @@ export class ChatbotComponent implements OnInit {
     }
     this.currentMessage = message;
     this.sendMessage();
+  }
+
+  ngOnDestroy() {
+    this.languageSubscription.unsubscribe();
   }
 }
