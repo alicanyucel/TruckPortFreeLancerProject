@@ -96,6 +96,41 @@
   background-color: #c0392b;
 }
 
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #34495e;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.user-welcome {
+  color: #ecf0f1;
+  font-size: 12px;
+  font-weight: 500;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logout-btn {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+}
+
 .external-link {
   background-color: #27ae60;
   color: #fff !important;

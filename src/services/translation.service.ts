@@ -22,6 +22,8 @@ export class TranslationService {
     'navbar.truckStore': { tr: 'TruckStore', en: 'TruckStore' },
     'navbar.videoGallery': { tr: 'Video Galeri', en: 'Video Gallery' },
     'navbar.login': { tr: 'Giriş Yap', en: 'Login' },
+    'navbar.logout': { tr: 'Çıkış Yap', en: 'Logout' },
+    'navbar.welcome': { tr: 'Hoş geldin', en: 'Welcome' },
 
     // Home Page
     'home.welcomeTitle': { tr: 'TruckPort\'a Hoş Geldiniz', en: 'Welcome to TruckPort' },

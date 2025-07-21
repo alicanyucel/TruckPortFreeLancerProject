@@ -115,6 +115,29 @@
   background-color: #2980b9;
 }
 
+.login-btn:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: block;
+}
+
+.global-error {
+  background-color: #fdf2f2;
+  color: #e74c3c;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #fecaca;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
 .register-section {
   text-align: center;
   padding-top: 20px;

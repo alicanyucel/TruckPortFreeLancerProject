@@ -6,15 +6,37 @@
       <p>{{'login.subtitle' | translate}}</p>
     </div>
     
-    <form class="login-form" (ngSubmit)="onLogin()">
+    <form class="login-form" (ngSubmit)="onLogin()" #loginForm="ngForm">
       <div class="form-group">
         <label for="email">{{'login.email' | translate}}</label>
-        <input type="email" id="email" name="email" [placeholder]="'login.emailPlaceholder' | translate" required>
+        <input type="email" 
+               id="email" 
+               name="email" 
+               [(ngModel)]="email"
+               [placeholder]="'login.emailPlaceholder' | translate" 
+               required 
+               #emailInput="ngModel">
+        <div *ngIf="emailInput.invalid && emailInput.touched" class="error-message">
+          E-posta gereklidir
+        </div>
       </div>
       
       <div class="form-group">
         <label for="password">{{'login.password' | translate}}</label>
-        <input type="password" id="password" name="password" [placeholder]="'login.passwordPlaceholder' | translate" required>
+        <input type="password" 
+               id="password" 
+               name="password" 
+               [(ngModel)]="password"
+               [placeholder]="'login.passwordPlaceholder' | translate" 
+               required
+               #passwordInput="ngModel">
+        <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error-message">
+          Şifre gereklidir
+        </div>
+      </div>
+
+      <div *ngIf="errorMessage" class="error-message global-error">
+        {{errorMessage}}
       </div>
       
       <div class="form-options">
@@ -26,7 +48,12 @@
         <a href="#" class="forgot-password">{{'login.forgotPassword' | translate}}</a>
       </div>
       
-      <button type="submit" class="login-btn">{{'login.loginButton' | translate}}</button>
+      <button type="submit" 
+              class="login-btn" 
+              [disabled]="isLoading || loginForm.invalid">
+        <span *ngIf="isLoading">Giriş yapılıyor...</span>
+        <span *ngIf="!isLoading">{{'login.loginButton' | translate}}</span>
+      </button>
     </form>
     
     <div class="register-section">
