@@ -12,7 +12,11 @@
     
     <ul class="navbar-menu">
       <li class="navbar-item">
-        <a routerLink="/" class="navbar-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'navbar.home' | translate}}</a>
+        <a routerLink="/" 
+           class="navbar-link" 
+           routerLinkActive="active" 
+           [routerLinkActiveOptions]="{exact: true}"
+           (click)="navigateToHome()">{{'navbar.home' | translate}}</a>
       </li>
       <li class="navbar-item">
         <a routerLink="/hizmetler" class="navbar-link" routerLinkActive="active">{{'navbar.services' | translate}}</a>

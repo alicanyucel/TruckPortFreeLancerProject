@@ -28,6 +28,13 @@ export class NavbarComponent {
   }
 
   navigateToHome(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/']).then(() => {
+      // Sayfa tepesine kaydır
+      window.scrollTo({ 
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth' 
+      });
+    });
   }
 }
