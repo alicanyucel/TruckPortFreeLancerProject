@@ -1,0 +1,125 @@
+# Docker ignore file for TruckPort Angular application
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Angular build outputs
+/dist/
+/tmp/
+/out-tsc/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Angular cache
+.angular/
+
+# Logs
+logs
+*.log
+
+# Git files
+.git/
+.gitignore
+
+# Testing
+/coverage
+/e2e/reports/
+/e2e/screenshots/
+
+# Documentation
+README.md
+CHANGELOG.md
+*.md
+
+# Development files
+src/**/*.spec.ts
+*.spec.ts
+karma.conf.js
+protractor.conf.js
+e2e/
+
+# Source maps (optional, comment if needed for debugging)
+*.map
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Build tools
+webpack.config.js
+angular.json
+
+# Package files
+package-lock.json
+yarn.lock
+
+# Docker files (to avoid recursive copying)
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# SSL certificates (security)
+ssl/
+*.pem
+*.key
+*.crt
+
+# Monitoring configs
+monitoring/
+
+# Database init files
+database/
