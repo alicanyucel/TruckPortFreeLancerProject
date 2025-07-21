@@ -1,6 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
-import { Subject, takeUntil } from 'rxjs';
+import { StateManagementService } from '../../services/state-management.service';
+import { PerformanceMonitorService } from '../../services/performance-monitor.service';
+import { LoungeReservationService, Reservation } from '../../services/lounge-reservation.service';
+import { AccessibilityService } from '../../services/accessibility.service';
+import { Subject, takeUntil, Observable } from 'rxjs';
 
 interface LoungeFacility {
   iconKey: string;
@@ -23,14 +27,27 @@ interface LoungePricing {
 export class TruckStoreLoungeComponent implements OnInit, OnDestroy {
   facilities: LoungeFacility[] = [];
   pricingPlans: LoungePricing[] = [];
+  reservations$: Observable<Reservation[]>;
+  selectedPlan: string | null = null;
   private destroy$ = new Subject<void>();
+  private renderStartTime: number = 0;
 
   constructor(
     private translationService: TranslationService,
-    private cdr: ChangeDetectorRef
-  ) { }
+    private cdr: ChangeDetectorRef,
+    private stateService: StateManagementService,
+    private performanceService: PerformanceMonitorService,
+    private reservationService: LoungeReservationService,
+    private accessibilityService: AccessibilityService
+  ) { 
+    this.reservations$ = this.reservationService.reservations$;
+  }
 
   ngOnInit(): void {
+    // Performance monitoring
+    this.renderStartTime = this.performanceService.markRenderStart();
+    this.performanceService.incrementComponentCount();
+    
     this.initializeFacilities();
     this.initializePricing();
     
@@ -40,9 +57,15 @@ export class TruckStoreLoungeComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.cdr.markForCheck();
       });
+      
+    // Performance monitoring - mark render end
+    setTimeout(() => {
+      this.performanceService.markRenderEnd(this.renderStartTime);
+    }, 0);
   }
 
   ngOnDestroy(): void {
+    this.performanceService.decrementComponentCount();
     this.destroy$.next();
     this.destroy$.complete();
   }
@@ -118,5 +141,47 @@ export class TruckStoreLoungeComponent implements OnInit, OnDestroy {
 
   getTranslation(key: string): string {
     return this.translationService.translate(key);
+  }
+
+  selectPlan(planType: string): void {
+    this.selectedPlan = planType;
+    this.stateService.updateLoungeState({ selectedPlan: planType });
+    this.accessibilityService.announceToScreenReader(
+      `${planType} planı seçildi. Rezervasyon için devam edin.`
+    );
+  }
+
+  async makeReservation(planType: 'basic' | 'premium' | 'vip'): Promise<void> {
+    try {
+      const startDate = new Date();
+      const endDate = new Date(startDate.getTime() + 24 * 60 * 60 * 1000); // 1 day
+      
+      const price = await this.reservationService.getPricing(planType, 1).toPromise();
+      
+      const reservation = await this.reservationService.createReservation({
+        userId: 'current_user', // Get from auth service
+        planType,
+        startDate,
+        endDate,
+        totalPrice: price || 0,
+        facilities: this.getSelectedFacilities(planType)
+      }).toPromise();
+
+      this.accessibilityService.announceToScreenReader('Rezervasyon başarıyla oluşturuldu.');
+      console.log('Rezervasyon oluşturuldu:', reservation);
+      
+    } catch (error) {
+      this.accessibilityService.announceToScreenReader('Rezervasyon oluşturulurken bir hata oluştu.');
+      console.error('Rezervasyon hatası:', error);
+    }
+  }
+
+  private getSelectedFacilities(planType: string): string[] {
+    const facilityMap = {
+      basic: ['restaurant', 'wifi'],
+      premium: ['restaurant', 'wifi', 'shower', 'parking'],
+      vip: ['restaurant', 'wifi', 'shower', 'parking', 'rest', 'laundry']
+    };
+    return facilityMap[planType as keyof typeof facilityMap] || [];
   }
 }

@@ -57,7 +57,9 @@
             ✓ {{getTranslation(feature)}}
           </li>
         </ul>
-        <button class="pricing-btn" [class.featured-btn]="i === 1">
+        <button class="pricing-btn" [class.featured-btn]="i === 1"
+                (click)="selectPlan(plan.planKey); makeReservation(plan.planKey === 'lounge.pricing.basic' ? 'basic' : plan.planKey === 'lounge.pricing.premium' ? 'premium' : 'vip')"
+                [attr.aria-label]="getTranslation('lounge.pricing.selectPlan') + ' ' + getTranslation(plan.planKey)">
           {{'lounge.pricing.selectPlan' | translate}}
         </button>
       </div>
