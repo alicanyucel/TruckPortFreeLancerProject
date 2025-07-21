@@ -33,33 +33,33 @@ export class TruckStoreLoungeComponent implements OnInit {
     this.facilities = [
       {
         iconKey: '☕',
-        titleKey: 'lounge.facilities.restaurant.title',
-        descriptionKey: 'lounge.facilities.restaurant.description'
+        titleKey: 'lounge.facility.restaurant.title',
+        descriptionKey: 'lounge.facility.restaurant.description'
       },
       {
         iconKey: '🛏️',
-        titleKey: 'lounge.facilities.rest.title',
-        descriptionKey: 'lounge.facilities.rest.description'
+        titleKey: 'lounge.facility.rest.title',
+        descriptionKey: 'lounge.facility.rest.description'
       },
       {
         iconKey: '🚿',
-        titleKey: 'lounge.facilities.shower.title',
-        descriptionKey: 'lounge.facilities.shower.description'
+        titleKey: 'lounge.facility.shower.title',
+        descriptionKey: 'lounge.facility.shower.description'
       },
       {
         iconKey: '📶',
-        titleKey: 'lounge.facilities.wifi.title',
-        descriptionKey: 'lounge.facilities.wifi.description'
+        titleKey: 'lounge.facility.wifi.title',
+        descriptionKey: 'lounge.facility.wifi.description'
       },
       {
         iconKey: '🚗',
-        titleKey: 'lounge.facilities.parking.title',
-        descriptionKey: 'lounge.facilities.parking.description'
+        titleKey: 'lounge.facility.parking.title',
+        descriptionKey: 'lounge.facility.parking.description'
       },
       {
         iconKey: '⛽',
-        titleKey: 'lounge.facilities.fuel.title',
-        descriptionKey: 'lounge.facilities.fuel.description'
+        titleKey: 'lounge.facility.fuel.title',
+        descriptionKey: 'lounge.facility.fuel.description'
       }
     ];
   }
@@ -67,7 +67,7 @@ export class TruckStoreLoungeComponent implements OnInit {
   initializePricing() {
     this.pricingPlans = [
       {
-        planKey: 'lounge.pricing.basic.plan',
+        planKey: 'lounge.pricing.basic',
         priceKey: 'lounge.pricing.basic.price',
         featuresKey: [
           'lounge.pricing.basic.feature1',
@@ -76,7 +76,7 @@ export class TruckStoreLoungeComponent implements OnInit {
         ]
       },
       {
-        planKey: 'lounge.pricing.premium.plan',
+        planKey: 'lounge.pricing.premium',
         priceKey: 'lounge.pricing.premium.price',
         featuresKey: [
           'lounge.pricing.premium.feature1',
@@ -86,14 +86,13 @@ export class TruckStoreLoungeComponent implements OnInit {
         ]
       },
       {
-        planKey: 'lounge.pricing.vip.plan',
+        planKey: 'lounge.pricing.vip',
         priceKey: 'lounge.pricing.vip.price',
         featuresKey: [
           'lounge.pricing.vip.feature1',
           'lounge.pricing.vip.feature2',
           'lounge.pricing.vip.feature3',
-          'lounge.pricing.vip.feature4',
-          'lounge.pricing.vip.feature5'
+          'lounge.pricing.vip.feature4'
         ]
       }
     ];
