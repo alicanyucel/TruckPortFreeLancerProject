@@ -1,0 +1,65 @@
+{
+  "test": {
+    "builder": "@angular-devkit/build-angular:karma",
+    "options": {
+      "main": "src/test.ts",
+      "polyfills": "src/polyfills.ts",
+      "tsConfig": "tsconfig.spec.json",
+      "karmaConfig": "karma.conf.js",
+      "assets": [
+        "src/favicon.ico",
+        "src/assets"
+      ],
+      "styles": [
+        "src/styles.css"
+      ],
+      "scripts": [],
+      "codeCoverage": true,
+      "browsers": "ChromeHeadless",
+      "watch": false,
+      "progress": false
+    }
+  },
+  "test:watch": {
+    "builder": "@angular-devkit/build-angular:karma",
+    "options": {
+      "main": "src/test.ts",
+      "polyfills": "src/polyfills.ts",
+      "tsConfig": "tsconfig.spec.json",
+      "karmaConfig": "karma.conf.js",
+      "assets": [
+        "src/favicon.ico",
+        "src/assets"
+      ],
+      "styles": [
+        "src/styles.css"
+      ],
+      "scripts": [],
+      "codeCoverage": true,
+      "watch": true,
+      "browsers": "Chrome"
+    }
+  },
+  "test:ci": {
+    "builder": "@angular-devkit/build-angular:karma",
+    "options": {
+      "main": "src/test.ts",
+      "polyfills": "src/polyfills.ts",
+      "tsConfig": "tsconfig.spec.json",
+      "karmaConfig": "karma.conf.js",
+      "assets": [
+        "src/favicon.ico",
+        "src/assets"
+      ],
+      "styles": [
+        "src/styles.css"
+      ],
+      "scripts": [],
+      "codeCoverage": true,
+      "browsers": "ChromeHeadless",
+      "watch": false,
+      "progress": false,
+      "reporters": ["progress", "coverage-istanbul", "junit"]
+    }
+  }
+}
