@@ -325,3 +325,14 @@
   border-top: 1px solid #e0e0e0;
   background-color: #f8f9fa;
 }
+
+/* Yıl inputları için okları gizle (fiyat inputları gibi) */
+input[type="number"].year-input::-webkit-inner-spin-button,
+input[type="number"].year-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"].year-input {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}

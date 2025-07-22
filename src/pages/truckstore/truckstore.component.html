@@ -23,8 +23,8 @@
       </div>
       <div class="ts-filter-group">
         <label>Yıl</label>
-        <input type="number" [(ngModel)]="filterYearMin" (ngModelChange)="filtrele()" placeholder="Min yıl" style="width: 60px;" /> -
-        <input type="number" [(ngModel)]="filterYearMax" (ngModelChange)="filtrele()" placeholder="Max yıl" style="width: 60px;" />
+        <input type="text" [(ngModel)]="filterYearMin" (ngModelChange)="filtrele()" placeholder="Min" style="width: 60px;" step="any" /> -
+        <input type="text" [(ngModel)]="filterYearMax" (ngModelChange)="filtrele()" placeholder="Max" style="width: 60px;" step="any" />
       </div>
       <div class="ts-filter-group">
         <label>Kilometre</label>
