@@ -5,7 +5,7 @@
     "statusIndicators": "Durum Göstergeleri",
     "status": {
       "active": "Aktif",
-      "idle": "Boşta",
+      "idle": "Beklemede",
       "maintenance": "Bakımda"
     },
     "vehicleList": "Araç Listesi",

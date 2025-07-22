@@ -157,13 +157,16 @@
   align-items: center;
   margin-bottom: 5px;
 }
+.legend-item strong span {
+  color: #111;
+}
 
 .legend-color {
   width: 12px;
   height: 12px;
   border-radius: 50%;
   margin-right: 8px;
-  border: 2px solid white;
+  border: 2px solid black;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
@@ -222,7 +225,7 @@
 }
 
 .vehicle-status {
-  color: white;
+  color: black;
   padding: 4px 8px;
   border-radius: 12px;
   font-size: 0.8rem;
