@@ -7,6 +7,10 @@ import { TranslationService } from '../../services/translation.service';
   styleUrls: ['./truckstore.component.css']
 })
 export class TruckStoreComponent implements OnInit {
+  // Pagination
+  currentPage: number = 1;
+  itemsPerPage: number = 6;
+
   // Tüm araçlar
   trucks = [
     {
@@ -35,6 +39,123 @@ export class TruckStoreComponent implements OnInit {
       year: 2019,
       km: 220000,
       price: 1750000
+    },
+    {
+      image: 'https://images.pexels.com/photos/1936675/pexels-photo-1936675.jpeg',
+      title: 'Scania R450',
+      brand: 'Scania',
+      model: 'R450',
+      year: 2022,
+      km: 90000,
+      price: 2650000
+    },
+    {
+      image: 'https://images.pexels.com/photos/238921/pexels-photo-238921.jpeg',
+      title: 'DAF XF 480',
+      brand: 'DAF',
+      model: 'XF 480',
+      year: 2021,
+      km: 110000,
+      price: 2550000
+    },
+    {
+      image: 'https://images.pexels.com/photos/1936676/pexels-photo-1936676.jpeg',
+      title: 'Iveco Stralis 460',
+      brand: 'Iveco',
+      model: 'Stralis 460',
+      year: 2020,
+      km: 150000,
+      price: 2100000
+    },
+    {
+      image: 'https://images.pexels.com/photos/238921/pexels-photo-238921.jpeg',
+      title: 'Renault T 480',
+      brand: 'Renault',
+      model: 'T 480',
+      year: 2019,
+      km: 200000,
+      price: 1800000
+    },
+    {
+      image: 'https://images.pexels.com/photos/1936675/pexels-photo-1936675.jpeg',
+      title: 'Ford F-MAX',
+      brand: 'Ford',
+      model: 'F-MAX',
+      year: 2022,
+      km: 80000,
+      price: 2700000
+    },
+    {
+      image: 'https://images.pexels.com/photos/1936676/pexels-photo-1936676.jpeg',
+      title: 'Mercedes-Benz Arocs 1842',
+      brand: 'Mercedes-Benz',
+      model: 'Arocs 1842',
+      year: 2021,
+      km: 100000,
+      price: 2500000
+    },
+    {
+      image: 'https://images.pexels.com/photos/238921/pexels-photo-238921.jpeg',
+      title: 'MAN TGS 18.440',
+      brand: 'MAN',
+      model: 'TGS 18.440',
+      year: 2020,
+      km: 170000,
+      price: 1950000
+    },
+    {
+      image: 'https://images.pexels.com/photos/1936675/pexels-photo-1936675.jpeg',
+      title: 'Volvo FM 500',
+      brand: 'Volvo',
+      model: 'FM 500',
+      year: 2019,
+      km: 210000,
+      price: 1780000
+    },
+    {
+      image: 'https://images.pexels.com/photos/1936676/pexels-photo-1936676.jpeg',
+      title: 'Scania S500',
+      brand: 'Scania',
+      model: 'S500',
+      year: 2022,
+      km: 95000,
+      price: 2750000
+    },
+    {
+      image: 'https://images.pexels.com/photos/238921/pexels-photo-238921.jpeg',
+      title: 'DAF CF 450',
+      brand: 'DAF',
+      model: 'CF 450',
+      year: 2021,
+      km: 120000,
+      price: 2480000
+    },
+    {
+      image: 'https://images.pexels.com/photos/1936675/pexels-photo-1936675.jpeg',
+      title: 'Iveco S-Way 480',
+      brand: 'Iveco',
+      model: 'S-Way 480',
+      year: 2020,
+      km: 140000,
+      price: 2150000
+    },
+    {
+      image: 'https://images.pexels.com/photos/1936676/pexels-photo-1936676.jpeg',
+      title: 'Renault C 520',
+      brand: 'Renault',
+      model: 'C 520',
+      year: 2019,
+      km: 230000,
+      price: 1820000
+    },
+    {
+      image: 'https://images.pexels.com/photos/238921/pexels-photo-238921.jpeg',
+      title: 'Ford Cargo 1848T',
+      brand: 'Ford',
+      model: 'Cargo 1848T',
+      year: 2022,
+      km: 85000,
+      price: 2680000
     }
   ];
 
@@ -59,7 +180,7 @@ export class TruckStoreComponent implements OnInit {
   }
 
   filtrele() {
-    this.filtreliTrucks = this.trucks.filter(truck => {
+    const filtered = this.trucks.filter(truck => {
       const brandMatch = !this.filterBrand || this.filterBrand === 'Tümü' || truck.brand === this.filterBrand;
       const modelMatch = !this.filterModel || truck.model.toLowerCase().includes(this.filterModel.toLowerCase());
       // Fiyatı string olarak alıp tüm rakamları birleştirerek number'a çeviren fonksiyon
@@ -80,6 +201,8 @@ export class TruckStoreComponent implements OnInit {
       const kmMatch = kmMax == null || truck.km <= kmMax;
       return brandMatch && modelMatch && priceMinMatch && priceMaxMatch && yearMinMatch && yearMaxMatch && kmMatch;
     });
+    this.currentPage = 1;
+    this.filtreliTrucks = filtered;
   }
 
   temizleFiltre() {
@@ -91,6 +214,21 @@ export class TruckStoreComponent implements OnInit {
     this.filterYearMax = null;
     this.filterKmMax = null;
     this.filtrele();
+  }
+
+  get pagedTrucks() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    return this.filtreliTrucks.slice(start, start + this.itemsPerPage);
+  }
+
+  get totalPages() {
+    return Math.ceil(this.filtreliTrucks.length / this.itemsPerPage) || 1;
+  }
+
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
   }
 
 }

@@ -58,7 +58,7 @@
     <section class="ts-vehicle-list">
       <h2>Satılık Kamyon ve Römorklar</h2>
       <div class="ts-vehicle-grid">
-        <div class="ts-vehicle-card" *ngFor="let truck of filtreliTrucks">
+        <div class="ts-vehicle-card" *ngFor="let truck of pagedTrucks">
           <img [src]="truck.image" [alt]="truck.title" />
           <div class="ts-vehicle-info">
             <h4>{{truck.title}}</h4>
@@ -72,6 +72,42 @@
           </div>
         </div>
       </div>
+      <!-- Pagination Controls -->
+      <div class="ts-pagination" *ngIf="totalPages > 1">
+        <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Önceki</button>
+        <button *ngFor="let page of [].constructor(totalPages); let i = index" (click)="goToPage(i + 1)" [class.active]="currentPage === (i + 1)">{{i + 1}}</button>
+        <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Sonraki</button>
+      </div>
+      <style>
+        .ts-pagination {
+          display: flex;
+          justify-content: center;
+          margin-top: 24px;
+          gap: 8px;
+        }
+        .ts-pagination button {
+          background: #fff;
+          border: 1px solid #d1d5db;
+          color: #333;
+          padding: 6px 16px;
+          border-radius: 6px;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: background 0.2s, color 0.2s, border 0.2s;
+        }
+        .ts-pagination button.active,
+        .ts-pagination button:hover:not(:disabled) {
+          background: #007bff;
+          color: #fff;
+          border-color: #007bff;
+        }
+        .ts-pagination button:disabled {
+          background: #f1f1f1;
+          color: #aaa;
+          border-color: #eee;
+          cursor: not-allowed;
+        }
+      </style>
     </section>
   </div>
   <!-- Sağ Reklam Alanları -->
