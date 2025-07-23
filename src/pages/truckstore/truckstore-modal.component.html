@@ -1,6 +1,6 @@
 <div class="modal-backdrop">
   <div class="modal-content">
-    <button class="modal-close" (click)="$event.stopPropagation(); user.closeModal()">&times;</button>
+    <button class="modal-close" (click)="$event.stopPropagation(); close.emit()">&times;</button>
     <h2>{{ truck?.title }}</h2>
     <img [src]="truck?.image" [alt]="truck?.title" style="width:100%;max-width:320px;border-radius:8px;margin-bottom:16px;" *ngIf="truck?.image">
     <ul>

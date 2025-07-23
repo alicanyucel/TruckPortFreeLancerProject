@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-truckstore-modal',
@@ -8,4 +9,5 @@ import { Component, Input } from '@angular/core';
 export class TruckstoreModalComponent {
   @Input() truck: any;
   @Input() user: any;
+  @Output() close = new EventEmitter<void>();
 }
