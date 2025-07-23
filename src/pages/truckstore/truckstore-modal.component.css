@@ -15,10 +15,10 @@
 .custom-modal {
   background: #fff;
   border-radius: 14px;
-  max-width: 420px;
-  width: 95%;
+  max-width: 600px;
+  width: 98%;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-  padding: 32px 22px 22px 22px;
+  padding: 40px 36px 32px 36px;
   position: relative;
   animation: modalIn .25s;
 }
