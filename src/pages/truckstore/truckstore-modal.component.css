@@ -1,3 +1,8 @@
+.modal-info-box div {
+  /* ...existing code... */
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
 .modal-info-box {
   /* ...existing code... */
 }
