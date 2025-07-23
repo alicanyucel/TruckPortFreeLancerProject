@@ -3,9 +3,6 @@
   word-break: break-all;
   overflow-wrap: anywhere;
 }
-.modal-info-box {
-  /* ...existing code... */
-}
 .modal-info-box div {
   color: #18181b;
   font-weight: 700;
