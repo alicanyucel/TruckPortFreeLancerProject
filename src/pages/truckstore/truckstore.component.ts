@@ -33,7 +33,7 @@ export class TruckStoreComponent implements OnInit {
       year: 2021,
       km: 120000,
       price: 2450000,
-      user: { name: 'Ahmet Yılmaz', phone: '+90 532 111 22 33', email: 'ahmet.yilmaz@example.com' }
+      user: { name: 'Ali Can Yücel', phone: '+90 532 111 22 33', email: 'ahmet.yilmaz@example.com' }
     },
     {
       image: 'https://tso-assets-prd.s3.amazonaws.com/Images/Home/Teaser/TSO_Tile-Teaser_Range-White.jpg',

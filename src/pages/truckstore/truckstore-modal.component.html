@@ -1,21 +1,27 @@
+
 <div class="modal-backdrop">
-  <div class="modal-content">
+  <div class="modal-content modal-card">
     <button class="modal-close" (click)="$event.stopPropagation(); close.emit()">&times;</button>
-    <h2>{{ truck?.title }}</h2>
-    <img [src]="truck?.image" [alt]="truck?.title" style="width:100%;max-width:320px;border-radius:8px;margin-bottom:16px;" *ngIf="truck?.image">
-    <ul>
-      <li><strong>Marka:</strong> {{truck?.brand}}</li>
-      <li><strong>Model:</strong> {{truck?.model}}</li>
-      <li><strong>Yıl:</strong> {{truck?.year}}</li>
-      <li><strong>Kilometre:</strong> {{truck?.km | number}} km</li>
-      <li><strong>Fiyat:</strong> {{truck?.price | currency:'TRY':'symbol':'1.0-0'}}</li>
-    </ul>
-    <hr>
-    <h3>İlan Veren Bilgileri</h3>
-    <ul>
-      <li><strong>Ad Soyad:</strong> {{user?.name}}</li>
-      <li><strong>Telefon:</strong> {{user?.phone}}</li>
-      <li><strong>Email:</strong> {{user?.email}}</li>
-    </ul>
+    <div class="modal-img-title">
+      <img [src]="truck?.image" [alt]="truck?.title" class="modal-truck-img" *ngIf="truck?.image">
+      <div class="modal-title-price">
+        <h2>{{ truck?.title }}</h2>
+        <div class="modal-price">{{truck?.price | currency:'TRY':'symbol':'1.0-0'}}</div>
+      </div>
+    </div>
+    <div class="modal-info-row">
+      <div class="modal-info-box">
+        <div><span class="modal-label">Marka:</span> <span>{{truck?.brand}}</span></div>
+        <div><span class="modal-label">Model:</span> <span>{{truck?.model}}</span></div>
+        <div><span class="modal-label">Yıl:</span> <span>{{truck?.year}}</span></div>
+        <div><span class="modal-label">Kilometre:</span> <span>{{truck?.km | number}} km</span></div>
+      </div>
+      <div class="modal-info-box">
+        <div class="modal-user-title">İlan Veren</div>
+        <div><span class="modal-label">Ad Soyad:</span> <span>{{user?.name}}</span></div>
+        <div><span class="modal-label">Telefon:</span> <span>{{user?.phone}}</span></div>
+        <div><span class="modal-label">Email:</span> <span>{{user?.email}}</span></div>
+      </div>
+    </div>
   </div>
 </div>
