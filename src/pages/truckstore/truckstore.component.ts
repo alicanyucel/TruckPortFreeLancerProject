@@ -32,7 +32,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'Actros 1845',
       year: 2021,
       km: 120000,
-      price: 2450000
+      price: 2450000,
+      user: { name: 'Ahmet Yılmaz', phone: '+90 532 111 22 33', email: 'ahmet.yilmaz@example.com' }
     },
     {
       image: 'https://tso-assets-prd.s3.amazonaws.com/Images/Home/Teaser/TSO_Tile-Teaser_Range-White.jpg',
@@ -41,7 +42,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'TGX 18.500',
       year: 2020,
       km: 185000,
-      price: 1980000
+      price: 1980000,
+      user: { name: 'Mehmet Kaya', phone: '+90 533 222 33 44', email: 'mehmet.kaya@example.com' }
     },
     {
       image: 'https://tso-assets-prd.s3.amazonaws.com/Images/Home/Services/IMG_Home_New-Warranty_310x310.jpg',
@@ -50,7 +52,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'FH 460',
       year: 2019,
       km: 220000,
-      price: 1750000
+      price: 1750000,
+      user: { name: 'Ayşe Demir', phone: '+90 534 333 44 55', email: 'ayse.demir@example.com' }
     },
     {
       image: 'https://images.pexels.com/photos/1936675/pexels-photo-1936675.jpeg',
@@ -59,7 +62,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'R450',
       year: 2022,
       km: 90000,
-      price: 2650000
+      price: 2650000,
+      user: { name: 'Fatma Koç', phone: '+90 535 444 55 66', email: 'fatma.koc@example.com' }
     },
     {
       image: 'https://images.pexels.com/photos/238921/pexels-photo-238921.jpeg',
@@ -68,7 +72,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'XF 480',
       year: 2021,
       km: 110000,
-      price: 2550000
+      price: 2550000,
+      user: { name: 'Emre Şahin', phone: '+90 536 555 66 77', email: 'emre.sahin@example.com' }
     },
     {
       image: 'https://images.pexels.com/photos/1936676/pexels-photo-1936676.jpeg',
@@ -77,7 +82,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'Stralis 460',
       year: 2020,
       km: 150000,
-      price: 2100000
+      price: 2100000,
+      user: { name: 'Kemal Öz', phone: '+90 537 123 45 67', email: 'kemal.oz@example.com' }
     },
     {
       image: 'https://images.pexels.com/photos/238921/pexels-photo-238921.jpeg',
@@ -86,7 +92,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'T 480',
       year: 2019,
       km: 200000,
-      price: 1800000
+      price: 1800000,
+      user: { name: 'Selin Yıldırım', phone: '+90 538 234 56 78', email: 'selin.yildirim@example.com' }
     },
     {
       image: 'https://images.pexels.com/photos/1936675/pexels-photo-1936675.jpeg',
@@ -95,7 +102,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'F-MAX',
       year: 2022,
       km: 80000,
-      price: 2700000
+      price: 2700000,
+      user: { name: 'Barış Demir', phone: '+90 539 345 67 89', email: 'baris.demir@example.com' }
     },
     {
       image: 'https://images.pexels.com/photos/1936676/pexels-photo-1936676.jpeg',
@@ -104,7 +112,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'Arocs 1842',
       year: 2021,
       km: 100000,
-      price: 2500000
+      price: 2500000,
+      user: { name: 'Gülşah Akın', phone: '+90 540 456 78 90', email: 'gulsah.akin@example.com' }
     },
     {
       image: 'https://images.pexels.com/photos/238921/pexels-photo-238921.jpeg',
@@ -123,7 +132,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'FM 500',
       year: 2019,
       km: 210000,
-      price: 1780000
+      price: 1780000,
+      user: { name: 'Zeynep Arslan', phone: '+90 538 888 99 00', email: 'zeynep.arslan@example.com' }
     },
     {
       image: 'https://images.pexels.com/photos/1936676/pexels-photo-1936676.jpeg',
@@ -132,7 +142,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'S500',
       year: 2022,
       km: 95000,
-      price: 2750000
+      price: 2750000,
+      user: { name: 'Murat Yıldız', phone: '+90 539 999 00 11', email: 'murat.yildiz@example.com' }
     },
     {
       image: 'https://images.pexels.com/photos/238921/pexels-photo-238921.jpeg',
@@ -141,7 +152,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'CF 450',
       year: 2021,
       km: 120000,
-      price: 2480000
+      price: 2480000,
+      user: { name: 'Elif Aksoy', phone: '+90 540 111 22 33', email: 'elif.aksoy@example.com' }
     },
     {
       image: 'https://images.pexels.com/photos/1936675/pexels-photo-1936675.jpeg',
@@ -150,7 +162,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'S-Way 480',
       year: 2020,
       km: 140000,
-      price: 2150000
+      price: 2150000,
+      user: { name: 'Gökhan Polat', phone: '+90 541 222 33 44', email: 'gokhan.polat@example.com' }
     },
     {
       image: 'https://images.pexels.com/photos/1936676/pexels-photo-1936676.jpeg',
@@ -159,7 +172,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'C 520',
       year: 2019,
       km: 230000,
-      price: 1820000
+      price: 1820000,
+      user: { name: 'Deniz Kılıç', phone: '+90 542 333 44 55', email: 'deniz.kilic@example.com' }
     },
     {
       image: 'https://images.pexels.com/photos/238921/pexels-photo-238921.jpeg',
@@ -168,7 +182,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'Cargo 1848T',
       year: 2022,
       km: 85000,
-      price: 2680000
+      price: 2680000,
+      user: { name: 'Seda Uçar', phone: '+90 543 444 55 66', email: 'seda.ucar@example.com' }
     }
   ];
 
