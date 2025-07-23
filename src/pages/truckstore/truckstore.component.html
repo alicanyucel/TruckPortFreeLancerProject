@@ -74,6 +74,7 @@
         </div>
 
         <app-truckstore-modal *ngIf="showModal" [truck]="selectedTruck" [user]="ilanVeren"></app-truckstore-modal>
+        <app-truckstore-modal *ngIf="showModal" [truck]="selectedTruck" [user]="selectedTruck?.user"></app-truckstore-modal>
       </div>
       <!-- Pagination Controls -->
       <div class="ts-pagination" *ngIf="totalPages > 1">

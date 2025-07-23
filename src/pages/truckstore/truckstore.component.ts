@@ -113,7 +113,8 @@ export class TruckStoreComponent implements OnInit {
       model: 'TGS 18.440',
       year: 2020,
       km: 170000,
-      price: 1950000
+      price: 1950000,
+      user: { name: 'Burak Güneş', phone: '+90 537 777 88 99', email: 'burak.gunes@example.com' }
     },
     {
       image: 'https://images.pexels.com/photos/1936675/pexels-photo-1936675.jpeg',
