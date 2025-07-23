@@ -69,8 +69,11 @@
               <li><strong>Km:</strong> {{truck.km | number}} km</li>
             </ul>
             <div class="ts-vehicle-price">{{truck.price | currency:'TRY':'symbol':'1.0-0'}}</div>
+            <button class="ts-btn ts-btn-primary" style="margin-top:8px;" (click)="openModal(truck)">Detay</button>
           </div>
         </div>
+
+        <app-truckstore-modal *ngIf="showModal" [truck]="selectedTruck" [user]="ilanVeren"></app-truckstore-modal>
       </div>
       <!-- Pagination Controls -->
       <div class="ts-pagination" *ngIf="totalPages > 1">

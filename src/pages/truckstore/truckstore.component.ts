@@ -7,6 +7,18 @@ import { TranslationService } from '../../services/translation.service';
   styleUrls: ['./truckstore.component.css']
 })
 export class TruckStoreComponent implements OnInit {
+  // Modal için seçili ilan ve ilan veren
+  selectedTruck: any = null;
+  showModal: boolean = false;
+  ilanVeren = {
+    name: 'Ali Can Yücel',
+    phone: '+90 555 123 45 67',
+    email: 'alicanyucel@example.com',
+    closeModal: () => {
+      this.showModal = false;
+      this.selectedTruck = null;
+    }
+  };
   // Pagination
   currentPage: number = 1;
   itemsPerPage: number = 6;
@@ -177,6 +189,11 @@ export class TruckStoreComponent implements OnInit {
   ngOnInit(): void {
     this.filtreliTrucks = [...this.trucks];
     console.log('Ali Can Yücel - Her hakkı saklıdır.');
+  }
+
+  openModal(truck: any) {
+    this.selectedTruck = truck;
+    this.showModal = true;
   }
 
   filtrele() {

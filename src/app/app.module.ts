@@ -17,6 +17,7 @@ import { ContactComponent } from '../pages/contact/contact.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { ServicesComponent } from '../pages/services/services.component';
 import { TruckStoreComponent } from '../pages/truckstore/truckstore.component';
+import { TruckstoreModalComponent } from '../pages/truckstore/truckstore-modal.component';
 import { TruckStoreLoungeComponent } from '../pages/truckstore-lounge/truckstore-lounge.component';
 import { VideoGalleryComponent } from '../pages/video-gallery/video-gallery.component';
 import { TranslatePipe } from '../pipes/translate.pipe';
@@ -44,7 +45,8 @@ import { ErrorInterceptor } from '../interceptors/error.interceptor';
     TruckStoreLoungeComponent,
     VideoGalleryComponent,
     TranslatePipe,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    TruckstoreModalComponent
   ],
   imports: [
     BrowserModule,

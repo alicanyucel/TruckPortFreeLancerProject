@@ -1,0 +1,21 @@
+<div class="modal-backdrop">
+  <div class="modal-content">
+    <button class="modal-close" (click)="$event.stopPropagation(); user.closeModal()">&times;</button>
+    <h2>{{ truck?.title }}</h2>
+    <img [src]="truck?.image" [alt]="truck?.title" style="width:100%;max-width:320px;border-radius:8px;margin-bottom:16px;" *ngIf="truck?.image">
+    <ul>
+      <li><strong>Marka:</strong> {{truck?.brand}}</li>
+      <li><strong>Model:</strong> {{truck?.model}}</li>
+      <li><strong>Yıl:</strong> {{truck?.year}}</li>
+      <li><strong>Kilometre:</strong> {{truck?.km | number}} km</li>
+      <li><strong>Fiyat:</strong> {{truck?.price | currency:'TRY':'symbol':'1.0-0'}}</li>
+    </ul>
+    <hr>
+    <h3>İlan Veren Bilgileri</h3>
+    <ul>
+      <li><strong>Ad Soyad:</strong> {{user?.name}}</li>
+      <li><strong>Telefon:</strong> {{user?.phone}}</li>
+      <li><strong>Email:</strong> {{user?.email}}</li>
+    </ul>
+  </div>
+</div>
