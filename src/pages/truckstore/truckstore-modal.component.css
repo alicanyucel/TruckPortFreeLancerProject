@@ -16,6 +16,23 @@
   box-shadow: 0 8px 32px rgba(0,0,0,0.18);
   position: relative;
 }
+
+/* Yazıları daha koyu ve okunaklı yap */
+.modal-content h2, .modal-content h3 {
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 12px;
+}
+.modal-content ul li {
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 6px;
+  font-size: 1.08rem;
+}
+.modal-content strong {
+  color: #111;
+  font-weight: 700;
+}
 .modal-close {
   position: absolute;
   top: 12px;
