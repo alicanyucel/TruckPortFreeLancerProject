@@ -10,4 +10,10 @@ export class TruckstoreModalComponent {
   @Input() truck: any;
   @Input() user: any;
   @Output() close = new EventEmitter<void>();
+
+  onOverlayClick(event: MouseEvent) {
+    if (event.target && (event.target as HTMLElement).classList.contains('custom-modal-overlay')) {
+      this.close.emit();
+    }
+  }
 }
