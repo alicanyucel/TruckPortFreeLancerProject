@@ -178,7 +178,6 @@ import { Component } from '@angular/core';
       outline: none;
       background: #fff;
     }
-    .uyeol-btn {
       background: linear-gradient(90deg, #2563eb 60%, #1e40af 100%);
       color: #fff;
       border: none;
@@ -187,6 +186,16 @@ import { Component } from '@angular/core';
       font-size: 1.15rem;
       font-weight: 700;
       margin-top: 10px;
+    .privacy-content {
+      color: #222;
+      font-weight: 600;
+      font-size: 1.08rem;
+    }
+    .privacy-content strong, .privacy-content h3, .privacy-content h4 {
+      color: #1e40af;
+      font-weight: 700;
+    }
+    .close-btn {
       cursor: pointer;
       box-shadow: 0 2px 8px rgba(37,99,235,0.08);
       transition: background 0.18s;
