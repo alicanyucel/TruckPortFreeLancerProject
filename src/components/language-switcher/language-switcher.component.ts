@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectUserName } from '../../store/user/user.selectors';
 
 @Component({
   selector: 'app-language-switcher',
@@ -8,9 +11,11 @@ import { TranslationService } from '../../services/translation.service';
 })
 export class LanguageSwitcherComponent {
   currentLanguage: string;
+  userName$: Observable<string>;
 
-  constructor(private translationService: TranslationService) {
+  constructor(private translationService: TranslationService, private store: Store) {
     this.currentLanguage = this.translationService.getCurrentLanguage();
+    this.userName$ = this.store.select(selectUserName);
   }
 
   switchLanguage(lang: string) {
