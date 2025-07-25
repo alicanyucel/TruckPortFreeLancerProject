@@ -22,10 +22,79 @@ import { Component } from '@angular/core';
           <label for="password">Şifre</label>
           <input type="password" id="password" name="password" required placeholder="Şifreniz">
         </div>
+        <div class="uyeol-form-group privacy-group">
+          <button type="button" class="privacy-btn" (click)="openPrivacyModal()">Gizlilik Sözleşmesi ve Yasal Haklar</button>
+        </div>
         <button type="submit" class="uyeol-btn">Üye Ol</button>
       </form>
       <div class="uyeol-already-member">
         <span>Zaten üyeyseniz <a routerLink="/giris" class="uyeol-login-link">giriş yapın</a>.</span>
+      </div>
+
+      <div *ngIf="showPrivacyModal" class="privacy-modal-overlay" (click)="closePrivacyModal()">
+        <div class="privacy-modal" (click)="$event.stopPropagation()">
+          <h3>TRUCKPORT GİZLİLİK POLİTİKASI – KULLANICI AYDINLATMA METNİ</h3>
+          <div class="privacy-content" style="max-height: 60vh; overflow-y: auto;">
+            <p>İşbu Aydınlatma Metni, Truckport mobil uygulamasının kullanımı kapsamında elde edilen kişisel verilerin, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve Avrupa Birliği Genel Veri Koruma Tüzüğü (GDPR) hükümleri uyarınca nasıl toplandığı, işlendiği, saklandığı ve aktarıldığı konusunda kullanıcılarımızı bilgilendirmek amacıyla hazırlanmıştır.</p>
+            <strong>Hangi Verileri Topluyoruz?</strong>
+            <ul>
+              <li>Kimlik ve İletişim Bilgileri: Ad ve soyad, telefon numarası, e-posta adresi</li>
+              <li>Cihaz ve Kullanım Bilgileri: IP adresi, tarayıcı türü ve sürümü, uygulama kullanım istatistikleri, cihaz modeli ve işletim sistemi</li>
+              <li>Açık Rıza Gerektiren Ek Veriler: Konum, rehber, kamera ve galeri erişimi (yalnızca açık rıza ile)</li>
+            </ul>
+            <strong>Kişisel Verilerin İşlenme Amaçları</strong>
+            <ul>
+              <li>Uygulama hizmetlerinin sunulması ve sürdürülebilirliğinin sağlanması</li>
+              <li>Konum bazlı hizmetlerin etkinleştirilmesi ve kapatılması</li>
+              <li>Müşteri destek hizmetlerinin sağlanması ve geliştirilmesi</li>
+              <li>Kullanıcının tercihine bağlı olarak bilgilendirme, kampanya ve tanıtım içeriklerinin paylaşılması</li>
+              <li>Hizmet kalitesinin ölçülmesi ve iyileştirilmesi</li>
+            </ul>
+            <strong>Verileriniz Kimlerle Paylaşılır?</strong>
+            <p>Truckport, kullanıcıya ait kişisel verileri üçüncü kişilerle rıza olmaksızın paylaşmaz, satmaz veya ticari amaçla kullanmaz. Ancak hizmetin sağlıklı yürütülebilmesi amacıyla hizmet talebinde bulunan kullanıcı ile talebi kabul eden sürücü arasında iletişim bilgileri güvenli şekilde paylaşılır.</p>
+            <strong>Veri Güvenliği</strong>
+            <p>Kişisel verilerinizin gizliliği, bütünlüğü ve güvenliği için güncel teknik ve idari tedbirler uygulanmaktadır. İnternet üzerinden gerçekleştirilen hiçbir veri aktarımının veya elektronik saklama sisteminin yüzde yüz güvenli olduğu garanti edilememektedir.</p>
+            <strong>Veri Sahibi Olarak Haklarınız</strong>
+            <ul>
+              <li>Kişisel verilerinin işlenip işlenmediğini öğrenme</li>
+              <li>İşlenmişse buna ilişkin bilgi talep etme</li>
+              <li>İşleme amacını ve verilerin bu amaca uygun kullanılıp kullanılmadığını öğrenme</li>
+              <li>Verilerin yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme</li>
+              <li>Eksik veya yanlış işlenen verilerin düzeltilmesini isteme</li>
+              <li>Kişisel verilerin silinmesini veya yok edilmesini talep etme</li>
+              <li>İşlenen verilerin otomatik sistemler vasıtasıyla analiz edilmesi sonucunda ortaya çıkan aleyhe sonuçlara itiraz etme</li>
+            </ul>
+            <strong>Çocukların Gizliliği</strong>
+            <p>Truckport hizmetleri 13 yaş altı bireyleri hedeflememektedir. Bu yaş grubuna ait verilerin fark edilmesi durumunda, söz konusu bilgiler derhal silinir.</p>
+            <strong>Üçüncü Taraf Bağlantıları</strong>
+            <p>Uygulama içerisinde üçüncü taraf internet sitelerine yönlendirmeler bulunabilir. Bu sitelere ilişkin gizlilik uygulamaları Truckport’un sorumluluğunda değildir.</p>
+            <strong>Gizlilik Politikasındaki Değişiklikler</strong>
+            <p>Gizlilik Politikamız zaman zaman güncellenebilir. Yapılan önemli değişiklikler uygulama içerisinden ve/veya kayıtlı e-posta adresinize bildirilir.</p>
+            <strong>İletişim</strong>
+            <p>Veri Sorumlusu: Truckport<br>E-posta: <a href="mailto:destek&#64;truckport.net">destek&#64;truckport.net</a></p>
+            <hr>
+            <h4>Şartlar ve Koşullar</h4>
+            <ol>
+              <li>Truckport tarafından sunulan hizmetlerin kullanımını düzenler. Platformu kullanarak bu şartları kabul etmiş sayılırsınız.</li>
+              <li>Kamyon taşımacılığı, yol yardımı ve araç kurtarma gibi çeşitli yol destek hizmetleri sunulur.</li>
+              <li>Truckport, yönlendirme hizmetleri için ücret talep etmez; hizmet sağlayıcılar ücretlendirme yapabilir.</li>
+              <li>Truckport, hizmet sağlayıcılar adına hareket etmez ve güvenlik konusunda garanti vermez.</li>
+              <li>Kullanıcılar, hizmet talebi sırasında doğru ve eksiksiz bilgi sunmakla yükümlüdür.</li>
+              <li>Hizmet talebi yönlendirilmeden önce iptal edilebilir; yönlendirme sonrası iptallerde ücret uygulanabilir.</li>
+              <li>Mücbir sebepler nedeniyle hizmetin sağlanamaması veya gecikmesi durumunda sorumluluk kabul edilmez.</li>
+              <li>Tehlikeli, yasa dışı veya mevzuata aykırı madde taşıyan araçlar için hizmet sunulmaz.</li>
+              <li>Hizmetler belirli bir coğrafi alanla sınırlıdır; alan dışında ek ücretler uygulanabilir.</li>
+              <li>Şikayetleriniz için bizimle iletişime geçebilirsiniz. Şikayetleriniz en kısa sürede değerlendirilir.</li>
+              <li>Truckport, şartları önceden bildirimde bulunmaksızın değiştirme hakkını saklı tutar.</li>
+              <li>Türkiye Cumhuriyeti yasalarına tabi olup İstanbul Mahkemeleri yetkilidir.</li>
+              <li>Sorularınız için destek&#64;truckport.net adresinden iletişime geçebilirsiniz.</li>
+            </ol>
+            <hr>
+            <h4>Hesap Silme</h4>
+            <p>Hesabınızın ve ilgili kişisel verilerinizin silinmesini talep etmek için “Hesap Silme Talebi” başlıklı bir e-posta ile destek&#64;truckport.net adresine başvurabilirsiniz. Talebiniz en kısa sürede incelenir ve hesabınız sistemden kalıcı olarak silinir.</p>
+          </div>
+          <button class="close-btn" (click)="closePrivacyModal()">Kapat</button>
+        </div>
       </div>
     </div>
   `,
@@ -125,6 +194,58 @@ import { Component } from '@angular/core';
     .uyeol-btn:hover {
       background: linear-gradient(90deg, #1e40af 60%, #2563eb 100%);
     }
+    .privacy-group {
+      margin-top: 8px;
+      text-align: left;
+    }
+    .privacy-btn {
+      background: #1976d2;
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+    .privacy-modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .privacy-modal {
+      background: #fff;
+      padding: 32px;
+      border-radius: 10px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+      max-width: 400px;
+      width: 100%;
+      position: relative;
+    }
+    .close-btn {
+      background: #e53935;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 16px;
+    }
   `]
 })
-export class UyeOlComponent {}
+export class UyeOlComponent {
+  showPrivacyModal = false;
+
+  openPrivacyModal() {
+    this.showPrivacyModal = true;
+  }
+
+  closePrivacyModal() {
+    this.showPrivacyModal = false;
+  }
+}

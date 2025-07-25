@@ -1,0 +1,36 @@
+<div class="referanslar-container">
+  <h2>Referanslar</h2>
+  <button class="privacy-btn" (click)="openPrivacyModal()">Gizlilik Sözleşmesi</button>
+
+  <div *ngIf="showPrivacyModal" class="privacy-modal-overlay" (click)="closePrivacyModal()">
+    <div class="privacy-modal" (click)="$event.stopPropagation()">
+      <h3>GİZLİLİK SÖZLEŞMESİ</h3>
+      <div class="privacy-content">
+        <strong>1- TARAFLAR</strong>
+        <p>İşbu sözleşme Barbaros Mahallesi Abdullah Gül Üniversitesi Sümer Kampüsü Rektörlük Binası A 204 Kocasinan /Kayseri adresinde mukim Abdullah Gül Üniversitesi Teknoloji Transfer ofisi (AGÜ TTO) ile ... adresinde mukim ... arasında aşağıdaki koşullarda yapılmıştır.</p>
+        <strong>2- SÖZLEŞMENİN KONUSU</strong>
+        <p>Sözleşmenin konusu, “... (PROJE ADI/BULUŞ ADI)” projesi veya buluş bildirimi kapsamında ...’da yürüttüğü çalışmalar ile ilgili olarak, kendisine ... tarafından verilen, açıklanan gizlilik içerdiği açıkça belirtilen bilgi ve belgenin ...’in onayı alınmadıkça herhangi bir 3. gerçek ve/veya tüzel kişiye açıklanmamasını temin edecek olan gizliliğin sınırlarının ve koşullarının belirlenmesidir.</p>
+        <strong>3- (PROJE ADI/BULUŞ ADI) PROJE / BULUŞ TANIMI</strong>
+        <p>...</p>
+        <strong>4- GİZLİ BİLGİNİN TANIMI</strong>
+        <p>Sözleşmede tanımlanan ... esnasında ... tarafından ...’ya açıklanan iş geliştirme projesi ile ilgili fikir, proje, buluş, iş, metod, ilerleme ve patent, telif hakkı, marka, ticari sır yada diğer yasal korunmaya konu olan yada olmayan her türlü yenilik ve çalışma esnasında öğrenilecek yazılı veya sözlü tüm ticari, mali, teknik bilgiler ve konuşma bilgileri sır olarak kabul edilir.</p>
+        <strong>5- TARAFLARIN YÜKÜMLÜLÜKLERİ</strong>
+        <ul>
+          <li>5.1. ... kapsamında gerekli her türlü bilgi ve belgeyi ...’a vermeyi taahhüt eder.</li>
+          <li>5.2. ... işbu sözleşmede söz konusu edilen iş ile ilgili bilgi, belge, firma ismi, ünvanı ve firmalarla ilgili sair bilgi ve belgelerin gizli olduğunu ve bu nedenle, sadece kendisinin ve çalışanlarının işi gereği bilmesi gerektiği kadarını bileceklerini ve bu bilgi ve belgelerin hiçbir şekilde ...’nın izni olmaksızın 3. gerçek ve/veya tüzel kişi ve kuruluşlara çalışma amaçları dışında açıklanmayacağını kabul ve taahhüt eder.</li>
+          <li>5.3. ... tarafından ...’a temin edilmiş belge ve bilginin, ... firmasının rızası haricinde sözleşmeye aykırı olarak ifşa edildiğinin ... firması tarafından öğrenilmesi halinde, ... bundan dolayı sorumlu olacaktır. Bu bilgi ve belgelerin 3. şahıslara iletilmemesi için gerekli her türlü tedbiri almayı taahhüt ettiği gibi, her türlü tedbiri almasına rağmen, bu bilgi ve belgelerin yayılmasına mani olamadığını ve/veya kusuru olmadığını ileri sürerek sorumluluktan KURTULAMAZ.</li>
+          <li>5.4. İş bu sözleşmeye aykırı bir durumun gündeme gelmesi ile ... maruz kaldığı her türlü maddi ve/veya manevi zararını tazmin etmeyi kabul ve taahhüt eder.</li>
+        </ul>
+        <strong>6- SÜRE</strong>
+        <p>İş bu sözleşmenin konusunu oluşturan gizliliğe riayet yükümlülüğü, ...’nin, ... firması ile ... başlatılması ile başlayıp, bu çalışmanın bitiminden sonra da devam edecektir.</p>
+        <strong>7- TEBLİGAT</strong>
+        <p>Taraflar noter kanalıyla adres değişikliklerini bildirmedikleri sürece (7 gün içinde), işbu sözleşmede yazılı adreslerinin Tebligat Kanunu hükümlerine göre geçerli tebligat adresleri olduğunu her türlü bildirim ve teslim için yukarıda belirtilen adreslerin kullanılacağını kabul ederler.</p>
+        <strong>8- UYUŞMAZLIK</strong>
+        <p>İş bu sözleşmeden dolayı ihtilaf vukuunda Kayseri Mahkemeleri ve İcra Daireleri yetkili olacaktır. Sözleşme tarafların karşılıklı rıza ve muvafakatleriyle ... tarihinde iki nüsha olarak imza edilmiştir.</p>
+        <br>
+        <p><strong>T.C. ABDULLAH GÜL ÜNİVERSİTESİ</strong> <br>Teknoloji Transfer Ofisi <br><strong>ORTAK</strong></p>
+      </div>
+      <button class="close-btn" (click)="closePrivacyModal()">Kapat</button>
+    </div>
+  </div>
+</div>
