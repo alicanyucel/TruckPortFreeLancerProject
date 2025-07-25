@@ -14,6 +14,10 @@ import { UyeOlComponent } from '../pages/uye-ol/uye-ol.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  {
+    path: 'profil',
+    loadChildren: () => import('../pages/profile/profile.module').then(m => m.ProfileModule)
+  },
   { path: 'hizmetler', component: ServicesComponent },
   { path: 'hakkimizda', component: AboutComponent },
   { path: 'iletisim', component: ContactComponent },

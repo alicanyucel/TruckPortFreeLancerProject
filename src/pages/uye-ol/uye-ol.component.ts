@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-uye-ol',
@@ -286,7 +286,8 @@ import { Component } from '@angular/core';
       cursor: pointer;
       margin-top: 16px;
     }
-  `]
+  `],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UyeOlComponent {
   privacyAccepted = false;

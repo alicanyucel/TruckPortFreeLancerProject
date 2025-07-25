@@ -3,6 +3,9 @@
   
   <main class="content">
     <router-outlet></router-outlet>
+    <div style="margin:24px 0; text-align:center; font-weight:700; color:#2563eb; font-size:1.15rem;">
+      Kullanıcı adı (NGRX Store'dan): <span>{{ userName$ | async }}</span>
+    </div>
   </main>
   
   <app-footer></app-footer>

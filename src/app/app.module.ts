@@ -3,7 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { userReducer } from '../store/user/user.reducer';
+import { performanceReducer } from '../store/performance/performance.reducer';
 import { UyeOlComponent } from '../pages/uye-ol/uye-ol.component';
+import { PerformanceIndicatorComponent } from '../components/performance-indicator/performance-indicator.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,7 +54,8 @@ import { ErrorInterceptor } from '../interceptors/error.interceptor';
     TranslatePipe,
     SafeHtmlPipe,
     TruckstoreModalComponent,
-    UyeOlComponent
+    UyeOlComponent,
+    PerformanceIndicatorComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +64,9 @@ import { ErrorInterceptor } from '../interceptors/error.interceptor';
     HttpClientModule,
     AppRoutingModule,
     CommonModule
+    ,
+    StoreModule.forRoot({ user: userReducer, performance: performanceReducer }),
+    StoreDevtoolsModule.instrument({ maxAge: 25 })
   ],
   providers: [
     {
