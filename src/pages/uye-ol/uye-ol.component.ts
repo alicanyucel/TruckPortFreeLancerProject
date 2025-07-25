@@ -24,9 +24,28 @@ import { Component } from '@angular/core';
         </div>
         <button type="submit" class="uyeol-btn">Üye Ol</button>
       </form>
+      <div class="uyeol-already-member">
+        <span>Zaten üyeyseniz <a routerLink="/giris" class="uyeol-login-link">giriş yapın</a>.</span>
+      </div>
     </div>
   `,
   styles: [`
+    .uyeol-already-member {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 1.08rem;
+      color: #475569;
+    }
+    .uyeol-login-link {
+      color: #2563eb;
+      font-weight: 700;
+      text-decoration: underline;
+      margin-left: 4px;
+      transition: color 0.18s;
+    }
+    .uyeol-login-link:hover {
+      color: #1e40af;
+    }
     .uyeol-card {
       max-width: 420px;
       margin: 48px auto;
