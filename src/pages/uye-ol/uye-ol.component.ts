@@ -23,9 +23,13 @@ import { Component } from '@angular/core';
           <input type="password" id="password" name="password" required placeholder="Şifreniz">
         </div>
         <div class="uyeol-form-group privacy-group">
+          <label class="privacy-checkbox-label">
+            <input type="checkbox" [(ngModel)]="privacyAccepted" name="privacyAccepted" required>
+            Gizlilik Sözleşmesini ve Yasal Hakları okudum, onaylıyorum.
+          </label>
           <button type="button" class="privacy-btn" (click)="openPrivacyModal()">Gizlilik Sözleşmesi ve Yasal Haklar</button>
         </div>
-        <button type="submit" class="uyeol-btn">Üye Ol</button>
+        <button type="submit" class="uyeol-btn" [disabled]="!privacyAccepted">Üye Ol</button>
       </form>
       <div class="uyeol-already-member">
         <span>Zaten üyeyseniz <a routerLink="/giris" class="uyeol-login-link">giriş yapın</a>.</span>
@@ -99,6 +103,21 @@ import { Component } from '@angular/core';
     </div>
   `,
   styles: [`
+    .privacy-checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      color: #1e40af;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .privacy-checkbox-label input[type="checkbox"] {
+      accent-color: #2563eb;
+      width: 18px;
+      height: 18px;
+      margin-right: 6px;
+    }
     .uyeol-already-member {
       margin-top: 24px;
       text-align: center;
@@ -178,14 +197,25 @@ import { Component } from '@angular/core';
       outline: none;
       background: #fff;
     }
+    .uyeol-btn {
       background: linear-gradient(90deg, #2563eb 60%, #1e40af 100%);
       color: #fff;
       border: none;
-      border-radius: 8px;
-      padding: 12px 0;
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-top: 10px;
+      border-radius: 10px;
+      padding: 16px 0;
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-top: 18px;
+      width: 100%;
+      box-shadow: 0 4px 16px rgba(37,99,235,0.12);
+      letter-spacing: 0.03em;
+      transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
+    }
+    .uyeol-btn:hover {
+      background: linear-gradient(90deg, #1e40af 60%, #2563eb 100%);
+      box-shadow: 0 6px 24px rgba(37,99,235,0.18);
+      transform: translateY(-2px) scale(1.03);
+    }
     .privacy-content {
       color: #1e40af;
       font-weight: 700;
@@ -259,6 +289,7 @@ import { Component } from '@angular/core';
   `]
 })
 export class UyeOlComponent {
+  privacyAccepted = false;
   showPrivacyModal = false;
 
   openPrivacyModal() {
