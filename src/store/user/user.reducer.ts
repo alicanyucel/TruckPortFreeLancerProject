@@ -15,10 +15,9 @@ export const initialUserState: UserState = {
 
 export const userReducer = createReducer(
   initialUserState,
-  on(setUser, (state, { name, email }) => ({
+  on(setUser, (state, { name }) => ({
     ...state,
     name,
-    email,
     isLoggedIn: true,
   }))
 );
