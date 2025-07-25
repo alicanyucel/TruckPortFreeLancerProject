@@ -187,13 +187,24 @@ import { Component } from '@angular/core';
       font-weight: 700;
       margin-top: 10px;
     .privacy-content {
-      color: #222;
-      font-weight: 600;
-      font-size: 1.08rem;
-    }
-    .privacy-content strong, .privacy-content h3, .privacy-content h4 {
       color: #1e40af;
       font-weight: 700;
+      font-size: 1.18rem;
+      letter-spacing: 0.01em;
+    }
+    .privacy-content strong,
+    .privacy-content h3,
+    .privacy-content h4,
+    .privacy-content p,
+    .privacy-content ul,
+    .privacy-content ol,
+    .privacy-content li {
+      color: #1e40af !important;
+      font-weight: 700 !important;
+      font-size: 1.18rem !important;
+      letter-spacing: 0.01em !important;
+      line-height: 1.7 !important;
+      margin-bottom: 8px !important;
     }
     .close-btn {
       cursor: pointer;
