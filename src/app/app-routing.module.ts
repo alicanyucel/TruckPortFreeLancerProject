@@ -10,6 +10,7 @@ import { TruckStoreLoungeComponent } from '../pages/truckstore-lounge/truckstore
 import { VideoGalleryComponent } from '../pages/video-gallery/video-gallery.component';
 import { LiveMapComponent } from '../components/live-map/live-map.component';
 import { AuthGuard, AdminGuard } from '../services/auth.service';
+import { UyeOlComponent } from '../pages/uye-ol/uye-ol.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
     component: LiveMapComponent,
     canActivate: [AuthGuard]
   },
+  { path: 'uye-ol', component: UyeOlComponent },
   {
     path: 'admin',
     canActivate: [AdminGuard],
