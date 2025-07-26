@@ -37,7 +37,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
       <div *ngIf="showPrivacyModal" class="privacy-modal-overlay" (click)="closePrivacyModal()">
         <div class="privacy-modal" (click)="$event.stopPropagation()">
-          <h3 style="color:#2563eb;">TRUCKPORT GİZLİLİK POLİTİKASI – KULLANICI AYDINLATMA METNİ</h3>
+          <h3 style="color:#2563eb;">TRUCKPORT GİZLİLİK POLİTİKASI KULLANICI AYDINLATMA METNİ</h3>
           <div class="privacy-content" style="max-height: 60vh; overflow-y: auto;">
             <p style="color:#2563eb;">İşbu Aydınlatma Metni, Truckport mobil uygulamasının kullanımı kapsamında elde edilen kişisel verilerin, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve Avrupa Birliği Genel Veri Koruma Tüzüğü (GDPR) hükümleri uyarınca nasıl toplandığı, işlendiği, saklandığı ve aktarıldığı konusunda kullanıcılarımızı bilgilendirmek amacıyla hazırlanmıştır.</p>
             <strong>Hangi Verileri Topluyoruz?</strong>
