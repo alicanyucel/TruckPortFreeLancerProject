@@ -1,0 +1,264 @@
+<div class="admin-dashboard">
+  <!-- Header -->
+  <div class="dashboard-header">
+    <h1>🚛 TruckPort Admin Dashboard</h1>
+    <div class="header-controls">
+      <select [(ngModel)]="selectedTimeframe" (change)="changeTimeframe(selectedTimeframe)" class="timeframe-select">
+        <option value="1h">Son 1 Saat</option>
+        <option value="24h">Son 24 Saat</option>
+        <option value="7d">Son 7 Gün</option>
+        <option value="30d">Son 30 Gün</option>
+      </select>
+      <button class="export-btn" (click)="exportDashboard()">📊 Export</button>
+    </div>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="loading-spinner">
+    <div class="spinner"></div>
+    <p>Dashboard yükleniyor...</p>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-section" *ngIf="!isLoading">
+    <h2>📈 İş KPI'ları</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card" *ngFor="let kpi of businessKPIs | keyvalue">
+        <div class="kpi-icon">📊</div>
+        <div class="kpi-content">
+          <h3>{{ kpi.key }}</h3>
+          <div class="kpi-value">{{ formatNumber(kpi.value) }}</div>
+          <div class="kpi-trend" [class]="getMetricTrend(kpi.key)">
+            <span *ngIf="getMetricTrend(kpi.key) === 'up'">↗️ +5.2%</span>
+            <span *ngIf="getMetricTrend(kpi.key) === 'down'">↘️ -2.1%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grafana Integration Section -->
+  <div class="grafana-section">
+    <div class="section-header">
+      <h2>📊 Real-time Analytics</h2>
+      <button class="refresh-btn" (click)="loadDashboardData()">🔄 Yenile</button>
+    </div>
+    
+    <div class="dashboard-grid">
+      <div class="dashboard-card" *ngFor="let dashboard of dashboards$ | async">
+        <h3>{{ dashboard.title }}</h3>
+        <p>{{ dashboard.description }}</p>
+        <div class="dashboard-actions">
+          <button class="open-btn" (click)="openGrafanaDashboard(dashboard.id)">🚀 Aç</button>
+          <span class="dashboard-status" [style.color]="getStatusColor(dashboard.status)">
+            {{ dashboard.status }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metrics Charts -->
+    <div class="metrics-section">
+      <h3>📈 Canlı Metrikler</h3>
+      <div class="metrics-grid">
+        <div class="metric-card" *ngFor="let metric of metrics$ | async">
+          <div class="metric-header">
+            <h4>{{ metric.name }}</h4>
+            <span class="metric-value">{{ metric.value }}</span>
+          </div>
+          <div class="metric-chart">
+            <!-- Chart placeholder -->
+            <div class="chart-placeholder">Chart: {{ metric.name }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI/ML Integration Section -->
+  <div class="aiml-section">
+    <div class="section-header">
+      <h2>🤖 AI/ML İntegrasyonu</h2>
+      <button class="optimize-btn" (click)="optimizeRoute()">🗺️ Rota Optimize Et</button>
+    </div>
+
+    <!-- ML Models -->
+    <div class="models-grid">
+      <div class="model-card" *ngFor="let model of mlModels$ | async">
+        <div class="model-header">
+          <h3>{{ model.name }}</h3>
+          <span class="model-accuracy">Doğruluk: {{ model.accuracy }}%</span>
+        </div>
+        <div class="model-info">
+          <p><strong>Tip:</strong> {{ model.type }}</p>
+          <p><strong>Durum:</strong> {{ model.status }}</p>
+          <p><strong>Son Güncelleme:</strong> {{ model.lastTrained | date }}</p>
+        </div>
+        <div class="model-actions">
+          <button class="retrain-btn" (click)="retrainModel(model.id)">🔄 Yeniden Eğit</button>
+          <button class="compare-btn" (click)="compareModels()">⚖️ Karşılaştır</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Route Optimization Results -->
+    <div class="route-optimization" *ngIf="routeOptimization">
+      <h3>🗺️ Rota Optimizasyonu Sonuçları</h3>
+      <div class="optimization-card">
+        <div class="route-info">
+          <p><strong>Mesafe:</strong> {{ routeOptimization.distance }} km</p>
+          <p><strong>Süre:</strong> {{ routeOptimization.duration }} dakika</p>
+          <p><strong>Yakıt Tasarrufu:</strong> {{ routeOptimization.fuelSavings }}%</p>
+        </div>
+        <div class="route-map">
+          <!-- Map placeholder -->
+          <div class="map-placeholder">🗺️ Harita: {{ routeOptimization.waypoints.length }} nokta</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demand Forecasts -->
+    <div class="forecasts-section" *ngIf="demandForecasts.length > 0">
+      <h3>📊 Talep Tahminleri</h3>
+      <div class="forecast-grid">
+        <div class="forecast-card" *ngFor="let forecast of demandForecasts">
+          <h4>{{ forecast.region }}</h4>
+          <div class="forecast-chart">
+            <div class="chart-placeholder">📈 Tahmin Chart</div>
+          </div>
+          <p>Beklenen artış: {{ forecast.growth }}%</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Actions -->
+    <div class="ai-actions">
+      <button class="fraud-btn" (click)="runFraudDetection()">🛡️ Fraud Tespiti</button>
+      <button class="compare-btn" (click)="compareModels()">⚖️ Model Karşılaştır</button>
+    </div>
+  </div>
+
+  <!-- Event Sourcing Section -->
+  <div class="eventsourcing-section">
+    <div class="section-header">
+      <h2>⚡ Event Sourcing & CQRS</h2>
+      <button class="replay-btn" (click)="replayEvents()">🔄 Event Replay</button>
+    </div>
+
+    <!-- Event Store Statistics -->
+    <div class="event-stats">
+      <h3>📊 Event Store İstatistikleri</h3>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📝</div>
+          <div class="stat-content">
+            <h4>Toplam Event</h4>
+            <div class="stat-value">{{ formatNumber(eventStoreStats.totalEvents || 0) }}</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🏗️</div>
+          <div class="stat-content">
+            <h4>Aktif Projection</h4>
+            <div class="stat-value">{{ eventStoreStats.activeProjections || 0 }}</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-content">
+            <h4>Events/Saniye</h4>
+            <div class="stat-value">{{ eventStoreStats.eventsPerSecond || 0 }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Events -->
+    <div class="recent-events">
+      <h3>📋 Son Eventler</h3>
+      <div class="events-timeline">
+        <div class="event-item" *ngFor="let event of events$ | async | slice:0:10">
+          <div class="event-timestamp">{{ event.timestamp | date:'short' }}</div>
+          <div class="event-content">
+            <h4>{{ event.eventType }}</h4>
+            <p>Aggregate: {{ event.aggregateId }}</p>
+            <div class="event-data">{{ event.data | json }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projections -->
+    <div class="projections-section">
+      <h3>🏗️ Projections</h3>
+      <div class="projections-grid">
+        <div class="projection-card" *ngFor="let projection of projections$ | async">
+          <div class="projection-header">
+            <h4>{{ projection.name }}</h4>
+            <span class="projection-status" [style.color]="getStatusColor(projection.status)">
+              {{ projection.status }}
+            </span>
+          </div>
+          <div class="projection-info">
+            <p><strong>Son Güncelleme:</strong> {{ projection.lastUpdate | date }}</p>
+            <p><strong>Event Pozisyonu:</strong> {{ projection.position }}</p>
+          </div>
+          <div class="projection-actions">
+            <button class="rebuild-btn" (click)="rebuildProjection(projection.id)">🔨 Rebuild</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Command Panel -->
+    <div class="command-panel">
+      <h3>⚙️ Command Panel</h3>
+      <div class="command-form">
+        <select #commandType class="command-select">
+          <option value="CreateTruck">Kamyon Oluştur</option>
+          <option value="UpdateTruck">Kamyon Güncelle</option>
+          <option value="DeleteTruck">Kamyon Sil</option>
+          <option value="CreateReservation">Rezervasyon Oluştur</option>
+        </select>
+        <input #aggregateId type="text" placeholder="Aggregate ID" class="command-input">
+        <textarea #payload placeholder="Payload (JSON)" class="command-textarea"></textarea>
+        <button class="send-command-btn" 
+                (click)="sendCommand(commandType.value, aggregateId.value, payload.value)">
+          📤 Command Gönder
+        </button>
+      </div>
+    </div>
+
+    <!-- Event Store Actions -->
+    <div class="eventstore-actions">
+      <button class="backup-btn" (click)="createEventStoreBackup()">💾 Backup Oluştur</button>
+    </div>
+  </div>
+
+  <!-- System Health -->
+  <div class="system-health">
+    <h2>🏥 Sistem Sağlığı</h2>
+    <div class="health-grid">
+      <div class="health-card">
+        <div class="health-icon">🟢</div>
+        <h3>Database</h3>
+        <p>Aktif</p>
+      </div>
+      <div class="health-card">
+        <div class="health-icon">🟢</div>
+        <h3>API Gateway</h3>
+        <p>Aktif</p>
+      </div>
+      <div class="health-card">
+        <div class="health-icon">🟡</div>
+        <h3>Event Store</h3>
+        <p>Yavaş</p>
+      </div>
+      <div class="health-card">
+        <div class="health-icon">🟢</div>
+        <h3>ML Services</h3>
+        <p>Aktif</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -39,6 +39,12 @@ import { CacheInterceptor } from '../interceptors/cache.interceptor';
 import { SecurityInterceptor } from '../services/security.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
+// %100 Architect Level Services (Yeni Eklenenler)
+import { GrafanaIntegrationService } from '../services/grafana-integration.service';
+import { AIMLIntegrationService } from '../services/aiml-integration.service';
+import { EventSourcingService } from '../services/event-sourcing.service';
+import { AdminDashboardComponent } from '../pages/admin-dashboard/admin-dashboard.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +67,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     SafeHtmlPipe,
     TruckstoreModalComponent,
     UyeOlComponent,
-    PerformanceIndicatorComponent
+    PerformanceIndicatorComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +107,11 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       provide: HTTP_INTERCEPTORS,
       useClass: SecurityInterceptor,
       multi: true
-    }
+    },
+    // %100 Architect Level Services
+    GrafanaIntegrationService,
+    AIMLIntegrationService,
+    EventSourcingService
   ],
   bootstrap: [AppComponent]
 })

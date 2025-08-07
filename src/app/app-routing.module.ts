@@ -11,6 +11,7 @@ import { VideoGalleryComponent } from '../pages/video-gallery/video-gallery.comp
 import { LiveMapComponent } from '../components/live-map/live-map.component';
 import { AuthGuard, AdminGuard } from '../services/auth.service';
 import { UyeOlComponent } from '../pages/uye-ol/uye-ol.component';
+import { AdminDashboardComponent } from '../pages/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -43,8 +44,8 @@ const routes: Routes = [
     path: 'admin',
     canActivate: [AdminGuard],
     children: [
-      // Admin routes can be added here
-      { path: '', redirectTo: '/admin/dashboard', pathMatch: 'full' }
+      { path: '', redirectTo: '/admin/dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: AdminDashboardComponent }
     ]
   },
   { path: '**', redirectTo: '' }

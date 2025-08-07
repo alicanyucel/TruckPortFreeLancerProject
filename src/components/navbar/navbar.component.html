@@ -42,6 +42,14 @@
       <li class="navbar-item">
         <a routerLink="/uye-ol" class="navbar-link" routerLinkActive="active">Üye Ol</a>
       </li>
+      
+      <!-- Admin Dashboard Link (Only for admins) -->
+      <li class="navbar-item" *ngIf="isAdmin">
+        <a routerLink="/admin/dashboard" class="navbar-link admin-link" routerLinkActive="active">
+          🛠️ Admin Dashboard
+        </a>
+      </li>
+      
       <li class="navbar-item lang-switcher-item">
         <app-language-switcher></app-language-switcher>
       </li>

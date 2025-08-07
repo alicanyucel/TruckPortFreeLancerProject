@@ -58,6 +58,10 @@ export class AuthService {
     return this.currentUser?.isAuthenticated || false;
   }
 
+  isAdmin(): boolean {
+    return this.currentUser?.role === 'admin';
+  }
+
   hasRole(role: string): boolean {
     return this.currentUser?.role === role;
   }

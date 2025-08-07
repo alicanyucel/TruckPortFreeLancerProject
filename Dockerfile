@@ -53,15 +53,11 @@ RUN mkdir -p /var/log/nginx && \
 # Copy security and performance optimizations
 COPY docker-configs/security-headers.conf /etc/nginx/conf.d/security-headers.conf
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost/ || exit 1
-
 # Expose port 80 and 443
 EXPOSE 80
 EXPOSE 443
 
-# Add health check
+# Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD curl -f http://localhost/health || exit 1
 
