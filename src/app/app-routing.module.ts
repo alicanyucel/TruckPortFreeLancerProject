@@ -54,8 +54,9 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {
     scrollPositionRestoration: 'top',
     anchorScrolling: 'enabled',
-    scrollOffset: [0, 0]
-  })],
+    scrollOffset: [0, 0],
+    initialNavigation: 'enabledBlocking'
+})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

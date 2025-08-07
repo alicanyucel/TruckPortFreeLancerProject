@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -35,6 +35,9 @@ import { SafeHtmlPipe } from '../pipes/safe-html.pipe';
 // Senior Level Services & Interceptors
 import { GlobalErrorHandler } from '../services/error-handler.service';
 import { ErrorInterceptor } from '../interceptors/error.interceptor';
+import { CacheInterceptor } from '../interceptors/cache.interceptor';
+import { SecurityInterceptor } from '../services/security.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -70,7 +73,13 @@ import { ErrorInterceptor } from '../interceptors/error.interceptor';
     RouterModule
     ,
     StoreModule.forRoot({ user: userReducer, performance: performanceReducer }),
-    StoreDevtoolsModule.instrument({ maxAge: 25 })
+    StoreDevtoolsModule.instrument({ maxAge: 25 }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     {
@@ -80,6 +89,16 @@ import { ErrorInterceptor } from '../interceptors/error.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CacheInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SecurityInterceptor,
       multi: true
     }
   ],
