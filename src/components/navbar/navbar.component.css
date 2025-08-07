@@ -68,6 +68,12 @@
   align-items: center;
 }
 
+.theme-switcher-item {
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+}
+
 .navbar-link {
   color: #ecf0f1;
   text-decoration: none;
@@ -202,5 +208,10 @@
   
   .brand-link {
     font-size: 18px;
+  }
+
+  .lang-switcher-item,
+  .theme-switcher-item {
+    margin: 4px 2px;
   }
 }

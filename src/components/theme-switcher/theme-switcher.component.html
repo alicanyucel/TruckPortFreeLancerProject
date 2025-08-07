@@ -1,0 +1,40 @@
+<div class="theme-switcher">
+  <div class="theme-dropdown">
+    <button 
+      class="theme-button" 
+      (click)="toggleDropdown()"
+      [attr.aria-expanded]="isDropdownOpen"
+      aria-label="Tema seçin">
+      <span class="theme-icon">{{ getCurrentThemeIcon() }}</span>
+      <span class="theme-label">{{ getCurrentThemeLabel() }}</span>
+      <span class="dropdown-arrow" [class.rotated]="isDropdownOpen">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </button>
+
+    <div class="theme-dropdown-menu" [class.open]="isDropdownOpen">
+      <button 
+        *ngFor="let theme of themes"
+        class="theme-option"
+        [class.active]="(currentTheme$ | async) === theme.value"
+        (click)="onThemeSelect(theme.value)">
+        <span class="theme-option-icon">{{ theme.icon }}</span>
+        <span class="theme-option-label">{{ theme.label }}</span>
+        <span *ngIf="(currentTheme$ | async) === theme.value" class="check-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Overlay to close dropdown when clicking outside -->
+  <div 
+    *ngIf="isDropdownOpen" 
+    class="dropdown-overlay"
+    (click)="isDropdownOpen = false">
+  </div>
+</div>

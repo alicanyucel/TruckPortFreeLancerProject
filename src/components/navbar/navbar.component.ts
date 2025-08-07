@@ -8,7 +8,7 @@ import { AuthService, User } from '../../services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  
+
   constructor(
     private authService: AuthService,
     private router: Router

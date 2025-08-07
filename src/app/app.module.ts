@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { userReducer } from '../store/user/user.reducer';
@@ -18,6 +19,7 @@ import { LiveMapComponent } from '../components/live-map/live-map.component';
 import { ChatbotComponent } from '../components/chatbot/chatbot.component';
 import { AdvertisementsComponent } from '../components/advertisements/advertisements.component';
 import { LanguageSwitcherComponent } from '../components/language-switcher/language-switcher.component';
+import { ThemeSwitcherComponent } from '../components/theme-switcher/theme-switcher.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { AboutComponent } from '../pages/about/about.component';
 import { ContactComponent } from '../pages/contact/contact.component';
@@ -43,6 +45,7 @@ import { ErrorInterceptor } from '../interceptors/error.interceptor';
     ChatbotComponent,
     AdvertisementsComponent,
     LanguageSwitcherComponent,
+    ThemeSwitcherComponent,
     HomeComponent,
     AboutComponent,
     ContactComponent,
@@ -63,7 +66,8 @@ import { ErrorInterceptor } from '../interceptors/error.interceptor';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    CommonModule
+    CommonModule,
+    RouterModule
     ,
     StoreModule.forRoot({ user: userReducer, performance: performanceReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25 })

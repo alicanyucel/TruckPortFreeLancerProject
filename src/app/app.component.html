@@ -1,10 +1,49 @@
 <div class="app-container">
   <app-navbar></app-navbar>
   
+  <!-- Welcome Message -->
+  <div class="welcome-banner" *ngIf="showWelcomeMessage">
+    <div class="welcome-content">
+      <div class="welcome-message">
+        <span class="welcome-icon">👋</span>
+        <span class="welcome-text">{{ getWelcomeMessage() }}</span>
+      </div>
+      <div class="welcome-actions">
+        <button 
+          *ngIf="isAuthenticated" 
+          class="logout-btn"
+          (click)="logout()"
+          title="Çıkış Yap">
+          <span class="logout-icon">🚪</span>
+          Çıkış Yap
+        </button>
+        <button 
+          *ngIf="!isAuthenticated" 
+          class="login-btn"
+          (click)="router.navigate(['/giris'])"
+          title="Giriş Yap">
+          <span class="login-icon">🔑</span>
+          Giriş Yap
+        </button>
+        <button 
+          class="dismiss-btn"
+          (click)="dismissWelcome()"
+          title="Kapat"
+          aria-label="Hoşgeldin mesajını kapat">
+          ✕
+        </button>
+      </div>
+    </div>
+  </div>
+  
   <main class="content">
     <router-outlet></router-outlet>
-    <div style="margin:24px 0; text-align:center; font-weight:700; color:#2563eb; font-size:1.15rem;">
+    <div style="margin:24px 0; text-align:center; font-weight:700; color:var(--accent-color); font-size:1.15rem;">
       Kullanıcı adı: <span>{{ userName$ | async }}</span>
+      <span *ngIf="isAuthenticated" class="auth-status">
+        • <span class="status-authenticated">Giriş Yapıldı</span> 
+        • <span class="user-role">{{ currentUser?.role }}</span>
+      </span>
     </div>
   </main>
   

@@ -1,5 +1,5 @@
 /* =============================================================================
-   TRUCKPORT DESIGN SYSTEM - PROFESSIONAL UI/UX
+   TRUCKPORT DESIGN SYSTEM - PROFESSIONAL UI/UX WITH MULTI-THEME SUPPORT
    ============================================================================= */
 
 /* CSS Custom Properties (Design Tokens) */
@@ -38,6 +38,18 @@
   --error-50: #fef2f2;
   --error-500: #ef4444;
   --error-600: #dc2626;
+
+  /* Theme Variables - Default Light Theme */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-tertiary: #94a3b8;
+  --border-color: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --accent-color: var(--primary-500);
+  --accent-hover: var(--primary-600);
 
   /* Typography Scale */
   --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -395,16 +407,133 @@ body {
   }
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --neutral-50: #0f172a;
-    --neutral-100: #1e293b;
-    --neutral-900: #f8fafc;
-  }
+/* =============================================================================
+   THEME DEFINITIONS
+   ============================================================================= */
+
+/* Light Theme (Default) */
+.theme-light,
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-tertiary: #94a3b8;
+  --border-color: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --accent-color: var(--primary-500);
+  --accent-hover: var(--primary-600);
+}
+
+/* Dark Theme */
+.theme-dark {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --border-color: #334155;
+  --border-hover: #475569;
+  --accent-color: var(--primary-400);
+  --accent-hover: var(--primary-300);
   
+  /* Override neutral colors for dark theme */
+  --neutral-50: #0f172a;
+  --neutral-100: #1e293b;
+  --neutral-200: #334155;
+  --neutral-300: #475569;
+  --neutral-700: #cbd5e1;
+  --neutral-800: #e2e8f0;
+  --neutral-900: #f8fafc;
+}
+
+/* Red Theme */
+.theme-red {
+  --primary-50: #fef2f2;
+  --primary-100: #fee2e2;
+  --primary-200: #fecaca;
+  --primary-300: #fca5a5;
+  --primary-400: #f87171;
+  --primary-500: #ef4444;
+  --primary-600: #dc2626;
+  --primary-700: #b91c1c;
+  --primary-800: #991b1b;
+  --primary-900: #7f1d1d;
+  
+  --bg-primary: #ffffff;
+  --bg-secondary: #fef2f2;
+  --bg-tertiary: #fee2e2;
+  --text-primary: #7f1d1d;
+  --text-secondary: #991b1b;
+  --text-tertiary: #dc2626;
+  --border-color: #fecaca;
+  --border-hover: #fca5a5;
+  --accent-color: var(--primary-500);
+  --accent-hover: var(--primary-600);
+}
+
+/* Blue Theme */
+.theme-blue {
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-200: #bfdbfe;
+  --primary-300: #93c5fd;
+  --primary-400: #60a5fa;
+  --primary-500: #3b82f6;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --primary-800: #1e40af;
+  --primary-900: #1e3a8a;
+  
+  --bg-primary: #ffffff;
+  --bg-secondary: #eff6ff;
+  --bg-tertiary: #dbeafe;
+  --text-primary: #1e3a8a;
+  --text-secondary: #1e40af;
+  --text-tertiary: #2563eb;
+  --border-color: #bfdbfe;
+  --border-hover: #93c5fd;
+  --accent-color: var(--primary-500);
+  --accent-hover: var(--primary-600);
+}
+
+/* Green Theme */
+.theme-green {
+  --primary-50: #f0fdf4;
+  --primary-100: #dcfce7;
+  --primary-200: #bbf7d0;
+  --primary-300: #86efac;
+  --primary-400: #4ade80;
+  --primary-500: #22c55e;
+  --primary-600: #16a34a;
+  --primary-700: #15803d;
+  --primary-800: #166534;
+  --primary-900: #14532d;
+  
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0fdf4;
+  --bg-tertiary: #dcfce7;
+  --text-primary: #14532d;
+  --text-secondary: #166534;
+  --text-tertiary: #16a34a;
+  --border-color: #bbf7d0;
+  --border-hover: #86efac;
+  --accent-color: var(--primary-500);
+  --accent-hover: var(--primary-600);
+}
+
+/* Apply theme to body */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+/* Accessibility support for reduced motion */
+@media (prefers-reduced-motion: reduce) {
   body {
-    background-color: var(--neutral-50);
-    color: var(--neutral-900);
+    transition: none;
   }
 }

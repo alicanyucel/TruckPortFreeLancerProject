@@ -45,19 +45,13 @@
       <li class="navbar-item lang-switcher-item">
         <app-language-switcher></app-language-switcher>
       </li>
+      <li class="navbar-item theme-switcher-item">
+        <app-theme-switcher></app-theme-switcher>
+      </li>
       
       <!-- Authentication Section -->
       <li class="navbar-item" *ngIf="!isAuthenticated">
         <a routerLink="/giris" class="navbar-link login-btn" routerLinkActive="active">{{'navbar.login' | translate}}</a>
-      </li>
-      
-      <li class="navbar-item user-section" *ngIf="isAuthenticated">
-        <span class="user-welcome">
-          {{'navbar.welcome' | translate}}, {{currentUser?.email}}
-        </span>
-        <button class="logout-btn" (click)="logout()">
-          {{'navbar.logout' | translate}}
-        </button>
       </li>
     </ul>
   </div>
