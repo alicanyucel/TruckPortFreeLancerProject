@@ -55,7 +55,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
   /**
    * Dashboard verilerini yükle
    */
-  private loadDashboardData(): void {
+  loadDashboardData(): void {
     this.isLoading = true;
 
     // Business KPI'ları hesapla

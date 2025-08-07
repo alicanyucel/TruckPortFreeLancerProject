@@ -6,12 +6,15 @@ import { environment } from '../environments/environment';
 export interface GrafanaDashboard {
   id: string;
   title: string;
+  description: string;
+  status: 'active' | 'inactive' | 'loading';
   tags: string[];
   url: string;
   uid: string;
 }
 
 export interface MetricData {
+  name: string;
   metric: string;
   value: number;
   timestamp: number;
@@ -58,6 +61,8 @@ export class GrafanaIntegrationService {
       {
         id: 'truckport-overview',
         title: 'TruckPort Genel Bakış',
+        description: 'Genel sistem metrikleri ve iş performansı',
+        status: 'active',
         tags: ['business', 'overview'],
         url: `${this.grafanaBaseUrl}/d/truckport-overview`,
         uid: 'truckport-overview'
@@ -65,6 +70,8 @@ export class GrafanaIntegrationService {
       {
         id: 'user-analytics',
         title: 'Kullanıcı Analitiği',
+        description: 'Kullanıcı davranışları ve etkileşim analizi',
+        status: 'active',
         tags: ['users', 'behavior'],
         url: `${this.grafanaBaseUrl}/d/user-analytics`,
         uid: 'user-analytics'
@@ -72,6 +79,8 @@ export class GrafanaIntegrationService {
       {
         id: 'performance-metrics',
         title: 'Performans Metrikleri',
+        description: 'Sistem performansı ve yanıt süreleri',
+        status: 'active',
         tags: ['performance', 'core-web-vitals'],
         url: `${this.grafanaBaseUrl}/d/performance-metrics`,
         uid: 'performance-metrics'
@@ -79,6 +88,8 @@ export class GrafanaIntegrationService {
       {
         id: 'business-kpis',
         title: 'İş KPI\'ları',
+        description: 'Temel iş göstergeleri ve gelir metrikleri',
+        status: 'active',
         tags: ['business', 'kpi'],
         url: `${this.grafanaBaseUrl}/d/business-kpis`,
         uid: 'business-kpis'
@@ -105,24 +116,28 @@ export class GrafanaIntegrationService {
   private collectBusinessMetrics(): void {
     const businessMetrics: MetricData[] = [
       {
+        name: 'Aktif Kullanıcılar',
         metric: 'truckport_active_users_total',
         value: this.generateRandomMetric(100, 500),
         timestamp: Date.now(),
         labels: { type: 'active_users' }
       },
       {
+        name: 'Rezervasyonlar',
         metric: 'truckport_reservations_total',
         value: this.generateRandomMetric(50, 200),
         timestamp: Date.now(),
         labels: { type: 'reservations' }
       },
       {
+        name: 'Kamyon Aramaları',
         metric: 'truckport_truck_searches_total',
         value: this.generateRandomMetric(200, 800),
         timestamp: Date.now(),
         labels: { type: 'searches' }
       },
       {
+        name: 'Gelir (EUR)',
         metric: 'truckport_revenue_eur',
         value: this.generateRandomMetric(1000, 5000),
         timestamp: Date.now(),
@@ -140,18 +155,21 @@ export class GrafanaIntegrationService {
   private collectPerformanceMetrics(): void {
     const performanceMetrics: MetricData[] = [
       {
+        name: 'Sayfa Yükleme Süresi',
         metric: 'truckport_page_load_time_seconds',
         value: this.generateRandomMetric(1.2, 3.5),
         timestamp: Date.now(),
         labels: { page: 'home' }
       },
       {
+        name: 'API Yanıt Süresi',
         metric: 'truckport_api_response_time_seconds',
         value: this.generateRandomMetric(0.1, 1.0),
         timestamp: Date.now(),
         labels: { endpoint: '/api/trucks' }
       },
       {
+        name: 'Hata Oranı',
         metric: 'truckport_error_rate_percent',
         value: this.generateRandomMetric(0.1, 5.0),
         timestamp: Date.now(),
@@ -169,18 +187,21 @@ export class GrafanaIntegrationService {
   private collectUserMetrics(): void {
     const userMetrics: MetricData[] = [
       {
+        name: 'Desktop Oturumları',
         metric: 'truckport_user_sessions_total',
         value: this.generateRandomMetric(50, 300),
         timestamp: Date.now(),
         labels: { device: 'desktop' }
       },
       {
+        name: 'Mobil Oturumları',
         metric: 'truckport_user_sessions_total',
         value: this.generateRandomMetric(30, 150),
         timestamp: Date.now(),
         labels: { device: 'mobile' }
       },
       {
+        name: 'Dönüşüm Oranı',
         metric: 'truckport_conversion_rate_percent',
         value: this.generateRandomMetric(2.5, 8.0),
         timestamp: Date.now(),

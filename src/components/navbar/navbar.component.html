@@ -61,6 +61,11 @@
       <li class="navbar-item" *ngIf="!isAuthenticated">
         <a routerLink="/giris" class="navbar-link login-btn" routerLinkActive="active">{{'navbar.login' | translate}}</a>
       </li>
+      
+      <!-- Admin Dashboard Link -->
+      <li class="navbar-item" *ngIf="isAdmin">
+        <a routerLink="/admin/dashboard" class="navbar-link admin-link" routerLinkActive="active">🛠️ Admin Dashboard</a>
+      </li>
     </ul>
   </div>
 </nav>

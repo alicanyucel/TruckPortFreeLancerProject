@@ -8,6 +8,7 @@ export interface DomainEvent {
   aggregateId: string;
   aggregateType: string;
   eventType: string;
+  data: any;
   eventData: any;
   eventVersion: number;
   timestamp: Date;
@@ -43,6 +44,8 @@ export interface Snapshot {
 export interface Projection {
   id: string;
   name: string;
+  lastUpdate: Date;
+  position: number;
   eventTypes: string[];
   lastProcessedEvent: string;
   status: 'active' | 'paused' | 'rebuilding';
@@ -207,6 +210,8 @@ export class EventSourcingService {
     const projection: Projection = {
       id: this.generateId(),
       name,
+      lastUpdate: new Date(),
+      position: 0,
       eventTypes,
       lastProcessedEvent: '',
       status: 'active'
@@ -276,6 +281,7 @@ export class EventSourcingService {
       aggregateId: command.aggregateId,
       aggregateType: 'Truck',
       eventType: 'TruckCreated',
+      data: command.payload,
       eventData: command.payload,
       eventVersion: 1,
       timestamp: new Date(),
@@ -294,6 +300,7 @@ export class EventSourcingService {
       aggregateId: command.aggregateId,
       aggregateType: 'Truck',
       eventType: 'TruckLocationUpdated',
+      data: command.payload,
       eventData: command.payload,
       eventVersion: this.getNextVersion(command.aggregateId),
       timestamp: new Date(),
@@ -312,6 +319,7 @@ export class EventSourcingService {
       aggregateId: command.aggregateId,
       aggregateType: 'Reservation',
       eventType: 'ReservationCreated',
+      data: command.payload,
       eventData: command.payload,
       eventVersion: 1,
       timestamp: new Date(),
@@ -330,6 +338,7 @@ export class EventSourcingService {
       aggregateId: command.aggregateId,
       aggregateType: 'Reservation',
       eventType: 'ReservationCancelled',
+      data: command.payload,
       eventData: command.payload,
       eventVersion: this.getNextVersion(command.aggregateId),
       timestamp: new Date(),

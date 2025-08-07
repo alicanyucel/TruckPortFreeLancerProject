@@ -17,6 +17,10 @@ export interface RouteOptimization {
   routeId: string;
   origin: { lat: number; lng: number };
   destination: { lat: number; lng: number };
+  distance: number;
+  duration: number;
+  fuelSavings: number;
+  waypoints: Array<{ lat: number; lng: number }>;
   optimizedRoute: Array<{ lat: number; lng: number }>;
   estimatedTime: number;
   estimatedFuel: number;
