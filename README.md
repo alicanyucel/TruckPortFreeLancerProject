@@ -1,95 +1,95 @@
 
-# 🚛 TruckPort - Enterprise Angular Transportation Platform
+# 🚛 TruckPort - Kurumsal Angular Taşımacılık Platformu
 
 [![Angular](https://img.shields.io/badge/Angular-16.2.0-red.svg)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.1.3-blue.svg)](https://www.typescriptlang.org/)
 [![NgRx](https://img.shields.io/badge/NgRx-16.3.0-purple.svg)](https://ngrx.io/)
-[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
-[![Kubernetes](https://img.shields.io/badge/Kubernetes-Ready-blue.svg)](https://kubernetes.io/)
-[![PWA](https://img.shields.io/badge/PWA-Enabled-green.svg)](https://web.dev/progressive-web-apps/)
+[![Docker](https://img.shields.io/badge/Docker-Hazır-blue.svg)](https://www.docker.com/)
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-Hazır-blue.svg)](https://kubernetes.io/)
+[![PWA](https://img.shields.io/badge/PWA-Etkin-green.svg)](https://web.dev/progressive-web-apps/)
 [![SSR](https://img.shields.io/badge/SSR-Angular%20Universal-orange.svg)](https://angular.io/guide/universal)
-[![Security](https://img.shields.io/badge/Security-Enterprise%20Grade-red.svg)](https://owasp.org/)
+[![Güvenlik](https://img.shields.io/badge/Güvenlik-Kurumsal%20Seviye-red.svg)](https://owasp.org/)
 
-> **Enterprise-level Angular application for truck transportation, logistics management, and driver services with advanced architecture patterns, comprehensive security, and production-ready infrastructure.**
+> **Kamyon taşımacılığı, lojistik yönetimi ve şoför hizmetleri için gelişmiş mimari desenler, kapsamlı güvenlik ve üretime hazır altyapı ile kurumsal seviye Angular uygulaması.**
 
-## 📋 Table of Contents
+## 📋 İçindekiler
 
-- [🌟 Features](#-features)
-- [🏗️ Architecture](#️-architecture)
-- [🚀 Quick Start](#-quick-start)
-- [📦 Installation](#-installation)
-- [🔧 Development](#-development)
-- [🧪 Testing](#-testing)
-- [🐳 Docker & Deployment](#-docker--deployment)
+- [🌟 Özellikler](#-özellikler)
+- [🏗️ Mimari](#️-mimari)
+- [🚀 Hızlı Başlangıç](#-hızlı-başlangıç)
+- [📦 Kurulum](#-kurulum)
+- [🔧 Geliştirme](#-geliştirme)
+- [🧪 Test](#-test)
+- [🐳 Docker ve Dağıtım](#-docker-ve-dağıtım)
 - [☸️ Kubernetes](#️-kubernetes)
-- [🔒 Security](#-security)
-- [📊 Performance & Monitoring](#-performance--monitoring)
-- [🌐 Internationalization](#-internationalization)
-- [📱 PWA Features](#-pwa-features)
-- [🎨 Theming](#-theming)
-- [🔌 API Integration](#-api-integration)
-- [📚 Documentation](#-documentation)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
+- [🔒 Güvenlik](#-güvenlik)
+- [📊 Performans ve İzleme](#-performans-ve-İzleme)
+- [🌐 Çok Dil Desteği](#-çok-dil-desteği)
+- [📱 PWA Özellikleri](#-pwa-özellikleri)
+- [🎨 Tema Sistemi](#-tema-sistemi)
+- [🔌 API Entegrasyonu](#-api-entegrasyonu)
+- [📚 Dokümantasyon](#-dokümantasyon)
+- [🤝 Katkıda Bulunma](#-katkıda-bulunma)
+- [📄 Lisans](#-lisans)
 
-## 🌟 Features
+## 🌟 Özellikler
 
-### 🚛 Core Business Features
-- **🗺️ Real-time Truck Tracking** - Live GPS tracking with interactive maps
-- **🏪 TruckStore Marketplace** - Buy/sell trucks with advanced filtering
-- **🛏️ Lounge Reservation System** - Driver rest area booking platform
-- **📞 Service Management** - Comprehensive logistics service catalog
-- **👥 User Management** - Multi-role authentication system
-- **📹 Video Gallery** - Promotional and educational content
-- **📧 Contact System** - Multi-channel communication platform
+### 🚛 Temel İş Özellikleri
+- **🗺️ Gerçek Zamanlı Kamyon Takibi** - İnteraktif haritalar ile canlı GPS takip
+- **🏪 TruckStore Pazaryeri** - Gelişmiş filtreleme ile kamyon alım/satım
+- **🛏️ Dinlenme Tesisi Rezervasyon Sistemi** - Şoför dinlenme alanı rezervasyon platformu
+- **📞 Hizmet Yönetimi** - Kapsamlı lojistik hizmet kataloğu
+- **👥 Kullanıcı Yönetimi** - Çok rollü kimlik doğrulama sistemi
+- **📹 Video Galerisi** - Tanıtım ve eğitim içerikleri
+- **📧 İletişim Sistemi** - Çok kanallı iletişim platformu
 
-### 🏗️ Enterprise Architecture Features
-- **🔄 Micro-Frontend Ready** - Modular architecture for scalability
-- **🎯 Advanced Caching** - Multi-level caching with intelligent invalidation
-- **🔒 Enterprise Security** - OWASP-compliant security implementation
-- **📊 Real-time Analytics** - Business intelligence and user behavior tracking
-- **🌐 Server-Side Rendering** - SEO optimization with Angular Universal
-- **📱 Progressive Web App** - Offline-first with advanced service worker
-- **♿ Accessibility Compliant** - WCAG 2.1 AA standards
-- **🌍 Multi-language Support** - i18n with dynamic locale switching
+### 🏗️ Kurumsal Mimari Özellikleri
+- **🔄 Mikro-Frontend Hazır** - Ölçeklenebilirlik için modüler mimari
+- **🎯 Gelişmiş Önbellekleme** - Akıllı geçersiz kılma ile çok seviyeli önbellekleme
+- **🔒 Kurumsal Güvenlik** - OWASP uyumlu güvenlik implementasyonu
+- **📊 Gerçek Zamanlı Analitik** - İş zekası ve kullanıcı davranış takibi
+- **🌐 Sunucu Tarafı Rendering** - Angular Universal ile SEO optimizasyonu
+- **📱 Progressive Web App** - Gelişmiş service worker ile çevrimdışı öncelikli
+- **♿ Erişilebilirlik Uyumlu** - WCAG 2.1 AA standartları
+- **🌍 Çok Dil Desteği** - Dinamik dil değiştirme ile i18n
 
-### 🎨 UI/UX Features
-- **🎨 Advanced Theming** - 5 dynamic themes (Light, Dark, Red, Blue, Green)
-- **📱 Responsive Design** - Mobile-first approach with breakpoint optimization
-- **⚡ Performance Optimized** - Core Web Vitals compliant
-- **🔍 Smart Search** - Advanced filtering and search capabilities
-- **💬 Intelligent Chatbot** - AI-powered customer support
-- **📢 Dynamic Advertisements** - Contextual ad management system
+### 🎨 UI/UX Özellikleri
+- **🎨 Gelişmiş Tema Sistemi** - 5 dinamik tema (Açık, Koyu, Kırmızı, Mavi, Yeşil)
+- **📱 Responsive Tasarım** - Breakpoint optimizasyonu ile mobil öncelikli yaklaşım
+- **⚡ Performans Optimizasyonu** - Core Web Vitals uyumlu
+- **🔍 Akıllı Arama** - Gelişmiş filtreleme ve arama yetenekleri
+- **💬 Akıllı Chatbot** - AI destekli müşteri desteği
+- **📢 Dinamik Reklamlar** - Bağlamsal reklam yönetim sistemi
 
-## 🏗️ Architecture
+## 🏗️ Mimari
 
-### 📊 Architecture Overview
+### 📊 Mimari Genel Bakış
 
 ```mermaid
 graph TB
-    subgraph "Frontend Layer"
+    subgraph "Frontend Katmanı"
         A[Angular 16 SPA] --> B[PWA Service Worker]
         A --> C[Angular Universal SSR]
-        A --> D[Micro-Frontend Loader]
+        A --> D[Mikro-Frontend Yükleyici]
     end
     
-    subgraph "State Management"
-        E[NgRx Store] --> F[User State]
-        E --> G[Performance State]
-        E --> H[Business State]
+    subgraph "State Yönetimi"
+        E[NgRx Store] --> F[Kullanıcı State]
+        E --> G[Performans State]
+        E --> H[İş State]
     end
     
-    subgraph "Services Layer"
-        I[Authentication Service] --> J[Auth Guards]
-        K[Performance Monitor] --> L[Observability Service]
-        M[Security Service] --> N[Security Interceptors]
-        O[Cache Service] --> P[HTTP Interceptors]
+    subgraph "Servis Katmanı"
+        I[Kimlik Doğrulama Servisi] --> J[Auth Guard'ları]
+        K[Performans İzleyici] --> L[Gözlemlenebilirlik Servisi]
+        M[Güvenlik Servisi] --> N[Güvenlik Interceptor'ları]
+        O[Önbellek Servisi] --> P[HTTP Interceptor'ları]
     end
     
-    subgraph "Infrastructure"
-        Q[Docker Containers] --> R[Kubernetes Pods]
-        R --> S[Load Balancer]
-        T[Nginx Reverse Proxy] --> U[SSL/TLS Termination]
+    subgraph "Altyapı"
+        Q[Docker Container'ları] --> R[Kubernetes Pod'ları]
+        R --> S[Yük Dengeleyici]
+        T[Nginx Reverse Proxy] --> U[SSL/TLS Sonlandırma]
     end
     
     A --> E
@@ -100,93 +100,93 @@ graph TB
     Q --> A
 ```
 
-### 🔧 Technical Stack
+### 🔧 Teknoloji Yığını
 
-| Layer | Technology | Purpose |
-|-------|------------|---------|
-| **Frontend** | Angular 16 + TypeScript 5.1 | Modern reactive UI framework |
-| **State Management** | NgRx 16.3 | Predictable state container |
-| **Styling** | CSS3 + CSS Variables | Dynamic theming system |
-| **Testing** | Jasmine + Karma + Protractor | Comprehensive testing suite |
-| **Build** | Angular CLI + Webpack | Optimized build pipeline |
-| **Server** | Angular Universal | Server-side rendering |
-| **PWA** | Angular Service Worker | Offline-first capabilities |
-| **Containerization** | Docker + Docker Compose | Consistent deployment |
-| **Orchestration** | Kubernetes | Production scaling |
-| **Proxy** | Nginx | Reverse proxy + security |
-| **Monitoring** | Custom Analytics + Performance API | Real-time observability |
+| Katman | Teknoloji | Amaç |
+|--------|-----------|------|
+| **Frontend** | Angular 16 + TypeScript 5.1 | Modern reaktif UI framework |
+| **State Yönetimi** | NgRx 16.3 | Öngörülebilir state container |
+| **Styling** | CSS3 + CSS Variables | Dinamik tema sistemi |
+| **Test** | Jasmine + Karma + Protractor | Kapsamlı test paketi |
+| **Build** | Angular CLI + Webpack | Optimize edilmiş build pipeline |
+| **Sunucu** | Angular Universal | Sunucu tarafı rendering |
+| **PWA** | Angular Service Worker | Çevrimdışı öncelikli yetenekler |
+| **Konteynerleştirme** | Docker + Docker Compose | Tutarlı dağıtım |
+| **Orkestrasyon** | Kubernetes | Üretim ölçeklendirme |
+| **Proxy** | Nginx | Reverse proxy + güvenlik |
+| **İzleme** | Özel Analitik + Performance API | Gerçek zamanlı gözlemlenebilirlik |
 
-## 🚀 Quick Start
+## 🚀 Hızlı Başlangıç
 
-### Prerequisites
+### Ön Gereksinimler
 
-- **Node.js** 18.x or higher
-- **npm** 9.x or higher
+- **Node.js** 18.x veya üstü
+- **npm** 9.x veya üstü
 - **Angular CLI** 16.x
-- **Docker** (optional)
+- **Docker** (opsiyonel)
 - **Git**
 
-### ⚡ 1-Minute Setup
+### ⚡ 1 Dakikalık Kurulum
 
 ```bash
-# Clone the repository
+# Projeyi klonlayın
 git clone https://github.com/alicanyucel/TruckPortFreeLancerProject.git
 cd TruckPortFreeLancerProject
 
-# Install dependencies
+# Bağımlılıkları yükleyin
 npm install
 
-# Start development server
+# Geliştirme sunucusunu başlatın
 npm start
 
-# Open browser
-# Navigate to http://localhost:4200
+# Tarayıcıyı açın
+# http://localhost:4200 adresine gidin
 ```
 
-## 📦 Installation
+## 📦 Kurulum
 
-### 🔧 Development Setup
+### 🔧 Geliştirme Ortamı Kurulumu
 
 ```bash
-# 1. Clone repository
+# 1. Projeyi klonlayın
 git clone https://github.com/alicanyucel/TruckPortFreeLancerProject.git
 cd TruckPortFreeLancerProject
 
-# 2. Install dependencies
+# 2. Bağımlılıkları yükleyin
 npm install
 
-# 3. Install Angular CLI globally (if not installed)
+# 3. Angular CLI'yi global olarak yükleyin (yüklü değilse)
 npm install -g @angular/cli@16
 
-# 4. Verify installation
+# 4. Kurulumu doğrulayın
 ng version
 
-# 5. Start development server
+# 5. Geliştirme sunucusunu başlatın
 npm run start
 ```
 
-### 🌍 Environment Configuration
+### 🌍 Environment Konfigürasyonu
 
-Create environment files for different stages:
+Farklı aşamalar için environment dosyaları oluşturun:
 
 ```bash
-# Development
+# Geliştirme
 cp src/environments/environment.ts.example src/environments/environment.ts
 
-# Production
+# Üretim
 cp src/environments/environment.prod.ts.example src/environments/environment.prod.ts
 ```
 
-**Environment Variables:**
+**Environment Değişkenleri:**
 
 ```typescript
 // src/environments/environment.ts
 export const environment = {
   production: false,
   apiBaseUrl: 'http://localhost:3000/api',
-  mapApiKey: 'YOUR_GOOGLE_MAPS_API_KEY',
+  mapApiKey: 'GOOGLE_MAPS_API_ANAHTARINIZ',
   firebaseConfig: {
-    // Firebase configuration
+    // Firebase konfigürasyonu
   },
   features: {
     realTimeTracking: true,
@@ -196,227 +196,227 @@ export const environment = {
 };
 ```
 
-## 🔧 Development
+## 🔧 Geliştirme
 
-### 📝 Available Scripts
+### 📝 Kullanılabilir Komutlar
 
 ```bash
-# Development
-npm start                    # Start dev server (http://localhost:4200)
-npm run build:dev           # Development build
-npm run watch               # Watch mode development
+# Geliştirme
+npm start                    # Geliştirme sunucusunu başlat (http://localhost:4200)
+npm run build:dev           # Geliştirme build
+npm run watch               # Watch mode geliştirme
 
-# Production
-npm run build               # Production build
-npm run build:prod         # Optimized production build
-npm run build:analyze      # Bundle analyzer
+# Üretim
+npm run build               # Üretim build
+npm run build:prod         # Optimize edilmiş üretim build
+npm run build:analyze      # Bundle analiz
 
-# Server-Side Rendering
-npm run build:ssr          # Build with SSR
-npm run serve:ssr          # Serve SSR build
-npm run prerender          # Pre-render static pages
+# Sunucu Tarafı Rendering
+npm run build:ssr          # SSR ile build
+npm run serve:ssr          # SSR build'i serve et
+npm run prerender          # Statik sayfaları önceden render et
 
-# Testing
-npm test                   # Unit tests
-npm run test:coverage     # Coverage report
-npm run test:ci           # CI testing
-npm run e2e               # End-to-end tests
+# Test
+npm test                   # Unit testler
+npm run test:coverage     # Coverage raporu
+npm run test:ci           # CI testi
+npm run e2e               # End-to-end testler
 
-# Code Quality
+# Kod Kalitesi
 npm run lint              # ESLint
-npm run lint:fix          # Fix linting issues
+npm run lint:fix          # Linting hatalarını düzelt
 
-# Security & Performance
-npm run security:audit    # Security audit
-npm run security:fix      # Fix security issues
-npm run performance:lighthouse  # Lighthouse analysis
+# Güvenlik ve Performans
+npm run security:audit    # Güvenlik denetimi
+npm run security:fix      # Güvenlik sorunlarını düzelt
+npm run performance:lighthouse  # Lighthouse analizi
 
 # Docker
-npm run docker:build      # Build Docker image
-npm run docker:run        # Run container
+npm run docker:build      # Docker image oluştur
+npm run docker:run        # Container çalıştır
 npm run docker:compose    # Docker Compose
 ```
 
-### 🏗️ Project Structure
+### 🏗️ Proje Yapısı
 
 ```
 TruckPortFreeLancerProject/
 ├── 📁 src/
-│   ├── 📁 app/                    # Main application module
-│   │   ├── app-routing.module.ts  # Routing configuration
+│   ├── 📁 app/                    # Ana uygulama modülü
+│   │   ├── app-routing.module.ts  # Yönlendirme konfigürasyonu
 │   │   ├── app.component.*       # Root component
-│   │   └── app.module.ts         # Main module
-│   ├── 📁 components/            # Reusable components
-│   │   ├── 📁 navbar/           # Navigation component
-│   │   ├── 📁 footer/           # Footer component
+│   │   └── app.module.ts         # Ana modül
+│   ├── 📁 components/            # Yeniden kullanılabilir bileşenler
+│   │   ├── 📁 navbar/           # Navigasyon bileşeni
+│   │   ├── 📁 footer/           # Footer bileşeni
 │   │   ├── 📁 chatbot/          # AI chatbot
-│   │   ├── 📁 live-map/         # Real-time tracking
-│   │   └── 📁 theme-switcher/   # Theme management
-│   ├── 📁 pages/                # Feature pages
-│   │   ├── 📁 home/             # Landing page
-│   │   ├── 📁 truckstore/       # Marketplace
-│   │   ├── 📁 services/         # Service catalog
-│   │   └── 📁 login/            # Authentication
-│   ├── 📁 services/             # Business logic services
-│   │   ├── auth.service.ts      # Authentication
+│   │   ├── 📁 live-map/         # Gerçek zamanlı takip
+│   │   └── 📁 theme-switcher/   # Tema yönetimi
+│   ├── 📁 pages/                # Özellik sayfaları
+│   │   ├── 📁 home/             # Ana sayfa
+│   │   ├── 📁 truckstore/       # Pazaryeri
+│   │   ├── 📁 services/         # Hizmet kataloğu
+│   │   └── 📁 login/            # Kimlik doğrulama
+│   ├── 📁 services/             # İş mantığı servisleri
+│   │   ├── auth.service.ts      # Kimlik doğrulama
 │   │   ├── performance-monitor.service.ts
-│   │   ├── security.service.ts  # Security utilities
+│   │   ├── security.service.ts  # Güvenlik araçları
 │   │   ├── advanced-cache.service.ts
 │   │   ├── observability.service.ts
 │   │   └── micro-frontend.service.ts
-│   ├── 📁 interceptors/         # HTTP interceptors
-│   │   ├── error.interceptor.ts # Error handling
-│   │   ├── cache.interceptor.ts # Caching logic
+│   ├── 📁 interceptors/         # HTTP interceptor'ları
+│   │   ├── error.interceptor.ts # Hata yönetimi
+│   │   ├── cache.interceptor.ts # Önbellekleme mantığı
 │   │   └── security.interceptor.ts
-│   ├── 📁 guards/               # Route guards
-│   ├── 📁 pipes/                # Custom pipes
-│   ├── 📁 validators/           # Form validators
-│   ├── 📁 store/                # NgRx state management
-│   │   ├── 📁 user/            # User state
-│   │   └── 📁 performance/     # Performance metrics
-│   ├── 📁 styles/              # Global styles
-│   │   └── design-system.css   # Theme system
-│   └── 📁 assets/              # Static assets
-├── 📁 docker-configs/          # Docker configurations
-├── 📁 k8s/                     # Kubernetes manifests
-├── 📄 Dockerfile              # Container definition
-├── 📄 docker-compose.yml      # Multi-container setup
-├── 📄 nginx.conf              # Nginx configuration
+│   ├── 📁 guards/               # Route guard'ları
+│   ├── 📁 pipes/                # Özel pipe'lar
+│   ├── 📁 validators/           # Form validator'ları
+│   ├── 📁 store/                # NgRx state yönetimi
+│   │   ├── 📁 user/            # Kullanıcı state
+│   │   └── 📁 performance/     # Performans metrikleri
+│   ├── 📁 styles/              # Global stiller
+│   │   └── design-system.css   # Tema sistemi
+│   └── 📁 assets/              # Statik varlıklar
+├── 📁 docker-configs/          # Docker konfigürasyonları
+├── 📁 k8s/                     # Kubernetes manifestleri
+├── 📄 Dockerfile              # Container tanımı
+├── 📄 docker-compose.yml      # Çoklu container kurulumu
+├── 📄 nginx.conf              # Nginx konfigürasyonu
 ├── 📄 k8s-deployment.yaml     # Kubernetes deployment
-└── 📄 package.json            # Dependencies
+└── 📄 package.json            # Bağımlılıklar
 ```
 
-### 🎯 Development Guidelines
+### 🎯 Geliştirme Yönergeleri
 
-#### 📝 Code Style
+#### 📝 Kod Stili
 
 ```typescript
-// Use strict TypeScript
-interface TruckData {
+// Sıkı TypeScript kullanın
+interface KamyonVerisi {
   id: string;
-  brand: string;
+  marka: string;
   model: string;
-  year: number;
-  location: {
+  yil: number;
+  konum: {
     lat: number;
     lng: number;
   };
 }
 
-// Service example
+// Servis örneği
 @Injectable({
   providedIn: 'root'
 })
-export class TruckService {
+export class KamyonService {
   constructor(
     private http: HttpClient,
     private cache: AdvancedCacheService
   ) {}
 
-  getTrucks(): Observable<TruckData[]> {
-    return this.cache.get('trucks') ?? 
-           this.http.get<TruckData[]>('/api/trucks');
+  getKamyonlar(): Observable<KamyonVerisi[]> {
+    return this.cache.get('kamyonlar') ?? 
+           this.http.get<KamyonVerisi[]>('/api/kamyonlar');
   }
 }
 ```
 
-#### 🔄 State Management
+#### 🔄 State Yönetimi
 
 ```typescript
 // NgRx Actions
-export const loadTrucks = createAction('[Truck] Load Trucks');
-export const loadTrucksSuccess = createAction(
-  '[Truck] Load Trucks Success',
-  props<{ trucks: TruckData[] }>()
+export const kamyonlariYukle = createAction('[Kamyon] Kamyonları Yükle');
+export const kamyonlariYuklemeBasarili = createAction(
+  '[Kamyon] Kamyonları Yükleme Başarılı',
+  props<{ kamyonlar: KamyonVerisi[] }>()
 );
 
 // NgRx Reducer
-const truckReducer = createReducer(
+const kamyonReducer = createReducer(
   initialState,
-  on(loadTrucksSuccess, (state, { trucks }) => ({
+  on(kamyonlariYuklemeBasarili, (state, { kamyonlar }) => ({
     ...state,
-    trucks,
-    loading: false
+    kamyonlar,
+    yukleniyor: false
   }))
 );
 ```
 
-## 🧪 Testing
+## 🧪 Test
 
-### 🔬 Testing Strategy
+### 🔬 Test Stratejisi
 
-- **Unit Tests**: 95%+ coverage target
-- **Integration Tests**: Component + Service integration
-- **E2E Tests**: Critical user journeys
-- **Performance Tests**: Core Web Vitals monitoring
-- **Security Tests**: OWASP compliance
+- **Unit Testler**: %95+ coverage hedefi
+- **Entegrasyon Testleri**: Component + Service entegrasyonu
+- **E2E Testler**: Kritik kullanıcı yolculukları
+- **Performans Testleri**: Core Web Vitals izleme
+- **Güvenlik Testleri**: OWASP uyumluluğu
 
-### 🏃‍♂️ Running Tests
+### 🏃‍♂️ Testleri Çalıştırma
 
 ```bash
-# Unit tests
+# Unit testler
 npm test                    # Watch mode
-npm run test:ci            # Single run for CI
-npm run test:coverage      # Generate coverage report
+npm run test:ci            # CI için tek çalıştırma
+npm run test:coverage      # Coverage raporu oluştur
 
-# E2E tests
-npm run e2e                # Full E2E suite
+# E2E testler
+npm run e2e                # Tam E2E paketi
 
-# Performance tests
+# Performans testleri
 npm run performance:lighthouse
 
-# Security tests
+# Güvenlik testleri
 npm run security:audit
 ```
 
 ### 📊 Test Coverage
 
 ```bash
-# Generate detailed coverage report
+# Detaylı coverage raporu oluştur
 npm run test:coverage
 
-# View coverage report
+# Coverage raporunu görüntüle
 open coverage/index.html
 ```
 
-**Coverage Targets:**
-- **Lines**: > 95%
-- **Functions**: > 95%
-- **Branches**: > 90%
-- **Statements**: > 95%
+**Coverage Hedefleri:**
+- **Satırlar**: > %95
+- **Fonksiyonlar**: > %95
+- **Dallar**: > %90
+- **İfadeler**: > %95
 
-## 🐳 Docker & Deployment
+## 🐳 Docker ve Dağıtım
 
-### 🔨 Building Docker Image
+### 🔨 Docker Image Oluşturma
 
 ```bash
-# Build production image
+# Üretim image'ı oluştur
 docker build -t truckport:latest .
 
-# Build with custom tag
+# Özel tag ile oluştur
 docker build -t truckport:v1.0.0 .
 
-# Multi-architecture build
+# Çoklu mimari build
 docker buildx build --platform linux/amd64,linux/arm64 -t truckport:latest .
 ```
 
-### 🚀 Running with Docker
+### 🚀 Docker ile Çalıştırma
 
 ```bash
-# Run single container
+# Tek container çalıştır
 docker run -p 80:80 truckport:latest
 
-# Run with Docker Compose
+# Docker Compose ile çalıştır
 docker-compose up -d
 
-# View logs
+# Logları görüntüle
 docker-compose logs -f
 
-# Scale services
+# Servisleri ölçeklendir
 docker-compose up -d --scale app=3
 ```
 
-### 📄 Docker Compose Configuration
+### 📄 Docker Compose Konfigürasyonu
 
 ```yaml
 # docker-compose.yml
@@ -454,68 +454,68 @@ volumes:
 
 ## ☸️ Kubernetes
 
-### 🚀 Kubernetes Deployment
+### 🚀 Kubernetes Dağıtımı
 
 ```bash
-# Apply all manifests
+# Tüm manifestleri uygula
 kubectl apply -f k8s-deployment.yaml
 
-# Check deployment status
+# Dağıtım durumunu kontrol et
 kubectl get deployments
 kubectl get pods
 kubectl get services
 
-# Scale deployment
+# Dağıtımı ölçeklendir
 kubectl scale deployment truckport-frontend --replicas=5
 
-# Check logs
+# Logları kontrol et
 kubectl logs -f deployment/truckport-frontend
 ```
 
-### 📊 Monitoring & Health Checks
+### 📊 İzleme ve Sağlık Kontrolü
 
 ```bash
-# Health check endpoints
+# Sağlık kontrolü endpoint'leri
 curl http://your-domain/health
 curl http://your-domain/ready
 
-# Metrics endpoint
+# Metrik endpoint'i
 curl http://your-domain/metrics
 ```
 
-### 🔄 Rolling Updates
+### 🔄 Rolling Update'ler
 
 ```bash
-# Update image
+# Image'ı güncelle
 kubectl set image deployment/truckport-frontend truckport-frontend=truckport:v2.0.0
 
-# Check rollout status
+# Rollout durumunu kontrol et
 kubectl rollout status deployment/truckport-frontend
 
-# Rollback if needed
+# Gerekirse geri al
 kubectl rollout undo deployment/truckport-frontend
 ```
 
-## 🔒 Security
+## 🔒 Güvenlik
 
-### 🛡️ Security Features
+### 🛡️ Güvenlik Özellikleri
 
 #### **Content Security Policy (CSP)**
 ```nginx
-# Automatically configured via SecurityService
+# SecurityService ile otomatik konfigüre edilir
 Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;
 ```
 
-#### **Security Headers**
+#### **Güvenlik Header'ları**
 - **X-Frame-Options**: DENY
 - **X-Content-Type-Options**: nosniff
 - **X-XSS-Protection**: 1; mode=block
 - **Strict-Transport-Security**: max-age=31536000
 - **Referrer-Policy**: strict-origin-when-cross-origin
 
-#### **Authentication & Authorization**
+#### **Kimlik Doğrulama ve Yetkilendirme**
 ```typescript
-// Role-based access control
+// Rol tabanlı erişim kontrolü
 @Injectable()
 export class AuthGuard implements CanActivate {
   canActivate(): boolean {
@@ -531,73 +531,73 @@ export class AdminGuard implements CanActivate {
 }
 ```
 
-### 🔍 Security Monitoring
+### 🔍 Güvenlik İzleme
 
 ```typescript
-// Real-time threat detection
+// Gerçek zamanlı tehdit tespiti
 private setupXSSDetection(): void {
-  // Monitor for suspicious script injections
-  // Detect malicious event handlers
-  // Content integrity monitoring
+  // Şüpheli script enjeksiyonlarını izle
+  // Kötü niyetli event handler'ları tespit et
+  // İçerik bütünlüğü izleme
 }
 ```
 
-### 📋 Security Checklist
+### 📋 Güvenlik Kontrol Listesi
 
-- ✅ **Input Validation**: All user inputs sanitized
-- ✅ **Authentication**: JWT-based with refresh tokens
-- ✅ **Authorization**: Role-based access control
-- ✅ **HTTPS Enforcement**: SSL/TLS termination
-- ✅ **XSS Protection**: Content Security Policy
-- ✅ **CSRF Protection**: Anti-forgery tokens
-- ✅ **SQL Injection**: Parameterized queries
-- ✅ **Dependency Scanning**: Regular security audits
+- ✅ **Girdi Doğrulama**: Tüm kullanıcı girdileri temizlendi
+- ✅ **Kimlik Doğrulama**: Refresh token'lı JWT tabanlı
+- ✅ **Yetkilendirme**: Rol tabanlı erişim kontrolü
+- ✅ **HTTPS Zorunluluğu**: SSL/TLS sonlandırma
+- ✅ **XSS Koruması**: Content Security Policy
+- ✅ **CSRF Koruması**: Anti-forgery token'lar
+- ✅ **SQL Injection**: Parametreli sorgular
+- ✅ **Bağımlılık Tarama**: Düzenli güvenlik denetimleri
 
-## 📊 Performance & Monitoring
+## 📊 Performans ve İzleme
 
-### ⚡ Performance Metrics
+### ⚡ Performans Metrikleri
 
 #### **Core Web Vitals**
 - **LCP** (Largest Contentful Paint): < 2.5s
 - **FID** (First Input Delay): < 100ms
 - **CLS** (Cumulative Layout Shift): < 0.1
 
-#### **Custom Metrics**
+#### **Özel Metrikler**
 - **TTFB** (Time to First Byte): < 200ms
 - **TTI** (Time to Interactive): < 3.5s
-- **Bundle Size**: < 500KB (main bundle)
+- **Bundle Boyutu**: < 500KB (ana bundle)
 
-### 📈 Real-time Monitoring
+### 📈 Gerçek Zamanlı İzleme
 
 ```typescript
-// Business metrics tracking
+// İş metrikleri takibi
 this.observabilityService.trackBusinessMetric('page_view', 1, 'count', {
   page: window.location.pathname
 });
 
-// User flow tracking
-const sessionId = this.observabilityService.startUserFlow('truck_search');
-this.observabilityService.trackUserFlowStep(sessionId, 'search_initiated');
+// Kullanıcı akışı takibi
+const sessionId = this.observabilityService.startUserFlow('kamyon_arama');
+this.observabilityService.trackUserFlowStep(sessionId, 'arama_baslatildi');
 ```
 
-### 📊 Analytics Dashboard
+### 📊 Analitik Dashboard
 
 ```typescript
-// Performance monitoring
+// Performans izleme
 public getPerformanceScore(): number {
-  // Calculate score based on Core Web Vitals
-  // LCP, FID, CLS scoring algorithm
+  // Core Web Vitals temelinde skor hesapla
+  // LCP, FID, CLS puanlama algoritması
   return Math.max(0, score);
 }
 ```
 
-### 🚨 Alerting System
+### 🚨 Alarm Sistemi
 
 ```typescript
-// Alert rules configuration
+// Alarm kuralları konfigürasyonu
 const alertRules: AlertRule[] = [
   {
-    name: 'High Error Rate',
+    name: 'Yüksek Hata Oranı',
     metric: 'error_count',
     condition: 'gt',
     threshold: 10,
@@ -606,29 +606,29 @@ const alertRules: AlertRule[] = [
 ];
 ```
 
-## 🌐 Internationalization
+## 🌐 Çok Dil Desteği
 
-### 🌍 Supported Languages
+### 🌍 Desteklenen Diller
 
-- **🇹🇷 Turkish** (default)
-- **🇺🇸 English**
-- **🇩🇪 German**
-- **🇫🇷 French**
+- **🇹🇷 Türkçe** (varsayılan)
+- **🇺🇸 İngilizce**
+- **🇩🇪 Almanca**
+- **🇫🇷 Fransızca**
 
-### 🔧 Adding New Language
+### 🔧 Yeni Dil Ekleme
 
 ```bash
-# 1. Create translation file
+# 1. Çeviri dosyası oluştur
 cp src/assets/i18n/tr.json src/assets/i18n/es.json
 
-# 2. Update language list
+# 2. Dil listesini güncelle
 # src/components/language-switcher/language-switcher.component.ts
 
-# 3. Test translation
+# 3. Çeviriyi test et
 npm start
 ```
 
-### 📝 Translation Files
+### 📝 Çeviri Dosyaları
 
 ```json
 // src/assets/i18n/tr.json
@@ -647,13 +647,13 @@ npm start
 }
 ```
 
-### 🎯 Usage in Components
+### 🎯 Bileşenlerde Kullanım
 
 ```typescript
-// Translation pipe usage
+// Çeviri pipe kullanımı
 <h1>{{ 'navbar.home' | translate }}</h1>
 
-// Programmatic usage
+// Programatik kullanım
 constructor(private translate: TranslationService) {}
 
 getMessage(): string {
@@ -661,14 +661,14 @@ getMessage(): string {
 }
 ```
 
-## 📱 PWA Features
+## 📱 PWA Özellikleri
 
-### 🔧 Service Worker Configuration
+### 🔧 Service Worker Konfigürasyonu
 
 ```typescript
-// Automatic updates
+// Otomatik güncellemeler
 this.swUpdate.available.subscribe(event => {
-  if (confirm('New version available. Update now?')) {
+  if (confirm('Yeni sürüm mevcut. Şimdi güncellensin mi?')) {
     this.swUpdate.activateUpdate().then(() => {
       document.location.reload();
     });
@@ -676,10 +676,10 @@ this.swUpdate.available.subscribe(event => {
 });
 ```
 
-### 📱 Installation Prompt
+### 📱 Kurulum İstemi
 
 ```typescript
-// App installation
+// Uygulama kurulumu
 promptInstall(): Promise<boolean> {
   const installPrompt = this.installPromptSubject.value;
   if (installPrompt) {
@@ -690,20 +690,20 @@ promptInstall(): Promise<boolean> {
 }
 ```
 
-### 🔄 Background Sync
+### 🔄 Arkaplan Senkronizasyonu
 
 ```typescript
-// Offline data synchronization
+// Çevrimdışı veri senkronizasyonu
 registerBackgroundSync(task: BackgroundSyncTask): void {
   this.backgroundSyncTasks.push(task);
   this.requestBackgroundSync(task);
 }
 ```
 
-### 📩 Push Notifications
+### 📩 Push Bildirimleri
 
 ```typescript
-// Push notification setup
+// Push bildirim kurulumu
 async subscribeToPushNotifications(): Promise<PushSubscription | null> {
   const subscription = await this.swPush.requestSubscription({
     serverPublicKey: this.VAPID_PUBLIC_KEY
@@ -712,20 +712,20 @@ async subscribeToPushNotifications(): Promise<PushSubscription | null> {
 }
 ```
 
-## 🎨 Theming
+## 🎨 Tema Sistemi
 
-### 🌈 Available Themes
+### 🌈 Mevcut Temalar
 
-1. **🌕 Light Theme** - Clean and bright
-2. **🌑 Dark Theme** - Easy on the eyes
-3. **🔴 Red Theme** - Bold and energetic
-4. **🔵 Blue Theme** - Professional and calm
-5. **🟢 Green Theme** - Natural and fresh
+1. **🌕 Açık Tema** - Temiz ve parlak
+2. **🌑 Koyu Tema** - Gözleri yormayan
+3. **🔴 Kırmızı Tema** - Cesur ve enerjik
+4. **🔵 Mavi Tema** - Profesyonel ve sakin
+5. **🟢 Yeşil Tema** - Doğal ve taze
 
-### 🔧 Theme Implementation
+### 🔧 Tema Implementasyonu
 
 ```css
-/* CSS Variables for dynamic theming */
+/* Dinamik tema için CSS Variables */
 :root {
   --primary-color: #2196F3;
   --secondary-color: #FFC107;
@@ -741,20 +741,20 @@ async subscribeToPushNotifications(): Promise<PushSubscription | null> {
 }
 ```
 
-### 🎯 Usage
+### 🎯 Kullanım
 
 ```typescript
-// Theme switching
+// Tema değiştirme
 setTheme(theme: string): void {
   document.body.className = `theme-${theme}`;
   localStorage.setItem('selected-theme', theme);
 }
 ```
 
-### 🎨 Custom Theme Creation
+### 🎨 Özel Tema Oluşturma
 
 ```typescript
-// Create new theme
+// Yeni tema oluştur
 interface Theme {
   name: string;
   colors: {
@@ -766,7 +766,7 @@ interface Theme {
 }
 
 const customTheme: Theme = {
-  name: 'custom',
+  name: 'ozel',
   colors: {
     primary: '#FF5722',
     secondary: '#4CAF50',
@@ -776,52 +776,52 @@ const customTheme: Theme = {
 };
 ```
 
-## 🔌 API Integration
+## 🔌 API Entegrasyonu
 
-### 🌐 API Configuration
+### 🌐 API Konfigürasyonu
 
 ```typescript
-// Environment-based API configuration
+// Environment tabanlı API konfigürasyonu
 export const environment = {
   production: false,
   apiBaseUrl: 'http://localhost:3000/api',
   endpoints: {
-    trucks: '/trucks',
-    users: '/users',
-    services: '/services',
-    reservations: '/reservations'
+    trucks: '/kamyonlar',
+    users: '/kullanicilar',
+    services: '/hizmetler',
+    reservations: '/rezervasyonlar'
   }
 };
 ```
 
-### 🔄 HTTP Interceptors
+### 🔄 HTTP Interceptor'ları
 
 ```typescript
-// Caching interceptor
+// Önbellekleme interceptor
 @Injectable()
 export class CacheInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Smart caching logic
-    // ETags and conditional requests
-    // Offline fallback
+    // Akıllı önbellekleme mantığı
+    // ETag'ler ve koşullu istekler
+    // Çevrimdışı fallback
   }
 }
 ```
 
-### 📊 API Monitoring
+### 📊 API İzleme
 
 ```typescript
-// API call tracking
+// API çağrısı takibi
 recordApiCall(): void {
   this.performanceMonitor.recordApiCall();
   this.observabilityService.trackBusinessMetric('api_call', 1);
 }
 ```
 
-### 🚫 Error Handling
+### 🚫 Hata Yönetimi
 
 ```typescript
-// Global error handling
+// Global hata yönetimi
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -835,23 +835,23 @@ export class ErrorInterceptor implements HttpInterceptor {
 }
 ```
 
-## 📚 Documentation
+## 📚 Dokümantasyon
 
-### 📖 Code Documentation
+### 📖 Kod Dokümantasyonu
 
 ```typescript
 /**
- * Advanced caching service with multi-level storage
- * Supports memory, localStorage, and HTTP caching
+ * Çok seviyeli depolama ile gelişmiş önbellekleme servisi
+ * Memory, localStorage ve HTTP önbelleklemeyi destekler
  * 
  * @example
  * ```typescript
- * // Basic usage
- * this.cache.set('key', data, { ttl: 5000 });
- * const cached = this.cache.get('key');
+ * // Temel kullanım
+ * this.cache.set('anahtar', veri, { ttl: 5000 });
+ * const cached = this.cache.get('anahtar');
  * 
- * // With configuration
- * this.cache.set('key', data, {
+ * // Konfigürasyonla
+ * this.cache.set('anahtar', veri, {
  *   ttl: 60000,
  *   strategy: 'LRU',
  *   persistToStorage: true
@@ -866,189 +866,188 @@ export class AdvancedCacheService {
 }
 ```
 
-### 📋 Architecture Documentation
+### 📋 Mimari Dokümantasyonu
 
 ```typescript
 /**
- * Micro-frontend service for modular architecture
- * Enables loading and communication between micro-frontends
+ * Modüler mimari için mikro-frontend servisi
+ * Mikro-frontend'ler arası yükleme ve iletişimi sağlar
  * 
- * Features:
- * - Dynamic module loading
- * - Shared event bus
- * - State synchronization
- * - Performance monitoring
+ * Özellikler:
+ * - Dinamik modül yükleme
+ * - Paylaşılan event bus
+ * - State senkronizasyonu
+ * - Performans izleme
  */
 export class MicroFrontendService {
   // Implementation
 }
 ```
 
-### 🔧 API Documentation
+### 🔧 API Dokümantasyonu
 
-Generate API documentation:
+API dokümantasyonu oluştur:
 
 ```bash
-# Install compodoc
+# Compodoc'u yükle
 npm install -g @compodoc/compodoc
 
-# Generate documentation
+# Dokümantasyon oluştur
 npx compodoc -p tsconfig.json -s
 
-# Serve documentation
+# Dokümantasyonu serve et
 npx compodoc -s
 ```
 
-## 🤝 Contributing
+## 🤝 Katkıda Bulunma
 
-### 🔄 Development Workflow
+### 🔄 Geliştirme İş Akışı
 
-1. **Fork** the repository
-2. **Create** feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to branch (`git push origin feature/amazing-feature`)
-5. **Open** Pull Request
+1. **Fork** yapın
+2. **Feature branch** oluşturun (`git checkout -b feature/harika-ozellik`)
+3. **Değişiklikleri commit** edin (`git commit -m 'Harika özellik eklendi'`)
+4. **Branch'a push** yapın (`git push origin feature/harika-ozellik`)
+5. **Pull Request** açın
 
-### 📋 Contribution Guidelines
+### 📋 Katkı Yönergeleri
 
-#### **Code Standards**
-- Follow Angular style guide
-- Use TypeScript strict mode
-- Write comprehensive tests
-- Document public APIs
-- Follow semantic versioning
+#### **Kod Standartları**
+- Angular style guide'ını takip edin
+- TypeScript strict mode kullanın
+- Kapsamlı testler yazın
+- Public API'leri dokümante edin
+- Semantic versioning takip edin
 
-#### **Commit Convention**
+#### **Commit Konvansiyonu**
 ```
-feat: add new feature
-fix: bug fix
-docs: documentation changes
-style: formatting changes
-refactor: code refactoring
-test: adding tests
-chore: maintenance tasks
+feat: yeni özellik ekle
+fix: hata düzeltme
+docs: dokümantasyon değişiklikleri
+style: formatlama değişiklikleri
+refactor: kod refactoring
+test: test ekleme
+chore: bakım görevleri
 ```
 
-#### **Pull Request Template**
+#### **Pull Request Şablonu**
 ```markdown
-## 📝 Description
-Brief description of changes
+## 📝 Açıklama
+Değişikliklerin kısa açıklaması
 
-## 🔄 Type of Change
-- [ ] Bug fix
-- [ ] New feature
+## 🔄 Değişiklik Türü
+- [ ] Hata düzeltme
+- [ ] Yeni özellik
 - [ ] Breaking change
-- [ ] Documentation update
+- [ ] Dokümantasyon güncellemesi
 
-## 🧪 Testing
-- [ ] Unit tests added/updated
-- [ ] E2E tests added/updated
-- [ ] Manual testing completed
+## 🧪 Test
+- [ ] Unit testler eklendi/güncellendi
+- [ ] E2E testler eklendi/güncellendi
+- [ ] Manuel test tamamlandı
 
-## 📚 Documentation
-- [ ] Code documentation updated
-- [ ] README updated
-- [ ] API documentation updated
+## 📚 Dokümantasyon
+- [ ] Kod dokümantasyonu güncellendi
+- [ ] README güncellendi
+- [ ] API dokümantasyonu güncellendi
 ```
 
-### 🐛 Bug Reports
+### 🐛 Hata Raporları
 
-Use the bug report template:
+Hata raporu şablonunu kullanın:
 
 ```markdown
-## 🐛 Bug Description
-Clear description of the bug
+## 🐛 Hata Açıklaması
+Hatanın net açıklaması
 
-## 🔄 Steps to Reproduce
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+## 🔄 Yeniden Üretme Adımları
+1. '...' sayfasına git
+2. '....' üzerine tıkla
+3. '....' kısmına kaydır
+4. Hatayı gör
 
-## 💻 Environment
-- OS: [e.g. Windows 10]
-- Browser: [e.g. Chrome 91]
-- Version: [e.g. 1.0.0]
+## 💻 Ortam
+- OS: [örn. Windows 10]
+- Tarayıcı: [örn. Chrome 91]
+- Versiyon: [örn. 1.0.0]
 
-## 📷 Screenshots
-Add screenshots if applicable
+## 📷 Ekran Görüntüleri
+Uygunsa ekran görüntüleri ekle
 ```
 
-## 📈 Roadmap
+## 📈 Yol Haritası
 
-### 🚀 Version 2.0.0 (Q4 2025)
-- **🤖 AI Integration**: Machine learning for route optimization
-- **📊 Advanced Analytics**: Real-time business intelligence dashboard
-- **🔄 Event Sourcing**: CQRS pattern implementation
-- **🌐 GraphQL API**: Flexible data querying
-- **📱 Mobile App**: React Native companion app
+### 🚀 Versiyon 2.0.0 (2025 Q4)
+- **🤖 AI Entegrasyonu**: Rota optimizasyonu için makine öğrenmesi
+- **📊 Gelişmiş Analitik**: Gerçek zamanlı iş zekası dashboard'u
+- **🔄 Event Sourcing**: CQRS pattern implementasyonu
+- **🌐 GraphQL API**: Esnek veri sorgulama
+- **📱 Mobil Uygulama**: React Native companion app
 
-### 🔮 Future Features
-- **🚁 Drone Integration**: Aerial delivery tracking
-- **🔗 Blockchain**: Supply chain transparency
-- **🌍 Multi-region**: Global deployment
-- **🔊 Voice Commands**: Hands-free operation
-- **🤖 Chatbot AI**: Advanced NLP integration
+### 🔮 Gelecek Özellikler
+- **🚁 Drone Entegrasyonu**: Havadan teslimat takibi
+- **🔗 Blockchain**: Tedarik zinciri şeffaflığı
+- **🌍 Çok Bölge**: Global dağıtım
+- **🔊 Sesli Komutlar**: Hands-free operasyon
+- **🤖 Chatbot AI**: Gelişmiş NLP entegrasyonu
 
-## 📄 License
+## 📄 Lisans
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+Bu proje **MIT Lisansı** altında lisanslanmıştır - detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
 ```
 MIT License
 
 Copyright (c) 2025 TruckPort
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Bu yazılımın ve ilgili dokümantasyon dosyalarının ("Yazılım") bir kopyasını
+edinen herhangi bir kişiye, bu Yazılımı kısıtlama olmaksızın kullanma,
+kopyalama, değiştirme, birleştirme, yayınlama, dağıtma, alt lisanslama
+ve/veya satma haklarını içeren, Yazılımla ilgili işlemler yapma izni
+burada ücretsiz olarak verilir.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Yukarıdaki telif hakkı bildirimi ve bu izin bildirimi, Yazılımın
+tüm kopyalarına veya önemli bölümlerine dahil edilecektir.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+YAZILIM "OLDUĞU GİBİ" SAĞLANIR, HERHANGİ BİR TÜRDE GARANTİ VERİLMEZ,
+BU GARANTİLER TİCARİ ELVERİŞLİLİK, BELİRLİ BİR AMACA UYGUNLUK VE
+İHLAL ETMEME GARANTİLERİNİ İÇERİR ANCAK BUNLARLA SINIRLI DEĞİLDİR.
+HİÇBİR DURUMDA YAZARLAR VEYA TELİF HAKKI SAHİPLERİ, SÖZLEŞME, HAKSIZ
+FİİL VEYA DİĞER EYLEMLERDEN KAYNAKLANAN HERHANGİ BİR İDDİA, HASAR VEYA
+DİĞER YÜKÜMLÜLÜKLERDEN, YAZILIMDAN VEYA YAZILIMIN KULLANINDAN VEYA
+YAZILIMLA İLGİLİ DİĞER İŞLEMLERDEN KAYNAKLANAN SORUMLU TUTULAMAZ.
 ```
 
 ---
 
-## 📞 Support & Contact
+## 📞 Destek ve İletişim
 
 - **🌐 Website**: [https://truckport.com](https://truckport.com)
 - **📧 Email**: support@truckport.com
-- **📱 Phone**: +90 (555) 123-4567
-- **💬 Discord**: [TruckPort Community](https://discord.gg/truckport)
+- **📱 Telefon**: +90 (555) 123-4567
+- **💬 Discord**: [TruckPort Topluluğu](https://discord.gg/truckport)
 - **🐛 Issues**: [GitHub Issues](https://github.com/alicanyucel/TruckPortFreeLancerProject/issues)
 
-### 👥 Team
+### 👥 Takım
 
 - **Ali Can Yücel** - Lead Developer - [@alicanyucel](https://github.com/alicanyucel)
 
 ---
 
-## 🙏 Acknowledgments
+## 🙏 Teşekkürler
 
-- **Angular Team** - Amazing framework
-- **NgRx Team** - Powerful state management
-- **Community Contributors** - Bug reports and feature requests
-- **Open Source Libraries** - Standing on the shoulders of giants
-
----
-
-**⭐ Star this repository if you find it helpful!**
-
-**🔔 Watch for updates and new features!**
-
-**🤝 Contribute to make it even better!**
+- **Angular Takımı** - Harika framework
+- **NgRx Takımı** - Güçlü state yönetimi
+- **Topluluk Katkıda Bulunanları** - Hata raporları ve özellik istekleri
+- **Açık Kaynak Kütüphaneler** - Devlerin omuzlarında duruyoruz
 
 ---
 
-*Built with ❤️ by the TruckPort team*
+**⭐ Bu projeyi faydalı buluyorsanız yıldızlamayı unutmayın!**
+
+**🔔 Güncellemeler ve yeni özellikler için takip edin!**
+
+**🤝 Daha da iyi hale getirmek için katkıda bulunun!**
+
+---
+
+*TruckPort ekibi tarafından ❤️ ile geliştirilmiştir*
