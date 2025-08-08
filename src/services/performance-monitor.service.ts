@@ -78,7 +78,7 @@ export class PerformanceMonitorService {
     this.apiCallCounter = 0;
     this.errorCounter = 0;
     this.startTime = performance.now();
-    
+
     this.metricsSubject.next({
       loadTime: 0,
       renderTime: 0,
@@ -89,16 +89,15 @@ export class PerformanceMonitorService {
     });
   }
 
-  // Performance thresholds for monitoring
   getPerformanceStatus(): Observable<'good' | 'warning' | 'critical'> {
     return this.metrics$.pipe(
       map(metrics => {
         if (metrics.loadTime > 3000 || metrics.renderTime > 100 || metrics.memoryUsage > 50) {
-          return 'critical';
+          return 'critical' as 'good' | 'warning' | 'critical';
         } else if (metrics.loadTime > 1500 || metrics.renderTime > 50 || metrics.memoryUsage > 25) {
-          return 'warning';
+          return 'warning' as 'good' | 'warning' | 'critical';
         }
-        return 'good';
+        return 'good' as 'good' | 'warning' | 'critical';
       }),
       distinctUntilChanged()
     );
@@ -110,7 +109,6 @@ export class PerformanceMonitorService {
   }
 
   private initializeMonitoring(): void {
-    // Monitor page load performance
     if (typeof window !== 'undefined' && window.performance) {
       window.addEventListener('load', () => {
         setTimeout(() => {
