@@ -108,6 +108,7 @@ graph TB
 | **Frontend** | Angular 16 + TypeScript 5.1 | Modern reaktif UI framework |
 | **State Yönetimi** | NgRx 16.3 | Öngörülebilir state container |
 | **Styling** | CSS3 + CSS Variables | Dinamik tema sistemi |
+| **Test API** | JSON Server | Geliştirme ve test için mock API |
 | **Test** | Jasmine + Karma + Protractor | Kapsamlı test paketi |
 | **Build** | Angular CLI + Webpack | Optimize edilmiş build pipeline |
 | **Sunucu** | Angular Universal | Sunucu tarafı rendering |
@@ -173,11 +174,15 @@ cd TruckPortFreeLancerProject
 # Bağımlılıkları yükleyin
 npm install
 
-# Geliştirme sunucusunu başlatın
+# JSON Server'ı başlatın (Test API)
+npm run api
+
+# Yeni terminal açın ve Angular uygulamasını başlatın
 npm start
 
 # Tarayıcıyı açın
-# http://localhost:4200 adresine gidin
+# Frontend: http://localhost:4200
+# API: http://localhost:3002
 ```
 
 ## 📦 Kurulum
@@ -242,6 +247,10 @@ export const environment = {
 npm start                    # Geliştirme sunucusunu başlat (http://localhost:4200)
 npm run build:dev           # Geliştirme build
 npm run watch               # Watch mode geliştirme
+
+# JSON Server (Test API)
+npm run api                 # JSON Server'ı başlat (http://localhost:3002)
+npm run json-server         # JSON Server'ı başlat (alternatif)
 
 # Üretim
 npm run build               # Üretim build
@@ -814,6 +823,67 @@ const customTheme: Theme = {
 ```
 
 ## 🔌 API Entegrasyonu
+
+### 📡 JSON Server (Test API)
+
+Geliştirme ve test için JSON Server kullanıyoruz:
+
+```bash
+# JSON Server'ı başlatın
+npm run api
+# veya
+npm run json-server
+
+# Server çalışır durumda: http://localhost:3002
+```
+
+#### 🔗 Mevcut API Endpoints:
+
+| Endpoint | Method | Açıklama |
+|----------|--------|----------|
+| `GET /booking_trips` | GET | Tüm rezervasyonları listele |
+| `GET /booking_trips/:id` | GET | Belirli rezervasyonu getir |
+| `POST /booking_trips` | POST | Yeni rezervasyon oluştur |
+| `PUT /booking_trips/:id` | PUT | Rezervasyonu güncelle |
+| `DELETE /booking_trips/:id` | DELETE | Rezervasyonu sil |
+| `GET /drivers` | GET | Tüm şoförleri listele |
+| `GET /customers` | GET | Tüm müşterileri listele |
+| `GET /vehicles` | GET | Tüm araçları listele |
+
+#### 📋 Test Verisi:
+
+```json
+{
+  "booking_trips": [
+    {
+      "id": 1,
+      "customer_name": "Test User",
+      "pickup_location": "Istanbul",
+      "drop_location": "Ankara",
+      "status": "completed"
+    }
+  ],
+  "drivers": [
+    {
+      "id": 1,
+      "name": "Test Driver",
+      "status": "available"
+    }
+  ]
+}
+```
+
+#### ⚙️ JSON Server Konfigürasyonu:
+
+Package.json'da tanımlı script'ler:
+```json
+{
+  "scripts": {
+    "json-server": "json-server --watch db.json --port 3002",
+    "api": "json-server --watch db.json --port 3002"
+  }
+}
+```
 
 ### 🌐 API Konfigürasyonu
 
