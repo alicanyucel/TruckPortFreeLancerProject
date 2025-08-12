@@ -10,42 +10,79 @@
       </a>
     </div>
     
-    <ul class="navbar-menu">
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" 
+            [class.active]="isMobileMenuOpen" 
+            (click)="toggleMobileMenu()"
+            aria-label="Menüyü aç/kapat">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    
+    <ul class="navbar-menu" [class.show]="isMobileMenuOpen">
       <li class="navbar-item">
         <a routerLink="/" 
            class="navbar-link" 
            routerLinkActive="active" 
            [routerLinkActiveOptions]="{exact: true}"
-           (click)="navigateToHome()">{{'navbar.home' | translate}}</a>
+           (click)="navigateToHome(); closeMobileMenu()">{{'navbar.home' | translate}}</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/hizmetler" class="navbar-link" routerLinkActive="active">{{'navbar.services' | translate}}</a>
+        <a routerLink="/hizmetler" 
+           class="navbar-link" 
+           routerLinkActive="active"
+           (click)="closeMobileMenu()">{{'navbar.services' | translate}}</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/hakkimizda" class="navbar-link" routerLinkActive="active">{{'navbar.about' | translate}}</a>
+        <a routerLink="/hakkimizda" 
+           class="navbar-link" 
+           routerLinkActive="active"
+           (click)="closeMobileMenu()">{{'navbar.about' | translate}}</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/canli-takip" class="navbar-link" routerLinkActive="active">{{'navbar.liveTracking' | translate}}</a>
+        <a routerLink="/canli-takip" 
+           class="navbar-link" 
+           routerLinkActive="active"
+           (click)="closeMobileMenu()">{{'navbar.liveTracking' | translate}}</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/iletisim" class="navbar-link" routerLinkActive="active">{{'navbar.contact' | translate}}</a>
+        <a routerLink="/iletisim" 
+           class="navbar-link" 
+           routerLinkActive="active"
+           (click)="closeMobileMenu()">{{'navbar.contact' | translate}}</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/truckstore" class="navbar-link" routerLinkActive="active">{{'navbar.truckStore' | translate}}</a>
+        <a routerLink="/truckstore" 
+           class="navbar-link" 
+           routerLinkActive="active"
+           (click)="closeMobileMenu()">{{'navbar.truckStore' | translate}}</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/truckstore-lounge" class="navbar-link" routerLinkActive="active">{{'navbar.truckStoreLounge' | translate}}</a>
+        <a routerLink="/truckstore-lounge" 
+           class="navbar-link" 
+           routerLinkActive="active"
+           (click)="closeMobileMenu()">{{'navbar.truckStoreLounge' | translate}}</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/video-galeri" class="navbar-link" routerLinkActive="active">{{'navbar.videoGallery' | translate}}</a>
+        <a routerLink="/video-galeri" 
+           class="navbar-link" 
+           routerLinkActive="active"
+           (click)="closeMobileMenu()">{{'navbar.videoGallery' | translate}}</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/uye-ol" class="navbar-link" routerLinkActive="active">Üye Ol</a>
+        <a routerLink="/uye-ol" 
+           class="navbar-link" 
+           routerLinkActive="active"
+           (click)="closeMobileMenu()">Üye Ol</a>
       </li>
       
       <!-- Admin Dashboard Link (Only for admins) -->
       <li class="navbar-item" *ngIf="isAdmin">
-        <a routerLink="/admin/dashboard" class="navbar-link admin-link" routerLinkActive="active">
+        <a routerLink="/admin/dashboard" 
+           class="navbar-link admin-link" 
+           routerLinkActive="active"
+           (click)="closeMobileMenu()">
           🛠️ Admin Dashboard
         </a>
       </li>
@@ -59,12 +96,18 @@
       
       <!-- Authentication Section -->
       <li class="navbar-item" *ngIf="!isAuthenticated">
-        <a routerLink="/giris" class="navbar-link login-btn" routerLinkActive="active">{{'navbar.login' | translate}}</a>
+        <a routerLink="/giris" 
+           class="navbar-link login-btn" 
+           routerLinkActive="active"
+           (click)="closeMobileMenu()">{{'navbar.login' | translate}}</a>
       </li>
       
-      <!-- Admin Dashboard Link -->
-      <li class="navbar-item" *ngIf="isAdmin">
-        <a routerLink="/admin/dashboard" class="navbar-link admin-link" routerLinkActive="active">🛠️ Admin Dashboard</a>
+      <!-- User Section -->
+      <li class="navbar-item" *ngIf="isAuthenticated">
+        <div class="user-section">
+          <span class="user-welcome">Hoş geldin, {{currentUser?.name || 'Kullanıcı'}}!</span>
+          <button class="logout-btn" (click)="logout(); closeMobileMenu()">Çıkış</button>
+        </div>
       </li>
     </ul>
   </div>

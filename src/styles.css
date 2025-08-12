@@ -6,8 +6,13 @@
 /* Global Font Import */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/* ===============================
+   GLOBAL RESPONSIVE FOUNDATION
+   =============================== */
+
 html {
   scroll-behavior: smooth;
+  font-size: 16px; /* Base font size */
 }
 
 body {
@@ -17,8 +22,213 @@ body {
   color: var(--text-primary);
   line-height: 1.5;
   transition: background-color var(--transition-base), color var(--transition-base);
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* ===============================
+   RESPONSIVE UTILITIES
+   =============================== */
+
+/* Container Classes */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.container-fluid {
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* Responsive Text Classes */
+.text-responsive {
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+}
+
+.heading-responsive {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+}
+
+.subheading-responsive {
+  font-size: clamp(1.125rem, 3vw, 1.5rem);
+}
+
+/* Responsive Spacing */
+.spacing-responsive {
+  margin: clamp(1rem, 3vw, 2rem) 0;
+}
+
+.padding-responsive {
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+/* Hide/Show Classes for Different Devices */
+.hidden-mobile {
+  display: block;
+}
+
+.hidden-tablet {
+  display: block;
+}
+
+.hidden-desktop {
+  display: none;
+}
+
+.show-mobile {
+  display: none;
+}
+
+.show-tablet {
+  display: none;
+}
+
+.show-desktop {
+  display: block;
+}
+
+/* ===============================
+   RESPONSIVE BREAKPOINTS
+   =============================== */
+
+/* Mobile First Approach */
+@media (max-width: 575px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+  
+  .container-fluid {
+    padding: 0 15px;
+  }
+  
+  .hidden-mobile {
+    display: none !important;
+  }
+  
+  .show-mobile {
+    display: block !important;
+  }
+}
+
+/* Small devices (landscape phones) */
+@media (min-width: 576px) and (max-width: 767px) {
+  html {
+    font-size: 15px;
+  }
+  
+  .container {
+    padding: 0 18px;
+  }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .hidden-tablet {
+    display: none !important;
+  }
+  
+  .show-tablet {
+    display: block !important;
+  }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 992px) {
+  .hidden-desktop {
+    display: none !important;
+  }
+  
+  .show-desktop {
+    display: block !important;
+  }
+}
+
+/* Extra large devices */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/* ===============================
+   RESPONSIVE GRID SYSTEM
+   =============================== */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.col {
+  flex: 1;
+  padding: 0 15px;
+}
+
+/* Responsive columns */
+@media (max-width: 767px) {
+  .col-mobile-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .col-mobile-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .col-tablet-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .col-tablet-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  
+  .col-tablet-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-desktop-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .col-desktop-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  
+  .col-desktop-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+  
+  .col-desktop-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
 }

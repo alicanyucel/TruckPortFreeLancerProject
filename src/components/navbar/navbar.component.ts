@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService, User } from '../../services/auth.service';
 
@@ -8,6 +8,7 @@ import { AuthService, User } from '../../services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  isMobileMenuOpen = false;
 
   constructor(
     private authService: AuthService,
@@ -40,5 +41,38 @@ export class NavbarComponent {
         behavior: 'smooth' 
       });
     });
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu(): void {
+    this.isMobileMenuOpen = false;
+  }
+
+  // Dışarı tıklandığında menüyü kapat
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    const target = event.target as HTMLElement;
+    const navbar = target.closest('.navbar');
+    if (!navbar) {
+      this.closeMobileMenu();
+    }
+  }
+
+  // Resize olduğunda büyük ekranlarda menüyü kapat
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    const target = event.target as Window;
+    if (target.innerWidth >= 768) {
+      this.closeMobileMenu();
+    }
+  }
+
+  // ESC tuşuna basıldığında menüyü kapat
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscapeKey(event: KeyboardEvent): void {
+    this.closeMobileMenu();
   }
 }

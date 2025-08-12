@@ -1,9 +1,56 @@
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-content">
+      <!-- Footer Navigation Links -->
+      <nav class="footer-nav">
+        <ul class="footer-links">
+          <li><a routerLink="/" class="footer-link">{{'navbar.home' | translate}}</a></li>
+          <li><a routerLink="/hizmetler" class="footer-link">{{'navbar.services' | translate}}</a></li>
+          <li><a routerLink="/hakkimizda" class="footer-link">{{'navbar.about' | translate}}</a></li>
+          <li><a routerLink="/iletisim" class="footer-link">{{'navbar.contact' | translate}}</a></li>
+          <li><a routerLink="/truckstore" class="footer-link">{{'navbar.truckStore' | translate}}</a></li>
+          <li><a routerLink="/video-galeri" class="footer-link">{{'navbar.videoGallery' | translate}}</a></li>
+        </ul>
+      </nav>
+
+      <!-- Social Media Links -->
+      <div class="social-links">
+        <a href="https://facebook.com/truckport" 
+           class="social-link facebook" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Facebook">📘</a>
+        <a href="https://twitter.com/truckport" 
+           class="social-link twitter" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Twitter">🐦</a>
+        <a href="https://linkedin.com/company/truckport" 
+           class="social-link linkedin" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="LinkedIn">💼</a>
+        <a href="https://instagram.com/truckport" 
+           class="social-link instagram" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Instagram">📷</a>
+      </div>
+    </div>
+
+    <!-- Footer Divider -->
+    <div class="footer-divider"></div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
       <p class="copyright">
-        © {{ currentYear }} {{'footer.copyright' | translate}}
+        © {{ currentYear }} TruckPort. {{'footer.copyright' | translate}}
       </p>
+      
+      <a routerLink="/" class="footer-logo">
+        <img src="assets/truck.png" alt="TruckPort Logo">
+        TruckPort
+      </a>
     </div>
   </div>
 </footer>

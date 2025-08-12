@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 export interface User {
   id: string;
   email: string;
+  name?: string;
   role: 'admin' | 'driver' | 'user';
   isAuthenticated: boolean;
 }
