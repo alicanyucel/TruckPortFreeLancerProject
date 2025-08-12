@@ -77,27 +77,12 @@
            (click)="closeMobileMenu()">Üye Ol</a>
       </li>
       
-      <li class="navbar-item lang-switcher-item">
-        <app-language-switcher></app-language-switcher>
-      </li>
-      <li class="navbar-item theme-switcher-item">
-        <app-theme-switcher></app-theme-switcher>
-      </li>
-      
       <!-- Authentication Section -->
       <li class="navbar-item" *ngIf="!isAuthenticated">
         <a routerLink="/giris" 
            class="navbar-link login-btn" 
            routerLinkActive="active"
            (click)="closeMobileMenu()">{{'navbar.login' | translate}}</a>
-      </li>
-      
-      <!-- User Section -->
-      <li class="navbar-item" *ngIf="isAuthenticated">
-        <div class="user-section">
-          <span class="user-welcome">Hoş geldin, {{currentUser?.name || 'Kullanıcı'}}!</span>
-          <button class="logout-btn" (click)="logout(); closeMobileMenu()">Çıkış</button>
-        </div>
       </li>
     </ul>
   </div>
