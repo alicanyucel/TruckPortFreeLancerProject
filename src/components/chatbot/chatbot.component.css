@@ -2,8 +2,10 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 10000; /* Increased z-index to ensure visibility */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: block !important; /* Force display */
+  visibility: visible !important; /* Force visibility */
 }
 
 /* Chat Toggle Button */
@@ -331,10 +333,32 @@
    CHATBOT RESPONSIVE DESIGN
    =============================== */
 
+/* General Mobile Styles - All mobile devices */
+@media (max-width: 768px) {
+  .chatbot-container {
+    position: fixed !important;
+    display: block !important;
+    visibility: visible !important;
+    z-index: 99999 !important;
+    bottom: 80px !important;
+    right: 15px !important;
+    left: auto !important;
+    background: red !important; /* Debug: Red background to see if visible */
+  }
+  
+  .chat-toggle {
+    background: linear-gradient(135deg, #ff0000, #ff6600) !important; /* Debug: Bright red-orange */
+    width: 60px !important;
+    height: 60px !important;
+    display: flex !important;
+    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.7) !important; /* Red shadow */
+  }
+}
+
 /* iPhone Specific Optimizations */
 @media (max-width: 414px) {
   .chatbot-container {
-    bottom: 15px;
+    bottom: 80px; /* Moved higher from 15px to 80px */
     right: 15px;
     left: auto; /* Fixed: Keep right positioning instead of left */
     z-index: 9999 !important; /* Force high z-index for mobile */
@@ -345,7 +369,7 @@
     width: calc(100vw - 30px);
     height: calc(100vh - 150px);
     max-height: 600px;
-    bottom: 70px;
+    bottom: 140px; /* Adjusted to match new chatbot position */
     right: 0;
     left: 0;
     position: fixed;
@@ -406,7 +430,7 @@
 /* Small phones (iPhone SE, etc.) */
 @media (max-width: 375px) {
   .chatbot-container {
-    bottom: 10px;
+    bottom: 80px; /* Moved higher from 10px to 80px */
     right: 10px;
     left: auto; /* Fixed: Keep right positioning */
     z-index: 9999 !important; /* Force high z-index for mobile */
@@ -417,7 +441,7 @@
     width: calc(100vw - 20px);
     height: calc(100vh - 120px);
     max-height: 550px;
-    bottom: 60px;
+    bottom: 140px; /* Adjusted to match new chatbot position */
   }
   
   .chat-toggle {

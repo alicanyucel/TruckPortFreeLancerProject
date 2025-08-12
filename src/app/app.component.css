@@ -184,6 +184,27 @@
   }
 }
 
+/* Ensure chatbot is visible on mobile */
+@media (max-width: 768px) {
+  .app-container {
+    overflow: visible !important; /* Allow chatbot to be visible outside container */
+    position: relative !important;
+  }
+  
+  .content {
+    overflow: visible !important; /* Allow chatbot to be visible outside content area */
+    position: relative !important;
+  }
+  
+  /* Force chatbot visibility on mobile */
+  app-chatbot {
+    display: block !important;
+    position: fixed !important;
+    z-index: 99999 !important;
+    pointer-events: auto !important;
+  }
+}
+
 @media (max-width: 480px) {
   .welcome-banner {
     padding: var(--space-3) var(--space-4);
@@ -193,14 +214,5 @@
   .login-btn {
     padding: var(--space-2) var(--space-3);
     font-size: var(--font-size-xs);
-  }
-  
-  /* Ensure chatbot is visible on mobile */
-  .app-container {
-    overflow: visible !important; /* Allow chatbot to be visible outside container */
-  }
-  
-  .content {
-    overflow: visible !important; /* Allow chatbot to be visible outside content area */
   }
 }
