@@ -2,6 +2,14 @@
    MODERN TRUCKSTORE DESIGN
    =============================== */
 
+/* Global Body Styling */
+:host {
+  display: block;
+  width: 100%;
+  background: #ffffff;
+  min-height: 100vh;
+}
+
 /* Container */
 .truckstore-container {
   min-height: 100vh;
@@ -10,27 +18,18 @@
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
 }
 
 /* Header Section */
 .truckstore-header {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: #ffffff;
   color: #1e293b;
   padding: 3rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.truckstore-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="truck" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><text x="10" y="15" text-anchor="middle" font-size="12" opacity="0.05">🚛</text></pattern></defs><rect width="100" height="100" fill="url(%23truck)"/></svg>');
+  border-bottom: none;
 }
 
 .header-content {
@@ -45,31 +44,29 @@
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   margin: 0 0 1rem 0;
-  background: linear-gradient(45deg, #1e293b, #475569);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #1e293b;
   letter-spacing: -2px;
 }
 
 .header-subtitle {
   font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-  color: #64748b;
+  color: #374151;
   margin: 0;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 /* Search Section */
 .search-section {
   padding: 2rem 0;
-  background: #f8fafc;
-  border-bottom: 1px solid #e2e8f0;
+  background: #ffffff;
+  border-bottom: none;
 }
 
 .search-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  background: #ffffff;
 }
 
 .search-bar {
@@ -81,7 +78,7 @@
 .main-search {
   flex: 1;
   padding: 1rem 1.5rem;
-  border: 2px solid #e2e8f0;
+  border: 1px solid #e5e7eb;
   border-radius: 12px;
   font-size: 1.1rem;
   transition: all 0.3s ease;
@@ -90,7 +87,7 @@
 
 .main-search:focus {
   outline: none;
-  border-color: #3b82f6;
+  border-color: #c9d6eb;
   background: #ffffff;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
@@ -120,20 +117,20 @@
 
 .filter-chip {
   padding: 0.75rem 1.5rem;
-  border: 2px solid #e2e8f0;
-  background: white;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 500;
-  color: #64748b;
+  color: #374151;
 }
 
 .filter-chip:hover,
 .filter-chip.active {
-  background: #3b82f6;
-  border-color: #3b82f6;
-  color: white;
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  color: #1e293b;
   transform: translateY(-1px);
 }
 
@@ -145,7 +142,7 @@
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 2rem;
-  background: #fefefe;
+  background: #ffffff;
 }
 
 /* Filters Sidebar */
@@ -156,11 +153,11 @@
 }
 
 .filter-card {
-  background: #fdfdfd;
+  background: #ffffff;
   border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-  border: 1px solid #f1f5f9;
+  box-shadow: none;
+  border: none;
 }
 
 .filter-title {
@@ -189,7 +186,7 @@
 .filter-input {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 2px solid #e5e7eb;
+  border: 1px solid #d1d5db;
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s ease;
@@ -215,7 +212,7 @@
 .year-input {
   flex: 1;
   padding: 0.75rem 1rem;
-  border: 2px solid #e5e7eb;
+  border: 1px solid #d1d5db;
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s ease;
@@ -260,19 +257,20 @@
 }
 
 .btn-secondary {
-  background: #f1f5f9;
+  background: #ffffff;
   color: #475569;
-  border: 2px solid #e2e8f0;
+  border: 1px solid #d1d5db;
 }
 
 .btn-secondary:hover {
-  background: #e2e8f0;
+  background: #f8fafc;
   border-color: #cbd5e1;
 }
 
 /* Vehicles Section */
 .vehicles-section {
   min-height: 600px;
+  background: #ffffff;
 }
 
 .section-header {
@@ -281,7 +279,8 @@
   align-items: center;
   margin-bottom: 2rem;
   padding: 1.5rem 0;
-  border-bottom: 2px solid #e2e8f0;
+  border-bottom: none;
+  background: #ffffff;
 }
 
 .section-title {
@@ -301,7 +300,7 @@
 }
 
 .results-count {
-  color: #6b7280;
+  color: #4b5563;
   font-weight: 500;
   font-size: 1rem;
 }
@@ -314,8 +313,8 @@
 .view-btn {
   width: 40px;
   height: 40px;
-  border: 2px solid #e5e7eb;
-  background: white;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
   border-radius: 8px;
   cursor: pointer;
   display: flex;
@@ -338,22 +337,23 @@
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
+  background: #ffffff;
 }
 
 .vehicle-card {
   background: #ffffff;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-  border: 1px solid #f1f5f9;
+  box-shadow: none;
+  border: none;
   transition: all 0.3s ease;
   position: relative;
 }
 
 .vehicle-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border-color: #e2e8f0;
+  box-shadow: none;
+  border-color: transparent;
 }
 
 .card-image {
@@ -391,6 +391,7 @@
 
 .card-content {
   padding: 1.5rem;
+  background: #ffffff;
 }
 
 .vehicle-title {
@@ -420,7 +421,7 @@
 }
 
 .spec-label {
-  color: #6b7280;
+  color: #4b5563;
   font-weight: 500;
 }
 
@@ -434,7 +435,8 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 1rem;
-  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+  border-top: none;
 }
 
 .price-section {
@@ -451,7 +453,7 @@
 
 .price-label {
   font-size: 0.8rem;
-  color: #6b7280;
+  color: #4b5563;
   font-weight: 500;
 }
 
@@ -468,6 +470,7 @@
   align-items: center;
   gap: 1rem;
   padding: 2rem 0;
+  background: #ffffff;
 }
 
 .page-numbers {
@@ -477,8 +480,8 @@
 
 .page-btn {
   padding: 0.75rem 1rem;
-  border: 2px solid #e5e7eb;
-  background: white;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 500;
@@ -1554,32 +1557,16 @@
   }
 }
 
-/* Dark mode support (if theme switcher is active) */
-@media (prefers-color-scheme: dark) {
-  .ts-search-page {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  }
-  
-  .ts-filters,
-  .ts-vehicle-card {
-    background: #334155;
-    color: #f1f5f9;
-  }
-  
-  .ts-breadcrumb {
-    background: #475569;
-    color: #f1f5f9;
-  }
-}
-
 /* Original responsive styles maintained */
 @media (max-width: 768px) {
   .truckstore-container {
     padding: 15px;
+    background: #ffffff;
   }
   
   .truckstore-header {
     padding: 30px 15px;
+    background: #ffffff;
   }
   
   .truckstore-header h1 {
@@ -1597,6 +1584,14 @@
 }
 
 @media (max-width: 480px) {
+  .truckstore-container {
+    background: #ffffff;
+  }
+  
+  .truckstore-header {
+    background: #ffffff;
+  }
+  
   .truckstore-header h1 {
     font-size: 1.8rem;
   }
