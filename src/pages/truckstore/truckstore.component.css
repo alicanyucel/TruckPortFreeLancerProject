@@ -1,53 +1,181 @@
 /* =============================================================================
-   TRUCKSTORE (TIR MAĞAZASI) - MODERN SATIŞ SAYFASI TASARIMI
+   TRUCKSTORE (TIR MAĞAZASI) - MODERN RESPONSIVE SATIŞ SAYFASI
    ============================================================================= */
 
 .ts-search-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
   font-family: 'Segoe UI', 'Arial', sans-serif;
+  overflow-x: hidden;
+  padding-bottom: env(safe-area-inset-bottom, 20px); /* iPhone safe area */
+}
+
+/* Layout container for desktop */
+.ts-page-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Advertisement sections */
+.ts-advertisement-left {
+  width: 160px;
+  min-width: 120px;
+  margin-right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ts-advertisement-right {
+  width: 160px;
+  min-width: 120px;
+  margin-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Advertisement items */
+.ts-ad-item {
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 12px;
+  text-align: center;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ts-ad-item span {
+  font-size: 1.1rem;
+  color: #888;
+}
+
+/* Filter buttons */
+.ts-filter-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* Price and year inputs */
+.ts-price-input,
+.ts-year-input {
+  width: 70px;
+  display: inline-block;
+}
+
+.ts-price-input:last-child,
+.ts-year-input:last-child {
+  margin-left: 8px;
+}
+
+/* Detail button */
+.ts-detail-btn {
+  margin-top: 8px;
+}
+
+/* Pagination */
+.ts-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  gap: 8px;
+}
+
+.ts-pagination button {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  color: #333;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.ts-pagination button.active,
+.ts-pagination button:hover:not(:disabled) {
+  background: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.ts-pagination button:disabled {
+  background: #f1f1f1;
+  color: #aaa;
+  border-color: #eee;
+  cursor: not-allowed;
 }
 
 .ts-header {
   background: #1e293b;
   color: #fff;
-  padding: 1.5rem 0 1rem 0;
+  padding: clamp(1rem, 3vw, 1.5rem) 0 clamp(0.75rem, 2vw, 1rem) 0;
   box-shadow: 0 2px 8px 0 rgb(30 41 59 / 8%);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
+
 .ts-header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 clamp(1rem, 3vw, 1.5rem);
+  width: 100%;
 }
+
 .ts-logo img {
-  height: 40px;
+  height: clamp(32px, 6vw, 40px);
+  width: auto;
 }
+
 .ts-nav {
   display: flex;
-  gap: 2rem;
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: center;
 }
+
 .ts-nav a {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
-  font-size: 1.1rem;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.25rem;
-  transition: background 0.2s;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  padding: clamp(0.375rem, 1.5vw, 0.5rem) clamp(0.5rem, 2vw, 0.75rem);
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-.ts-nav a.active, .ts-nav a:hover {
+
+.ts-nav a.active, 
+.ts-nav a:hover {
   background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
 }
+
 .ts-lang-switcher select {
   background: #fff;
   color: #1e293b;
   border: none;
-  border-radius: 0.25rem;
-  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  padding: clamp(0.25rem, 1vw, 0.375rem) clamp(0.5rem, 2vw, 0.75rem);
   font-weight: 600;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .ts-breadcrumb {
@@ -88,6 +216,7 @@
   max-width: 1200px;
   margin: 0 auto 3rem auto;
   padding: 0 1.5rem;
+  flex: 1 1 0%;
 }
 .ts-filters {
   flex: 0 0 260px;
@@ -269,9 +398,20 @@
 }
 
 @media (max-width: 900px) {
+  /* Remove side layout on tablets too */
+  .ts-page-container {
+    display: block;
+  }
+  
+  .ts-advertisement-left,
+  .ts-advertisement-right {
+    display: none;
+  }
+  
   .ts-main-content {
     flex-direction: column;
     gap: 2rem;
+    margin: 0 auto 2rem auto;
   }
   .ts-filters {
     width: 100%;
@@ -400,7 +540,401 @@
   background: linear-gradient(135deg, #2ecc71, #27ae60);
 }
 
-/* Responsive */
+/* ===============================
+   TRUCKSTORE RESPONSIVE DESIGN FOR IPHONE
+   =============================== */
+
+/* iPhone Specific Optimizations */
+@media (max-width: 414px) {
+  .ts-search-page {
+    padding-bottom: max(env(safe-area-inset-bottom), 30px);
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for iPhone */
+  }
+  
+  /* Remove side layout on mobile */
+  .ts-page-container {
+    display: block;
+  }
+  
+  .ts-advertisement-left,
+  .ts-advertisement-right {
+    display: none; /* Hide all ads on mobile */
+  }
+  
+  .ts-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0.75rem 0 0.5rem 0;
+  }
+  
+  .ts-header-container {
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .ts-nav {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .ts-nav a {
+    font-size: 0.875rem;
+    padding: 0.375rem 0.625rem;
+    min-height: 44px; /* Touch target minimum */
+    display: flex;
+    align-items: center;
+  }
+  
+  .ts-breadcrumb {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    margin: 0 1rem 1rem 1rem;
+  }
+  
+  .ts-banner {
+    flex-direction: column;
+    margin: 0 1rem 1.5rem 1rem;
+    padding: 1.25rem 1rem;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .ts-banner img {
+    height: 60px;
+    width: auto;
+  }
+  
+  .ts-banner-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .ts-main-content {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .ts-filters {
+    flex: none;
+    width: 100%;
+    padding: 1.5rem 1rem;
+    margin-bottom: 0;
+    order: 2;
+  }
+  
+  .ts-filters h3 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+  
+  .ts-filter-group {
+    margin-bottom: 1rem;
+  }
+  
+  .ts-filter-group input,
+  .ts-filter-group select {
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    min-height: 44px;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  .ts-vehicle-list {
+    order: 1;
+  }
+  
+  .ts-vehicle-list h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .ts-vehicle-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .ts-vehicle-card {
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+  }
+  
+  .ts-vehicle-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+  
+  .ts-vehicle-info h3 {
+    font-size: 1.125rem;
+  }
+  
+  .ts-vehicle-specs {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .ts-vehicle-price {
+    font-size: 1.25rem;
+  }
+  
+  .ts-btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    min-height: 44px;
+    border-radius: 0.5rem;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .ts-btn-primary:active {
+    transform: scale(0.98);
+  }
+  
+  /* External link section for iPhone */
+  .external-link-section {
+    padding: 2rem 1rem;
+    margin: 2rem 1rem;
+  }
+  
+  .external-link-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .external-link-section p {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .external-link-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 1.125rem;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .external-link-btn:active {
+    transform: scale(0.98);
+  }
+}
+
+/* iPhone SE and smaller screens */
+@media (max-width: 375px) {
+  .ts-header-container {
+    padding: 0 0.75rem;
+  }
+  
+  .ts-nav a {
+    font-size: 0.8125rem;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .ts-breadcrumb {
+    margin: 0 0.75rem 1rem 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .ts-banner {
+    margin: 0 0.75rem 1.25rem 0.75rem;
+    padding: 1rem 0.75rem;
+  }
+  
+  .ts-main-content {
+    padding: 0 0.75rem;
+  }
+  
+  .ts-filters {
+    padding: 1.25rem 0.75rem;
+  }
+  
+  .ts-vehicle-list h2 {
+    font-size: 1.375rem;
+  }
+  
+  .ts-vehicle-grid {
+    gap: 1rem;
+  }
+  
+  .ts-vehicle-card {
+    padding: 1rem;
+  }
+  
+  .external-link-section {
+    padding: 1.5rem 0.75rem;
+    margin: 1.5rem 0.75rem;
+  }
+  
+  .external-link-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .external-link-section p {
+    font-size: 1rem;
+  }
+  
+  .external-link-btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+}
+
+/* iPad Portrait */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .ts-main-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .ts-filters {
+    flex: none;
+    width: 100%;
+    order: 2;
+  }
+  
+  .ts-vehicle-list {
+    order: 1;
+  }
+  
+  .ts-vehicle-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Landscape orientation for small screens */
+@media (orientation: landscape) and (max-height: 500px) {
+  .ts-header {
+    padding: 0.5rem 0 0.25rem 0;
+  }
+  
+  .ts-banner {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .ts-main-content {
+    margin-bottom: 1rem;
+  }
+  
+  .ts-filters {
+    position: sticky;
+    top: 80px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .ts-search-page {
+    min-height: -webkit-fill-available;
+  }
+  
+  .ts-filter-group input,
+  .ts-filter-group select {
+    /* Prevent zoom on iOS */
+    font-size: 16px;
+    transform: translateZ(0);
+  }
+  
+  .ts-btn {
+    /* Better touch interaction */
+    cursor: pointer;
+    -webkit-touch-callout: none;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .ts-nav a:hover,
+  .ts-btn-primary:hover,
+  .external-link-btn:hover {
+    transform: none;
+  }
+  
+  .ts-nav a:active {
+    background: #1d4ed8;
+    transform: scale(0.98);
+  }
+  
+  .ts-btn-primary:active {
+    background: #1d4ed8;
+    transform: scale(0.98);
+  }
+  
+  .external-link-btn:active {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    transform: scale(0.98);
+  }
+  
+  .ts-vehicle-card {
+    transition: transform 0.2s ease;
+  }
+  
+  .ts-vehicle-card:active {
+    transform: scale(0.99);
+  }
+}
+
+/* High DPI displays (Retina) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .ts-vehicle-card {
+    box-shadow: 0 0.5px 1.5px 0 rgb(0 0 0 / 0.05);
+  }
+  
+  .ts-filters {
+    box-shadow: 0 0.5px 1.5px 0 rgb(0 0 0 / 0.05);
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .ts-nav a,
+  .ts-btn,
+  .external-link-btn,
+  .ts-vehicle-card {
+    transition: none;
+  }
+}
+
+/* Dark mode support (if theme switcher is active) */
+@media (prefers-color-scheme: dark) {
+  .ts-search-page {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  }
+  
+  .ts-filters,
+  .ts-vehicle-card {
+    background: #334155;
+    color: #f1f5f9;
+  }
+  
+  .ts-breadcrumb {
+    background: #475569;
+    color: #f1f5f9;
+  }
+}
+
+/* Original responsive styles maintained */
 @media (max-width: 768px) {
   .truckstore-container {
     padding: 15px;

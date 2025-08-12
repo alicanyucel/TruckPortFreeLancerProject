@@ -1,6 +1,6 @@
-<div class="ts-search-page" style="display: flex; justify-content: space-between; align-items: flex-start;">
+<div class="ts-search-page ts-page-container">
   <!-- Sol Reklam Alanları -->
-  <aside class="ts-advertisement ts-advertisement-left" style="width: 160px; min-width: 120px; margin-right: 16px; display: flex; flex-direction: column; gap: 8px;">
+  <aside class="ts-advertisement ts-advertisement-left">
     <div style="background: #f8f9fa; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 12px; text-align: center; min-height: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><span style="font-size: 1.1rem; color: #888;">Reklam Alanı</span></div>
     <div style="background: #f8f9fa; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 12px; text-align: center; min-height: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><span style="font-size: 1.1rem; color: #888;">Reklam Alanı</span></div>
     <div style="background: #f8f9fa; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 12px; text-align: center; min-height: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><span style="font-size: 1.1rem; color: #888;">Reklam Alanı</span></div>
@@ -18,7 +18,7 @@
     <div style="background: #f8f9fa; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 12px; text-align: center; min-height: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><span style="font-size: 1.1rem; color: #888;">Reklam Alanı</span></div>
     <div style="background: #f8f9fa; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 12px; text-align: center; min-height: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><span style="font-size: 1.1rem; color: #888;">Reklam Alanı</span></div>
   </aside>
-  <div class="ts-main-content" style="flex: 1 1 0;">
+  <div class="ts-main-content">
     <!-- Filtreler -->
     <aside class="ts-filters">
       <h3>Filtrele</h3>
@@ -49,7 +49,7 @@
         <label>Kilometre</label>
         <input type="number" [(ngModel)]="filterKmMax" (ngModelChange)="filtrele()" placeholder="Max km" />
       </div>
-      <div style="display: flex; gap: 8px;">
+      <div class="ts-filter-buttons">
         <button class="ts-btn ts-btn-primary" (click)="filtrele()">Filtrele</button>
         <button class="ts-btn ts-btn-secondary" (click)="temizleFiltre()">Temizle</button>
       </div>
@@ -69,7 +69,7 @@
               <li><strong>Km:</strong> {{truck.km | number}} km</li>
             </ul>
             <div class="ts-vehicle-price">{{truck.price | currency:'TRY':'symbol':'1.0-0'}}</div>
-            <button class="ts-btn ts-btn-primary" style="margin-top:8px;" (click)="openModal(truck)">Detay</button>
+            <button class="ts-btn ts-btn-primary ts-detail-btn" (click)="openModal(truck)">Detay</button>
           </div>
         </div>
 
@@ -81,38 +81,28 @@
         <button *ngFor="let page of [].constructor(totalPages); let i = index" (click)="goToPage(i + 1)" [class.active]="currentPage === (i + 1)">{{i + 1}}</button>
         <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Sonraki</button>
       </div>
-      <style>
-        .ts-pagination {
-          display: flex;
-          justify-content: center;
-          margin-top: 24px;
-          gap: 8px;
-        }
-        .ts-pagination button {
-          background: #fff;
-          border: 1px solid #d1d5db;
-          color: #333;
-          padding: 6px 16px;
-          border-radius: 6px;
-          font-size: 1rem;
-          cursor: pointer;
-          transition: background 0.2s, color 0.2s, border 0.2s;
-        }
-        .ts-pagination button.active,
-        .ts-pagination button:hover:not(:disabled) {
-          background: #007bff;
-          color: #fff;
-          border-color: #007bff;
-        }
-        .ts-pagination button:disabled {
-          background: #f1f1f1;
-          color: #aaa;
-          border-color: #eee;
-          cursor: not-allowed;
-        }
-      </style>
     </section>
   </div>
+  <!-- Sağ Reklam Alanları -->
+  <aside class="ts-advertisement ts-advertisement-right">
+    <div class="ts-ad-item"><span>Reklam Alanı</span></div>
+    <div class="ts-ad-item"><span>Reklam Alanı</span></div>
+    <div class="ts-ad-item"><span>Reklam Alanı</span></div>
+    <div class="ts-ad-item"><span>Reklam Alanı</span></div>
+    <div class="ts-ad-item"><span>Reklam Alanı</span></div>
+    <div class="ts-ad-item"><span>Reklam Alanı</span></div>
+    <div class="ts-ad-item"><span>Reklam Alanı</span></div>
+    <div class="ts-ad-item"><span>Reklam Alanı</span></div>
+    <div class="ts-ad-item"><span>Reklam Alanı</span></div>
+    <div class="ts-ad-item"><span>Reklam Alanı</span></div>
+    <div class="ts-ad-item"><span>Reklam Alanı</span></div>
+    <div class="ts-ad-item"><span>Reklam Alanı</span></div>
+    <div class="ts-ad-item"><span>Reklam Alanı</span></div>
+    <div class="ts-ad-item"><span>Reklam Alanı</span></div>
+    <div class="ts-ad-item"><span>Reklam Alanı</span></div>
+  </aside>
+</div>
+    <section>
   <!-- Sağ Reklam Alanları -->
   <aside class="ts-advertisement ts-advertisement-right" style="width: 160px; min-width: 120px; margin-left: 16px; display: flex; flex-direction: column; gap: 8px;">
     <div style="background: #f8f9fa; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 12px; text-align: center; min-height: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><span style="font-size: 1.1rem; color: #888;">Reklam Alanı</span></div>
@@ -150,4 +140,3 @@
     <div style="background: #f8f9fa; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 12px; text-align: center; min-height: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><span style="font-size: 1.1rem; color: #888;">Reklam Alanı</span></div>
     <div style="background: #f8f9fa; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 12px; text-align: center; min-height: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center;"><span style="font-size: 1.1rem; color: #888;">Reklam Alanı</span></div>
   </aside>
-</div>

@@ -13,6 +13,9 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px; /* Base font size */
+  height: 100%;
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for iPhone */
 }
 
 body {
@@ -23,10 +26,40 @@ body {
   line-height: 1.5;
   transition: background-color var(--transition-base), color var(--transition-base);
   overflow-x: hidden; /* Prevent horizontal scroll */
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height */
+  position: relative;
+  -webkit-text-size-adjust: 100%; /* Prevent text zoom on iPhone */
+  -webkit-tap-highlight-color: transparent; /* Remove iOS tap highlight */
+  -webkit-touch-callout: none; /* Disable iOS callout */
+}
+
+/* iPhone specific fixes */
+@supports (-webkit-touch-callout: none) {
+  html {
+    height: -webkit-fill-available;
+  }
+  
+  body {
+    min-height: -webkit-fill-available;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 * {
   box-sizing: border-box;
+}
+
+*:focus {
+  outline: 2px solid #3498db;
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /* ===============================

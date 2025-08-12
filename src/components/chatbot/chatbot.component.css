@@ -19,6 +19,8 @@
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
   position: relative;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .chat-toggle:hover {
@@ -33,6 +35,7 @@
 .chat-icon, .close-icon {
   font-size: 24px;
   color: white;
+  pointer-events: none;
 }
 
 .notification-badge {
@@ -67,6 +70,8 @@
   visibility: hidden;
   transform: translateY(20px) scale(0.9);
   transition: all 0.3s ease;
+  max-height: calc(100vh - 120px);
+  overflow: hidden;
 }
 
 .chat-window.open {
@@ -322,25 +327,227 @@
   background: #a8a8a8;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
+/* ===============================
+   CHATBOT RESPONSIVE DESIGN
+   =============================== */
+
+/* iPhone Specific Optimizations */
+@media (max-width: 414px) {
+  .chatbot-container {
+    bottom: 15px;
+    right: 15px;
+    left: 15px;
+  }
+  
+  .chat-window {
+    width: calc(100vw - 30px);
+    height: calc(100vh - 150px);
+    max-height: 600px;
+    bottom: 70px;
+    right: 0;
+    left: 0;
+    position: fixed;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -5px 25px rgba(0,0,0,0.3);
+  }
+  
+  .chat-toggle {
+    width: 56px;
+    height: 56px;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  .chat-icon, .close-icon {
+    font-size: 22px;
+  }
+  
+  .chat-header {
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  .chat-messages {
+    padding: 15px;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .chat-input-container {
+    padding: 15px 20px 20px;
+    background: white;
+    border-radius: 0 0 20px 20px;
+  }
+  
+  .chat-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 12px 15px;
+    border-radius: 12px;
+  }
+  
+  .send-button {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* iPhone Plus/Max sizes */
+@media (max-width: 428px) {
+  .chat-window {
+    height: calc(100vh - 140px);
+    max-height: 650px;
+  }
+}
+
+/* Small phones (iPhone SE, etc.) */
+@media (max-width: 375px) {
+  .chatbot-container {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+  }
+  
+  .chat-window {
+    width: calc(100vw - 20px);
+    height: calc(100vh - 120px);
+    max-height: 550px;
+    bottom: 60px;
+  }
+  
+  .chat-toggle {
+    width: 52px;
+    height: 52px;
+  }
+  
+  .chat-header {
+    padding: 15px;
+  }
+  
+  .chat-messages {
+    padding: 12px;
+  }
+  
+  .chat-input-container {
+    padding: 12px 15px 15px;
+  }
+}
+
+/* iPad and Tablet responsive */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .chatbot-container {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .chat-window {
+    width: 380px;
+    height: 550px;
+    bottom: 80px;
+  }
+  
+  .chat-toggle {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+/* Desktop responsive */
+@media (min-width: 1025px) {
+  .chat-window {
+    width: 400px;
+    height: 600px;
+  }
+  
+  .chat-toggle {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Landscape orientation for mobile */
+@media (orientation: landscape) and (max-height: 500px) {
+  .chat-window {
+    height: calc(100vh - 80px);
+    max-height: 400px;
+    width: min(350px, calc(100vw - 30px));
+  }
+  
   .chatbot-container {
     bottom: 10px;
     right: 10px;
   }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .chat-toggle {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
   
+  .chat-toggle:hover {
+    transform: none;
+  }
+  
+  .chat-toggle:active {
+    transform: scale(0.95);
+  }
+  
+  .send-button:hover {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+  }
+  
+  .send-button:active {
+    transform: scale(0.95);
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
   .chat-window {
-    width: 300px;
-    height: 450px;
-    bottom: 70px;
+    /* Fix for iOS Safari viewport units */
+    height: calc(100vh - 150px);
+    height: calc(100dvh - 150px); /* Dynamic viewport height */
+  }
+  
+  .chat-input {
+    /* Prevent zoom on iOS */
+    font-size: 16px;
+    transform: translateZ(0);
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  .chat-messages {
+    /* Smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .chat-toggle,
+  .chat-window {
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .chat-window {
+    border: 2px solid #000;
   }
   
   .chat-toggle {
-    width: 50px;
-    height: 50px;
+    border: 2px solid #fff;
   }
+}
+  
+  .chat-toggle {
+    border: 2px solid #fff;
+  }
+
   
   .chat-icon, .close-icon {
     font-size: 20px;
   }
-}
