@@ -1,0 +1,183 @@
+<!-- Modern TruckStore Layout -->
+<div class="truckstore-container">
+  
+  <!-- Header Section -->
+  <header class="truckstore-header">
+    <div class="header-content">
+      <h1 class="header-title">🚛 TruckStore</h1>
+      <p class="header-subtitle">Türkiye'nin En Büyük Kamyon ve Nakliye Araçları Pazarı</p>
+    </div>
+  </header>
+
+  <!-- Search & Filter Section -->
+  <section class="search-section">
+    <div class="search-container">
+      <div class="search-bar">
+        <input type="text" placeholder="Hangi aracı arıyorsunuz? (Marka, model, yıl...)" class="main-search">
+        <button class="search-btn">🔍</button>
+      </div>
+      
+      <div class="quick-filters">
+        <button class="filter-chip active">Tümü</button>
+        <button class="filter-chip">Çekici</button>
+        <button class="filter-chip">Kamyon</button>
+        <button class="filter-chip">Römork</button>
+        <button class="filter-chip">Yarı Römork</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    
+    <!-- Sidebar Filters -->
+    <aside class="filters-sidebar">
+      <div class="filter-card">
+        <h3 class="filter-title">🔧 Filtreler</h3>
+        
+        <div class="filter-group">
+          <label class="filter-label">Marka</label>
+          <select [(ngModel)]="filterBrand" (ngModelChange)="filtrele()" class="filter-select">
+            <option value="">Tüm Markalar</option>
+            <option value="Mercedes-Benz">Mercedes-Benz</option>
+            <option value="MAN">MAN</option>
+            <option value="Volvo">Volvo</option>
+            <option value="Scania">Scania</option>
+            <option value="DAF">DAF</option>
+            <option value="Iveco">Iveco</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label">Model</label>
+          <input type="text" [(ngModel)]="filterModel" (ngModelChange)="filtrele()" 
+                 placeholder="Model ara..." class="filter-input">
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label">Fiyat Aralığı</label>
+          <div class="price-range">
+            <input type="text" [(ngModel)]="filterPriceMin" (ngModelChange)="filtrele()" 
+                   placeholder="Min ₺" class="price-input">
+            <span class="price-separator">-</span>
+            <input type="text" [(ngModel)]="filterPriceMax" (ngModelChange)="filtrele()" 
+                   placeholder="Max ₺" class="price-input">
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label">Model Yılı</label>
+          <div class="year-range">
+            <input type="text" [(ngModel)]="filterYearMin" (ngModelChange)="filtrele()" 
+                   placeholder="Min" class="year-input">
+            <span class="year-separator">-</span>
+            <input type="text" [(ngModel)]="filterYearMax" (ngModelChange)="filtrele()" 
+                   placeholder="Max" class="year-input">
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label">Kilometre</label>
+          <input type="number" [(ngModel)]="filterKmMax" (ngModelChange)="filtrele()" 
+                 placeholder="Maksimum km" class="filter-input">
+        </div>
+
+        <div class="filter-actions">
+          <button class="btn btn-primary" (click)="filtrele()">🔍 Filtrele</button>
+          <button class="btn btn-secondary" (click)="temizleFiltre()">🗑️ Temizle</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Vehicle List -->
+    <section class="vehicles-section">
+      <div class="section-header">
+        <h2 class="section-title">🚚 Satılık Araçlar</h2>
+        <div class="results-info">
+          <span class="results-count">{{pagedTrucks?.length || 0}} araç bulundu</span>
+          <div class="view-options">
+            <button class="view-btn grid-view active">⊞</button>
+            <button class="view-btn list-view">☰</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vehicle Grid -->
+      <div class="vehicles-grid">
+        <div class="vehicle-card" *ngFor="let truck of pagedTrucks">
+          <div class="card-image">
+            <img [src]="truck.image" [alt]="truck.title" class="vehicle-img">
+            <div class="image-overlay">
+              <span class="featured-badge" *ngIf="truck.featured">⭐ Öne Çıkan</span>
+            </div>
+          </div>
+          
+          <div class="card-content">
+            <h3 class="vehicle-title">{{truck.title}}</h3>
+            
+            <div class="vehicle-specs">
+              <div class="spec-item">
+                <span class="spec-icon">🏭</span>
+                <span class="spec-label">Marka:</span>
+                <span class="spec-value">{{truck.brand}}</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-icon">🚛</span>
+                <span class="spec-label">Model:</span>
+                <span class="spec-value">{{truck.model}}</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-icon">📅</span>
+                <span class="spec-label">Yıl:</span>
+                <span class="spec-value">{{truck.year}}</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-icon">📏</span>
+                <span class="spec-label">Km:</span>
+                <span class="spec-value">{{truck.km | number}} km</span>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="price-section">
+                <span class="price">{{truck.price | currency:'TRY':'symbol':'1.0-0'}}</span>
+                <span class="price-label">Satış Fiyatı</span>
+              </div>
+              <button class="btn btn-primary detail-btn" (click)="openModal(truck)">
+                📋 Detay Gör
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-section" *ngIf="totalPages > 1">
+        <button class="page-btn prev-btn" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
+          ← Önceki
+        </button>
+        
+        <div class="page-numbers">
+          <button *ngFor="let page of [].constructor(totalPages); let i = index" 
+                  class="page-btn" 
+                  [class.active]="currentPage === (i + 1)"
+                  (click)="goToPage(i + 1)">
+            {{i + 1}}
+          </button>
+        </div>
+        
+        <button class="page-btn next-btn" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">
+          Sonraki →
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <app-truckstore-modal *ngIf="showModal" 
+                        [truck]="selectedTruck" 
+                        [user]="selectedTruck?.user" 
+                        (close)="showModal=false;selectedTruck=null">
+  </app-truckstore-modal>
+
+</div>
