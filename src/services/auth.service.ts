@@ -6,7 +6,7 @@ export interface User {
   id: string;
   email: string;
   name?: string;
-  role: 'admin' | 'driver' | 'user';
+  role: 'driver' | 'user';
   isAuthenticated: boolean;
 }
 
@@ -28,11 +28,21 @@ export class AuthService {
     // Simulate API call
     return new Observable(observer => {
       setTimeout(() => {
-        if (email === 'admin@truckport.com' && password === 'admin123') {
+        if (email === 'user@truckport.com' && password === 'user123') {
           const user: User = {
             id: '1',
             email: email,
-            role: 'admin',
+            role: 'user',
+            isAuthenticated: true
+          };
+          this.currentUser = user;
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          observer.next(user);
+        } else if (email === 'driver@truckport.com' && password === 'driver123') {
+          const user: User = {
+            id: '2',
+            email: email,
+            role: 'driver',
             isAuthenticated: true
           };
           this.currentUser = user;
@@ -57,10 +67,6 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return this.currentUser?.isAuthenticated || false;
-  }
-
-  isAdmin(): boolean {
-    return this.currentUser?.role === 'admin';
   }
 
   hasRole(role: string): boolean {
@@ -97,26 +103,6 @@ export class AuthGuard implements CanActivate {
     this.router.navigate(['/giris'], { 
       queryParams: { returnUrl: state.url } 
     });
-    return false;
-  }
-}
-
-@Injectable({
-  providedIn: 'root'
-})
-export class AdminGuard implements CanActivate {
-
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
-
-  canActivate(): boolean {
-    if (this.authService.isAuthenticated() && this.authService.hasRole('admin')) {
-      return true;
-    }
-    
-    this.router.navigate(['/']);
     return false;
   }
 }

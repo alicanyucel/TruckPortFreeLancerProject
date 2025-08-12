@@ -43,7 +43,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { GrafanaIntegrationService } from '../services/grafana-integration.service';
 import { AIMLIntegrationService } from '../services/aiml-integration.service';
 import { EventSourcingService } from '../services/event-sourcing.service';
-import { AdminDashboardComponent } from '../pages/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -67,8 +66,7 @@ import { AdminDashboardComponent } from '../pages/admin-dashboard/admin-dashboar
     SafeHtmlPipe,
     TruckstoreModalComponent,
     UyeOlComponent,
-    PerformanceIndicatorComponent,
-    AdminDashboardComponent
+    PerformanceIndicatorComponent
   ],
   imports: [
     BrowserModule,

@@ -336,7 +336,9 @@
   .chatbot-container {
     bottom: 15px;
     right: 15px;
-    left: 15px;
+    left: auto; /* Fixed: Keep right positioning instead of left */
+    z-index: 9999 !important; /* Force high z-index for mobile */
+    display: block !important; /* Ensure visibility */
   }
   
   .chat-window {
@@ -356,6 +358,8 @@
     height: 56px;
     position: relative;
     margin: 0 auto;
+    background: linear-gradient(135deg, #e74c3c, #f39c12) !important; /* Bright colors for visibility test */
+    box-shadow: 0 4px 20px rgba(231, 76, 60, 0.5) !important; /* Red shadow for visibility */
   }
   
   .chat-icon, .close-icon {
@@ -404,7 +408,9 @@
   .chatbot-container {
     bottom: 10px;
     right: 10px;
-    left: 10px;
+    left: auto; /* Fixed: Keep right positioning */
+    z-index: 9999 !important; /* Force high z-index for mobile */
+    display: block !important; /* Ensure visibility */
   }
   
   .chat-window {

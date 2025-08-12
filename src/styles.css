@@ -136,6 +136,12 @@ body {
     font-size: 14px;
   }
   
+  body {
+    overflow-x: hidden; /* Keep horizontal overflow hidden */
+    overflow-y: auto; /* Allow vertical scrolling */
+    position: relative; /* Ensure positioned elements work properly */
+  }
+  
   .container {
     padding: 0 15px;
   }

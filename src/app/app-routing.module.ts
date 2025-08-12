@@ -9,9 +9,8 @@ import { TruckStoreComponent } from '../pages/truckstore/truckstore.component';
 import { TruckStoreLoungeComponent } from '../pages/truckstore-lounge/truckstore-lounge.component';
 import { VideoGalleryComponent } from '../pages/video-gallery/video-gallery.component';
 import { LiveMapComponent } from '../components/live-map/live-map.component';
-import { AuthGuard, AdminGuard } from '../services/auth.service';
+import { AuthGuard } from '../services/auth.service';
 import { UyeOlComponent } from '../pages/uye-ol/uye-ol.component';
-import { AdminDashboardComponent } from '../pages/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,14 +39,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: 'uye-ol', component: UyeOlComponent },
-  {
-    path: 'admin',
-    canActivate: [AdminGuard],
-    children: [
-      { path: '', redirectTo: '/admin/dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: AdminDashboardComponent }
-    ]
-  },
+  // Admin dashboard kaldırıldı
   { path: '**', redirectTo: '' }
 ];
 

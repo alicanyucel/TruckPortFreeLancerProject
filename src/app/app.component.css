@@ -194,4 +194,13 @@
     padding: var(--space-2) var(--space-3);
     font-size: var(--font-size-xs);
   }
+  
+  /* Ensure chatbot is visible on mobile */
+  .app-container {
+    overflow: visible !important; /* Allow chatbot to be visible outside container */
+  }
+  
+  .content {
+    overflow: visible !important; /* Allow chatbot to be visible outside content area */
+  }
 }

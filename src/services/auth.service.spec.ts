@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-import { AuthService, AuthGuard, AdminGuard } from './auth.service';
+import { AuthService, AuthGuard } from './auth.service';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -22,10 +22,10 @@ describe('AuthService', () => {
   });
 
   it('should login with correct credentials', (done) => {
-    service.login('admin@truckport.com', 'admin123').subscribe(
+    service.login('user@truckport.com', 'user123').subscribe(
       user => {
-        expect(user.email).toBe('admin@truckport.com');
-        expect(user.role).toBe('admin');
+        expect(user.email).toBe('user@truckport.com');
+        expect(user.role).toBe('user');
         expect(user.isAuthenticated).toBe(true);
         expect(service.isAuthenticated()).toBe(true);
         done();
@@ -48,7 +48,7 @@ describe('AuthService', () => {
 
   it('should logout and clear user data', () => {
     // First login
-    service.login('admin@truckport.com', 'admin123').subscribe(() => {
+    service.login('user@truckport.com', 'user123').subscribe(() => {
       expect(service.isAuthenticated()).toBe(true);
       
       // Then logout
@@ -60,10 +60,9 @@ describe('AuthService', () => {
   });
 
   it('should check user role correctly', (done) => {
-    service.login('admin@truckport.com', 'admin123').subscribe(() => {
-      expect(service.hasRole('admin')).toBe(true);
+    service.login('user@truckport.com', 'user123').subscribe(() => {
+      expect(service.hasRole('user')).toBe(true);
       expect(service.hasRole('driver')).toBe(false);
-      expect(service.hasRole('user')).toBe(false);
       done();
     });
   });
@@ -72,7 +71,7 @@ describe('AuthService', () => {
     const testUser = {
       id: '1',
       email: 'test@truckport.com',
-      role: 'admin' as const,
+      role: 'user' as const,
       isAuthenticated: true
     };
     
@@ -140,13 +139,13 @@ describe('AuthGuard', () => {
     authService.isAuthenticated.and.returnValue(true);
     authService.hasRole.and.returnValue(false);
     
-    const route = { data: { role: 'admin' } } as unknown as ActivatedRouteSnapshot;
-    const state = { url: '/admin' } as RouterStateSnapshot;
+    const route = { data: { role: 'user' } } as unknown as ActivatedRouteSnapshot;
+    const state = { url: '/profile' } as RouterStateSnapshot;
 
     const result = guard.canActivate(route, state);
     
     expect(result).toBe(false);
-    expect(authService.hasRole).toHaveBeenCalledWith('admin');
+    expect(authService.hasRole).toHaveBeenCalledWith('user');
     expect(router.navigate).toHaveBeenCalledWith(['/']);
   });
 
@@ -154,69 +153,12 @@ describe('AuthGuard', () => {
     authService.isAuthenticated.and.returnValue(true);
     authService.hasRole.and.returnValue(true);
     
-    const route = { data: { role: 'admin' } } as unknown as ActivatedRouteSnapshot;
-    const state = { url: '/admin' } as RouterStateSnapshot;
+    const route = { data: { role: 'user' } } as unknown as ActivatedRouteSnapshot;
+    const state = { url: '/profile' } as RouterStateSnapshot;
 
     const result = guard.canActivate(route, state);
     
     expect(result).toBe(true);
     expect(router.navigate).not.toHaveBeenCalled();
-  });
-});
-
-describe('AdminGuard', () => {
-  let guard: AdminGuard;
-  let authService: jasmine.SpyObj<AuthService>;
-  let router: jasmine.SpyObj<Router>;
-
-  beforeEach(() => {
-    const authSpy = jasmine.createSpyObj('AuthService', ['isAuthenticated', 'hasRole']);
-    const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
-
-    TestBed.configureTestingModule({
-      providers: [
-        AdminGuard,
-        { provide: AuthService, useValue: authSpy },
-        { provide: Router, useValue: routerSpy }
-      ]
-    });
-
-    guard = TestBed.inject(AdminGuard);
-    authService = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
-    router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
-  });
-
-  it('should be created', () => {
-    expect(guard).toBeTruthy();
-  });
-
-  it('should allow access for authenticated admin', () => {
-    authService.isAuthenticated.and.returnValue(true);
-    authService.hasRole.and.returnValue(true);
-
-    const result = guard.canActivate();
-    
-    expect(result).toBe(true);
-    expect(authService.hasRole).toHaveBeenCalledWith('admin');
-    expect(router.navigate).not.toHaveBeenCalled();
-  });
-
-  it('should deny access for non-admin user', () => {
-    authService.isAuthenticated.and.returnValue(true);
-    authService.hasRole.and.returnValue(false);
-
-    const result = guard.canActivate();
-    
-    expect(result).toBe(false);
-    expect(router.navigate).toHaveBeenCalledWith(['/']);
-  });
-
-  it('should deny access for unauthenticated user', () => {
-    authService.isAuthenticated.and.returnValue(false);
-
-    const result = guard.canActivate();
-    
-    expect(result).toBe(false);
-    expect(router.navigate).toHaveBeenCalledWith(['/']);
   });
 });

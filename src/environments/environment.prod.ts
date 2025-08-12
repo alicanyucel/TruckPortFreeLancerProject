@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://localhost:7054/',
-  grafanaUrl: 'http://localhost:3000',
-  prometheusUrl: 'http://localhost:9090',
+  apiUrl: 'https://api.truckport.com/',
+  grafanaUrl: 'https://monitoring.truckport.com',
+  prometheusUrl: 'https://metrics.truckport.com',
   features: {
     realTimeAnalytics: true,
     aiIntegration: true,
