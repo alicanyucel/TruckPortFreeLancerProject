@@ -27,14 +27,14 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { 
-    path: 'truckstore-lounge', 
+    path: 'truckport-lounge', 
     component: TruckStoreLoungeComponent,
     canActivate: [AuthGuard]
   },
   { path: 'video-galeri', component: VideoGalleryComponent },
   { path: 'giris', component: LoginComponent },
   { 
-    path: 'canli-takip', 
+    path: 'nakliye-talepleri', 
     component: LiveMapComponent,
     canActivate: [AuthGuard]
   },

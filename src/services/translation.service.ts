@@ -19,7 +19,9 @@ export class TranslationService {
     'navbar.about': { tr: 'Hakkımızda', en: 'About Us' },
     'navbar.contact': { tr: 'İletişim', en: 'Contact' },
     'navbar.liveTracking': { tr: 'Canlı Takip', en: 'Live Tracking' },
+    'navbar.transportRequests': { tr: 'Nakliye Talepleri', en: 'Transport Requests' },
     'navbar.truckStore': { tr: 'TruckStore', en: 'TruckStore' },
+    'navbar.truckPortLounge': { tr: 'TruckPort Lounge', en: 'TruckPort Lounge' },
     'navbar.videoGallery': { tr: 'Video Galeri', en: 'Video Gallery' },
     'navbar.login': { tr: 'Giriş Yap', en: 'Login' },
     'navbar.logout': { tr: 'Çıkış Yap', en: 'Logout' },
@@ -30,6 +32,7 @@ export class TranslationService {
     'home.welcomeSubtitle': { tr: 'Lojistik ve Nakliye Hizmetlerinde Güvenilir Çözüm Ortağınız', en: 'Your Reliable Solution Partner in Logistics and Transportation Services' },
     'home.contactButton': { tr: 'Hemen İletişime Geçin', en: 'Contact Us Now' },
     'home.liveTrackingButton': { tr: '🗺️ Canlı Araç Takibi', en: '🗺️ Live Vehicle Tracking' },
+    'home.hero.transportRequests': { tr: '📋 Nakliye Talepleri', en: '📋 Transport Requests' },
     'home.servicesTitle': { tr: 'Hizmetlerimiz', en: 'Our Services' },
     'home.truckTransport': { tr: 'Kamyon Taşımacılığı', en: 'Truck Transportation' },
     'home.truckTransportDesc': { tr: 'Güvenli ve hızlı kamyon nakliye hizmetleri', en: 'Safe and fast truck transportation services' },
@@ -113,9 +116,9 @@ export class TranslationService {
     'services.technology.digitalDocs': { tr: 'Dijital evrak yönetimi', en: 'Digital document management' },
     'services.technology.mobileApp': { tr: 'Mobil uygulama', en: 'Mobile application' },
 
-    // Live Map specific translations
-    'liveMap.title': { tr: 'Canlı Araç Takibi', en: 'Live Vehicle Tracking' },
-    'liveMap.subtitle': { tr: 'Filomuzun gerçek zamanlı konumunu takip edin', en: 'Track the real-time location of our fleet' },
+    // Transport Requests (formerly Live Map)
+    'liveMap.title': { tr: 'Nakliye Talepleri', en: 'Transport Requests' },
+    'liveMap.subtitle': { tr: 'Nakliye taleplerini görüntüleyin ve yönetin', en: 'View and manage transport requests' },
     'liveMap.statusIndicators': { tr: 'Durum Göstergeleri', en: 'Status Indicators' },
     'liveMap.status.active': { tr: 'Aktif', en: 'Active' },
     'liveMap.status.idle': { tr: 'Beklemede', en: 'Idle' },
@@ -352,9 +355,8 @@ export class TranslationService {
     'videoGallery.videos.sustainableLogistics.title': { tr: 'Sürdürülebilir Lojistik', en: 'Sustainable Logistics' },
     'videoGallery.videos.sustainableLogistics.description': { tr: 'Çevre dostu lojistik çözümleri ve yeşil taşımacılık', en: 'Eco-friendly logistics solutions and green transportation' },
 
-    // TruckStore Lounge
-    'navbar.truckStoreLounge': { tr: 'TruckStore Lounge', en: 'TruckStore Lounge' },
-    'lounge.hero.title': { tr: 'TruckStore Lounge', en: 'TruckStore Lounge' },
+    // TruckPort Lounge
+    'lounge.hero.title': { tr: 'TruckPort Lounge', en: 'TruckPort Lounge' },
     'lounge.hero.subtitle': { tr: 'Sürücülerimiz için konforlu dinlenme alanları ve premium hizmetler', en: 'Comfortable rest areas and premium services for our drivers' },
     'lounge.hero.hours': { tr: 'Saat Açık', en: 'Hours Open' },
     'lounge.hero.locations': { tr: 'Lokasyon', en: 'Locations' },
