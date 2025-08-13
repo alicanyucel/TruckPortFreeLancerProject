@@ -159,56 +159,75 @@
 }
 
 .footer-bottom {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(0.75rem, 1.5vw, 1rem);
-  width: 100%;
-  text-align: center;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin-top: 1rem;
+  visibility: visible !important;
 }
 
 .footer-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  color: #495057;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border-radius: 12px;
-  background-color: rgba(52, 58, 64, 0.05);
-  border: 1px solid rgba(52, 58, 64, 0.1);
-}
-
-.footer-logo:hover {
-  color: #3498db;
-  transform: scale(1.05);
-  background-color: rgba(52, 152, 219, 0.1);
-  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  visibility: visible !important;
 }
 
 .footer-logo img {
-  width: clamp(1.75rem, 4vw, 2.25rem);
-  height: clamp(1.75rem, 4vw, 2.25rem);
+  max-width: 40px;
+  height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  display: inline-block;
+}
+
+@media (max-width: 600px) {
+  .footer-logo img {
+    max-width: 28px;
+  }
 }
 
 .copyright {
-  margin: 0;
-  font-size: clamp(0.75rem, 1.8vw, 0.875rem);
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin-bottom: 0.5rem;
   color: #6c757d;
-  font-weight: 400;
-  line-height: 1.5;
-  max-width: 500px;
-  transition: color 0.3s ease;
-  text-align: center;
+  font-size: 0.95em;
+  visibility: visible !important;
 }
 
-.copyright:hover {
-  color: #495057;
+@media (max-width: 600px) {
+  .footer-bottom {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin-top: 1rem;
+    visibility: visible !important;
+  }
+  .copyright {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin-bottom: 0.5rem;
+    font-size: 0.95em;
+    visibility: visible !important;
+  }
+  .footer-logo {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    visibility: visible !important;
+  }
 }
