@@ -340,25 +340,24 @@
     display: block !important;
     visibility: visible !important;
     z-index: 99999 !important;
-    bottom: 120px !important; /* Moved higher from 80px to 120px */
+    bottom: 180px !important;
     right: 15px !important;
     left: auto !important;
-    background: red !important; /* Debug: Red background to see if visible */
   }
   
   .chat-toggle {
-    background: linear-gradient(135deg, #ff0000, #ff6600) !important; /* Debug: Bright red-orange */
+    background: linear-gradient(135deg, #667eea, #764ba2) !important; /* Restored original colors */
     width: 60px !important;
     height: 60px !important;
     display: flex !important;
-    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.7) !important; /* Red shadow */
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4) !important; /* Restored original shadow */
   }
 }
 
 /* iPhone Specific Optimizations */
 @media (max-width: 414px) {
   .chatbot-container {
-    bottom: 120px; /* Moved higher from 80px to 120px */
+    bottom: 180px; /* Moved much higher from 120px to 180px */
     right: 15px;
     left: auto; /* Fixed: Keep right positioning instead of left */
     z-index: 9999 !important; /* Force high z-index for mobile */
@@ -369,7 +368,7 @@
     width: calc(100vw - 30px);
     height: calc(100vh - 150px);
     max-height: 600px;
-    bottom: 180px; /* Adjusted to match new chatbot position - moved from 140px to 180px */
+    bottom: 240px; /* Adjusted to match new chatbot position - moved from 180px to 240px */
     right: 0;
     left: 0;
     position: fixed;
@@ -430,7 +429,7 @@
 /* Small phones (iPhone SE, etc.) */
 @media (max-width: 375px) {
   .chatbot-container {
-    bottom: 120px; /* Moved higher from 80px to 120px */
+    bottom: 180px; /* Moved much higher from 120px to 180px */
     right: 10px;
     left: auto; /* Fixed: Keep right positioning */
     z-index: 9999 !important; /* Force high z-index for mobile */
@@ -441,7 +440,7 @@
     width: calc(100vw - 20px);
     height: calc(100vh - 120px);
     max-height: 550px;
-    bottom: 180px; /* Adjusted to match new chatbot position - moved from 140px to 180px */
+    bottom: 240px; /* Adjusted to match new chatbot position - moved from 180px to 240px */
   }
   
   .chat-toggle {
