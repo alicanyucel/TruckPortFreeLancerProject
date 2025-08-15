@@ -69,9 +69,9 @@
 }
 .range-slider .slider-values {
   display: flex;
-  align-items: center;
+  align-items: center; /* vertically center numeric inputs with the track */
   gap: 6px;
-  margin-top: 6px;
+  margin-top: 0; /* remove extra spacing so inputs sit aligned with the track */
   justify-content: flex-end; /* align number inputs to the right inside panel */
   flex-wrap: nowrap; /* prevent values from wrapping into next column */
 }
@@ -119,6 +119,8 @@
   width: calc(100% - 16px);
   background: transparent;
   margin: 0;
+  top: 50%;
+  transform: translateY(-50%); /* ensure thumbs and active track line up vertically */
 }
 
 /* Numeric inputs sizing to avoid overflowing the panel */
