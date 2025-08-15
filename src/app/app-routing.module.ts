@@ -6,18 +6,18 @@ import { ContactComponent } from '../pages/contact/contact.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { ServicesComponent } from '../pages/services/services.component';
 import { TruckStoreComponent } from '../pages/truckstore/truckstore.component';
+import { TruckListComponent } from '../components/truck-list/truck-list.component';
 import { TruckStoreLoungeComponent } from '../pages/truckstore-lounge/truckstore-lounge.component';
 import { VideoGalleryComponent } from '../pages/video-gallery/video-gallery.component';
 import { LiveMapComponent } from '../components/live-map/live-map.component';
 import { AuthGuard } from '../services/auth.service';
+import { ProfileComponent } from '../pages/profile/profile.component';
 import { UyeOlComponent } from '../pages/uye-ol/uye-ol.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  {
-    path: 'profil',
-    loadChildren: () => import('../pages/profile/profile.module').then(m => m.ProfileModule)
-  },
+  { path: 'profile', redirectTo: 'profil' },
+  { path: 'profil', component: ProfileComponent },
   { path: 'hizmetler', component: ServicesComponent },
   { path: 'hakkimizda', component: AboutComponent },
   { path: 'iletisim', component: ContactComponent },
@@ -26,6 +26,7 @@ const routes: Routes = [
     component: TruckStoreComponent,
     canActivate: [AuthGuard]
   },
+  { path: 'trucks', component: TruckListComponent },
   { 
     path: 'truckport-lounge', 
     component: TruckStoreLoungeComponent,

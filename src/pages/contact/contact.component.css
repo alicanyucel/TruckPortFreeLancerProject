@@ -104,6 +104,11 @@
   min-height: 120px;
 }
 
+.field-error small {
+  color: #c0392b; /* red */
+  font-size: 0.9rem;
+}
+
 .submit-btn {
   background-color: #27ae60;
   color: white;

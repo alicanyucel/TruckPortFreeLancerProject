@@ -1,0 +1,161 @@
+.filter-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+/* Ensure panel respects its container and doesn't force overflow */
+.filter-panel { box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; }
+
+.btn-orange {
+  background: #ff7a00;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-gray {
+  background: #eee;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.search-box {
+  position: relative;
+}
+.search-box input {
+  width: 100%;
+  padding: 10px 40px 10px 12px; /* daha geniş sağ padding (ikon için) ve daha büyük üst/alt boşluk */
+  height: 42px; /* input yüksekliğini büyüt */
+  font-size: 16px; /* okunabilirliği artır */
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+.search-box .icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px; /* ikon boyutunu biraz büyüt */
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.range {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.range input {
+  width: 50%;
+}
+
+.range-slider .slider-row {
+  display: flex;
+  gap: 8px;
+}
+.range-slider .slider-row input[type="range"] {
+  width: 100%;
+}
+.range-slider .slider-values {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  justify-content: flex-end; /* align number inputs to the right inside panel */
+  flex-wrap: nowrap; /* prevent values from wrapping into next column */
+}
+.range-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1f6feb;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.range-slider input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1f6feb;
+  cursor: pointer;
+}
+
+/* Dual-range visual container */
+.dual-range {
+  position: relative;
+  height: 44px; /* increase height so track can sit centered and thumbs have room */
+  display: flex;
+  align-items: center;
+}
+.dual-range .track {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 6px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #e6e6e6 0%, #e6e6e6 100%);
+  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%); /* center the track vertically inside the dual-range */
+}
+.dual-range input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  width: calc(100% - 16px);
+  background: transparent;
+  margin: 0;
+}
+
+/* Numeric inputs sizing to avoid overflowing the panel */
+.slider-values input[type="number"] {
+  width: 84px;
+  max-width: 40%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+}
+
+/* Make sure the filter panel won't expand beyond its container due to wide inputs */
+.filter-group { min-width: 0; }
+
+@media (max-width: 480px) {
+  .slider-values input[type="number"] { width: 48%; max-width: 48%; }
+}
+.dual-range input[type="range"]::-webkit-slider-runnable-track { height: 6px; background: transparent; }
+.dual-range input[type="range"]::-moz-range-track { height: 6px; background: transparent; }
+.dual-range .thumb { z-index: 3; }
+.dual-range .thumb-min { z-index: 4; }
+.dual-range .thumb-max { z-index: 3; }
+
+/* Improve thumb hit area on touch devices */
+.dual-range input[type="range"]::-webkit-slider-thumb { width: 20px; height: 20px; }
+.dual-range input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; }
+
+/* Make the active/focused thumb appear above the other one */
+.dual-range input[type="range"]:focus,
+.dual-range input[type="range"]:active {
+  z-index: 6 !important;
+}
+
+/* Improve pointer affordance */
+.dual-range input[type="range"] { cursor: grab; }
+.dual-range input[type="range"]:active { cursor: grabbing; }
+
+@media (max-width: 600px) {
+  .dual-range .track { left: 6px; right: 6px; }
+  .dual-range input[type="range"] { left: 6px; right: 6px; width: calc(100% - 12px); }
+}

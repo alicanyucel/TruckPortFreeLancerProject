@@ -20,6 +20,7 @@ import { ChatbotComponent } from '../components/chatbot/chatbot.component';
 import { AdvertisementsComponent } from '../components/advertisements/advertisements.component';
 import { LanguageSwitcherComponent } from '../components/language-switcher/language-switcher.component';
 import { ThemeSwitcherComponent } from '../components/theme-switcher/theme-switcher.component';
+import { TruckListComponent } from '../components/truck-list/truck-list.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { AboutComponent } from '../pages/about/about.component';
 import { ContactComponent } from '../pages/contact/contact.component';
@@ -29,6 +30,7 @@ import { TruckStoreComponent } from '../pages/truckstore/truckstore.component';
 import { TruckstoreModalComponent } from '../pages/truckstore/truckstore-modal.component';
 import { TruckStoreLoungeComponent } from '../pages/truckstore-lounge/truckstore-lounge.component';
 import { VideoGalleryComponent } from '../pages/video-gallery/video-gallery.component';
+import { ProfileComponent } from '../pages/profile/profile.component';
 import { TranslatePipe } from '../pipes/translate.pipe';
 import { SafeHtmlPipe } from '../pipes/safe-html.pipe';
 
@@ -47,6 +49,7 @@ import { EventSourcingService } from '../services/event-sourcing.service';
 @NgModule({
   declarations: [
     AppComponent,
+  ProfileComponent,
     FooterComponent,
     NavbarComponent,
     LiveMapComponent,
@@ -64,7 +67,7 @@ import { EventSourcingService } from '../services/event-sourcing.service';
     VideoGalleryComponent,
     TranslatePipe,
     SafeHtmlPipe,
-    TruckstoreModalComponent,
+  TruckstoreModalComponent,
     UyeOlComponent,
     PerformanceIndicatorComponent
   ],
@@ -75,6 +78,7 @@ import { EventSourcingService } from '../services/event-sourcing.service';
     HttpClientModule,
     AppRoutingModule,
     CommonModule,
+    TruckListComponent,
     RouterModule
     ,
     StoreModule.forRoot({ user: userReducer, performance: performanceReducer }),

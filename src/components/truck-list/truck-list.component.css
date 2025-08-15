@@ -1,0 +1,142 @@
+/* Scoped truck list styles to avoid interfering with global layout */
+.truck-list-container {
+  padding: 30px 16px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.truck-list-container > .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.truck-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr; /* sol: filtreler (sabit), sağ: liste (esnek) */
+  gap: 20px;
+  align-items: start;
+}
+
+.left-column {
+  min-width: 0;
+}
+
+.right-column {
+  position: relative;
+}
+
+.filters-column {
+  position: sticky;
+  top: 18px;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  margin: 0 0 18px;
+  color: #2c3e50;
+}
+
+.truck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.truck-card {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+}
+
+.truck-image {
+  width: 100%;
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.truck-body {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1 1 auto;
+}
+
+.truck-title {
+  font-size: 1.05rem;
+  margin: 0;
+  color: #1f2d3d;
+}
+
+.truck-desc,
+.truck-details {
+  margin: 0;
+  color: #6b7a86;
+  font-size: 0.95rem;
+}
+
+.truck-meta {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-weight: 700;
+  color: #27ae60;
+  font-size: 1.05rem;
+}
+
+.btn-primary {
+  background: #1f6feb;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* no-op media queries removed to avoid empty rules */
+
+@media (max-width: 480px) {
+  .truck-image {
+    height: 140px;
+  }
+  .page-title { font-size: 1.25rem; }
+}
+
+@media (max-width: 900px) {
+  .truck-layout {
+    grid-template-columns: 1fr;
+  }
+  .filters-column { position: static; }
+}
+
+/* Hide native scrollbars in the Araç Listesi view while keeping scrolling functional */
+/* Works for WebKit (Chrome, Safari), Firefox and IE/Edge */
+.truck-list-container,
+.truck-list-container .container,
+.truck-grid {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.truck-list-container::-webkit-scrollbar,
+.truck-list-container .container::-webkit-scrollbar,
+.truck-grid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+  width: 0;
+  height: 0;
+}
+
+/* Ensure any internal scrolling still works (touch/pointer/mouse) */
+.truck-list-container { -webkit-overflow-scrolling: touch; }

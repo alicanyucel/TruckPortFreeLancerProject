@@ -40,39 +40,56 @@
         
         <div class="contact-form">
           <h2>{{'contact.form.title' | translate}}</h2>
-          <form (ngSubmit)="onSubmit()">
+          <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
             <div class="form-group">
               <label for="name">{{'contact.form.name' | translate}} *</label>
-              <input type="text" id="name" name="name" required>
+              <input type="text" id="name" name="name" required placeholder="Adınız (zorunlu)" [(ngModel)]="formModel.name" #nameCtrl="ngModel">
+              <div class="field-error" *ngIf="nameCtrl.invalid && (nameCtrl.dirty || nameCtrl.touched)">
+                <small *ngIf="nameCtrl.errors?.['required']">Lütfen adınızı girin.</small>
+              </div>
             </div>
-            
+
             <div class="form-group">
               <label for="email">{{'contact.form.email' | translate}} *</label>
-              <input type="email" id="email" name="email" required>
+              <input type="email" id="email" name="email" required placeholder="E-posta (zorunlu)" [(ngModel)]="formModel.email" #emailCtrl="ngModel">
+              <div class="field-error" *ngIf="emailCtrl.invalid && (emailCtrl.dirty || emailCtrl.touched)">
+                <small *ngIf="emailCtrl.errors?.['required']">Lütfen e-posta adresinizi girin.</small>
+                <small *ngIf="emailCtrl.errors?.['email']">Geçerli bir e-posta adresi girin.</small>
+              </div>
             </div>
-            
+
             <div class="form-group">
-              <label for="phone">{{'contact.form.phone' | translate}}</label>
-              <input type="tel" id="phone" name="phone">
+              <label for="phone">{{'contact.form.phone' | translate}} *</label>
+              <input type="tel" id="phone" name="phone" required pattern="^[0-9]{11}$" placeholder="5XXXXXXXXXX (11 hane)" [(ngModel)]="formModel.phone" #phoneCtrl="ngModel">
+              <div class="field-error" *ngIf="phoneCtrl.invalid && (phoneCtrl.dirty || phoneCtrl.touched)">
+                <small *ngIf="phoneCtrl.errors?.['required']">Lütfen telefon numaranızı girin.</small>
+                <small *ngIf="phoneCtrl.errors?.['pattern']">Telefon numarası 11 haneli olmalıdır.</small>
+              </div>
             </div>
-            
+
             <div class="form-group">
               <label for="subject">{{'contact.form.subject' | translate}} *</label>
-              <select id="subject" name="subject" required>
-                <option value="">{{'contact.form.selectSubject' | translate}}</option>
+              <select id="subject" name="subject" required [(ngModel)]="formModel.subject" #subjectCtrl="ngModel">
+                <option value="">{{'contact.form.selectSubject' | translate}} (zorunlu)</option>
                 <option value="general">{{'contact.form.subjects.general' | translate}}</option>
                 <option value="quote">{{'contact.form.subjects.quote' | translate}}</option>
                 <option value="support">{{'contact.form.subjects.support' | translate}}</option>
                 <option value="complaint">{{'contact.form.subjects.complaint' | translate}}</option>
               </select>
+              <div class="field-error" *ngIf="subjectCtrl.invalid && (subjectCtrl.dirty || subjectCtrl.touched)">
+                <small *ngIf="subjectCtrl.errors?.['required']">Lütfen konu seçin.</small>
+              </div>
             </div>
-            
+
             <div class="form-group">
               <label for="message">{{'contact.form.message' | translate}} *</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
+              <textarea id="message" name="message" rows="5" required [(ngModel)]="formModel.message" #messageCtrl="ngModel"></textarea>
+              <div class="field-error" *ngIf="messageCtrl.invalid && (messageCtrl.dirty || messageCtrl.touched)">
+                <small *ngIf="messageCtrl.errors?.['required']">Lütfen mesajınızı yazın.</small>
+              </div>
             </div>
-            
-            <button type="submit" class="submit-btn">{{'contact.form.submit' | translate}}</button>
+
+            <button type="submit" class="submit-btn" [disabled]="contactForm.invalid">{{'contact.form.submit' | translate}}</button>
           </form>
         </div>
       </div>

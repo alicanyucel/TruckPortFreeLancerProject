@@ -1,0 +1,135 @@
+<div class="filter-panel">
+  <!-- Üst butonlar -->
+  <button class="btn-orange"><span>Son arama</span></button>
+  <button class="btn-orange"><span>Abonelik son arama</span></button>
+
+  <!-- Arama kutusu -->
+  <div class="search-box">
+    <input type="text" placeholder="Arama" [(ngModel)]="searchText" (input)="emitFilters()" />
+    <span class="icon">🔍</span>
+  </div>
+
+  <!-- Seçim alanları -->
+  <div class="filter-group">
+    <label>Bulunan yer</label>
+    <button class="btn-gray">Rastgele</button>
+  </div>
+
+  <div class="filter-group">
+    <label>Kamyon Tipi</label>
+    <button class="btn-gray">Rastgele</button>
+  </div>
+
+  <div class="filter-group">
+    <label>Üst Yapı Grubu</label>
+    <button class="btn-gray">Rastgele</button>
+  </div>
+
+  <div class="filter-group">
+    <label>Marka</label>
+    <button class="btn-gray">Rastgele</button>
+  </div>
+
+  <!-- Yıl Slider -->
+  <div class="filter-group">
+    <label>İlk Tescil Tarihi</label>
+    <div class="range-slider">
+      <div class="dual-range">
+        <div class="track" [style.background]="getRangeBackground('year')"></div>
+        <input
+          class="thumb thumb-min"
+          type="range"
+          min="1990"
+          [max]="yearMax"
+          [(ngModel)]="yearMin"
+          (input)="onRangeInput('year','min',$any($event.target).value)"
+          aria-label="İlk tescil min"
+        />
+        <input
+          class="thumb thumb-max"
+          type="range"
+          [min]="yearMin"
+          max="2025"
+          [(ngModel)]="yearMax"
+          (input)="onRangeInput('year','max',$any($event.target).value)"
+          aria-label="İlk tescil max"
+        />
+      </div>
+      <div class="slider-values">
+  <input type="number" [(ngModel)]="yearMin" [max]="yearMax" (input)="onRangeInput('year','min',$any($event.target).value)" />
+        <span>-</span>
+  <input type="number" [(ngModel)]="yearMax" [min]="yearMin" (input)="onRangeInput('year','max',$any($event.target).value)" />
+      </div>
+    </div>
+  </div>
+
+  <!-- KM Slider -->
+  <div class="filter-group">
+    <label>Kilometre</label>
+    <div class="range-slider">
+      <div class="dual-range">
+        <div class="track" [style.background]="getRangeBackground('km')"></div>
+        <input
+          class="thumb thumb-min"
+          type="range"
+          min="0"
+          [max]="kmMax"
+          step="100"
+          [(ngModel)]="kmMin"
+          (input)="onRangeInput('km','min',$any($event.target).value)"
+          aria-label="Kilometre min"
+        />
+        <input
+          class="thumb thumb-max"
+          type="range"
+          [min]="kmMin"
+          max="1000000"
+          step="100"
+          [(ngModel)]="kmMax"
+          (input)="onRangeInput('km','max',$any($event.target).value)"
+          aria-label="Kilometre max"
+        />
+      </div>
+      <div class="slider-values">
+  <input type="number" [(ngModel)]="kmMin" [max]="kmMax" (input)="onRangeInput('km','min',$any($event.target).value)" />
+        <span>-</span>
+  <input type="number" [(ngModel)]="kmMax" [min]="kmMin" (input)="onRangeInput('km','max',$any($event.target).value)" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Fiyat Slider -->
+  <div class="filter-group">
+    <label>Fiyat (TRY)</label>
+    <div class="range-slider">
+      <div class="dual-range">
+        <div class="track" [style.background]="getRangeBackground('price')"></div>
+        <input
+          class="thumb thumb-min"
+          type="range"
+          min="0"
+          [max]="priceMax"
+          step="1000"
+          [(ngModel)]="priceMin"
+          (input)="onRangeInput('price','min',$any($event.target).value)"
+          aria-label="Fiyat min"
+        />
+        <input
+          class="thumb thumb-max"
+          type="range"
+          [min]="priceMin"
+          max="10000000"
+          step="1000"
+          [(ngModel)]="priceMax"
+          (input)="onRangeInput('price','max',$any($event.target).value)"
+          aria-label="Fiyat max"
+        />
+      </div>
+      <div class="slider-values">
+  <input type="number" [(ngModel)]="priceMin" [max]="priceMax" (input)="onRangeInput('price','min',$any($event.target).value)" />
+        <span>-</span>
+  <input type="number" [(ngModel)]="priceMax" [min]="priceMin" (input)="onRangeInput('price','max',$any($event.target).value)" />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="truck-list-container">
+  <div class="container">
+    <div class="truck-layout">
+      <div class="left-column">
+        <div id="filters" class="filters-column">
+          <app-filter-panel (filterChange)="applyFilters($event)"></app-filter-panel>
+        </div>
+      </div>
+
+      <aside class="right-column">
+        <h1 class="page-title">Araç Listesi</h1>
+
+        <div class="truck-grid">
+          <div class="truck-card" *ngFor="let t of (filteredTrucks.length ? filteredTrucks : trucks)">
+            <div class="truck-image" [style.backgroundImage]="'url(' + t.image + ')'" role="img" [attr.aria-label]="t.title"></div>
+            <div class="truck-body">
+              <h3 class="truck-title">{{ t.title }}</h3>
+              <p class="truck-desc">{{ t.description }}</p>
+              <p class="truck-details">{{ t.details }}</p>
+              <div class="truck-meta">
+                <div class="price">₺{{ t.price | number }}</div>
+                <button class="btn-primary">Detay</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
