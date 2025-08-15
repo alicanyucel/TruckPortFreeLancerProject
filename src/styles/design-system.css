@@ -281,6 +281,12 @@ body {
   font-size: var(--font-size-xs);
 }
 
+/* Icon helpers for buttons and inputs */
+.input-with-icon { position: relative; display: inline-block; width: 100%; }
+.input-with-icon .input-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--neutral-500); pointer-events: none; }
+.btn .fa, .btn i { margin-right: 8px; }
+.spec-icon i { margin-right: 6px; color: var(--neutral-600); }
+
 /* Cards */
 .card {
   background: white;
@@ -405,6 +411,27 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Theme classes applied to body (ThemeService toggles these) */
+.theme-light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --accent-color: var(--primary-500);
+  --accent-hover: var(--primary-600);
+}
+
+.theme-dark {
+  --bg-primary: #0b1220;
+  --bg-secondary: #071029;
+  --text-primary: #e6eef8;
+  --text-secondary: #9fb3d6;
+  --border-color: rgba(255,255,255,0.06);
+  --accent-color: #60a5fa;
+  --accent-hover: #3b82f6;
 }
 
 /* =============================================================================

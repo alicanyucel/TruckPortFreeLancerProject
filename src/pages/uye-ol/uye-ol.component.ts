@@ -10,26 +10,35 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
         <p class="uyeol-subtitle">TruckPort'a katıl, avantajlardan faydalan!</p>
       </div>
       <form class="uyeol-form">
-        <div class="uyeol-form-group">
+        <div class="uyeol-form-group input-with-icon">
           <label for="name">Ad Soyad</label>
-          <input type="text" id="name" name="name" required placeholder="Adınızı ve soyadınızı girin">
+          <div class="input-row">
+            <i class="fa fa-user input-icon" aria-hidden="true"></i>
+            <input type="text" id="name" name="name" required placeholder="Adınızı ve soyadınızı girin">
+          </div>
         </div>
-        <div class="uyeol-form-group">
+        <div class="uyeol-form-group input-with-icon">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" required placeholder="Email adresiniz">
+          <div class="input-row">
+            <i class="fa fa-envelope input-icon" aria-hidden="true"></i>
+            <input type="email" id="email" name="email" required placeholder="Email adresiniz">
+          </div>
         </div>
-        <div class="uyeol-form-group">
+        <div class="uyeol-form-group input-with-icon">
           <label for="password">Şifre</label>
-          <input type="password" id="password" name="password" required placeholder="Şifreniz">
+          <div class="input-row">
+            <i class="fa fa-lock input-icon" aria-hidden="true"></i>
+            <input type="password" id="password" name="password" required placeholder="Şifreniz">
+          </div>
         </div>
         <div class="uyeol-form-group privacy-group">
           <label class="privacy-checkbox-label">
             <input type="checkbox" [(ngModel)]="privacyAccepted" name="privacyAccepted" required>
             Gizlilik Sözleşmesini ve Yasal Hakları okudum, onaylıyorum.
           </label>
-          <button type="button" class="privacy-btn" (click)="openPrivacyModal()">Gizlilik Sözleşmesi ve Yasal Haklar</button>
+          <button type="button" class="privacy-btn" (click)="openPrivacyModal()"><i class="fa fa-file-contract" aria-hidden="true"></i> Gizlilik Sözleşmesi ve Yasal Haklar</button>
         </div>
-        <button type="submit" class="uyeol-btn" [disabled]="!privacyAccepted">Üye Ol</button>
+        <button type="submit" class="uyeol-btn" [disabled]="!privacyAccepted"><i class="fa fa-user-plus" aria-hidden="true"></i> Üye Ol</button>
       </form>
       <div class="uyeol-already-member">
         <span>Zaten üyeyseniz <a routerLink="/giris" class="uyeol-login-link">giriş yapın</a>.</span>
@@ -277,14 +286,21 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       width: 100%;
       position: relative;
     }
-    .close-btn {
-      background: #e53935;
-      color: #fff;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 16px;
+    /* input icon helpers */
+    .input-with-icon .input-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .input-with-icon .input-icon {
+      color: #64748b;
+      font-size: 1.15rem;
+      width: 28px;
+      text-align: center;
+    }
+    .input-with-icon input {
+      flex: 1;
+      padding-left: 6px;
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush

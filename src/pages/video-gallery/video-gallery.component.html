@@ -23,7 +23,7 @@
       (click)="selectVideo(video)">
       <div class="video-thumbnail">
         <img [src]="video.thumbnailUrl" [alt]="getVideoTitle(video.titleKey)">
-        <div class="play-button">▶</div>
+  <div class="play-button" aria-hidden="true"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
       </div>
       <div class="video-info">
         <h3>{{getVideoTitle(video.titleKey)}}</h3>
@@ -35,7 +35,7 @@
   <!-- Video Modal -->
   <div class="video-modal" *ngIf="selectedVideo" (click)="closeVideoModal()">
     <div class="modal-content" (click)="$event.stopPropagation()">
-      <button class="close-btn" (click)="closeVideoModal()">×</button>
+      <button class="close-btn" (click)="closeVideoModal()" aria-label="Close video"><i class="fa fa-times" aria-hidden="true"></i></button>
       <div class="video-container">
         <iframe 
           [src]="'https://www.youtube.com/embed/' + selectedVideo.youtubeId | safeHtml"
@@ -43,7 +43,7 @@
           allowfullscreen>
         </iframe>
       </div>
-      <div class="video-details">
+  <div class="video-details">
         <h2>{{getVideoTitle(selectedVideo.titleKey)}}</h2>
         <p>{{getVideoDescription(selectedVideo.descriptionKey)}}</p>
       </div>

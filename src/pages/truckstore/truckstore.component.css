@@ -437,11 +437,34 @@
   padding-top: 1rem;
   background: #ffffff;
   border-top: none;
+  position: relative; /* for centered divider */
 }
 
 .price-section {
   display: flex;
   flex-direction: column;
+}
+
+/* Center vertical divider between price-section and the action button */
+.card-footer::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: rgba(0,0,0,0.06);
+  transform: translateX(-0.5px);
+  pointer-events: none;
+}
+
+/* Make detail button vertically centered and keep consistent height */
+.detail-btn,
+.card-footer .btn {
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .price {

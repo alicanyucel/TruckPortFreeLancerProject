@@ -13,8 +13,10 @@
   <section class="search-section">
     <div class="search-container">
       <div class="search-bar">
-        <input type="text" placeholder="Hangi aracı arıyorsunuz? (Marka, model, yıl...)" class="main-search">
-        <button class="search-btn">🔍</button>
+        <div class="input-with-icon">
+          <input type="text" placeholder="Hangi aracı arıyorsunuz? (Marka, model, yıl...)" class="main-search">
+          <i class="fa fa-search input-icon" aria-hidden="true"></i>
+        </div>
       </div>
       
       <div class="quick-filters">
@@ -33,7 +35,7 @@
     <!-- Sidebar Filters -->
     <aside class="filters-sidebar">
       <div class="filter-card">
-        <h3 class="filter-title">🔧 Filtreler</h3>
+  <h3 class="filter-title"><i class="fa fa-filter" aria-hidden="true"></i> Filtreler</h3>
         
         <div class="filter-group">
           <label class="filter-label">Marka</label>
@@ -117,22 +119,22 @@
             
             <div class="vehicle-specs">
               <div class="spec-item">
-                <span class="spec-icon">🏭</span>
+                    <span class="spec-icon"><i class="fa fa-industry" aria-hidden="true"></i></span>
                 <span class="spec-label">Marka:</span>
                 <span class="spec-value">{{truck.brand}}</span>
               </div>
               <div class="spec-item">
-                <span class="spec-icon">🚛</span>
+                <span class="spec-icon"><i class="fa fa-truck" aria-hidden="true"></i></span>
                 <span class="spec-label">Model:</span>
                 <span class="spec-value">{{truck.model}}</span>
               </div>
               <div class="spec-item">
-                <span class="spec-icon">📅</span>
+                <span class="spec-icon"><i class="fa fa-calendar-alt" aria-hidden="true"></i></span>
                 <span class="spec-label">Yıl:</span>
                 <span class="spec-value">{{truck.year}}</span>
               </div>
               <div class="spec-item">
-                <span class="spec-icon">📏</span>
+                <span class="spec-icon"><i class="fa fa-tachometer-alt" aria-hidden="true"></i></span>
                 <span class="spec-label">Km:</span>
                 <span class="spec-value">{{truck.km | number}} km</span>
               </div>
@@ -144,7 +146,8 @@
                 <span class="price-label">Satış Fiyatı</span>
               </div>
               <button class="btn btn-primary detail-btn" (click)="openModal(truck)">
-                📋 Detay Gör
+                <i class="fa fa-clipboard-list" aria-hidden="true"></i>
+                <span>Detay Gör</span>
               </button>
             </div>
           </div>

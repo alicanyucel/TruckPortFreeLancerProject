@@ -9,6 +9,15 @@
         <span class="welcome-text">{{ getWelcomeMessage() }}</span>
       </div>
       <div class="welcome-actions">
+            <div class="ui-controls">
+              <div class="lang-switch">
+                <button (click)="setLanguage('tr')" [class.active]="currentLang === 'tr'">TR</button>
+                <button (click)="setLanguage('en')" [class.active]="currentLang === 'en'">EN</button>
+              </div>
+              <div class="theme-switch">
+                <button (click)="toggleTheme()">{{ currentTheme === 'dark' ? 'Light' : 'Dark' }}</button>
+              </div>
+            </div>
         <button 
           *ngIf="isAuthenticated" 
           class="logout-btn"

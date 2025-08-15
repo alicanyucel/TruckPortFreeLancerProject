@@ -21,10 +21,10 @@ import { SweetalertService } from '../../services/sweetalert.service';
           <p><span class="label">Para Birimi:</span> <span class="value">{{ profile.currency }}</span></p>
         </div>
         <div class="actions">
-          <button class="btn btn-secondary" (click)="triggerFileInput()">Fotoğraf Ekle</button>
-          <button class="btn btn-secondary" (click)="removePhoto()" *ngIf="profile.photoUrl">Fotoğrafı Kaldır</button>
-          <button class="btn btn-secondary" (click)="goBack($event)">Geri</button>
-          <button class="btn btn-danger" (click)="deleteAccount($event)">Hesabı Sil</button>
+          <button class="btn btn-secondary" (click)="triggerFileInput()"><i class="fa fa-camera" aria-hidden="true"></i> Fotoğraf Ekle</button>
+          <button class="btn btn-secondary" (click)="removePhoto()" *ngIf="profile.photoUrl"><i class="fa fa-trash" aria-hidden="true"></i> Fotoğrafı Kaldır</button>
+          <button class="btn btn-secondary" (click)="goBack($event)"><i class="fa fa-arrow-left" aria-hidden="true"></i> Geri</button>
+          <button class="btn btn-danger" (click)="deleteAccount($event)"><i class="fa fa-user-slash" aria-hidden="true"></i> Hesabı Sil</button>
         </div>
       </div>
     </div>

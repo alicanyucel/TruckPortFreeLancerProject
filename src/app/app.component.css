@@ -73,6 +73,33 @@
   gap: var(--space-3);
 }
 
+.ui-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.lang-switch button {
+  background: rgba(255,255,255,0.12);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.lang-switch button.active {
+  background: white;
+  color: var(--accent-color);
+  font-weight: 700;
+}
+.theme-switch button {
+  background: rgba(255,255,255,0.12);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .logout-btn,
 .login-btn {
   display: flex;

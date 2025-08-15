@@ -90,6 +90,7 @@
   justify-content: space-between;
   align-items: center; /* vertically center children */
   gap: 12px;
+  position: relative; /* needed for centered separator */
 }
 
 .price {
@@ -110,6 +111,19 @@
   justify-content: center;
   height: 36px; /* consistent control height so it aligns with the price */
   line-height: 1;
+}
+
+/* center vertical divider between price and action */
+.truck-meta::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: rgba(0,0,0,0.06);
+  transform: translateX(-0.5px);
+  pointer-events: none;
 }
 
 /* no-op media queries removed to avoid empty rules */

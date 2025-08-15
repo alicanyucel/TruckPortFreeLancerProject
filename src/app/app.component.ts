@@ -5,6 +5,7 @@ import { AppState } from '../store/app.state';
 import { selectUserName } from '../store/user/user.selectors';
 import { setUser } from '../store/user/user.actions';
 import { ThemeService } from '../services/theme.service';
+import { TranslationService } from '../services/translation.service';
 import { AuthService, User } from '../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -19,22 +20,41 @@ export class AppComponent implements OnInit {
   currentUser: User | null = null;
   isAuthenticated = false;
   showWelcomeMessage = true;
+  currentLang: string = 'tr';
+  currentTheme: string = 'light';
 
   constructor(
     private store: Store<AppState>,
-    private themeService: ThemeService,
-    private authService: AuthService,
-    public router: Router
+  private themeService: ThemeService,
+  private authService: AuthService,
+  private translationService: TranslationService,
+  public router: Router
   ) {
     this.userName$ = this.store.select(selectUserName);
     // Örnek: Kullanıcıyı store'a ekle
     this.store.dispatch(setUser({ name: 'Ali Can Yücel', email: 'ali@truckport.net' }));
+  // Load current language from translation service
+  this.currentLang = this.translationService.getCurrentLanguage();
+  // Subscribe to theme changes for UI
+  this.themeService.currentTheme$.subscribe(t => this.currentTheme = t);
   }
 
   ngOnInit(): void {
     // Theme service is automatically initialized in constructor
     // The theme is loaded from localStorage if available
     this.checkAuthStatus();
+  }
+
+  setLanguage(lang: 'tr' | 'en') {
+    this.translationService.setLanguage(lang);
+    this.currentLang = this.translationService.getCurrentLanguage();
+  }
+
+  toggleTheme() {
+    // toggle between light and dark only for simplicity
+    const next = this.currentTheme === 'dark' ? 'light' : 'dark';
+    this.themeService.setTheme(next as any);
+    this.currentTheme = next;
   }
 
   checkAuthStatus(): void {

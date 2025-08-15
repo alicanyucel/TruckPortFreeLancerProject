@@ -75,34 +75,35 @@ export class TruckStoreLoungeComponent implements OnInit, OnDestroy {
   }
 
   initializeFacilities() {
+    // use Font Awesome class names for icons so templates render <i> tags
     this.facilities = [
       {
-        iconKey: '☕',
+        iconKey: 'fa fa-coffee',
         titleKey: 'lounge.facility.restaurant.title',
         descriptionKey: 'lounge.facility.restaurant.description'
       },
       {
-        iconKey: '🛏️',
+        iconKey: 'fa fa-bed',
         titleKey: 'lounge.facility.rest.title',
         descriptionKey: 'lounge.facility.rest.description'
       },
       {
-        iconKey: '🚿',
+        iconKey: 'fa fa-shower',
         titleKey: 'lounge.facility.shower.title',
         descriptionKey: 'lounge.facility.shower.description'
       },
       {
-        iconKey: '📶',
+        iconKey: 'fa fa-wifi',
         titleKey: 'lounge.facility.wifi.title',
         descriptionKey: 'lounge.facility.wifi.description'
       },
       {
-        iconKey: '🚗',
+        iconKey: 'fa fa-car',
         titleKey: 'lounge.facility.parking.title',
         descriptionKey: 'lounge.facility.parking.description'
       },
       {
-        iconKey: '⛽',
+        iconKey: 'fa fa-gas-pump',
         titleKey: 'lounge.facility.fuel.title',
         descriptionKey: 'lounge.facility.fuel.description'
       }

@@ -9,6 +9,7 @@ import { AuthService, User } from '../../services/auth.service';
 })
 export class NavbarComponent {
   isMobileMenuOpen = false;
+  isProfileDropdownOpen = false;
 
   constructor(
     private authService: AuthService,
@@ -26,6 +27,22 @@ export class NavbarComponent {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  toggleProfileDropdown(event?: Event): void {
+    if (event) {
+      event.stopPropagation();
+    }
+    this.isProfileDropdownOpen = !this.isProfileDropdownOpen;
+  }
+
+  closeProfileDropdown(): void {
+    this.isProfileDropdownOpen = false;
+  }
+
+  get profileDisplayName(): string {
+    const user = this.currentUser;
+    return user ? (user.name || user.email || 'Profil') : 'Profil';
   }
 
   navigateToHome(): void {
@@ -54,6 +71,7 @@ export class NavbarComponent {
     const navbar = target.closest('.navbar');
     if (!navbar) {
       this.closeMobileMenu();
+  this.closeProfileDropdown();
     }
   }
 

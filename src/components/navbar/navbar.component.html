@@ -64,11 +64,23 @@
            routerLinkActive="active"
            (click)="closeMobileMenu()">Araç Listesi</a>
       </li>
-      <li class="navbar-item">
-        <a routerLink="/profil" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">Profil</a>
+      <!-- Profile dropdown (desktop) -->
+      <li class="navbar-item profile-item" *ngIf="isAuthenticated">
+        <button class="profile-btn" (click)="toggleProfileDropdown($event)" aria-haspopup="true" [attr.aria-expanded]="isProfileDropdownOpen">
+          <img src="assets/truck.png" alt="avatar" class="profile-avatar">
+          <span class="profile-name">{{profileDisplayName}}</span>
+          <i class="fa fa-caret-down profile-caret" aria-hidden="true"></i>
+        </button>
+        <ul class="profile-dropdown" [class.open]="isProfileDropdownOpen" role="menu">
+          <li role="menuitem"><a routerLink="/profil" (click)="closeProfileDropdown(); closeMobileMenu()">{{'navbar.profile' | translate}}</a></li>
+          <li role="menuitem"><a routerLink="/settings" (click)="closeProfileDropdown(); closeMobileMenu()">{{'navbar.settings' | translate}}</a></li>
+          <li role="menuitem"><a routerLink="/reservations" (click)="closeProfileDropdown(); closeMobileMenu()">Rezervasyonlar</a></li>
+          <li role="menuitem"><a routerLink="/bookings" (click)="closeProfileDropdown(); closeMobileMenu()">Book’lar</a></li>
+          <li role="menuitem"><a routerLink="/favorites" (click)="closeProfileDropdown(); closeMobileMenu()">Favoriler</a></li>
+          <li role="menuitem"><a routerLink="/invoices" (click)="closeProfileDropdown(); closeMobileMenu()">Faturalar</a></li>
+          <li role="menuitem"><a routerLink="/help" (click)="closeProfileDropdown(); closeMobileMenu()">Yardım</a></li>
+          <li role="menuitem"><button class="logout-link" (click)="logout(); closeProfileDropdown(); closeMobileMenu()">{{'navbar.logout' | translate}}</button></li>
+        </ul>
       </li>
       <li class="navbar-item">
         <a routerLink="/truckport-lounge" 
@@ -88,6 +100,19 @@
            routerLinkActive="active"
            (click)="closeMobileMenu()">Üye Ol</a>
       </li>
+
+      <!-- Profile links duplicated for mobile menu when authenticated -->
+      <ng-container *ngIf="isAuthenticated">
+        <li class="navbar-item mobile-profile-item">
+          <a routerLink="/profil" class="navbar-link" (click)="closeMobileMenu()">{{'navbar.profile' | translate}}</a>
+        </li>
+        <li class="navbar-item mobile-profile-item">
+          <a routerLink="/settings" class="navbar-link" (click)="closeMobileMenu()">{{'navbar.settings' | translate}}</a>
+        </li>
+        <li class="navbar-item mobile-profile-item">
+          <a routerLink="/reservations" class="navbar-link" (click)="closeMobileMenu()">Rezervasyonlar</a>
+        </li>
+      </ng-container>
       
       <!-- Authentication Section -->
       <li class="navbar-item" *ngIf="!isAuthenticated">
