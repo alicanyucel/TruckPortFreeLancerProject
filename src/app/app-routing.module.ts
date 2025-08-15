@@ -13,6 +13,7 @@ import { LiveMapComponent } from '../components/live-map/live-map.component';
 import { AuthGuard } from '../services/auth.service';
 import { ProfileComponent } from '../pages/profile/profile.component';
 import { UyeOlComponent } from '../pages/uye-ol/uye-ol.component';
+import { TestComponent } from '../components/test/test.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,6 +41,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: 'uye-ol', component: UyeOlComponent },
+  { path: 'test', component: TestComponent },
   // Admin dashboard kaldırıldı
   { path: '**', redirectTo: '' }
 ];

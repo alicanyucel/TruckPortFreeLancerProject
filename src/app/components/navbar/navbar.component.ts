@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, User } from '../../services/auth.service';
+import { AuthService, User } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +10,8 @@ import { AuthService, User } from '../../services/auth.service';
 export class NavbarComponent {
   isMobileMenuOpen = false;
   isProfileDropdownOpen = false;
+  showTestEmbedded = false;
+
 
   constructor(
     private authService: AuthService,
@@ -36,13 +38,20 @@ export class NavbarComponent {
     this.isProfileDropdownOpen = !this.isProfileDropdownOpen;
   }
 
+  toggleTestEmbedded(event?: Event): void {
+    if (event) { event.stopPropagation(); }
+    this.showTestEmbedded = !this.showTestEmbedded;
+    // close mobile menu when showing test
+    if (this.showTestEmbedded) { this.closeMobileMenu(); }
+  }
+
   closeProfileDropdown(): void {
     this.isProfileDropdownOpen = false;
   }
 
   get profileDisplayName(): string {
     const user = this.currentUser;
-    return user ? (user.name || user.email || 'Profil') : 'Profil';
+  return user ? (user.name || user.email || 'Profil') : 'Profil';
   }
 
   navigateToHome(): void {

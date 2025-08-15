@@ -1,0 +1,76 @@
+/* Test component styles: larger, more readable text and neat table/pagination layout */
+.test-component {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	color: #222;
+	padding: 12px;
+	font-size: 16px; /* base font larger for readability */
+}
+
+.test-component h3 {
+	font-size: 22px;
+	margin-bottom: 12px;
+}
+
+.test-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 12px;
+	font-size: 15px; /* slightly larger table text */
+}
+
+.test-table thead th {
+	text-align: left;
+	padding: 10px 8px;
+	background: #f5f6f8;
+	border-bottom: 2px solid #e1e4e8;
+	font-weight: 600;
+}
+
+.test-table tbody td {
+	padding: 10px 8px;
+	border-bottom: 1px solid #eef0f3;
+	vertical-align: top;
+}
+
+.test-table pre {
+	margin: 0;
+	font-size: 13px;
+}
+
+.pagination-controls {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.pagination-controls button {
+	padding: 6px 10px;
+	font-size: 15px;
+	border: 1px solid #cfd6dc;
+	background: #fff;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+.pagination-controls button[disabled] {
+	opacity: 0.5;
+	cursor: default;
+}
+
+.pagination-controls select {
+	padding: 6px 8px;
+	font-size: 15px;
+}
+
+.error {
+	color: #b00020;
+	font-weight: 600;
+}
+
+@media (max-width: 700px) {
+	.test-component { font-size: 15px; }
+	.test-table thead th, .test-table tbody td { padding: 8px 6px; }
+	.test-table pre { font-size: 12px; }
+}
+

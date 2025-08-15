@@ -12,6 +12,7 @@ import { UyeOlComponent } from '../pages/uye-ol/uye-ol.component';
 import { PerformanceIndicatorComponent } from '../components/performance-indicator/performance-indicator.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { TestComponent } from '../components/test/test.component';
 import { AppComponent } from './app.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
@@ -41,15 +42,11 @@ import { CacheInterceptor } from '../interceptors/cache.interceptor';
 import { SecurityInterceptor } from '../services/security.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-// %100 Architect Level Services (Yeni Eklenenler)
-import { GrafanaIntegrationService } from '../services/grafana-integration.service';
-import { AIMLIntegrationService } from '../services/aiml-integration.service';
-import { EventSourcingService } from '../services/event-sourcing.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-  ProfileComponent,
+    ProfileComponent,
     FooterComponent,
     NavbarComponent,
     LiveMapComponent,
@@ -67,8 +64,9 @@ import { EventSourcingService } from '../services/event-sourcing.service';
     VideoGalleryComponent,
     TranslatePipe,
     SafeHtmlPipe,
-  TruckstoreModalComponent,
+    TruckstoreModalComponent,
     UyeOlComponent,
+    TestComponent,
     PerformanceIndicatorComponent
   ],
   imports: [
@@ -78,9 +76,7 @@ import { EventSourcingService } from '../services/event-sourcing.service';
     HttpClientModule,
     AppRoutingModule,
     CommonModule,
-    TruckListComponent,
-    RouterModule
-    ,
+    RouterModule,
     StoreModule.forRoot({ user: userReducer, performance: performanceReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
     ServiceWorkerModule.register('ngsw-worker.js', {
@@ -109,11 +105,7 @@ import { EventSourcingService } from '../services/event-sourcing.service';
       provide: HTTP_INTERCEPTORS,
       useClass: SecurityInterceptor,
       multi: true
-    },
-    // %100 Architect Level Services
-    GrafanaIntegrationService,
-    AIMLIntegrationService,
-    EventSourcingService
+    }
   ],
   bootstrap: [AppComponent]
 })
