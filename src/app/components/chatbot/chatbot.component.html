@@ -1,0 +1,95 @@
+<div class="chatbot-container">
+  <!-- Chat Toggle Button -->
+  <div class="chat-toggle" (click)="toggleChat()" [class.open]="isOpen">
+    <div class="chat-icon" *ngIf="!isOpen">
+      💬
+    </div>
+    <div class="close-icon" *ngIf="isOpen">
+      ✕
+    </div>
+    <div class="notification-badge" *ngIf="!isOpen && messages.length > 0">
+      {{messages.length}}
+    </div>
+  </div>
+
+  <!-- Chat Window -->
+  <div class="chat-window" [class.open]="isOpen">
+    <div class="chat-header">
+      <div class="header-info">
+        <div class="bot-avatar">🤖</div>
+        <div class="bot-details">
+          <h4>{{'chatbot.title' | translate}}</h4>
+          <span class="status">{{'chatbot.online' | translate}}</span>
+        </div>
+      </div>
+      <button class="minimize-btn" (click)="toggleChat()">−</button>
+    </div>
+
+    <div class="chat-messages">
+      <div *ngFor="let message of messages" 
+           class="message" 
+           [class.user-message]="message.isUser"
+           [class.bot-message]="!message.isUser">
+        
+        <div class="message-avatar" *ngIf="!message.isUser">
+          🤖
+        </div>
+        
+        <div class="message-content">
+          <div class="message-bubble">
+            {{message.text}}
+          </div>
+          <div class="message-time">
+            {{message.timestamp | date:'HH:mm'}}
+          </div>
+        </div>
+        
+        <div class="message-avatar" *ngIf="message.isUser">
+          👤
+        </div>
+      </div>
+
+      <!-- Typing Indicator -->
+      <div class="message bot-message" *ngIf="isTyping">
+        <div class="message-avatar">🤖</div>
+        <div class="message-content">
+          <div class="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-input">
+      <div class="input-container">
+        <input 
+          type="text" 
+          [(ngModel)]="currentMessage"
+          (keypress)="onKeyPress($event)"
+          [placeholder]="'chatbot.placeholder' | translate"
+          class="message-input">
+        <button 
+          class="send-btn" 
+          (click)="sendMessage()"
+          [disabled]="!currentMessage.trim()">
+          ➤
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+      <button class="quick-btn" (click)="sendQuickMessage('services')">
+        🚛 {{'chatbot.quick.services' | translate}}
+      </button>
+      <button class="quick-btn" (click)="sendQuickMessage('quote')">
+        💰 {{'chatbot.quick.quote' | translate}}
+      </button>
+      <button class="quick-btn" (click)="sendQuickMessage('contact')">
+        📞 {{'chatbot.quick.contact' | translate}}
+      </button>
+    </div>
+  </div>
+</div>
