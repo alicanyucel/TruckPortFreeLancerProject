@@ -399,6 +399,110 @@ const kamyonReducer = createReducer(
 
 ### 🏃‍♂️ Testleri Çalıştırma
 
+## 🔌 Entegrasyon: Firebase ve Google Maps (Senior seviyede)
+
+Bu proje, Firebase Realtime Database ve Google Maps JavaScript API ile entegre çalışır. Aşağıdaki yönergeler üretime hazır, güvenli ve ölçeklenebilir bir entegrasyon sağlar.
+
+### 🔑 Genel Prensipler (Senior seviye - %99 uyum hedefi)
+- API anahtarlarını doğrudan repoda saklamayın; environment dosyaları, CI/CD secret store (GitHub Actions Secrets, Azure Key Vault, Google Secret Manager) veya k8s Secrets kullanın.
+- Kısıtlamalar (key restrictions) uygulayın: production için HTTP referrers (domain) veya IP kısıtlaması, geliştirme için localhost/127.0.0.1 izinleri.
+- Minimum izin ilkesini uygulayın: sadece gerekli Google Maps API'lerini etkinleştirin (Maps JavaScript API, gerekirse Places API).
+- İzleme ve uyarılar kurun: Google Cloud billing alerts ve API quota alarm'ları.
+
+### Firebase (Realtime Database) - Setup
+1. Firebase projesi oluşturun veya mevcut projeyi kullanın.
+2. Realtime Database'i etkinleştirin ve kurallarınızı üretime göre sertleştirin. Örnek minimal kural (üretim için özelleştirilmeli):
+
+```json
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+}
+```
+
+3. `booking_trips` gibi okuma-yazma yapılan düğümlere yalnızca gerekli alanları izin verin.
+4. Admin SDK veya Cloud Functions ile sunucu tarafı validasyonları ekleyin (örn. coordinate doğrulama, rate limiting).
+5. Local development için `src/environments/environment.ts` içinde Firebase config'i aşağıdaki gibi örnekleyin (gerçek anahtarları CI/CD secrets'tan yükleyin):
+
+```typescript
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: 'YOUR_FIREBASE_API_KEY',
+    authDomain: 'your-project.firebaseapp.com',
+    databaseURL: 'https://your-project-default-rtdb.firebaseio.com',
+    projectId: 'your-project',
+    storageBucket: 'your-project.appspot.com',
+    messagingSenderId: '...'
+  }
+};
+```
+
+### Google Maps JavaScript API - Setup & Troubleshooting
+1. Google Cloud Console'da bir proje seçin.
+2. Maps JavaScript API'yi etkinleştirin. Eğer `libraries=places` kullanıyorsanız, Places API'yi de etkinleştirin.
+3. Billing (Faturalandırma) etkinleştirilmiş olmalıdır; Maps JS çoğu proje için faturalandırma gerektirir.
+4. API anahtarı oluşturun ve kısıtlamaları ekleyin:
+   - Geliştirme: HTTP referrer olarak `http://localhost:4200/*` ekleyin.
+   - Üretim: domain bazlı referrer kısıtlama kullanın (örn. `https://app.yourdomain.com/*`).
+5. `src/environments/environment.ts` içinde anahtarınızı örnekleyin (anahtarları repoya koymayın):
+
+```typescript
+export const environment = {
+  production: false,
+  firebase: { /* ... */ },
+  firebaseApiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+};
+```
+
+6. Yerel çalıştırmada tarayıcı konsolunda şu hatalardan biri gelirse, aşağıdaki adımları uygulayın:
+   - ApiNotActivatedMapError: Maps JavaScript API etkin değil veya faturalandırma kapalı. Çözüm: Google Cloud Console > APIs & Services > Library > Maps JavaScript API > ENABLE. Ayrıca billing'in açık olduğundan emin olun.
+   - RefererNotAllowedMapError: API anahtarı referrer kısıtlamaları localhost/port'u içermiyor. Çözüm: API anahtarının kısıtlamalarına `http://localhost:4200/*` ekleyin.
+   - ApiKeyNotAuthorizedMapError: Kısıtlamalar doğru değil. Geçici olarak kısıtlamayı kaldırıp test edin, sonra daraltın.
+
+### Güvenlik ve Production Önerileri
+- Kısa süreli (rotating) anahtarlar veya server-side token proxy kullanın. Kötü amaçlı kullanım riskini azaltmak için harici hizmetle anahtar paylaşımını minimize edin.
+- Map yükleme işlemini lazy-load olarak yapın (component bazlı), kritik render path'i küçültün.
+- Marker verisini client'ta doğrudan veritabanından çekmeden önce sunucu tarafı validasyon ve sanitatizasyon uygulayın.
+- Önemli: API anahtarlarını commit etmeyin. Eğer yanlışlıkla commit ettiyseniz, anahtarı rotasyona alın (Google Cloud Console'dan yeniden oluşturun) ve eski anahtarı iptal edin.
+
+### Hızlı Doğrulama Adımları (Yerel test için)
+1. `npm install` ve `npm start` ile uygulamayı başlatın.
+2. Tarayıcıda `http://localhost:4200/map` adresine gidin.
+3. Konsolu açın (F12) ve hataları kontrol edin. Yukarıdaki hata tiplerine göre Google Cloud Console ayarlarını kontrol edin.
+
+### Opsiyonel İyileştirmeler (Senior-level ekler)
+- Marker clustering (MarkerClusterer) ekleyin büyük veri setleri için.
+- InfoWindow içinde küçük bir önizleme + link + timestamp gösterin.
+- Gerçek zamanlı konum güncellemeleri için WebSocket veya Firebase Realtime/Firestore snapshot listener kullanın.
+- Sunucu tarafı caching (Redis) ve rate-limiting ile harita veri yükünü azaltın.
+
+---
+
+## Environment örneği (geliştirme)
+
+Lütfen `src/environments/environment.ts` dosyanızı aşağıdaki gibi bir örnekten yararlanarak düzenleyin ve gerçek anahtarları CI/CD ortamınıza ekleyin.
+
+```typescript
+export const environment = {
+  production: false,
+  apiBaseUrl: 'http://localhost:3000/api',
+  firebase: {
+    apiKey: 'FIREBASE_API_KEY',
+    authDomain: 'your-project.firebaseapp.com',
+    databaseURL: 'https://your-project-default-rtdb.firebaseio.com',
+    projectId: 'your-project',
+    storageBucket: 'your-project.appspot.com',
+    messagingSenderId: '...'
+  },
+  firebaseApiKey: 'GOOGLE_MAPS_API_KEY'
+};
+```
+
+---
+
 ```bash
 # Unit testler
 npm test                    # Watch mode
