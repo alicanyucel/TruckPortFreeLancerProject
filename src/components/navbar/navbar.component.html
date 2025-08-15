@@ -64,6 +64,12 @@
            routerLinkActive="active"
            (click)="closeMobileMenu()">Araç Listesi</a>
       </li>
+      <li class="navbar-item">
+        <a routerLink="/map"
+           class="navbar-link"
+           routerLinkActive="active"
+           (click)="closeMobileMenu()">Harita</a>
+      </li>
       <!-- Profile dropdown (desktop) -->
       <li class="navbar-item profile-item" *ngIf="isAuthenticated">
         <button class="profile-btn" (click)="toggleProfileDropdown($event)" aria-haspopup="true" [attr.aria-expanded]="isProfileDropdownOpen">

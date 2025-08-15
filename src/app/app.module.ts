@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { LiveMapComponent } from '../components/live-map/live-map.component';
+import { GoogleMapComponent } from '../components/google-map/google-map.component';
 import { ChatbotComponent } from '../components/chatbot/chatbot.component';
 import { AdvertisementsComponent } from '../components/advertisements/advertisements.component';
 import { LanguageSwitcherComponent } from '../components/language-switcher/language-switcher.component';
@@ -67,6 +68,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     TruckstoreModalComponent,
     UyeOlComponent,
     TestComponent,
+  GoogleMapComponent,
     PerformanceIndicatorComponent
   ],
   imports: [

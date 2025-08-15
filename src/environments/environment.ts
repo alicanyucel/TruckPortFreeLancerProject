@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyDx49o0-fM7r62fyUCifeTG4vMeFKXADMQ",
+    apiKey: "AIzaSyAKzTWhwbktULCAQP8nlMsj4AHTgMecFDw",
     authDomain: "truckport-live.firebaseapp.com",
     databaseURL: "https://truckport-live-default-rtdb.firebaseio.com",
     projectId: "truckport-live",
