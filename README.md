@@ -563,6 +563,69 @@ Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval'; st
 ```typescript
 // Rol tabanlı erişim kontrolü
 @Injectable()
+
+## 🔌 Firebase (Realtime DB, Auth, Hosting)
+
+Bu proje istemci tarafında Firebase (Realtime Database ve Auth) kullanır ve `@angular/fire` ile entegre edilmiştir. Aşağıda hızlı kurulum ve önemli güvenlik notları yer alır.
+
+### Hızlı Kurulum (Client)
+
+- Firebase projesi oluşturun: https://console.firebase.google.com
+- Proje ayarlarından Web uygulaması ekleyin ve config (apiKey, authDomain, databaseURL, projectId, storageBucket, messagingSenderId, appId) değerlerini alın.
+- `src/environments/environment.ts` ve `src/environments/environment.prod.ts` dosyalarındaki `firebaseConfig` alanını bu değerlerle doldurun.
+- Paketler zaten package.json içinde tanımlı: `firebase` ve `@angular/fire`.
+
+Örnek (gizli değerleri kaynak kontrolüne dahil etmeyin):
+
+```typescript
+export const environment = {
+  production: false,
+  firebaseConfig: {
+    apiKey: 'YOUR_API_KEY',
+    authDomain: 'your-project.firebaseapp.com',
+    databaseURL: 'https://your-project-default-rtdb.firebaseio.com',
+    projectId: 'your-project',
+    storageBucket: 'your-project.appspot.com',
+    messagingSenderId: '1234567890',
+    appId: '1:1234567890:web:abcdef012345'
+  }
+};
+```
+
+### Sunucu / Admin (opsiyonel)
+
+- Eğer sunucu tarafında Firebase Admin SDK kullanacaksanız (ör. güvenli yazma/arka plan görevleri), bir Service Account anahtarı oluşturun ve CI/CD ya da sunucunuzda güvenli bir şekilde saklayın.
+- Admin SDK için `firebase-admin` paketini kullanın ve anahtarları doğrudan repo'ya koymayın.
+
+### Lokal Geliştirme: Firebase Emulator
+
+- Firebase Emulator Suite ile Realtime DB, Auth ve Functions'ı yerelde çalıştırabilirsiniz.
+- Kurulum:
+
+```bash
+npm install -g firebase-tools
+# proje kökünde (sadece ilk kez)
+# firebase login
+# firebase init emulators
+firebase emulators:start
+```
+
+### Güvenlik ve En İyi Uygulamalar
+
+- Realtime Database kurallarınızı üretimde sıkı tutun (okuma/yazma izinleri). Örnek: kullanıcı bazlı erişim kuralları.
+- `apiKey` gibi client konfigürasyonları herkese açıktır; ancak servis hesap anahtarları ve sunucu tarafı kimlik bilgileri asla repo'ya eklenmemelidir. Bunları CI secret veya sunucu ortam değişkenleriyle yönetin.
+- Üretim için Firebase Hosting kullanacaksanız deploy komutu:
+
+```bash
+# hosting deploy (opsiyonel)
+firebase deploy --only hosting
+```
+
+### Notlar
+
+- Proje içinde `src/services/firebase.service.ts` benzeri bir servis Firebase ile bağlantı kurar. Mevcut uygulamada anonim auth ve `booking_trips` düğümü üzerinden veri okunmaktadır.
+- Eğer otomatik testlerde Firebase kullanıyorsanız, Emulator Suite'i test pipeline'ınıza eklemenizi öneririm.
+
 export class AuthGuard implements CanActivate {
   canActivate(): boolean {
     return this.authService.isAuthenticated();
