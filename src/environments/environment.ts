@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // Replace with real values by copying from environment.ts.example
-  googleMapsApiKey: 'GOOGLE_MAPS_API_KEY',
+  // Local Google Maps API key (local-only, file is gitignored)
+  googleMapsApiKey: 'AIzaSyCGBCK_xHK1Yqm1OaCB0Iik8nwORIATk-w',
   firebase: {
     apiKey: 'FIREBASE_API_KEY',
     authDomain: 'your-project.firebaseapp.com',
