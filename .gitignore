@@ -38,7 +38,9 @@ testem.log
 /typings
 
 # Local environment secrets (do not commit)
-src/environments/environment.ts
+# Ignore all files in src/environments but allow example files
+src/environments/*
+!src/environments/*.example
 
 # System files
 .DS_Store
