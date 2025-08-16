@@ -16,6 +16,7 @@ export class GoogleMapComponent implements AfterViewInit, OnDestroy {
 
   map: any = null;
   markers: any[] = [];
+  isFullscreen = false;
   private subs: Subscription[] = [];
 
   constructor(private firebaseService: FirebaseService) {}
@@ -27,6 +28,20 @@ export class GoogleMapComponent implements AfterViewInit, OnDestroy {
     }).catch(err => {
       console.error('Google Maps script load failed', err);
     });
+  }
+
+  toggleFullscreen() {
+    this.isFullscreen = !this.isFullscreen;
+    // let the DOM update, then trigger map resize
+    setTimeout(() => {
+      try {
+        if (this.map && (window as any).google && (window as any).google.maps) {
+          (window as any).google.maps.event.trigger(this.map, 'resize');
+        }
+      } catch (e) {
+        // ignore
+      }
+    }, 100);
   }
 
   ngOnDestroy(): void {

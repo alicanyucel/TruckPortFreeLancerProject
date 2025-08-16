@@ -1,3 +1,8 @@
-<div class="google-map-wrapper">
+<div class="google-map-wrapper" [class.fullscreen]="isFullscreen">
+  <div class="map-controls">
+    <button class="fullscreen-btn" (click)="toggleFullscreen()">
+      {{ isFullscreen ? 'Küçült' : 'Büyüt' }}
+    </button>
+  </div>
   <div #mapContainer class="map-container"></div>
 </div>

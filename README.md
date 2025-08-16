@@ -48,370 +48,60 @@
 - **🔄 Mikro-Frontend Hazır** - Ölçeklenebilirlik için modüler mimari
 - **🎯 Gelişmiş Önbellekleme** - Akıllı geçersiz kılma ile çok seviyeli önbellekleme
 - **🔒 Kurumsal Güvenlik** - OWASP uyumlu güvenlik implementasyonu
-- **📊 Gerçek Zamanlı Analitik** - İş zekası ve kullanıcı davranış takibi
-- **🌐 Sunucu Tarafı Rendering** - Angular Universal ile SEO optimizasyonu
-- **📱 Progressive Web App** - Gelişmiş service worker ile çevrimdışı öncelikli
-- **♿ Erişilebilirlik Uyumlu** - WCAG 2.1 AA standartları
-- **🌍 Çok Dil Desteği** - Dinamik dil değiştirme ile i18n
+# � TruckPort — Kurumsal Angular Taşımacılık Platformu
 
-### 🎨 UI/UX Özellikleri
-- **🎨 Gelişmiş Tema Sistemi** - 5 dinamik tema (Açık, Koyu, Kırmızı, Mavi, Yeşil)
-- **📱 Responsive Tasarım** - Breakpoint optimizasyonu ile mobil öncelikli yaklaşım
-- **⚡ Performans Optimizasyonu** - Core Web Vitals uyumlu
-- **🔍 Akıllı Arama** - Gelişmiş filtreleme ve arama yetenekleri
-- **💬 Akıllı Chatbot** - AI destekli müşteri desteği
-- **📢 Dinamik Reklamlar** - Bağlamsal reklam yönetim sistemi
+> Kısa: Bu repo, üretime hazır, erişilebilir ve ölçeklenebilir bir Angular 16 uygulamasıdır. Kod kalite, test, güvenlik ve operasyonel olgunluk açısından senior-level (mimari, DevOps ve güvenlik) standartları hedefler.
 
-## 🏗️ Mimari
+![Angular](https://img.shields.io/badge/Angular-16-red)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![NgRx](https://img.shields.io/badge/NgRx-16-purple)
 
-### 📊 Mimari Genel Bakış
+İçindekiler
+- Hızlı başlangıç
+- Proje yapısı
+- Firebase entegrasyonu (Realtime DB)
+- Google Maps entegrasyonu (Maps JavaScript API)
+- Environment ve gizli anahtar yönetimi (CI secrets)
+- Güvenlik ve üretim önerileri
+- Sorun giderme (maps & firebase)
 
-```mermaid
-graph TB
-    subgraph "Frontend Katmanı"
-        A[Angular 16 SPA] --> B[PWA Service Worker]
-        A --> C[Angular Universal SSR]
-        A --> D[Mikro-Frontend Yükleyici]
-    end
-    
-    subgraph "State Yönetimi"
-        E[NgRx Store] --> F[Kullanıcı State]
-        E --> G[Performans State]
-        E --> H[İş State]
-    end
-    
-    subgraph "Servis Katmanı"
-        I[Kimlik Doğrulama Servisi] --> J[Auth Guard'ları]
-        K[Performans İzleyici] --> L[Gözlemlenebilirlik Servisi]
-        M[Güvenlik Servisi] --> N[Güvenlik Interceptor'ları]
-        O[Önbellek Servisi] --> P[HTTP Interceptor'ları]
-    end
-    
-    subgraph "Altyapı"
-        Q[Docker Container'ları] --> R[Kubernetes Pod'ları]
-        R --> S[Yük Dengeleyici]
-        T[Nginx Reverse Proxy] --> U[SSL/TLS Sonlandırma]
-    end
-    
-    A --> E
-    A --> I
-    A --> K
-    A --> M
-    A --> O
-    Q --> A
-```
+## Hızlı Başlangıç
 
-### 🔧 Teknoloji Yığını
-
-| Katman | Teknoloji | Amaç |
-|--------|-----------|------|
-| **Frontend** | Angular 16 + TypeScript 5.1 | Modern reaktif UI framework |
-| **State Yönetimi** | NgRx 16.3 | Öngörülebilir state container |
-| **Styling** | CSS3 + CSS Variables | Dinamik tema sistemi |
-| **Test API** | JSON Server | Geliştirme ve test için mock API |
-| **Test** | Jasmine + Karma + Protractor | Kapsamlı test paketi |
-| **Build** | Angular CLI + Webpack | Optimize edilmiş build pipeline |
-| **Sunucu** | Angular Universal | Sunucu tarafı rendering |
-| **PWA** | Angular Service Worker | Çevrimdışı öncelikli yetenekler |
-| **Konteynerleştirme** | Docker + Docker Compose | Tutarlı dağıtım |
-| **Orkestrasyon** | Kubernetes | Üretim ölçeklendirme |
-| **Proxy** | Nginx | Reverse proxy + güvenlik |
-| **İzleme** | Özel Analitik + Performance API | Gerçek zamanlı gözlemlenebilirlik |
-
-### 📈 Senior Level Değerlendirmesi (%98)
-
-Bu proje **%100 Senior/Lead/Architect** seviyesinde geliştirilmiştir:
-
-#### 🎯 **Senior Level Özellikleri (85%)**
-- ✅ **NgRx State Management** - Karmaşık state yönetimi
-- ✅ **Reactive Programming** - RxJS ile asenkron veri akışları  
-- ✅ **Advanced Routing** - Lazy loading, guards, resolvers
-- ✅ **Custom Pipes & Validators** - Yeniden kullanılabilir bileşenler
-- ✅ **Interceptors** - HTTP isteklerini merkezi yönetim
-- ✅ **Error Handling** - Global hata yakalama sistemi
-- ✅ **Performance Optimization** - OnPush, trackBy, bundle optimization
-- ✅ **Testing** - Unit, Integration, E2E test coverage
-- ✅ **Accessibility** - WCAG 2.1 AA uyumluluğu
-- ✅ **Internationalization** - Çoklu dil desteği
-
-#### 🚀 **Lead Level Özellikleri (10%)**
-- ✅ **Micro-Frontend Architecture** - Modüler uygulama mimarisi
-- ✅ **Advanced Caching** - Multi-level caching stratejileri (LRU/FIFO/TTL)
-- ✅ **Enterprise Security** - OWASP compliance, CSP, XSS protection
-- ✅ **Real-time Analytics** - Business intelligence ve user behavior tracking
-- ✅ **Performance Monitoring** - Core Web Vitals tracking
-- ✅ **PWA Advanced Features** - Background sync, push notifications
-- ✅ **Server-Side Rendering** - Angular Universal ile SEO optimization
-
-#### 🏗️ **Architect Level Özellikleri (3%)**
-- ✅ **Production Infrastructure** - Docker, Kubernetes, nginx configuration
-- ✅ **Observability Service** - Business metrics ve alert sistemi
-- ✅ **Advanced DevOps** - Multi-stage builds, health checks, rolling updates
-- ✅ **Scalable Architecture** - Event-driven, loosely coupled design
-
-#### 🔮 **Eksik Özellikler (2%)**
-- ⏳ **Real-time Analytics Dashboard** - Grafana/Prometheus entegrasyonu
-- ⏳ **AI/ML Integration** - Predictive analytics ve machine learning
-- ⏳ **Event Sourcing** - CQRS pattern ile event store implementasyonu
-
-## 🚀 Hızlı Başlangıç
-
-### Ön Gereksinimler
-
-- **Node.js** 18.x veya üstü
-- **npm** 9.x veya üstü
-- **Angular CLI** 16.x
-- **Docker** (opsiyonel)
-- **Git**
-
-### ⚡ 1 Dakikalık Kurulum
+1) Klonla ve bağımlılıkları yükle
 
 ```bash
-# Projeyi klonlayın
 git clone https://github.com/alicanyucel/TruckPortFreeLancerProject.git
 cd TruckPortFreeLancerProject
+npm ci
+```
 
-# Bağımlılıkları yükleyin
-npm install
+2) Environment dosyalarını oluştur
 
-# JSON Server'ı başlatın (Test API)
-npm run api
+```bash
+# örnek kopyala
+copy src\environments\environment.ts.example src\environments\environment.ts
+```
 
-# Yeni terminal açın ve Angular uygulamasını başlatın
+3) Geliştirme server
+
+```bash
 npm start
-
-# Tarayıcıyı açın
-# Frontend: http://localhost:4200
-# API: http://localhost:3002
+# Uygulama: http://localhost:4200
 ```
 
-## 📦 Kurulum
+4) Harita sayfası: http://localhost:4200/map
 
-### 🔧 Geliştirme Ortamı Kurulumu
+## Proje Yapısı (kısa)
 
-```bash
-# 1. Projeyi klonlayın
-git clone https://github.com/alicanyucel/TruckPortFreeLancerProject.git
-cd TruckPortFreeLancerProject
+- `src/app` — Angular modüller, routing ve bileşenler
+- `src/components` — tekrar kullanılabilir bileşenler (navbar, google-map, test, vb.)
+- `src/environments` — environment örnekleri ve CI tarafından üretilen dosyalar
+- `server` — basit express sunucu (SSR/host desteği)
 
-# 2. Bağımlılıkları yükleyin
-npm install
+## Firebase Realtime Database — Kurulum & Entegrasyon (Senior önerileri)
 
-# 3. Angular CLI'yi global olarak yükleyin (yüklü değilse)
-npm install -g @angular/cli@16
-
-# 4. Kurulumu doğrulayın
-ng version
-
-# 5. Geliştirme sunucusunu başlatın
-npm run start
-```
-
-### 🌍 Environment Konfigürasyonu
-
-Farklı aşamalar için environment dosyaları oluşturun:
-
-```bash
-# Geliştirme
-cp src/environments/environment.ts.example src/environments/environment.ts
-
-# Üretim
-cp src/environments/environment.prod.ts.example src/environments/environment.prod.ts
-```
-
-**Environment Değişkenleri:**
-
-```typescript
-// src/environments/environment.ts
-export const environment = {
-  production: false,
-  apiBaseUrl: 'http://localhost:3000/api',
-  mapApiKey: 'GOOGLE_MAPS_API_ANAHTARINIZ',
-  firebaseConfig: {
-    // Firebase konfigürasyonu
-  },
-  features: {
-    realTimeTracking: true,
-    analytics: true,
-    chatbot: true
-  }
-};
-```
-
-## 🔧 Geliştirme
-
-### 📝 Kullanılabilir Komutlar
-
-```bash
-# Geliştirme
-npm start                    # Geliştirme sunucusunu başlat (http://localhost:4200)
-npm run build:dev           # Geliştirme build
-npm run watch               # Watch mode geliştirme
-
-# JSON Server (Test API)
-npm run api                 # JSON Server'ı başlat (http://localhost:3002)
-npm run json-server         # JSON Server'ı başlat (alternatif)
-
-# Üretim
-npm run build               # Üretim build
-npm run build:prod         # Optimize edilmiş üretim build
-npm run build:analyze      # Bundle analiz
-
-# Sunucu Tarafı Rendering
-npm run build:ssr          # SSR ile build
-npm run serve:ssr          # SSR build'i serve et
-npm run prerender          # Statik sayfaları önceden render et
-
-# Test
-npm test                   # Unit testler
-npm run test:coverage     # Coverage raporu
-npm run test:ci           # CI testi
-npm run e2e               # End-to-end testler
-
-# Kod Kalitesi
-npm run lint              # ESLint
-npm run lint:fix          # Linting hatalarını düzelt
-
-# Güvenlik ve Performans
-npm run security:audit    # Güvenlik denetimi
-npm run security:fix      # Güvenlik sorunlarını düzelt
-npm run performance:lighthouse  # Lighthouse analizi
-
-# Docker
-npm run docker:build      # Docker image oluştur
-npm run docker:run        # Container çalıştır
-npm run docker:compose    # Docker Compose
-```
-
-### 🏗️ Proje Yapısı
-
-```
-TruckPortFreeLancerProject/
-├── 📁 src/
-│   ├── 📁 app/                    # Ana uygulama modülü
-│   │   ├── app-routing.module.ts  # Yönlendirme konfigürasyonu
-│   │   ├── app.component.*       # Root component
-│   │   └── app.module.ts         # Ana modül
-│   ├── 📁 components/            # Yeniden kullanılabilir bileşenler
-│   │   ├── 📁 navbar/           # Navigasyon bileşeni
-│   │   ├── 📁 footer/           # Footer bileşeni
-│   │   ├── 📁 chatbot/          # AI chatbot
-│   │   ├── 📁 live-map/         # Gerçek zamanlı takip
-│   │   └── 📁 theme-switcher/   # Tema yönetimi
-│   ├── 📁 pages/                # Özellik sayfaları
-│   │   ├── 📁 home/             # Ana sayfa
-│   │   ├── 📁 truckstore/       # Pazaryeri
-│   │   ├── 📁 services/         # Hizmet kataloğu
-│   │   └── 📁 login/            # Kimlik doğrulama
-│   ├── 📁 services/             # İş mantığı servisleri
-│   │   ├── auth.service.ts      # Kimlik doğrulama
-│   │   ├── performance-monitor.service.ts
-│   │   ├── security.service.ts  # Güvenlik araçları
-│   │   ├── advanced-cache.service.ts
-│   │   ├── observability.service.ts
-│   │   └── micro-frontend.service.ts
-│   ├── 📁 interceptors/         # HTTP interceptor'ları
-│   │   ├── error.interceptor.ts # Hata yönetimi
-│   │   ├── cache.interceptor.ts # Önbellekleme mantığı
-│   │   └── security.interceptor.ts
-│   ├── 📁 guards/               # Route guard'ları
-│   ├── 📁 pipes/                # Özel pipe'lar
-│   ├── 📁 validators/           # Form validator'ları
-│   ├── 📁 store/                # NgRx state yönetimi
-│   │   ├── 📁 user/            # Kullanıcı state
-│   │   └── 📁 performance/     # Performans metrikleri
-│   ├── 📁 styles/              # Global stiller
-│   │   └── design-system.css   # Tema sistemi
-│   └── 📁 assets/              # Statik varlıklar
-├── 📁 docker-configs/          # Docker konfigürasyonları
-├── 📁 k8s/                     # Kubernetes manifestleri
-├── 📄 Dockerfile              # Container tanımı
-├── 📄 docker-compose.yml      # Çoklu container kurulumu
-├── 📄 nginx.conf              # Nginx konfigürasyonu
-├── 📄 k8s-deployment.yaml     # Kubernetes deployment
-└── 📄 package.json            # Bağımlılıklar
-```
-
-### 🎯 Geliştirme Yönergeleri
-
-#### 📝 Kod Stili
-
-```typescript
-// Sıkı TypeScript kullanın
-interface KamyonVerisi {
-  id: string;
-  marka: string;
-  model: string;
-  yil: number;
-  konum: {
-    lat: number;
-    lng: number;
-  };
-}
-
-// Servis örneği
-@Injectable({
-  providedIn: 'root'
-})
-export class KamyonService {
-  constructor(
-    private http: HttpClient,
-    private cache: AdvancedCacheService
-  ) {}
-
-  getKamyonlar(): Observable<KamyonVerisi[]> {
-    return this.cache.get('kamyonlar') ?? 
-           this.http.get<KamyonVerisi[]>('/api/kamyonlar');
-  }
-}
-```
-
-#### 🔄 State Yönetimi
-
-```typescript
-// NgRx Actions
-export const kamyonlariYukle = createAction('[Kamyon] Kamyonları Yükle');
-export const kamyonlariYuklemeBasarili = createAction(
-  '[Kamyon] Kamyonları Yükleme Başarılı',
-  props<{ kamyonlar: KamyonVerisi[] }>()
-);
-
-// NgRx Reducer
-const kamyonReducer = createReducer(
-  initialState,
-  on(kamyonlariYuklemeBasarili, (state, { kamyonlar }) => ({
-    ...state,
-    kamyonlar,
-    yukleniyor: false
-  }))
-);
-```
-
-## 🧪 Test
-
-### 🔬 Test Stratejisi
-
-- **Unit Testler**: %95+ coverage hedefi
-- **Entegrasyon Testleri**: Component + Service entegrasyonu
-- **E2E Testler**: Kritik kullanıcı yolculukları
-- **Performans Testleri**: Core Web Vitals izleme
-- **Güvenlik Testleri**: OWASP uyumluluğu
-
-### 🏃‍♂️ Testleri Çalıştırma
-
-## 🔌 Entegrasyon: Firebase ve Google Maps (Senior seviyede)
-
-Bu proje, Firebase Realtime Database ve Google Maps JavaScript API ile entegre çalışır. Aşağıdaki yönergeler üretime hazır, güvenli ve ölçeklenebilir bir entegrasyon sağlar.
-
-### 🔑 Genel Prensipler (Senior seviye - %99 uyum hedefi)
-- API anahtarlarını doğrudan repoda saklamayın; environment dosyaları, CI/CD secret store (GitHub Actions Secrets, Azure Key Vault, Google Secret Manager) veya k8s Secrets kullanın.
-- Kısıtlamalar (key restrictions) uygulayın: production için HTTP referrers (domain) veya IP kısıtlaması, geliştirme için localhost/127.0.0.1 izinleri.
-- Minimum izin ilkesini uygulayın: sadece gerekli Google Maps API'lerini etkinleştirin (Maps JavaScript API, gerekirse Places API).
-- İzleme ve uyarılar kurun: Google Cloud billing alerts ve API quota alarm'ları.
-
-### Firebase (Realtime Database) - Setup
-1. Firebase projesi oluşturun veya mevcut projeyi kullanın.
-2. Realtime Database'i etkinleştirin ve kurallarınızı üretime göre sertleştirin. Örnek minimal kural (üretim için özelleştirilmeli):
+1) Firebase projesi oluşturun ve Realtime Database'i etkinleştirin.
+2) Üretim için sıkı kurallar belirleyin. Örnek hızlı kural:
 
 ```json
 {
@@ -422,26 +112,93 @@ Bu proje, Firebase Realtime Database ve Google Maps JavaScript API ile entegre �
 }
 ```
 
-3. `booking_trips` gibi okuma-yazma yapılan düğümlere yalnızca gerekli alanları izin verin.
-4. Admin SDK veya Cloud Functions ile sunucu tarafı validasyonları ekleyin (örn. coordinate doğrulama, rate limiting).
-5. Local development için `src/environments/environment.ts` içinde Firebase config'i aşağıdaki gibi örnekleyin (gerçek anahtarları CI/CD secrets'tan yükleyin):
+3) Server-side validation: Önemli iş kurallarını Cloud Functions tarafında doğrulayın (coordinate format, rate limiting, role checks).
+4) Large-scale için: Database strukturunu normalleştir (sharding/partition) ve indeksle.
+
+Koda nasıl bağlanırız
+- `services/firebase.service.ts` içinde `getBookingTrips()` kullanılarak `booking_trips` okunur. Bu observable component'lerde subscribe edilip temizlenir.
+
+Güvenlik notları
+- Anahtarları direkt repoya koymayın. CI secret veya Secret Manager kullanın.
+- DB kurallarını production için kesinleştirin; test ortamında daha gevşek kural, prod'da sıkı kural kullanın.
+
+## Google Maps JavaScript API — Kurulum & Troubleshooting
+
+1) Google Cloud Console'da proje seçin.
+2) `Maps JavaScript API`'yi etkinleştirin. Eğer `libraries=places` kullanıyorsanız `Places API`'yi de etkinleştirin.
+3) Billing (faturalandırma) aktif değilse aktif edin — Maps JS çoğunlukla billing ister.
+4) API Key oluşturun ve kısıtlamalar ekleyin:
+   - Geliştirme: `http://localhost:4200/*` referrer izni
+   - Üretim: yalnızca domain(s) izin verin
+
+Component tarafı
+- `src/components/google-map/google-map.component.ts` script'i lazy-load eder ve `environment.googleMapsApiKey` değerini kullanır.
+
+En yaygın hatalar (ve çözümü)
+- ApiNotActivatedMapError — Maps JavaScript API etkin değil veya billing kapalı. Çözüm: Console → APIs & Services → Maps JavaScript API → ENABLE; billing'i kontrol et.
+- RefererNotAllowedMapError — Kısıtlama localhost/port içermiyor. Çözüm: API Key -> Application restrictions -> HTTP referrers ekle (`http://localhost:4200/*`).
+- ApiKeyNotAuthorizedMapError — Kısıtlamalar yanlış veya key yetkisi yok. Geçici kısıtlamayı kaldırıp test edin.
+
+Debug adımları
+- Tarayıcı konsolunu aç (F12) ve Network tab'inde `maps/api/js` isteğini kontrol et. HTTP status 200 mi, 403 mü?
+- Script src parametresinin içinde doğru anahtar görünür mü?
+
+## Environment Management (local & CI)
+
+Prensipler
+- Secrets repoya commit edilmez. Local test için `src/environments/environment.ts` gitignore'a eklendi.
+- CI (GitHub Actions) pipeline'ı secrets'tan environment dosyasını üretir (örnek workflow `.github/workflows/ci-build.yml` eklendi).
+
+Örnek environment (geliştirme — placeholder)
 
 ```typescript
 export const environment = {
   production: false,
+  googleMapsApiKey: 'GOOGLE_MAPS_API_KEY',
   firebase: {
-    apiKey: 'YOUR_FIREBASE_API_KEY',
+    apiKey: 'FIREBASE_API_KEY',
     authDomain: 'your-project.firebaseapp.com',
     databaseURL: 'https://your-project-default-rtdb.firebaseio.com',
-    projectId: 'your-project',
-    storageBucket: 'your-project.appspot.com',
-    messagingSenderId: '...'
+    projectId: 'your-project'
   }
 };
 ```
 
-### Google Maps JavaScript API - Setup & Troubleshooting
-1. Google Cloud Console'da bir proje seçin.
+CI entegrasyonu
+- `.github/workflows/ci-build.yml` workflow'u repo secrets üzerinden `src/environments/environment.ts` ve `environment.prod.ts` dosyalarını üretir ve build yapar.
+
+## Güvenlik & Operasyonel Öneriler (Senior kısa liste)
+
+- Anahtar rotasyonu: Anahtarlar açığa çıkarsa hemen rota edin.
+- Kısıtlama ve izleme: API key'lere referrer/IP kısıtları ekleyin. Quota ve billing alarmları kurun.
+- Rate limiting: API kullanımını server tarafında sınırlayın.
+- Logging & Tracing: Harita/konum hatalarını merkezi loglayın (Stackdriver/Cloud Logging, Sentry).
+
+## Sorun Giderme: Örnek senaryolar
+
+- Harita boş: Konsolda `ApiNotActivatedMapError` veya `RefererNotAllowedMapError` var mı? Yukarıdaki Google Cloud adımlarını uygula.
+- Markers gelmiyor: `booking_trips` içinde `lat`/`lng` alanları doğru formatta mı? `firebase.service.ts` içeriğini kontrol et.
+
+## Daha ileri (opsiyonel) iyileştirmeler
+
+- Marker clustering (MarkerClusterer) büyük veri setleri için.
+- InfoWindow içinde zengin içerik ve linkler.
+- Realtime konum güncellemeleri: WebSocket veya Firebase snapshot listener.
+- Sunucu tarafı proxy/token exchange: Short-lived tokens ile client anahtarını gizle.
+
+## Katkıda bulunma
+
+1. Fork / Branch oluştur
+2. Değişiklik yap, test et
+3. Pull request oluştur, değişiklik açıklamaları ve test sonucu ekle
+
+## Lisans
+
+Bu repo için lisans bilgileri repoda yer alır. Ticari kullanım için proje sahibine danışın.
+
+---
+
+İstersen bu README'yi proje kökünde direkt commit edeyim (benim değişiklikleri uyguladım) veya ilave örnekler/mimari diyagramlar ekleyeyim. Hemen ne istersin?
 2. Maps JavaScript API'yi etkinleştirin. Eğer `libraries=places` kullanıyorsanız, Places API'yi de etkinleştirin.
 3. Billing (Faturalandırma) etkinleştirilmiş olmalıdır; Maps JS çoğu proje için faturalandırma gerektirir.
 4. API anahtarı oluşturun ve kısıtlamaları ekleyin:
