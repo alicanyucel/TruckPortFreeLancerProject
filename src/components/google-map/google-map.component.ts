@@ -12,7 +12,7 @@ declare const google: any;
 })
 export class GoogleMapComponent implements AfterViewInit, OnDestroy {
   @ViewChild('mapContainer', { static: false }) mapContainer!: ElementRef;
-  @Input() apiKey: string = environment.firebase?.apiKey || '';
+  @Input() apiKey: string = environment.googleMapsApiKey || environment.firebase?.apiKey || '';
 
   map: any = null;
   markers: any[] = [];

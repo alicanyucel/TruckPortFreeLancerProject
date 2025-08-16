@@ -503,6 +503,18 @@ export const environment = {
 
 ---
 
+> Güvenlik Notu: Gerçek API anahtarlarını repoya commit etmeyin. Yerel çalışma için `src/environments/environment.ts` dosyasını oluştururken `src/environments/environment.ts.example` dosyasındaki değerleri kopyalayıp gerçek anahtarları ekleyin.
+
+Örnek kullanım:
+
+```bash
+# Örnek: environment örneğini kopyala ve gerçek anahtarları ekle
+cp src/environments/environment.ts.example src/environments/environment.ts
+# (Windows cmd.exe için)
+copy src\environments\environment.ts.example src\environments\environment.ts
+```
+
+
 ```bash
 # Unit testler
 npm test                    # Watch mode
