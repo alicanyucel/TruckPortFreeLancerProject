@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
 import { Subscription } from 'rxjs';
 
@@ -25,6 +25,7 @@ export class LiveMapComponent implements OnInit, OnDestroy {
   selectedVehicle: Vehicle | null = null;
   private updateInterval: any;
   private languageSubscription: Subscription = new Subscription();
+  @ViewChild('pageMap') pageMap: any;
 
   constructor(private translationService: TranslationService) {}
 
@@ -107,6 +108,20 @@ export class LiveMapComponent implements OnInit, OnDestroy {
         cargoKey: 'vehicles.cargo.empty',
         lastUpdate: new Date()
       }
+      ,
+      // Fake vehicle from user-provided location (Istanbul area)
+      {
+        id: 'TR-FAKE-001',
+        name: 'Simulated Araç',
+        driverKey: 'vehicles.drivers.fake',
+        lat: 41.0113,
+        lng: 28.9731,
+        status: 'active',
+        speed: 88,
+        destinationKey: 'vehicles.destinations.unknown',
+        cargoKey: 'vehicles.cargo.unknown',
+        lastUpdate: new Date()
+      }
     ];
   }
 
@@ -123,11 +138,29 @@ export class LiveMapComponent implements OnInit, OnDestroy {
           vehicle.lastUpdate = new Date();
         }
       });
+  // assign a new array reference so Input change is detected by child components
+  this.vehicles = [...this.vehicles];
     }, 3000); // Update every 3 seconds
   }
 
   selectVehicle(vehicle: Vehicle) {
     this.selectedVehicle = vehicle;
+    // center map on selected vehicle if map is available
+    try {
+      if (this.pageMap && this.pageMap.centerTo) {
+        this.pageMap.centerTo(vehicle.lat, vehicle.lng, 13);
+      }
+    } catch (e) {
+      // ignore
+    }
+  }
+
+  centerIstanbul() {
+    if (this.pageMap && this.pageMap.centerTo) this.pageMap.centerTo(41.0113, 28.9731, 12);
+  }
+
+  centerAnkara() {
+    if (this.pageMap && this.pageMap.centerTo) this.pageMap.centerTo(39.9208, 32.8541, 12);
   }
 
   getStatusColor(status: string): string {

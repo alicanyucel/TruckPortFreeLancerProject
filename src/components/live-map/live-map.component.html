@@ -9,20 +9,12 @@
       <div class="map-container">
         <div class="map-placeholder">
           <div class="map-background">
-            <!-- Simulated map background -->
-            <div class="map-grid"></div>
-            
-            <!-- Vehicle markers on map -->
-            <div *ngFor="let vehicle of vehicles" 
-                 class="vehicle-marker"
-                 [style.left.%]="((vehicle.lng - 26) / 8) * 100"
-                 [style.top.%]="(1 - (vehicle.lat - 36) / 6) * 100"
-                 [style.background-color]="getStatusColor(vehicle.status)"
-                 (click)="selectVehicle(vehicle)"
-                 [class.selected]="selectedVehicle?.id === vehicle.id">
-              <span class="marker-label">{{vehicle.id}}</span>
-              <div class="pulse-ring" *ngIf="vehicle.status === 'active'"></div>
+            <!-- Real Google Map component: receive vehicle markers from this page -->
+            <div class="map-actions">
+              <button (click)="centerIstanbul()">İstanbul'a Center</button>
+              <button (click)="centerAnkara()">Ankara'ya Center</button>
             </div>
+            <app-google-map #pageMap [extraMarkers]="vehicles"></app-google-map>
           </div>
           
           <div class="map-legend">

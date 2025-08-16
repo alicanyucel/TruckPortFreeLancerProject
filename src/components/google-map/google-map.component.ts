@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild, Input } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { FirebaseService } from '../../services/firebase.service';
 import { Subscription } from 'rxjs';
@@ -10,9 +10,15 @@ declare const google: any;
   templateUrl: './google-map.component.html',
   styleUrls: ['./google-map.component.css']
 })
-export class GoogleMapComponent implements AfterViewInit, OnDestroy {
+export class GoogleMapComponent implements AfterViewInit, OnDestroy, OnChanges {
   @ViewChild('mapContainer', { static: false }) mapContainer!: ElementRef;
-  @Input() apiKey: string = environment.googleMapsApiKey || environment.firebase?.apiKey || '';
+  // environment may not declare googleMapsApiKey in its type, cast to any to read optional local key
+  @Input() apiKey: string = (environment as any).googleMapsApiKey || environment.firebase?.apiKey || '';
+  // Accept additional markers (for example simulated vehicles from the LiveMap page)
+  @Input() extraMarkers: any[] = [];
+
+  // keep last firebase trips so we can re-render combined markers when inputs change
+  private lastTrips: any[] = [];
 
   map: any = null;
   markers: any[] = [];
@@ -28,6 +34,13 @@ export class GoogleMapComponent implements AfterViewInit, OnDestroy {
     }).catch(err => {
       console.error('Google Maps script load failed', err);
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.map && changes['extraMarkers']) {
+      // re-render markers when extraMarkers input changes
+      this.renderCombinedMarkers();
+    }
   }
 
   toggleFullscreen() {
@@ -57,21 +70,55 @@ export class GoogleMapComponent implements AfterViewInit, OnDestroy {
   private bindFirebaseMarkers() {
     try {
       const s = this.firebaseService.getBookingTrips().subscribe(trips => {
-        // clear old markers
-        this.markers.forEach(m => m.setMap(null));
-        this.markers = [];
-
-        (trips || []).forEach((t: any) => {
-          const coords = this.extractCoordinates(t);
-          if (coords) {
-            const marker = new google.maps.Marker({ position: coords, map: this.map, title: t.title || t.name || 'Rezervasyon' });
-            this.markers.push(marker);
-          }
-        });
+        // keep latest trips and render combined markers (firebase + extra)
+        this.lastTrips = trips || [];
+        this.renderCombinedMarkers();
       }, err => console.error('Firebase trips error', err));
       this.subs.push(s);
     } catch (e) {
       console.warn('Could not bind firebase markers', e);
+    }
+  }
+
+  private renderCombinedMarkers() {
+    try {
+      // clear old markers
+      this.markers.forEach(m => m.setMap(null));
+      this.markers = [];
+
+      const infoWindow = new google.maps.InfoWindow();
+
+      const addMarker = (item: any, isExtra = false) => {
+        const coords = this.extractCoordinates(item);
+        if (!coords) return;
+        const title = item.title || item.name || (isExtra ? item.id || 'Araç' : 'Rezervasyon');
+        const marker = new google.maps.Marker({ position: coords, map: this.map, title });
+        this.markers.push(marker);
+
+        // build content for info window
+        const speed = item.speed != null ? `${item.speed} km/h` : '';
+        const lastUpdate = item.lastUpdate ? (item.lastUpdate instanceof Date ? item.lastUpdate : new Date(item.lastUpdate)) : null;
+        const lastUpdateText = lastUpdate ? lastUpdate.toLocaleString() : '';
+        const content = `
+          <div style="min-width:140px">
+            <strong>${title}</strong><br/>
+            ${coords.lat.toFixed(5)}, ${coords.lng.toFixed(5)}<br/>
+            ${speed ? 'Hız: ' + speed + '<br/>' : ''}
+            ${lastUpdateText ? 'Son Güncelleme: ' + lastUpdateText : ''}
+          </div>`;
+
+        marker.addListener('click', () => {
+          infoWindow.setContent(content);
+          infoWindow.open(this.map, marker);
+        });
+      };
+
+      // render firebase trips
+      (this.lastTrips || []).forEach((t: any) => addMarker(t, false));
+      // render extra markers (e.g., vehicles passed from LiveMap)
+      (this.extraMarkers || []).forEach((v: any) => addMarker(v, true));
+    } catch (e) {
+      console.warn('Error rendering combined markers', e);
     }
   }
 
@@ -142,6 +189,18 @@ export class GoogleMapComponent implements AfterViewInit, OnDestroy {
       }, () => {
         // ignore
       });
+    }
+  }
+
+  // Allow parent components to programmatically center the map
+  public centerTo(lat: number, lng: number, zoom?: number) {
+    try {
+      if (!this.map) return;
+      const pos = { lat, lng };
+      this.map.setCenter(pos);
+      if (typeof zoom === 'number') this.map.setZoom(zoom);
+    } catch (e) {
+      console.warn('Could not center map', e);
     }
   }
 }
