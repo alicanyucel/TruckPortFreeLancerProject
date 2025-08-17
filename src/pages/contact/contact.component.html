@@ -1,98 +1,49 @@
-<div class="contact-container">
-  <section class="contact-hero">
-    <div class="container">
-      <h1>{{'contact.title' | translate}}</h1>
-      <p class="hero-text">{{'contact.heroText' | translate}}</p>
-    </div>
-  </section>
+<section class="contact-content">
+  <div class="container">
+    <div class="contact-grid">
+      
+      <!-- Sol sütun: iletişim bilgileri -->
+      <div class="contact-info">
+        <h2>{{'contact.info.title' | translate}}</h2>
 
-  <section class="contact-content">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h2>{{'contact.info.title' | translate}}</h2>
-          
-          <div class="info-item">
-            <h3>📍 {{'contact.info.address.title' | translate}}</h3>
-            <p>{{'contact.info.address.text' | translate}}</p>
-          </div>
-          
-          <div class="info-item">
-            <h3>📞 {{'contact.info.phone.title' | translate}}</h3>
-            <p>+90 (212) 123 45 67</p>
-          </div>
-          
-          <div class="info-item">
-            <h3>📱 {{'contact.info.mobile.title' | translate}}</h3>
-            <p>+90 (555) 123 45 67</p>
-          </div>
-          
-          <div class="info-item">
-            <h3>📧 {{'contact.info.email.title' | translate}}</h3>
-            <p>info&#64;truckport.com</p>
-          </div>
-          
-          <div class="info-item">
-            <h3>🕒 {{'contact.info.hours.title' | translate}}</h3>
-            <p>{{'contact.info.hours.text' | translate}}</p>
-          </div>
+        <div class="info-item">
+          <h3>📍 {{'contact.info.address.title' | translate}}</h3>
+          <p>{{'contact.info.address.text' | translate}}</p>
         </div>
-        
-        <div class="contact-form">
-          <h2>{{'contact.form.title' | translate}}</h2>
-          <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
-            <div class="form-group">
-              <label for="name">{{'contact.form.name' | translate}} *</label>
-              <input type="text" id="name" name="name" required placeholder="Adınız (zorunlu)" [(ngModel)]="formModel.name" #nameCtrl="ngModel">
-              <div class="field-error" *ngIf="nameCtrl.invalid && (nameCtrl.dirty || nameCtrl.touched)">
-                <small *ngIf="nameCtrl.errors?.['required']">Lütfen adınızı girin.</small>
-              </div>
-            </div>
 
-            <div class="form-group">
-              <label for="email">{{'contact.form.email' | translate}} *</label>
-              <input type="email" id="email" name="email" required placeholder="E-posta (zorunlu)" [(ngModel)]="formModel.email" #emailCtrl="ngModel">
-              <div class="field-error" *ngIf="emailCtrl.invalid && (emailCtrl.dirty || emailCtrl.touched)">
-                <small *ngIf="emailCtrl.errors?.['required']">Lütfen e-posta adresinizi girin.</small>
-                <small *ngIf="emailCtrl.errors?.['email']">Geçerli bir e-posta adresi girin.</small>
-              </div>
-            </div>
+        <div class="info-item">
+          <h3>📞 {{'contact.info.phone.title' | translate}}</h3>
+          <p>+90 (212) 123 45 67</p>
+        </div>
 
-            <div class="form-group">
-              <label for="phone">{{'contact.form.phone' | translate}} *</label>
-              <input type="tel" id="phone" name="phone" required pattern="^[0-9]{11}$" placeholder="5XXXXXXXXXX (11 hane)" [(ngModel)]="formModel.phone" #phoneCtrl="ngModel">
-              <div class="field-error" *ngIf="phoneCtrl.invalid && (phoneCtrl.dirty || phoneCtrl.touched)">
-                <small *ngIf="phoneCtrl.errors?.['required']">Lütfen telefon numaranızı girin.</small>
-                <small *ngIf="phoneCtrl.errors?.['pattern']">Telefon numarası 11 haneli olmalıdır.</small>
-              </div>
-            </div>
+        <div class="info-item">
+          <h3>📱 {{'contact.info.mobile.title' | translate}}</h3>
+          <p>+90 (555) 123 45 67</p>
+        </div>
 
-            <div class="form-group">
-              <label for="subject">{{'contact.form.subject' | translate}} *</label>
-              <select id="subject" name="subject" required [(ngModel)]="formModel.subject" #subjectCtrl="ngModel">
-                <option value="">{{'contact.form.selectSubject' | translate}} (zorunlu)</option>
-                <option value="general">{{'contact.form.subjects.general' | translate}}</option>
-                <option value="quote">{{'contact.form.subjects.quote' | translate}}</option>
-                <option value="support">{{'contact.form.subjects.support' | translate}}</option>
-                <option value="complaint">{{'contact.form.subjects.complaint' | translate}}</option>
-              </select>
-              <div class="field-error" *ngIf="subjectCtrl.invalid && (subjectCtrl.dirty || subjectCtrl.touched)">
-                <small *ngIf="subjectCtrl.errors?.['required']">Lütfen konu seçin.</small>
-              </div>
-            </div>
+        <div class="info-item">
+          <h3>📧 {{'contact.info.email.title' | translate}}</h3>
+          <p>info&#64;truckport.com</p>
+        </div>
 
-            <div class="form-group">
-              <label for="message">{{'contact.form.message' | translate}} *</label>
-              <textarea id="message" name="message" rows="5" required [(ngModel)]="formModel.message" #messageCtrl="ngModel"></textarea>
-              <div class="field-error" *ngIf="messageCtrl.invalid && (messageCtrl.dirty || messageCtrl.touched)">
-                <small *ngIf="messageCtrl.errors?.['required']">Lütfen mesajınızı yazın.</small>
-              </div>
-            </div>
-
-            <button type="submit" class="submit-btn" [disabled]="contactForm.invalid">{{'contact.form.submit' | translate}}</button>
-          </form>
+        <div class="info-item">
+          <h3>🕒 {{'contact.info.hours.title' | translate}}</h3>
+          <p>{{'contact.info.hours.text' | translate}}</p>
         </div>
       </div>
+
+      <!-- Sağ sütun: tam genişlikli harita -->
+      <div class="contact-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3060.786019344994!2d32.85974131535419!3d39.92077097942727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d34fcd8f3c5e2f%3A0x4c1b6e8e3e8e8e8e!2sAnkara!5e0!3m2!1str!2str!4v1616161616161"
+          style="border:0; width: 100%; height: 100%;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
     </div>
-  </section>
-</div>
+  </div>
+</section>
+
