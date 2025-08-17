@@ -38,7 +38,7 @@ export class GoogleMapComponent implements AfterViewInit, OnDestroy, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.map && changes['extraMarkers']) {
-      // re-render markers when extraMarkers input changes
+      // 
       this.renderCombinedMarkers();
     }
   }
