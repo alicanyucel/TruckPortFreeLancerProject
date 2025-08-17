@@ -76,3 +76,4 @@ export class TestComponent implements OnInit, OnDestroy {
     this.updatePagination();
   }
 }
+//
