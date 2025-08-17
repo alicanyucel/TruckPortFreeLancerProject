@@ -5,45 +5,68 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
-  styleUrls: ['./test.component.css'],
-  providers: [FirebaseService]
+  styleUrls: ['./test.component.css']
 })
 export class TestComponent implements OnInit, OnDestroy {
   title = 'Test Bileşeni';
+  
+  // Veriler
   bookingTrips: any[] = [];
+  devices: any[] = [];
+
+  // Auth
   authError: string | null = null;
   authUser: any = null;
-  loading = true;
 
-  private subs: Subscription[] = [];
+  loadingTrips = true;
+  loadingDevices = true;
+
   // Pagination
   pageSize = 10;
   currentPage = 1;
   totalPages = 1;
 
+  private subs: Subscription[] = [];
+
   constructor(private firebaseService: FirebaseService) {}
 
   ngOnInit() {
+    // Booking Trips
     const s1 = this.firebaseService.getBookingTrips().subscribe({
       next: (data: any[]) => {
         this.bookingTrips = data || [];
-  this.loading = false;
-  this.updatePagination();
+        this.loadingTrips = false;
+        this.updatePagination();
       },
       error: (error) => {
         console.error('Error fetching trips:', error);
-        this.loading = false;
+        this.loadingTrips = false;
       }
     });
     this.subs.push(s1);
 
-    const s2 = this.firebaseService.getAuthError$().subscribe(err => {
-      this.authError = err ? err.message || String(err) : null;
+    // Devices
+    const s2 = this.firebaseService.getDevices().subscribe({
+      next: (data: any[]) => {
+        this.devices = data || [];
+        this.loadingDevices = false;
+      },
+      error: (error) => {
+        console.error('Error fetching devices:', error);
+        this.loadingDevices = false;
+      }
     });
     this.subs.push(s2);
 
-    const s3 = this.firebaseService.getAuthState$().subscribe(u => this.authUser = u);
+    // Auth Error
+    const s3 = this.firebaseService.getAuthError$().subscribe(err => {
+      this.authError = err ? err.message || String(err) : null;
+    });
     this.subs.push(s3);
+
+    // Auth State
+    const s4 = this.firebaseService.getAuthState$().subscribe(u => this.authUser = u);
+    this.subs.push(s4);
   }
 
   ngOnDestroy() {
@@ -52,6 +75,7 @@ export class TestComponent implements OnInit, OnDestroy {
 
   trackByIndex(i: number) { return i; }
 
+  // Pagination
   updatePagination() {
     this.currentPage = 1;
     this.totalPages = Math.max(1, Math.ceil((this.bookingTrips?.length || 0) / this.pageSize));
@@ -76,4 +100,3 @@ export class TestComponent implements OnInit, OnDestroy {
     this.updatePagination();
   }
 }
-//

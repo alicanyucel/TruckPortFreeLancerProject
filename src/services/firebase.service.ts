@@ -5,11 +5,9 @@ import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
 import { environment } from '../environments/environment';
 import { Observable, BehaviorSubject } from 'rxjs';
 
-
 const firebaseApp = initializeApp(environment.firebase);
 const db = getDatabase(firebaseApp);
 const auth = getAuth(firebaseApp);
-
 
 const authStateSubject = new BehaviorSubject<any>(null);
 const authErrorSubject = new BehaviorSubject<Error | null>(null);
@@ -39,6 +37,7 @@ export class FirebaseService {
   getAuthError$(): Observable<Error | null> {
     return authErrorSubject.asObservable();
   }
+
   getAuthState$(): Observable<any> {
     return authStateSubject.asObservable();
   }
@@ -62,11 +61,12 @@ export class FirebaseService {
       return snap.exists() ? (snap.val() as T) : null;
     });
   }
+
   create<T>(node: string, data: T): Promise<string> {
     return authReady.then(async () => {
       const newRef = push(ref(db, node));
       await set(newRef, data);
-      return newRef.key!; 
+      return newRef.key!;
     });
   }
 
@@ -80,5 +80,14 @@ export class FirebaseService {
 
   delete(node: string, id: string): Promise<void> {
     return authReady.then(() => remove(ref(db, `${node}/${id}`)));
+  }
+
+  // Özel metodlar
+getBookingTrips(): Observable<any[]> {
+  return this.getAll<any>('booking_trips'); 
+}
+
+  getDevices(): Observable<any[]> {
+    return this.getAll<any>('devices');
   }
 }

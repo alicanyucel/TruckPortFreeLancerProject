@@ -1,42 +1,50 @@
 <div class="test-component">
-	<h3>{{ title }}</h3>
+  <h3>{{ title }}</h3>
 
-	<div *ngIf="loading">Yükleniyor...</div>
-	<div *ngIf="authError" class="error">Auth Hatası: {{ authError }}</div>
+  <!-- Loading -->
+  <div *ngIf="loadingTrips">Yükleniyor...</div>
 
-	<!-- auth user details intentionally hidden -->
+  <!-- Auth Error -->
+  <div *ngIf="authError" class="error">Auth Hatası: {{ authError }}</div>
 
-	<div *ngIf="!loading && bookingTrips.length === 0">Kayıtlı rezervasyon bulunamadı.</div>
+  <!-- Auth User -->
+  <div *ngIf="authUser">
+    <strong>Kullanıcı:</strong> {{ authUser.uid || authUser.email || 'Anonim' }}
+  </div>
 
-	<table *ngIf="bookingTrips.length > 0" class="test-table">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>ID</th>
-				<th>Başlık / Açıklama</th>
-				<th>Ham JSON</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr *ngFor="let t of pagedTrips; let i = index; trackBy: trackByIndex">
-				<td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
-				<td>{{ t.id || t.key || '-' }}</td>
-				<td>{{ t.title || t.name || t.description || '-' }}</td>
-				<td><pre style="max-height:80px;overflow:auto">{{ t | json }}</pre></td>
-			</tr>
-		</tbody>
-	</table>
+  <!-- Booking Trips -->
+  <div *ngIf="!loadingTrips && bookingTrips.length === 0">Kayıtlı rezervasyon bulunamadı.</div>
 
-	<div *ngIf="bookingTrips.length > 0" class="pagination-controls">
-		<button (click)="prevPage()" [disabled]="currentPage === 1">◀ Prev</button>
-		<span>Sayfa {{ currentPage }} / {{ totalPages }}</span>
-		<button (click)="nextPage()" [disabled]="currentPage === totalPages">Next ▶</button>
+  <table *ngIf="bookingTrips.length > 0" class="test-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>ID</th>
+        <th>Başlık / Açıklama</th>
+        <th>Ham JSON</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of pagedTrips; let i = index; trackBy: trackByIndex">
+        <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+        <td>{{ t.id || t.key || '-' }}</td>
+        <td>{{ t.title || t.name || t.description || '-' }}</td>
+        <td><pre style="max-height:80px;overflow:auto">{{ t | json }}</pre></td>
+      </tr>
+    </tbody>
+  </table>
 
-		<label for="pageSize">Sayfa boyutu:</label>
-		<select id="pageSize" (change)="changePageSize(+$any($event.target).value)" [value]="pageSize">
-			<option [value]="5">5</option>
-			<option [value]="10">10</option>
-			<option [value]="25">25</option>
-		</select>
-	</div>
+  <!-- Pagination -->
+  <div *ngIf="bookingTrips.length > 0" class="pagination-controls">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">◀ Prev</button>
+    <span>Sayfa {{ currentPage }} / {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next ▶</button>
+
+    <label for="pageSize">Sayfa boyutu:</label>
+    <select id="pageSize" (change)="changePageSize(+$any($event.target).value)" [value]="pageSize">
+      <option [value]="5">5</option>
+      <option [value]="10">10</option>
+      <option [value]="25">25</option>
+    </select>
+  </div>
 </div>
