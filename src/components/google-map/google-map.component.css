@@ -1,7 +1,10 @@
 .google-map-wrapper {
   position: relative;
   width: 100%;
-  height: 500px;
+  /* Daha büyük görünmesi için viewport tabanlı yükseklik kullanılıyor; maksimum çok büyük ekranlar için min/max sınırı kondu */
+  height: 75vh;
+  min-height: 480px;
+  max-height: 920px;
 }
 
 /* Fullscreen modu */
@@ -18,6 +21,9 @@
 .map-container {
   width: 100%;
   height: 100%;
+  /* Butonların harita içeriğini örtmemesi için alt tarafta boşluk bırak */
+  padding-bottom: 110px; /* buton yüksekliği + boşluk */
+  box-sizing: border-box;
 }
 
 /* Büyüt/Küçült Butonu */
@@ -42,7 +48,7 @@
 /* Alt sabit butonlar */
 .map-fixed-buttons-row {
   position: absolute;
-  bottom: 15px;
+  bottom: 28px; /* biraz daha aşağı alındı */
   left: 0;
   right: 0;
   display: grid;
