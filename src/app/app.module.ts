@@ -34,6 +34,7 @@ import { TruckStoreLoungeComponent } from '../pages/truckstore-lounge/truckstore
 import { VideoGalleryComponent } from '../pages/video-gallery/video-gallery.component';
 import { ProfileComponent } from '../pages/profile/profile.component';
 import { SafeHtmlPipe } from '../pipes/safe-html.pipe';
+import { HelpDeskModule } from '../components/help-desk/help-desk.module';
 
 // Senior Level Services & Interceptors
 import { GlobalErrorHandler } from '../services/error-handler.service';
@@ -86,6 +87,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     })
+    ,HelpDeskModule
   ],
   providers: [
     {

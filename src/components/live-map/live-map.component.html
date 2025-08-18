@@ -1,5 +1,5 @@
 <div class="reservation-list">
-  <div class="reservation-card" *ngFor="let res of reservations">
+  <div class="reservation-card" *ngFor="let res of pagedReservations">
     <table class="reservation-full-table">
       <tr>
         <td class="left-cell"><strong>REZERVASYON NO:</strong></td>
@@ -44,6 +44,12 @@
         </td>
       </tr>
     </table>
+  </div>
+  <!-- Pagination Controls -->
+  <div class="pagination-controls" *ngIf="totalPages > 1">
+    <button class="pagination-btn" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">&lt; Önceki</button>
+    <span class="pagination-info">{{currentPage}} / {{totalPages}}</span>
+    <button class="pagination-btn" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Sonraki &gt;</button>
   </div>
 </div>
 

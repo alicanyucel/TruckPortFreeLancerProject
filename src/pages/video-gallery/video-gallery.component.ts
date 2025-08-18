@@ -43,7 +43,7 @@ export class VideoGalleryComponent implements OnInit {
         descriptionKey: 'videoGallery.videos.fravSgkXr54.description',
         youtubeId: 'fravSgkXr54',
         thumbnailUrl: 'https://img.youtube.com/vi/fravSgkXr54/maxresdefault.jpg',
-        category: 'trucks'
+        category: 'logistics'
       },
       {
         id: 'v102',
@@ -51,23 +51,7 @@ export class VideoGalleryComponent implements OnInit {
         descriptionKey: 'videoGallery.videos.fravSgkXr54.description',
         youtubeId: 'fravSgkXr54',
         thumbnailUrl: 'https://img.youtube.com/vi/fravSgkXr54/maxresdefault.jpg',
-        category: 'trucks'
-      },
-      {
-        id: 'v103',
-        titleKey: 'videoGallery.videos.fravSgkXr54.title',
-        descriptionKey: 'videoGallery.videos.fravSgkXr54.description',
-        youtubeId: 'fravSgkXr54',
-        thumbnailUrl: 'https://img.youtube.com/vi/fravSgkXr54/maxresdefault.jpg',
-        category: 'trucks'
-      },
-      {
-        id: 'v104',
-        titleKey: 'videoGallery.videos.fravSgkXr54.title',
-        descriptionKey: 'videoGallery.videos.fravSgkXr54.description',
-        youtubeId: 'fravSgkXr54',
-        thumbnailUrl: 'https://img.youtube.com/vi/fravSgkXr54/maxresdefault.jpg',
-        category: 'trucks'
+        category: 'testimonials'
       }
     ];
   }

@@ -1,3 +1,33 @@
+/* Pagination Styles */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin: 32px 0 0 0;
+}
+
+.pagination-btn {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 22px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.pagination-btn:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+}
+.pagination-info {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  letter-spacing: 2px;
+}
 .reservation-full-table {
   width: 100%;
   border-collapse: collapse;

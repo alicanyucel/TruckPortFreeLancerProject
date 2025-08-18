@@ -22,13 +22,33 @@ interface Vehicle {
 })
 export class LiveMapComponent implements OnInit {
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // You can fetch reservations here
   }
 
   reservations = [
     { id: '001', vehicleType: '', date: '', loading: '', delivery: '', distance: '', owner: '' },
     { id: '002', vehicleType: '', date: '', loading: '', delivery: '', distance: '', owner: '' },
-    { id: '003', vehicleType: '', date: '', loading: '', delivery: '', distance: '', owner: '' }
+    { id: '003', vehicleType: '', date: '', loading: '', delivery: '', distance: '', owner: '' },
+    { id: '004', vehicleType: '', date: '', loading: '', delivery: '', distance: '', owner: '' },
+    { id: '005', vehicleType: '', date: '', loading: '', delivery: '', distance: '', owner: '' },
+    { id: '006', vehicleType: '', date: '', loading: '', delivery: '', distance: '', owner: '' }
   ];
 
+  pageSize = 3;
+  currentPage = 1;
+
+  get totalPages(): number {
+    return Math.ceil(this.reservations.length / this.pageSize);
+  }
+
+  get pagedReservations() {
+    const start = (this.currentPage - 1) * this.pageSize;
+    return this.reservations.slice(start, start + this.pageSize);
+  }
+
+  changePage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
+  }
 }
