@@ -66,6 +66,48 @@
 .road-assist-btn:hover {
   background: #e67e22; /* Hover durumunda arka plan rengi değiştirildi */
 }
+.toast-container {
+  position: absolute;
+  right: 16px;
+  bottom: 110px; /* butonların hemen üstünde görünsün */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 21000 !important;
+  pointer-events: none; /* konteyner kendi başına tıklanmasın */
+}
+.toast {
+  pointer-events: auto; /* içerideki butonlar tıklanabilir */
+  min-width: 240px;
+  max-width: 420px;
+  background: rgba(20,20,20,0.95); /* koyu arka plan */
+  color: #fff; /* beyaz metin */
+  border-radius: 8px;
+  padding: 14px 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 16px; /* artırıldı */
+  line-height: 1.25;
+  opacity: 1;
+}
+.toast-success {
+  border-left: 4px solid #27ae60;
+}
+.toast-info {
+  border-left: 4px solid #2980b9;
+}
+.toast-message { flex: 1; padding-right: 8px; color: #fff; font-weight: 800; font-size: 17px; }
+.toast-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #f0f0f0;
+  font-weight: 700;
+}
 
 /* Tablet uyumu */
 @media (max-width: 1024px) {
