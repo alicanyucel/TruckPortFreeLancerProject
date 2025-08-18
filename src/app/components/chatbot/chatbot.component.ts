@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { TranslationService } from '../../services/translation.service';
+import { TranslationService } from '../../../services/translation.service';
 import { Subscription } from 'rxjs';
 
 interface ChatMessage {
