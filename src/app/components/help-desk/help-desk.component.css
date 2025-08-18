@@ -1,0 +1,30 @@
+:host {
+	display: block;
+	font-family: var(--base-font, 'Inter', Arial, sans-serif);
+	color: var(--text-color, #222);
+}
+
+.help-desk-page { background:#fff; min-height:100vh; }
+
+.hd-header {
+	display:flex; align-items:center; gap:12px;
+	background: linear-gradient(180deg,#0e77a8,#0b6a93);
+	color:#fff; padding:12px 14px; box-shadow:0 1px 0 rgba(0,0,0,0.06);
+}
+.hd-back { background:transparent; border:none; color:#fff; font-size:22px; padding:6px; cursor:pointer; }
+.hd-title { margin:0; font-size:18px; font-weight:700; }
+
+.hd-list { margin-top:8px; }
+.hd-item {
+	display:flex; align-items:center; justify-content:space-between;
+	padding:18px 16px; text-decoration:none; color:inherit; background:#fff;
+	border-bottom:1px solid #e6e6e6; font-size:16px;
+}
+.hd-item:hover { background:#fbfbfb; }
+.hd-item .chev { color:#999; font-size:22px; }
+
+@media (max-width:480px) {
+	.hd-title { font-size:16px; }
+	.hd-item { padding:16px 12px; font-size:15px; }
+}
+

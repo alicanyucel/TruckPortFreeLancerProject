@@ -1,1 +1,26 @@
-<p>help-desk works!</p>
+<div class="help-desk-page">
+		<header class="hd-header">
+			<button class="hd-back" (click)="goBack()" aria-label="Geri">←</button>
+			<h1 class="hd-title">DESTEK</h1>
+		</header>
+
+	<nav class="hd-list" role="navigation" aria-label="Destek Menüsü">
+		<a class="hd-item" routerLink="/destek/gizlilik" title="Gizlilik Politikası">
+			<span>Gizlilik Politikası</span>
+			<span class="chev">›</span>
+		</a>
+		<a class="hd-item" routerLink="/destek/hakkimizda" title="Hakkımızda">
+			<span>Hakkımızda</span>
+			<span class="chev">›</span>
+		</a>
+		<a class="hd-item" routerLink="/destek/sartlar" title="Şartlar ve koşullar">
+			<span>Şartlar ve koşullar</span>
+			<span class="chev">›</span>
+		</a>
+		<a class="hd-item" routerLink="/destek/hesap-silme" title="Hesap Silme">
+			<span>Hesap Silme</span>
+			<span class="chev">›</span>
+		</a>
+	</nav>
+
+</div>

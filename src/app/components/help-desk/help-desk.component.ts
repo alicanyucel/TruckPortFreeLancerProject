@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./help-desk.component.css']
 })
 export class HelpDeskComponent {
-
+  goBack() {
+    try { window.history.back(); } catch (e) { /* ignore */ }
+  }
 }
