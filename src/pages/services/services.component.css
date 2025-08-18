@@ -1,3 +1,78 @@
+/* Türkçe Açıklama: Mobilde grid yapısı tek sütun olacak şekilde ayarlandı, kartlar tam sığar. */
+@media (max-width: 575px) {
+  .services-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .service-card {
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+}
+/* Türkçe Açıklama: Mobilde taşma ve sığmama sorununu kesin olarak engellemek için ek güçlendirme. */
+@media (max-width: 575px) {
+  .services-container,
+  .services-grid {
+    max-width: 100vw !important;
+    overflow-x: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .service-card {
+    max-width: 100vw !important;
+    padding: 0.75rem !important;
+    margin: 0 auto !important;
+    font-size: 0.95rem !important;
+    box-sizing: border-box !important;
+  }
+  .service-card h3 {
+    font-size: 1rem !important;
+  }
+  .service-card p, .service-card li {
+    font-size: 0.9rem !important;
+  }
+}
+/* Türkçe Açıklama: Mobilde nakliye talepleri sayfasının tam görünmesi için ek güçlendirme. */
+@media (max-width: 575px) {
+  .services-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: hidden !important;
+    width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+  .services-grid {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+  .service-card {
+    word-break: break-word !important;
+    box-sizing: border-box !important;
+    max-width: 100vw !important;
+    overflow: visible !important;
+  }
+}
+/* Türkçe Açıklama: Mobilde hizmetler sayfası ve kartlarının görünürlüğünü garanti altına almak için ek güçlendirme. */
+@media (max-width: 575px) {
+  .services-container,
+  .services-grid,
+  .service-card {
+    display: block !important;
+    width: 100% !important;
+    overflow: visible !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
 /* ===============================
    SERVICES PAGE RESPONSIVE DESIGN
    =============================== */

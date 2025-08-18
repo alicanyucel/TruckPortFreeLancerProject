@@ -143,14 +143,15 @@ body {
   }
   
   /* Force chatbot visibility on mobile */
-  app-chatbot {
+  /* Chatbot kaldırıldı */
+  /* app-chatbot {
     display: block !important;
     position: fixed !important;
     z-index: 99999 !important;
     bottom: 0 !important;
     right: 0 !important;
     pointer-events: auto !important;
-  }
+  } */
   
   .container {
     padding: 0 15px;

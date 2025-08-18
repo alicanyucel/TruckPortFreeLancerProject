@@ -1,3 +1,36 @@
+/* Türkçe Açıklama: Mobilde ng-content ile gelen içeriklerin tam sığması için ek güçlendirme. */
+@media (max-width: 575px) {
+  .ng-content-container, div[ng-content], .content-container {
+    overflow-x: auto !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+    width: 100vw !important;
+  }
+  .ng-content-container * {
+    width: 100% !important;
+    word-break: break-word !important;
+    box-sizing: border-box !important;
+  }
+}
+/* Türkçe Açıklama: Mobilde tablo ve kartların tam sığması için ek güçlendirme. */
+@media (max-width: 575px) {
+  .table-responsive, .table-container, .card-list, .reservation-list {
+    overflow-x: auto !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+  table {
+    width: 100% !important;
+    max-width: 100vw !important;
+    table-layout: fixed !important;
+    font-size: 0.95rem !important;
+  }
+  th, td {
+    word-break: break-word !important;
+    padding: 4px !important;
+    font-size: 0.9rem !important;
+  }
+}
 .app-container {
   min-height: 100vh;
   min-height: 100dvh; /* Dynamic viewport height for iPhone */
@@ -33,13 +66,13 @@
 /* Welcome Banner Styles */
 .welcome-banner {
   background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
-  color: white;
-  padding: var(--space-4) var(--space-6);
-  box-shadow: var(--shadow-md);
-  border-bottom: 1px solid var(--border-color);
-  animation: slideDown 0.5s ease-out;
-}
-
+  /* Chatbot kaldırıldı */
+  /* app-chatbot {
+    display: block !important;
+    position: fixed !important;
+    z-index: 99999 !important;
+    pointer-events: auto !important;
+  } */
 .welcome-content {
   max-width: 1280px;
   margin: 0 auto;
@@ -242,4 +275,5 @@
     padding: var(--space-2) var(--space-3);
     font-size: var(--font-size-xs);
   }
+}
 }

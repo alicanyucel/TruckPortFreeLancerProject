@@ -17,7 +17,8 @@ import { FooterComponent } from '../components/footer/footer.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { LiveMapComponent } from '../components/live-map/live-map.component';
 import { GoogleMapComponent } from '../components/google-map/google-map.component';
-import { ChatbotComponent } from './components/chatbot/chatbot.component';
+// ChatbotComponent kaldırıldı
+import { TranslatePipe } from './pipes/translate.pipe';
 import { AdvertisementsComponent } from '../components/advertisements/advertisements.component';
 import { LanguageSwitcherComponent } from '../components/language-switcher/language-switcher.component';
 import { ThemeSwitcherComponent } from '../components/theme-switcher/theme-switcher.component';
@@ -32,7 +33,6 @@ import { TruckstoreModalComponent } from '../pages/truckstore/truckstore-modal.c
 import { TruckStoreLoungeComponent } from '../pages/truckstore-lounge/truckstore-lounge.component';
 import { VideoGalleryComponent } from '../pages/video-gallery/video-gallery.component';
 import { ProfileComponent } from '../pages/profile/profile.component';
-import { TranslatePipe } from '../pipes/translate.pipe';
 import { SafeHtmlPipe } from '../pipes/safe-html.pipe';
 
 // Senior Level Services & Interceptors
@@ -50,7 +50,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     FooterComponent,
     NavbarComponent,
     LiveMapComponent,
-    ChatbotComponent,
+  // ChatbotComponent kaldırıldı
+  TranslatePipe,
     AdvertisementsComponent,
     LanguageSwitcherComponent,
     ThemeSwitcherComponent,
@@ -62,7 +63,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     TruckStoreComponent,
     TruckStoreLoungeComponent,
     VideoGalleryComponent,
-    TranslatePipe,
     SafeHtmlPipe,
     TruckstoreModalComponent,
     UyeOlComponent,

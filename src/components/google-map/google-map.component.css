@@ -1,12 +1,82 @@
-.google-map-wrapper { width: 100%; height: 100%; position: relative; }
-.map-controls { position: absolute; top: 12px; right: 12px; z-index: 10; }
-.fullscreen-btn { background: rgba(255,255,255,0.95); border: 1px solid #ddd; padding: 8px 12px; border-radius: 4px; cursor: pointer; }
-.map-container { width: 100%; height: 480px; border-radius: 6px; box-shadow: 0 1px 6px rgba(0,0,0,0.12); transition: all 200ms ease; }
-
-/* fullscreen styles */
-.google-map-wrapper.fullscreen {
-	position: fixed !important;
-	top: 0; left: 0; right: 0; bottom: 0;
-	width: 100vw; height: 100vh; z-index: 99999; padding: 12px; background: #fff;
+.google-map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 500px;
 }
-.google-map-wrapper.fullscreen .map-container { height: calc(100vh - 32px); border-radius: 4px; }
+
+/* Fullscreen modu */
+.google-map-wrapper.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: #fff;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Büyüt/Küçült Butonu */
+.map-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+.fullscreen-btn {
+  padding: 8px 12px;
+  border: none;
+  background: #4CAF50;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.fullscreen-btn:hover {
+  background: #45a049;
+}
+
+/* Alt sabit butonlar */
+.map-fixed-buttons-row {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Varsayılan: 4 sütun */
+  gap: 10px;
+  padding: 0 15px;
+  z-index: 1000;
+}
+
+.road-assist-btn {
+  padding: 12px;
+  font-size: 25px;
+  border: none;
+  border-radius: 8px;
+  background: #f39c12; /* Arka plan rengi turuncu yapıldı */
+  color: #111; /* Yazı rengi simsiyah */
+  cursor: pointer;
+  transition: background 0.2s ease;
+  white-space: nowrap; /* Yazılar kaymasın */
+}
+.road-assist-btn:hover {
+  background: #e67e22; /* Hover durumunda arka plan rengi değiştirildi */
+}
+
+/* Tablet uyumu */
+@media (max-width: 1024px) {
+  .map-fixed-buttons-row {
+    grid-template-columns: repeat(2, 1fr); /* 2 sütun */
+  }
+}
+
+/* Telefon uyumu */
+@media (max-width: 480px) {
+  .map-fixed-buttons-row {
+    grid-template-columns: 1fr; /* 1 sütun */
+  }
+}

@@ -11,6 +11,20 @@ declare const google: any;
   styleUrls: ['./google-map.component.css']
 })
 export class GoogleMapComponent implements AfterViewInit, OnDestroy, OnChanges {
+  // Evden Eve Taşımacılık butonu tıklandığında çalışacak fonksiyon
+  onHomeMove() {
+    alert('Evden Eve Taşımacılık talebiniz alındı!');
+  }
+
+  // Nakliye butonu tıklandığında çalışacak fonksiyon
+  onTransport() {
+    alert('Nakliye talebiniz alındı!');
+  }
+
+  // Servis butonu tıklandığında çalışacak fonksiyon
+  onService() {
+    alert('Servis talebiniz alındı!');
+  }
   @ViewChild('mapContainer', { static: false }) mapContainer!: ElementRef;
   // environment may not declare googleMapsApiKey in its type, cast to any to read optional local key
   @Input() apiKey: string = (environment as any).googleMapsApiKey || environment.firebase?.apiKey || '';
@@ -42,6 +56,12 @@ export class GoogleMapComponent implements AfterViewInit, OnDestroy, OnChanges {
       this.renderCombinedMarkers();
     }
   }
+  
+    // Türkçe Açıklama: Yol Yardım butonu tıklandığında çalışacak fonksiyon
+    onRoadAssist() {
+      alert('Yol Yardım talebiniz alındı!');
+      // Buraya istediğiniz başka işlemleri ekleyebilirsiniz.
+    }
 
   toggleFullscreen() {
     this.isFullscreen = !this.isFullscreen;
