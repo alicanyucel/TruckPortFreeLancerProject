@@ -1,115 +1,48 @@
-<div class="live-map-container">
-  <div class="map-header">
-    <h1>🗺️ {{'liveMap.title' | translate}}</h1>
-    <p>{{'liveMap.subtitle' | translate}}</p>
-  </div>
-
-  <div class="map-content">
-    <div class="map-section">
-      <div class="map-container">
-        <div class="map-placeholder">
-          <div class="map-background">
-            <!-- Real Google Map component: receive vehicle markers from this page -->
-            <div class="map-actions">
-              <button (click)="centerIstanbul()">İstanbul'a Center</button>
-              <button (click)="centerAnkara()">Ankara'ya Center</button>
-            </div>
-            <app-google-map #pageMap [extraMarkers]="vehicles"></app-google-map>
+<div class="reservation-list">
+  <div class="reservation-card" *ngFor="let res of reservations">
+    <table class="reservation-full-table">
+      <!-- 1. satır -->
+      <tr>
+        <td class="left-cell"><strong>REZERVASYON NO:</strong> {{ res.id }}</td>
+        <td class="right-cell" rowspan="4">
+          <div class="owner-box">
+            <p class="centered"><strong>İlan Sahibi</strong></p>
+            <p>{{ res.owner }}</p>
           </div>
-          
-          <div class="map-legend">
-            <h4>{{'liveMap.statusIndicators' | translate}}</h4>
-            <div class="legend-item">
-              <span class="legend-color" style="background-color: #27ae60;"></span>
-              <strong><span>{{'liveMap.status.active' | translate}}</span></strong>
-            </div>
-            <div class="legend-item">
-              <span class="legend-color" style="background-color: #f39c12;"></span>
-              <strong><span>{{'liveMap.status.idle' | translate}}</span></strong>
-            </div>
-            <div class="legend-item">
-              <span class="legend-color" style="background-color: #e74c3c;"></span>
-              <strong><span>{{'liveMap.status.maintenance' | translate}}</span></strong>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        </td>
+      </tr>
 
-    <div class="vehicle-list-section">
-      <h3>{{'liveMap.vehicleList' | translate}}</h3>
-      <div class="vehicle-list">
-        <div *ngFor="let vehicle of vehicles" 
-             class="vehicle-card"
-             [class.selected]="selectedVehicle?.id === vehicle.id"
-             (click)="selectVehicle(vehicle)">
-          <div class="vehicle-header">
-            <div class="vehicle-id">{{vehicle.id}}</div>
-            <div class="vehicle-status" 
-                 [style.background-color]="getStatusColor(vehicle.status)">
-              {{getStatusText(vehicle.status)}}
-            </div>
-          </div>
-          
-          <div class="vehicle-info">
-            <div class="info-row">
-              <strong>{{vehicle.name}}</strong>
-            </div>
-            <div class="info-row">
-              👤 {{getDriverName(vehicle.driverKey)}}
-            </div>
-            <div class="info-row">
-              📍 {{getDestination(vehicle.destinationKey)}}
-            </div>
-            <div class="info-row">
-              📦 {{getCargo(vehicle.cargoKey)}}
-            </div>
-            <div class="info-row" *ngIf="vehicle.status === 'active'">
-              🚀 {{vehicle.speed | number:'1.0-0'}} km/h
-            </div>
-            <div class="info-row timestamp">
-              🕒 {{vehicle.lastUpdate | date:'HH:mm:ss'}}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+      <!-- 2. satır -->
+      <tr>
+        <td class="left-cell"><strong>Araç Tipi:</strong> {{ res.vehicleType }}</td>
+      </tr>
 
-  <!-- Selected Vehicle Details -->
-  <div class="vehicle-details" *ngIf="selectedVehicle">
-    <h3>{{'liveMap.vehicleDetails' | translate}}</h3>
-    <div class="details-grid">
-      <div class="detail-card">
-        <h4>{{'liveMap.details.vehicleInfo' | translate}}</h4>
-        <p><strong>ID:</strong> {{selectedVehicle.id}}</p>
-        <p><strong>{{'liveMap.details.model' | translate}}:</strong> {{selectedVehicle.name}}</p>
-        <p><strong>{{'liveMap.details.driver' | translate}}:</strong> {{getDriverName(selectedVehicle.driverKey)}}</p>
-        <p><strong>{{'liveMap.details.status' | translate}}:</strong> 
-          <span [style.color]="getStatusColor(selectedVehicle.status)">
-            {{getStatusText(selectedVehicle.status)}}
-          </span>
-        </p>
-      </div>
-      
-      <div class="detail-card">
-        <h4>{{'liveMap.details.locationInfo' | translate}}</h4>
-        <p><strong>{{'liveMap.details.latitude' | translate}}:</strong> {{selectedVehicle.lat | number:'1.4-4'}}</p>
-        <p><strong>{{'liveMap.details.longitude' | translate}}:</strong> {{selectedVehicle.lng | number:'1.4-4'}}</p>
-        <p><strong>{{'liveMap.details.speed' | translate}}:</strong> {{selectedVehicle.speed | number:'1.0-0'}} km/h</p>
-        <p><strong>{{'liveMap.details.lastUpdate' | translate}}:</strong> {{selectedVehicle.lastUpdate | date:'dd/MM/yyyy HH:mm:ss'}}</p>
-      </div>
-      
-      <div class="detail-card">
-        <h4>{{'liveMap.details.cargoInfo' | translate}}</h4>
-        <p><strong>{{'liveMap.details.destination' | translate}}:</strong> {{getDestination(selectedVehicle.destinationKey)}}</p>
-        <p><strong>{{'liveMap.details.cargo' | translate}}:</strong> {{getCargo(selectedVehicle.cargoKey)}}</p>
-      </div>
-    </div>
-  </div>
+      <!-- 3. satır -->
+      <tr>
+        <td class="left-cell"><strong>Tarih:</strong> {{ res.date }}</td>
+      </tr>
 
-  <!-- Reklam Alanı -->
-  <div class="advertisements-section">
-    <app-advertisements></app-advertisements>
+      <!-- 4. satır -->
+      <tr>
+        <td class="left-cell"><strong>Yükleme Adresi:</strong> {{ res.loading }}</td>
+      </tr>
+
+      <!-- 5. satır: WHATSAPP -->
+      <tr>
+        <td class="left-cell"><strong>Teslimat Adresi:</strong> {{ res.delivery }}</td>
+        <td class="right-cell">
+          <button class="whatsapp">WHATSAPP</button>
+        </td>
+      </tr>
+
+      <!-- 6. satır: ARA -->
+      <tr>
+        <td class="left-cell"><strong>Mesafe:</strong> {{ res.distance }}</td>
+        <td class="right-cell">
+          <button class="call">ARA</button>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>
+

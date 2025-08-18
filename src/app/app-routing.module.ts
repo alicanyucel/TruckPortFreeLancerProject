@@ -15,9 +15,11 @@ import { AuthGuard } from '../services/auth.service';
 import { ProfileComponent } from '../pages/profile/profile.component';
 import { UyeOlComponent } from '../pages/uye-ol/uye-ol.component';
 import { TestComponent } from '../components/test/test.component';
+import { ReservationComponent } from './components/reservation/reservation.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'rezervasyonlar', component: ReservationComponent },
   { path: 'profile', redirectTo: 'profil' },
   { path: 'profil', component: ProfileComponent },
   { path: 'hizmetler', component: ServicesComponent },

@@ -10,7 +10,6 @@ import { userReducer } from '../store/user/user.reducer';
 import { performanceReducer } from '../store/performance/performance.reducer';
 import { UyeOlComponent } from '../pages/uye-ol/uye-ol.component';
 import { PerformanceIndicatorComponent } from '../components/performance-indicator/performance-indicator.component';
-
 import { AppRoutingModule } from './app-routing.module';
 import { TestComponent } from '../components/test/test.component';
 import { AppComponent } from './app.component';

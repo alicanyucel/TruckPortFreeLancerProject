@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent {
-
+  reservations = [
+    { id: '001', vehicleType: '', date: '', loading: '', delivery: '', distance: '', owner: '' },
+    { id: '002', vehicleType: '', date: '', loading: '', delivery: '', distance: '', owner: '' },
+    { id: '003', vehicleType: '', date: '', loading: '', delivery: '', distance: '', owner: '' }
+  ];
 }
+

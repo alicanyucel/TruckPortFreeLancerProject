@@ -1,1 +1,16 @@
-<p>reservation works!</p>
+<div class="reservation-list">
+  <div class="reservation-card" *ngFor="let res of reservations">
+    <h3>REZERVASYON NO: {{ res.id }}</h3>
+    <p><strong>Araç Tipi:</strong> {{ res.vehicleType }}</p>
+    <p><strong>Tarih:</strong> {{ res.date }}</p>
+    <p><strong>Yükleme Adresi:</strong> {{ res.loading }}</p>
+    <p><strong>Teslimat Adresi:</strong> {{ res.delivery }}</p>
+    <p><strong>Mesafe:</strong> {{ res.distance }}</p>
+    <p><strong>İlan Sahibi:</strong> {{ res.owner }}</p>
+    <div class="actions">
+      <button class="whatsapp">WHATSAPP</button>
+      <button class="call">ARA</button>
+    </div>
+  </div>
+</div>
+
