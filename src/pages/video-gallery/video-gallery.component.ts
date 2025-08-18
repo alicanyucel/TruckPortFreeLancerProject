@@ -21,6 +21,10 @@ export class VideoGalleryComponent implements OnInit {
   categories: string[] = ['all', 'trucks', 'logistics', 'testimonials'];
   selectedCategory: string = 'all';
 
+  // Pagination
+  pageSize = 9;
+  currentPage = 1;
+
   constructor(private translationService: TranslationService) { }
 
   ngOnInit(): void {
@@ -29,30 +33,30 @@ export class VideoGalleryComponent implements OnInit {
 
   initializeVideos() {
     this.videos = [
-      {
-        id: 'v100',
+      ...Array.from({ length: 18 }, (_, i) => ({
+        id: `trucks${i}`,
         titleKey: 'videoGallery.videos.fravSgkXr54.title',
         descriptionKey: 'videoGallery.videos.fravSgkXr54.description',
         youtubeId: 'fravSgkXr54',
         thumbnailUrl: 'https://img.youtube.com/vi/fravSgkXr54/maxresdefault.jpg',
         category: 'trucks'
-      },
-      {
-        id: 'v101',
+      })),
+      ...Array.from({ length: 18 }, (_, i) => ({
+        id: `logistics${i}`,
         titleKey: 'videoGallery.videos.fravSgkXr54.title',
         descriptionKey: 'videoGallery.videos.fravSgkXr54.description',
         youtubeId: 'fravSgkXr54',
         thumbnailUrl: 'https://img.youtube.com/vi/fravSgkXr54/maxresdefault.jpg',
         category: 'logistics'
-      },
-      {
-        id: 'v102',
+      })),
+      ...Array.from({ length: 18 }, (_, i) => ({
+        id: `testimonials${i}`,
         titleKey: 'videoGallery.videos.fravSgkXr54.title',
         descriptionKey: 'videoGallery.videos.fravSgkXr54.description',
         youtubeId: 'fravSgkXr54',
         thumbnailUrl: 'https://img.youtube.com/vi/fravSgkXr54/maxresdefault.jpg',
         category: 'testimonials'
-      }
+      }))
     ];
   }
 
@@ -66,6 +70,7 @@ export class VideoGalleryComponent implements OnInit {
 
   filterByCategory(category: string) {
     this.selectedCategory = category;
+    this.currentPage = 1;
   }
 
   getFilteredVideos(): Video[] {
@@ -73,6 +78,22 @@ export class VideoGalleryComponent implements OnInit {
       return this.videos;
     }
     return this.videos.filter(video => video.category === this.selectedCategory);
+  }
+
+  get pagedVideos(): Video[] {
+    const filtered = this.getFilteredVideos();
+    const start = (this.currentPage - 1) * this.pageSize;
+    return filtered.slice(start, start + this.pageSize);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.getFilteredVideos().length / this.pageSize);
+  }
+
+  changePage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
   }
 
   getCategoryName(category: string): string {

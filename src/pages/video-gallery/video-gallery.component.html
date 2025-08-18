@@ -18,18 +18,25 @@
   <!-- Video Grid -->
   <div class="video-grid">
     <div 
-      *ngFor="let video of getFilteredVideos()" 
+      *ngFor="let video of pagedVideos" 
       class="video-card"
       (click)="selectVideo(video)">
       <div class="video-thumbnail">
         <img [src]="video.thumbnailUrl" [alt]="getVideoTitle(video.titleKey)">
-  <div class="play-button" aria-hidden="true"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+        <div class="play-button" aria-hidden="true"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
       </div>
       <div class="video-info">
         <h3>{{getVideoTitle(video.titleKey)}}</h3>
         <p>{{getVideoDescription(video.descriptionKey)}}</p>
       </div>
     </div>
+  </div>
+
+  <!-- Pagination Controls -->
+  <div class="pagination-controls" *ngIf="totalPages > 1">
+    <button class="pagination-btn" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">&lt; Önceki</button>
+    <span class="pagination-info">{{currentPage}} / {{totalPages}}</span>
+    <button class="pagination-btn" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Sonraki &gt;</button>
   </div>
 
   <!-- Video Modal -->

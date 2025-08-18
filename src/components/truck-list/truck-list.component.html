@@ -11,7 +11,7 @@
         <h1 class="page-title">Araç Listesi</h1>
 
         <div class="truck-grid">
-          <div class="truck-card" *ngFor="let t of (filteredTrucks.length ? filteredTrucks : trucks)">
+          <div class="truck-card" *ngFor="let t of pagedTrucks">
             <div class="truck-image" [style.backgroundImage]="'url(' + t.image + ')'" role="img" [attr.aria-label]="t.title"></div>
             <div class="truck-body">
               <h3 class="truck-title">{{ t.title }}</h3>
@@ -23,6 +23,12 @@
               </div>
             </div>
           </div>
+        </div>
+        <!-- Pagination Controls -->
+        <div class="pagination-controls" *ngIf="totalPages > 1">
+          <button class="pagination-btn" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">&lt; Önceki</button>
+          <span class="pagination-info">{{currentPage}} / {{totalPages}}</span>
+          <button class="pagination-btn" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Sonraki &gt;</button>
         </div>
       </aside>
     </div>
