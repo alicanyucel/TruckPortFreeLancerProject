@@ -1,16 +1,3 @@
-.reservation-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.reservation-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
-  overflow: hidden;
-}
-
 .reservation-full-table {
   width: 100%;
   border-collapse: collapse;
@@ -24,35 +11,56 @@
 }
 
 .left-cell {
-  width: 70%;
+  width: 15%;
   font-weight: 500;
   color: #333;
 }
 
-.right-cell {
-  width: 30%;
-  text-align: right;
+.middle-cell {
+  width: 70%;
+  background-color: #f9f9f9; /* istersen kaldırabilirsin */
 }
 
+.right-cell {
+  width: 15%;
+  text-align: center;
+}
 button.whatsapp,
 button.call {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.6rem 1rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button.whatsapp {
   background-color: #25D366;
 }
 
+button.whatsapp:hover {
+  background-color: #1da851;
+}
+
 button.call {
   background-color: #007bff;
 }
 
-.centered {
-  text-align: center;
-  margin: 0;
+button.call:hover {
+  background-color: #0056b3;
 }
+
+button i {
+  font-size: 1.2rem;
+}
+
+
+

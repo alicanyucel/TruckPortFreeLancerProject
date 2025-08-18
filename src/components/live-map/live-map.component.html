@@ -1,45 +1,46 @@
 <div class="reservation-list">
   <div class="reservation-card" *ngFor="let res of reservations">
     <table class="reservation-full-table">
-      <!-- 1. satır -->
       <tr>
-        <td class="left-cell"><strong>REZERVASYON NO:</strong> {{ res.id }}</td>
+        <td class="left-cell"><strong>REZERVASYON NO:</strong></td>
+        <td class="middle-cell"></td>
         <td class="right-cell" rowspan="4">
           <div class="owner-box">
             <p class="centered"><strong>İlan Sahibi</strong></p>
-            <p>{{ res.owner }}</p>
+            <p class="centered">{{ res.owner }}</p>
           </div>
         </td>
       </tr>
-
-      <!-- 2. satır -->
       <tr>
         <td class="left-cell"><strong>Araç Tipi:</strong> {{ res.vehicleType }}</td>
+        <td class="middle-cell"></td>
       </tr>
-
-      <!-- 3. satır -->
       <tr>
         <td class="left-cell"><strong>Tarih:</strong> {{ res.date }}</td>
+        <td class="middle-cell"></td>
       </tr>
-
-      <!-- 4. satır -->
       <tr>
         <td class="left-cell"><strong>Yükleme Adresi:</strong> {{ res.loading }}</td>
+        <td class="middle-cell"></td>
       </tr>
-
-      <!-- 5. satır: WHATSAPP -->
       <tr>
         <td class="left-cell"><strong>Teslimat Adresi:</strong> {{ res.delivery }}</td>
+        <td class="middle-cell"></td>
         <td class="right-cell">
-          <button class="whatsapp">WHATSAPP</button>
+          <button class="whatsapp">
+  <i class="fab fa-whatsapp"></i> WHATSAPP
+</button>
+
         </td>
       </tr>
-
-      <!-- 6. satır: ARA -->
       <tr>
         <td class="left-cell"><strong>Mesafe:</strong> {{ res.distance }}</td>
+        <td class="middle-cell"></td>
         <td class="right-cell">
-          <button class="call">ARA</button>
+          <button class="call">
+  <i class="fas fa-phone"></i> ARA
+</button>
+
         </td>
       </tr>
     </table>
