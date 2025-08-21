@@ -16,10 +16,13 @@ interface Video {
   styleUrls: ['./video-gallery.component.css']
 })
 export class VideoGalleryComponent implements OnInit {
+  categories = ['all', 'education', 'fun', 'news'];
+  selectedCategory = 'all';
   videos: Video[] = [];
+  pagedVideos: Video[] = [];
+  currentPage = 1;
+  totalPages = 1;
   selectedVideo: Video | null = null;
-  categories: string[] = ['all', 'trucks', 'logistics', 'testimonials'];
-  selectedCategory: string = 'all';
 
   constructor(private translationService: TranslationService) { }
 
@@ -30,102 +33,54 @@ export class VideoGalleryComponent implements OnInit {
   initializeVideos() {
     this.videos = [
       {
-        id: 'v1',
-        titleKey: 'videoGallery.videos.truckReview.title',
-        descriptionKey: 'videoGallery.videos.truckReview.description',
-        youtubeId: 'KBjg8KGjvCE', // Mercedes Actros kamyon incelemesi
-        thumbnailUrl: 'https://img.youtube.com/vi/KBjg8KGjvCE/maxresdefault.jpg',
-        category: 'trucks'
+        id: '1',
+        titleKey: 'video1.title',
+        descriptionKey: 'video1.desc',
+        youtubeId: 'abc123',
+        thumbnailUrl: 'https://img.youtube.com/vi/abc123/0.jpg',
+        category: 'education'
       },
       {
-        id: 'v2',
-        titleKey: 'videoGallery.videos.logistics.title',
-        descriptionKey: 'videoGallery.videos.logistics.description',
-        youtubeId: 'V8m9pTPRhpI', // Lojistik ve tedarik zinciri
-        thumbnailUrl: 'https://img.youtube.com/vi/V8m9pTPRhpI/maxresdefault.jpg',
-        category: 'logistics'
-      },
-      {
-        id: 'v3',
-        titleKey: 'videoGallery.videos.testimonial.title',
-        descriptionKey: 'videoGallery.videos.testimonial.description',
-        youtubeId: 'QH2-TGUlwu4', // Müşteri deneyimi videosu
-        thumbnailUrl: 'https://img.youtube.com/vi/QH2-TGUlwu4/maxresdefault.jpg',
-        category: 'testimonials'
-      },
-      {
-        id: 'v4',
-        titleKey: 'videoGallery.videos.volvoTruck.title',
-        descriptionKey: 'videoGallery.videos.volvoTruck.description',
-        youtubeId: 'aXQ2lO3ieBA', // Volvo kamyon tanıtımı
-        thumbnailUrl: 'https://img.youtube.com/vi/aXQ2lO3ieBA/maxresdefault.jpg',
-        category: 'trucks'
-      },
-      {
-        id: 'v5',
-        titleKey: 'videoGallery.videos.safety.title',
-        descriptionKey: 'videoGallery.videos.safety.description',
-        youtubeId: 'kLFEfQxzDzE', // Güvenli taşımacılık
-        thumbnailUrl: 'https://img.youtube.com/vi/kLFEfQxzDzE/maxresdefault.jpg',
-        category: 'logistics'
-      },
-      {
-        id: 'v6',
-        titleKey: 'videoGallery.videos.technology.title',
-        descriptionKey: 'videoGallery.videos.technology.description',
-        youtubeId: 'UYPDSqH9-PA', // Teknoloji ve takip sistemleri
-        thumbnailUrl: 'https://img.youtube.com/vi/UYPDSqH9-PA/maxresdefault.jpg',
-        category: 'logistics'
-      },
-      {
-        id: 'v7',
-        titleKey: 'videoGallery.videos.scaniaTruck.title',
-        descriptionKey: 'videoGallery.videos.scaniaTruck.description',
-        youtubeId: 'JhTLDjEQ71g', // Scania kamyon performansı
-        thumbnailUrl: 'https://img.youtube.com/vi/JhTLDjEQ71g/maxresdefault.jpg',
-        category: 'trucks'
-      },
-      {
-        id: 'v8',
-        titleKey: 'videoGallery.videos.customerStory.title',
-        descriptionKey: 'videoGallery.videos.customerStory.description',
-        youtubeId: 'nfWlot6h_JM', // Müşteri hikayesi
-        thumbnailUrl: 'https://img.youtube.com/vi/nfWlot6h_JM/maxresdefault.jpg',
-        category: 'testimonials'
-      },
-      {
-        id: 'v9',
-        titleKey: 'videoGallery.videos.warehousing.title',
-        descriptionKey: 'videoGallery.videos.warehousing.description',
-        youtubeId: 'jl7aTzBVOeg', // Depolama ve lojistik
-        thumbnailUrl: 'https://img.youtube.com/vi/jl7aTzBVOeg/maxresdefault.jpg',
-        category: 'logistics'
-      },
-      {
-        id: 'v10',
-        titleKey: 'videoGallery.videos.manTruck.title',
-        descriptionKey: 'videoGallery.videos.manTruck.description',
-        youtubeId: 'H7jtC8vjXw8', // MAN kamyon özellikleri
-        thumbnailUrl: 'https://img.youtube.com/vi/H7jtC8vjXw8/maxresdefault.jpg',
-        category: 'trucks'
-      },
-      {
-        id: 'v11',
-        titleKey: 'videoGallery.videos.companyTour.title',
-        descriptionKey: 'videoGallery.videos.companyTour.description',
-        youtubeId: 'ZUG9qYTJMsI', // Şirket turu
-        thumbnailUrl: 'https://img.youtube.com/vi/ZUG9qYTJMsI/maxresdefault.jpg',
-        category: 'testimonials'
-      },
-      {
-        id: 'v12',
-        titleKey: 'videoGallery.videos.sustainableLogistics.title',
-        descriptionKey: 'videoGallery.videos.sustainableLogistics.description',
-        youtubeId: 'ESR13zBebr8', // Sürdürülebilir lojistik
-        thumbnailUrl: 'https://img.youtube.com/vi/ESR13zBebr8/maxresdefault.jpg',
-        category: 'logistics'
+        id: '2',
+        titleKey: 'video2.title',
+        descriptionKey: 'video2.desc',
+        youtubeId: 'def456',
+        thumbnailUrl: 'https://img.youtube.com/vi/def456/0.jpg',
+        category: 'fun'
       }
+      // ...daha fazla video eklenebilir
     ];
+    this.pagedVideos = this.videos;
+    this.totalPages = Math.ceil(this.videos.length / 9);
+  }
+
+  filterByCategory(category: string) {
+    this.selectedCategory = category;
+    if (category === 'all') {
+      this.pagedVideos = this.videos;
+    } else {
+      this.pagedVideos = this.videos.filter(v => v.category === category);
+    }
+    this.currentPage = 1;
+    this.updatePagination();
+  }
+
+  getCategoryName(category: string): string {
+    const names: any = {
+      all: 'Tümü',
+      education: 'Eğitim',
+      fun: 'Eğlence',
+      news: 'Haber'
+    };
+    return names[category] || category;
+  }
+
+  getVideoTitle(key: string): string {
+    return this.translationService.translate(key);
+  }
+
+  getVideoDescription(key: string): string {
+    return this.translationService.translate(key);
   }
 
   selectVideo(video: Video) {
@@ -136,26 +91,16 @@ export class VideoGalleryComponent implements OnInit {
     this.selectedVideo = null;
   }
 
-  filterByCategory(category: string) {
-    this.selectedCategory = category;
+  changePage(page: number) {
+    if (page < 1 || page > this.totalPages) return;
+    this.currentPage = page;
+    this.updatePagination();
   }
 
-  getFilteredVideos(): Video[] {
-    if (this.selectedCategory === 'all') {
-      return this.videos;
-    }
-    return this.videos.filter(video => video.category === this.selectedCategory);
-  }
-
-  getCategoryName(category: string): string {
-    return this.translationService.translate(`videoGallery.categories.${category}`);
-  }
-
-  getVideoTitle(titleKey: string): string {
-    return this.translationService.translate(titleKey);
-  }
-
-  getVideoDescription(descriptionKey: string): string {
-    return this.translationService.translate(descriptionKey);
+  updatePagination() {
+    const start = (this.currentPage - 1) * 9;
+    const end = start + 9;
+    this.pagedVideos = this.videos.slice(start, end);
+    this.totalPages = Math.ceil(this.videos.length / 9);
   }
 }

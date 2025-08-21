@@ -7,12 +7,12 @@ import { setUser } from '../store/user/user.actions';
 import { ThemeService } from '../services/theme.service';
 import { TranslationService } from '../services/translation.service';
 import { AuthService, User } from '../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
   title = 'TruckPort';

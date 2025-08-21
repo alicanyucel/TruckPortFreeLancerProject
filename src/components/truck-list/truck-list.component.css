@@ -1,3 +1,47 @@
+/* Pagination Styles */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  margin: 40px 0 0 0;
+  padding: 16px 0;
+  background: rgba(245, 245, 245, 0.8);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.pagination-btn {
+  background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+}
+.pagination-btn:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+  color: #eee;
+}
+.pagination-btn:not(:disabled):hover {
+  background: linear-gradient(90deg, #1565c0 0%, #1976d2 100%);
+  transform: translateY(-2px) scale(1.05);
+}
+.pagination-info {
+  font-size: 22px;
+  font-weight: bold;
+  color: #1976d2;
+  letter-spacing: 2px;
+  padding: 0 12px;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(33,150,243,0.05);
+}
 /* Scoped truck list styles to avoid interfering with global layout */
 .truck-list-container {
   padding: 30px 16px;

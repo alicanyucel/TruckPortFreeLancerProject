@@ -1,1 +1,10 @@
-<p>help-desk works!</p>
+<div class="support-container">
+  <h2 class="title">Destek</h2>
+  <ul class="menu-list">
+    <li *ngFor="let item of menuItems" (click)="onMenuClick(item.route)">
+      <span class="material-icons">{{ item.icon }}</span>
+      <span class="label">{{ item.label }}</span>
+    </li>
+  </ul>
+</div>
+

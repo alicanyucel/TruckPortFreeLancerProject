@@ -1,5 +1,7 @@
 <div class="app-container">
-  <app-navbar></app-navbar>
+  <nav class="app-navbar" role="navigation" aria-label="Main navigation">
+    <app-navbar></app-navbar>
+  </nav>
   
   <!-- Welcome Message -->
   <div class="welcome-banner" *ngIf="showWelcomeMessage">
@@ -46,18 +48,9 @@
   </div>
   
   <main class="content">
-    <router-outlet></router-outlet>
-    <div style="margin:24px 0; text-align:center; font-weight:700; color:var(--accent-color); font-size:1.15rem;">
-      Kullanıcı adı: <span>{{ userName$ | async }}</span>
-      <span *ngIf="isAuthenticated" class="auth-status">
-        • <span class="status-authenticated">Giriş Yapıldı</span> 
-        • <span class="user-role">{{ currentUser?.role }}</span>
-      </span>
-    </div>
+  <router-outlet></router-outlet>
   </main>
-  
   <app-footer></app-footer>
 </div>
 
-<!-- Chatbot - Global Component -->
-<app-chatbot></app-chatbot>
+<!-- Chatbot ile ilgili tüm kod ve referanslar kaldırıldı -->

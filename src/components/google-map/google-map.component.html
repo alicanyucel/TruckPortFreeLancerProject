@@ -1,8 +1,28 @@
 <div class="google-map-wrapper" [class.fullscreen]="isFullscreen">
+  <!-- Üstteki Kontroller -->
   <div class="map-controls">
     <button class="fullscreen-btn" (click)="toggleFullscreen()">
-      {{ isFullscreen ? 'Küçült' : 'Büyüt' }}
+      {{ isFullscreen ? 'googleMap.shrink' : 'googleMap.expand' }}
     </button>
   </div>
+
+  <!-- Google Map Alanı -->
   <div #mapContainer class="map-container"></div>
+
+  <!-- Toast container: butonlara tıklanınca kısa mesajlar göstermek için -->
+  <div class="toast-container" aria-live="polite">
+    <div *ngFor="let t of toasts" class="toast" [class.toast-success]="t.type === 'success'" [class.toast-info]="t.type === 'info'">
+      <div class="toast-message">{{ t.message }}</div>
+      <button class="toast-close" (click)="removeToast(t.id)">✕</button>
+    </div>
+  </div>
+
+  <!-- Türkçe Açıklama: Butonlar tek satırda 4 sütun olacak şekilde grid ile dizildi -->
+  <div class="map-fixed-buttons-row">
+  <button class="road-assist-btn" (click)="onRoadAssist()">🚨 {{ 'googleMap.roadAssist' }}</button>
+  <button class="road-assist-btn" (click)="onHomeMove()">🏠 {{ 'googleMap.homeMove' }}</button>
+  <button class="road-assist-btn" (click)="onTransport()">🚚 {{ 'googleMap.transport' }}</button>
+  <button class="road-assist-btn" (click)="onService()">🔧 {{ 'googleMap.service' }}</button>
+  </div>
 </div>
+<!---->

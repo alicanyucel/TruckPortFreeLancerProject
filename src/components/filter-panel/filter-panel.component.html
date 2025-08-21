@@ -1,38 +1,38 @@
 <div class="filter-panel">
   <!-- Üst butonlar -->
-  <button class="btn-orange"><span>Son arama</span></button>
-  <button class="btn-orange"><span>Abonelik son arama</span></button>
+  <button class="btn-orange"><span>{{ 'filter.lastSearch' | translate }}</span></button>
+  <button class="btn-orange"><span>{{ 'filter.subscriptionLastSearch' | translate }}</span></button>
 
   <!-- Arama kutusu -->
   <div class="search-box input-with-icon">
-    <input type="text" placeholder="Arama" [(ngModel)]="searchText" (input)="emitFilters()" />
+  <input type="text" [placeholder]="('filter.search' | translate)" [(ngModel)]="searchText" (input)="emitFilters()" />
     <i class="fa fa-search input-icon" aria-hidden="true"></i>
   </div>
 
   <!-- Seçim alanları -->
   <div class="filter-group">
-    <label>Bulunan yer</label>
-    <button class="btn-gray">Rastgele</button>
+  <label>{{ 'filter.location' | translate }}</label>
+  <button class="btn-gray">{{ 'filter.random' | translate }}</button>
   </div>
 
   <div class="filter-group">
-    <label>Kamyon Tipi</label>
-    <button class="btn-gray">Rastgele</button>
+  <label>{{ 'filter.truckType' | translate }}</label>
+  <button class="btn-gray">{{ 'filter.random' | translate }}</button>
   </div>
 
   <div class="filter-group">
-    <label>Üst Yapı Grubu</label>
-    <button class="btn-gray">Rastgele</button>
+  <label>{{ 'filter.bodyType' | translate }}</label>
+  <button class="btn-gray">{{ 'filter.random' | translate }}</button>
   </div>
 
   <div class="filter-group">
-    <label>Marka</label>
-    <button class="btn-gray">Rastgele</button>
+  <label>{{ 'filter.brand' | translate }}</label>
+  <button class="btn-gray">{{ 'filter.random' | translate }}</button>
   </div>
 
   <!-- Yıl Slider -->
   <div class="filter-group">
-    <label>İlk Tescil Tarihi</label>
+  <label>{{ 'filter.registrationDate' | translate }}</label>
     <div class="range-slider">
       <div class="dual-range">
         <div class="track" [style.background]="getRangeBackground('year')"></div>
@@ -43,7 +43,7 @@
           [max]="yearMax"
           [(ngModel)]="yearMin"
           (input)="onRangeInput('year','min',$any($event.target).value)"
-          aria-label="İlk tescil min"
+          [attr.aria-label]="('filter.registrationDateMin' | translate)"
         />
         <input
           class="thumb thumb-max"
@@ -52,7 +52,7 @@
           max="2025"
           [(ngModel)]="yearMax"
           (input)="onRangeInput('year','max',$any($event.target).value)"
-          aria-label="İlk tescil max"
+          [attr.aria-label]="('filter.registrationDateMax' | translate)"
         />
       </div>
       <div class="slider-values">
@@ -65,7 +65,7 @@
 
   <!-- KM Slider -->
   <div class="filter-group">
-    <label>Kilometre</label>
+  <label>{{ 'filter.kilometer' | translate }}</label>
     <div class="range-slider">
       <div class="dual-range">
         <div class="track" [style.background]="getRangeBackground('km')"></div>
@@ -77,7 +77,7 @@
           step="100"
           [(ngModel)]="kmMin"
           (input)="onRangeInput('km','min',$any($event.target).value)"
-          aria-label="Kilometre min"
+          [attr.aria-label]="('filter.kilometerMin' | translate)"
         />
         <input
           class="thumb thumb-max"
@@ -87,7 +87,7 @@
           step="100"
           [(ngModel)]="kmMax"
           (input)="onRangeInput('km','max',$any($event.target).value)"
-          aria-label="Kilometre max"
+          [attr.aria-label]="('filter.kilometerMax' | translate)"
         />
       </div>
       <div class="slider-values">
@@ -100,7 +100,7 @@
 
   <!-- Fiyat Slider -->
   <div class="filter-group">
-    <label>Fiyat (TRY)</label>
+  <label>{{ 'filter.price' | translate }}</label>
     <div class="range-slider">
       <div class="dual-range">
         <div class="track" [style.background]="getRangeBackground('price')"></div>
@@ -112,7 +112,7 @@
           step="1000"
           [(ngModel)]="priceMin"
           (input)="onRangeInput('price','min',$any($event.target).value)"
-          aria-label="Fiyat min"
+          [attr.aria-label]="('filter.priceMin' | translate)"
         />
         <input
           class="thumb thumb-max"
@@ -122,7 +122,7 @@
           step="1000"
           [(ngModel)]="priceMax"
           (input)="onRangeInput('price','max',$any($event.target).value)"
-          aria-label="Fiyat max"
+          [attr.aria-label]="('filter.priceMax' | translate)"
         />
       </div>
       <div class="slider-values">

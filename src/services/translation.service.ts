@@ -139,7 +139,24 @@ export class TranslationService {
     'liveMap.details.destination': { tr: 'Hedef', en: 'Destination' },
     'liveMap.details.cargo': { tr: 'Yük', en: 'Cargo' },
 
-    // Vehicle Data Translations
+  // Signup Page
+  'signup.title': { tr: 'Kayıt Ol', en: 'Sign Up' },
+  'signup.subtitle': { tr: 'Başlamak için hesabınızı oluşturun.', en: 'Create your account to get started.' },
+  'signup.name': { tr: 'Ad Soyad', en: 'Name' },
+  'signup.namePlaceholder': { tr: 'Adınızı girin', en: 'Enter your name' },
+  'signup.email': { tr: 'E-posta', en: 'Email' },
+  'signup.emailPlaceholder': { tr: 'E-posta adresinizi girin', en: 'Enter your email address' },
+  'signup.password': { tr: 'Şifre', en: 'Password' },
+  'signup.passwordPlaceholder': { tr: 'Şifrenizi girin', en: 'Enter your password' },
+  'signup.privacyBtn': { tr: 'Gizlilik Politikası', en: 'Privacy Policy' },
+  'signup.submit': { tr: 'Kayıt Ol', en: 'Register' },
+  'signup.alreadyMember': { tr: 'Zaten hesabınız var mı?', en: 'Already have an account?' },
+  'signup.loginLink': { tr: 'Giriş Yap', en: 'Log In' },
+  'signup.privacyTitle': { tr: 'Gizlilik Politikası', en: 'Privacy Policy' },
+  'signup.privacyText': { tr: 'Bilgileriniz korunur ve paylaşılmaz.', en: 'Your information is protected and will not be shared.' },
+  'signup.success': { tr: 'Kayıt başarılı!', en: 'Registration successful!' },
+  'common.close': { tr: 'Kapat', en: 'Close' },
+  // Vehicle Data Translations
     'vehicles.drivers.ahmet': { tr: 'Ahmet Yılmaz', en: 'Ahmet Yılmaz' },
     'vehicles.drivers.mehmet': { tr: 'Mehmet Kaya', en: 'Mehmet Kaya' },
     'vehicles.drivers.ali': { tr: 'Ali Demir', en: 'Ali Demir' },
@@ -294,7 +311,7 @@ export class TranslationService {
     'common.success': { tr: 'Başarılı', en: 'Success' },
     'common.save': { tr: 'Kaydet', en: 'Save' },
     'common.cancel': { tr: 'İptal', en: 'Cancel' },
-    'common.close': { tr: 'Kapat', en: 'Close' },
+  // Removed duplicate 'common.close' key
 
     // Advertisements
     'ads.sponsoredContent': { tr: 'Sponsorlu İçerikler', en: 'Sponsored Content' },

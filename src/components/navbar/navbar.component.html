@@ -5,19 +5,20 @@
          class="brand-link" 
          (click)="navigateToHome()"
          [attr.aria-label]="'Ana sayfaya git'">
-        <img src="assets/truck.png" alt="TruckPort Logo" class="brand-logo">
-        TruckPort
+  <img src="assets/truck.png" alt="TruckPort Logo" class="brand-logo">
+  {{'navbar.welcome' | translate}}
       </a>
     </div>
+    
     
     <!-- Mobile Menu Toggle -->
     <button class="mobile-menu-toggle" 
             [class.active]="isMobileMenuOpen" 
             (click)="toggleMobileMenu()"
             aria-label="Menüyü aç/kapat">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
     </button>
     
     <ul class="navbar-menu" [class.show]="isMobileMenuOpen">
@@ -62,13 +63,13 @@
         <a routerLink="/trucks" 
            class="navbar-link" 
            routerLinkActive="active"
-           (click)="closeMobileMenu()">Araç Listesi</a>
+           (click)="closeMobileMenu()">{{ 'tracking.vehicleList' | translate }}</a>
       </li>
       <li class="navbar-item">
         <a routerLink="/map"
            class="navbar-link"
            routerLinkActive="active"
-           (click)="closeMobileMenu()">Harita</a>
+           (click)="closeMobileMenu()">{{ 'navbar.liveTracking' | translate }}</a>
       </li>
       <!-- Profile dropdown (desktop) -->
       <li class="navbar-item profile-item" *ngIf="isAuthenticated">
@@ -80,11 +81,11 @@
         <ul class="profile-dropdown" [class.open]="isProfileDropdownOpen" role="menu">
           <li role="menuitem"><a routerLink="/profil" (click)="closeProfileDropdown(); closeMobileMenu()">{{'navbar.profile' | translate}}</a></li>
           <li role="menuitem"><a routerLink="/settings" (click)="closeProfileDropdown(); closeMobileMenu()">{{'navbar.settings' | translate}}</a></li>
-          <li role="menuitem"><a routerLink="/reservations" (click)="closeProfileDropdown(); closeMobileMenu()">Rezervasyonlar</a></li>
-          <li role="menuitem"><a routerLink="/bookings" (click)="closeProfileDropdown(); closeMobileMenu()">Book’lar</a></li>
-          <li role="menuitem"><a routerLink="/favorites" (click)="closeProfileDropdown(); closeMobileMenu()">Favoriler</a></li>
-          <li role="menuitem"><a routerLink="/invoices" (click)="closeProfileDropdown(); closeMobileMenu()">Faturalar</a></li>
-          <li role="menuitem"><a routerLink="/help" (click)="closeProfileDropdown(); closeMobileMenu()">Yardım</a></li>
+          <li role="menuitem"><a routerLink="/reservations" (click)="closeProfileDropdown(); closeMobileMenu()">{{'navbar.reservations' | translate}}</a></li>
+          <li role="menuitem"><a routerLink="/bookings" (click)="closeProfileDropdown(); closeMobileMenu()">{{'navbar.bookings' | translate}}</a></li>
+          <li role="menuitem"><a routerLink="/favorites" (click)="closeProfileDropdown(); closeMobileMenu()">{{'navbar.favorites' | translate}}</a></li>
+          <li role="menuitem"><a routerLink="/invoices" (click)="closeProfileDropdown(); closeMobileMenu()">{{'navbar.invoices' | translate}}</a></li>
+          <li role="menuitem"><a routerLink="/help" (click)="closeProfileDropdown(); closeMobileMenu()">{{'navbar.help' | translate}}</a></li>
           <li role="menuitem"><button class="logout-link" (click)="logout(); closeProfileDropdown(); closeMobileMenu()">{{'navbar.logout' | translate}}</button></li>
         </ul>
       </li>
@@ -104,7 +105,7 @@
         <a routerLink="/uye-ol" 
            class="navbar-link" 
            routerLinkActive="active"
-           (click)="closeMobileMenu()">Üye Ol</a>
+           (click)="closeMobileMenu()">{{ 'login.register' | translate }}</a>
       </li>
 
       <!-- Profile links duplicated for mobile menu when authenticated -->
@@ -116,7 +117,7 @@
           <a routerLink="/settings" class="navbar-link" (click)="closeMobileMenu()">{{'navbar.settings' | translate}}</a>
         </li>
         <li class="navbar-item mobile-profile-item">
-          <a routerLink="/reservations" class="navbar-link" (click)="closeMobileMenu()">Rezervasyonlar</a>
+          <a routerLink="/reservations" class="navbar-link" (click)="closeMobileMenu()">{{'navbar.reservations' | translate}}</a>
         </li>
       </ng-container>
       
@@ -126,6 +127,8 @@
            class="navbar-link login-btn" 
            routerLinkActive="active"
            (click)="closeMobileMenu()">{{'navbar.login' | translate}}</a>
+        <span class="login-prompt">{{'navbar.loginPrompt' | translate}}</span>
+        <span class="tren-light">{{'navbar.trenLight' | translate}}</span>
       </li>
     </ul>
   </div>

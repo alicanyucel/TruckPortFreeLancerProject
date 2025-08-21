@@ -2,6 +2,7 @@ import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild, Input, OnCh
 import { environment } from '../../environments/environment';
 import { FirebaseService } from '../../services/firebase.service';
 import { Subscription } from 'rxjs';
+import { TranslatePipe } from "../../app/pipes/translate.pipe";
 
 declare const google: any;
 
@@ -11,6 +12,37 @@ declare const google: any;
   styleUrls: ['./google-map.component.css']
 })
 export class GoogleMapComponent implements AfterViewInit, OnDestroy, OnChanges {
+  // Toast yönetimi
+  toasts: Array<{ id: number; message: string; type?: 'success' | 'info' | 'error' }> = [];
+  private toastSeq = 1;
+
+  private addToast(message: string, type: 'success' | 'info' | 'error' = 'info', timeout = 3000) {
+    const id = this.toastSeq++;
+    const t = { id, message, type };
+    this.toasts.push(t);
+    if (timeout > 0) {
+      setTimeout(() => this.removeToast(id), timeout);
+    }
+  }
+
+  removeToast(id: number) {
+    this.toasts = this.toasts.filter(x => x.id !== id);
+  }
+
+  // Evden Eve Taşımacılık butonu tıklandığında çalışacak fonksiyon
+  onHomeMove() {
+    this.addToast('Evden Eve Taşımacılık talebiniz alındı. En kısa sürede sizinle iletişime geçilecektir.', 'success');
+  }
+
+  // Nakliye butonu tıklandığında çalışacak fonksiyon
+  onTransport() {
+    this.addToast('Nakliye talebiniz alındı. Fiyat teklifi ve araç bilgisi iletilecektir.', 'info');
+  }
+
+  // Servis butonu tıklandığında çalışacak fonksiyon
+  onService() {
+    this.addToast('Servis talebiniz alındı. En yakın servislerden biri size ulaşacaktır.', 'info');
+  }
   @ViewChild('mapContainer', { static: false }) mapContainer!: ElementRef;
   // environment may not declare googleMapsApiKey in its type, cast to any to read optional local key
   @Input() apiKey: string = (environment as any).googleMapsApiKey || environment.firebase?.apiKey || '';
@@ -42,6 +74,12 @@ export class GoogleMapComponent implements AfterViewInit, OnDestroy, OnChanges {
       this.renderCombinedMarkers();
     }
   }
+  
+    // Türkçe Açıklama: Yol Yardım butonu tıklandığında çalışacak fonksiyon
+    onRoadAssist() {
+      this.addToast('Yol Yardım talebiniz alındı. Yol tarifi ve yardım ekibi yönlendiriliyor.', 'success');
+      // Buraya istediğiniz başka işlemleri ekleyebilirsiniz.
+    }
 
   toggleFullscreen() {
     this.isFullscreen = !this.isFullscreen;

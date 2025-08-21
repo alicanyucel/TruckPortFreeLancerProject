@@ -1,32 +1,23 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { FilterPanelComponent } from '../filter-panel/filter-panel.component';
+import { TranslatePipe } from '../../app/pipes/translate.pipe';
 
 @Component({
   standalone: true,
   selector: 'app-truck-list',
-  imports: [CommonModule, FilterPanelComponent],
+  imports: [NgForOf, NgIf, FilterPanelComponent, TranslatePipe],
   templateUrl: './truck-list.component.html',
   styleUrls: ['./truck-list.component.css']
 })
 export class TruckListComponent {
-  trucks = [
-    {
-      title: 'Mercedes-Benz Trucks eActros 300 L nRA 4x2',
-      description: 'Otomobil transporteri',
-      details: '7/2025, 2.924 km, Euro 6',
-      price: 482000,
-      image: 'assets/truck1.jpg'
-    },
-    {
-      title: 'Mercedes-Benz Trucks eActros 300 L 6x2',
-      description: 'Çöp toplama aracı',
-      details: '11/2023, 8.770 km, Euro 6',
-      price: 303789,
-      image: 'assets/truck2.jpg'
-    }
-    // Diğer araçlar...
-  ];
+  trucks = Array.from({ length: 18 }, (_, i) => ({
+    title: `Mercedes-Benz Trucks eActros 300 L nRA 4x2 #${i+1}`,
+    description: 'Otomobil transporteri',
+    details: `7/2025, ${(i+1)*1000} km, Euro 6`,
+    price: 482000 + i * 10000,
+    image: 'assets/truck.png'
+  }));
 
   // Additional fake entries for testing and layout
   // (kept in the component for a quick demo; move to a service later if needed)
@@ -83,6 +74,27 @@ export class TruckListComponent {
 
   filteredTrucks: any[] = [];
 
+  // Pagination
+  pageSize = 9;
+  currentPage = 1;
+
+  get pagedTrucks() {
+    const list = this.filteredTrucks.length ? this.filteredTrucks : this.trucks;
+    const start = (this.currentPage - 1) * this.pageSize;
+    return list.slice(start, start + this.pageSize);
+  }
+
+  get totalPages() {
+    const list = this.filteredTrucks.length ? this.filteredTrucks : this.trucks;
+    return Math.ceil(list.length / this.pageSize);
+  }
+
+  changePage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
+  }
+
   // apply filters emitted from the standalone filter panel
   applyFilters(f: any) {
     // simple filtering logic for demo
@@ -95,5 +107,6 @@ export class TruckListComponent {
       const withinPrice = t.price >= f.priceMin && t.price <= f.priceMax;
       return matchesText && withinYear && withinPrice;
     });
+    this.currentPage = 1;
   }
 }
