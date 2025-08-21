@@ -1,19 +1,121 @@
-form {
-  max-width: 400px;
-  margin: 0 auto;
+body {
+  background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+  min-height: 100vh;
+  font-family: 'Inter', Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uyeol-card {
+  background: #fff;
+  max-width: 420px;
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(60, 80, 180, 0.12);
+  padding: 32px 28px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.uyeol-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.uyeol-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 8px;
+}
+
+.uyeol-subtitle {
+  color: #64748b;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.uyeol-form {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-div {
-  margin-bottom: 15px;
+.uyeol-form-group {
+  margin-bottom: 18px;
 }
 
-label {
-  font-weight: bold;
+.input-row {
+  display: flex;
+  align-items: center;
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 0 10px;
 }
 
 input {
-  padding: 8px;
-  font-size: 14px;
+  border: none;
+  background: transparent;
+  padding: 10px 0;
+  font-size: 1rem;
+  width: 100%;
+  outline: none;
+}
+
+label {
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.uyeol-btn {
+  background: linear-gradient(90deg, #2563eb 60%, #60a5fa 100%);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 8px;
+  box-shadow: 0 2px 8px rgba(60, 80, 180, 0.08);
+  transition: background 0.2s;
+}
+.uyeol-btn:hover {
+  background: linear-gradient(90deg, #1e40af 60%, #2563eb 100%);
+}
+
+.uyeol-already-member {
+  text-align: center;
+  margin-top: 18px;
+  color: #64748b;
+  font-size: 0.98rem;
+}
+.uyeol-login-link {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.error {
+  color: #ef4444;
+  font-size: 0.92rem;
+  margin-top: 2px;
+}
+.form-error {
+  color: #ef4444;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+.form-success {
+  color: #22c55e;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1rem;
 }
