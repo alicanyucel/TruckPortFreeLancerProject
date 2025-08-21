@@ -43,6 +43,77 @@
     "success": "Kayıt başarılı!"
   },
   "common": {
-    "close": "Kapat"
+    "close": "Kapat",
+    "prev": "Önceki",
+    "next": "Sonraki",
+    "detail": "Detay",
+    "vehicleList": "Araç Listesi",
+    "vehicleDetails": "Araç Detayları",
+    "vehicleInfo": "Araç Bilgisi",
+    "price": "Fiyat",
+    "submit": "Gönder",
+    "search": "Arama",
+    "filter": "Filtre",
+    "brand": "Marka",
+    "location": "Bulunan Yer",
+    "truckType": "Kamyon Tipi",
+    "bodyType": "Üst Yapı Grubu",
+    "registrationDate": "İlk Tescil Tarihi",
+    "kilometer": "Kilometre",
+    "year": "Yıl",
+    "automobileTransporter": "Otomobil Transporteri"
+  },
+  "filter": {
+    "lastSearch": "Son arama",
+    "subscriptionLastSearch": "Abonelik son arama",
+    "search": "Arama",
+    "location": "Bulunan yer",
+    "random": "Rastgele",
+    "truckType": "Kamyon Tipi",
+    "bodyType": "Üst Yapı Grubu",
+    "brand": "Marka",
+    "registrationDate": "İlk Tescil Tarihi",
+    "registrationDateMin": "İlk Tescil Min",
+    "registrationDateMax": "İlk Tescil Max",
+    "kilometer": "Kilometre",
+    "kilometerMin": "Kilometre Min",
+    "kilometerMax": "Kilometre Max",
+    "price": "Fiyat (TRY)",
+    "priceMin": "Fiyat Min",
+    "priceMax": "Fiyat Max"
+  },
+  "googleMap": {
+    "shrink": "Küçült",
+    "expand": "Büyüt",
+    "roadAssist": "Yol Yardım",
+    "homeMove": "Evden Eve Taşımacılık",
+    "transport": "Nakliye",
+    "service": "Servis"
+  },
+  "navbar": {
+  "home": "Ana Sayfa",
+  "services": "Hizmetler",
+  "about": "Hakkımızda",
+  "transportRequests": "Nakliye Talepleri",
+  "contact": "İletişim",
+  "truckStore": "Kamyon Mağazası",
+  "liveTracking": "Canlı Takip",
+  "profile": "Profil",
+  "settings": "Ayarlar",
+  "logout": "Çıkış Yap",
+  "truckPortLounge": "TruckPort Lounge",
+  "videoGallery": "Video Galeri",
+  "login": "Giriş Yap",
+  "welcome": "TruckPort'a hoş geldiniz!",
+  "loginPrompt": "Tüm özelliklerden faydalanmak için giriş yapın.",
+  "trenLight": "TREN Light",
+  "reservations": "Rezervasyonlar",
+  "bookings": "Book’lar",
+  "favorites": "Favoriler",
+  "invoices": "Faturalar",
+  "help": "Yardım"
+  },
+  "login": {
+    "register": "Kayıt Ol"
   }
 }

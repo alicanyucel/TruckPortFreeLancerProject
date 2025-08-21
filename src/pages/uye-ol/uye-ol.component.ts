@@ -1,47 +1,43 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TranslationService } from '../../services/translation.service';
+import { User } from '../../app/models/user.model';
 
 @Component({
-  selector: 'app-uye-ol',
+  selector: 'app-register',
   templateUrl: './uye-ol.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./uye-ol.component.css']
 })
-export class UyeOlComponent {
+export class RegisterComponent {
   registerForm: FormGroup;
-  submitted = false;
-  showPrivacyModal = false;
-  currentLang: string;
+submitted: any;
 
-  constructor(private fb: FormBuilder, private translationService: TranslationService) {
-    this.currentLang = this.translationService.getCurrentLanguage();
+  constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group({
-      fullName: ['', [Validators.required, Validators.minLength(3)]],
+      fname: ['', Validators.required],
+      lname: ['', Validators.required],
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      privacy: [false, Validators.requiredTrue]
+      mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      cc: ['+90'],
+      currency: ['TRY:₺'],
+      language: [''],
+      pro_pic: [''],
+      balance_amount: ['0'],
+      rating: ['0.0'],
+      status: ['0'],
+      trips: [''],
+      accept_status: ['0'],
+      wallet: ['0.0']
     });
   }
 
-  get f() { return this.registerForm.controls; }
-
-  switchLang(lang: string) {
-    this.translationService.setLanguage(lang);
-    this.currentLang = lang;
-  }
-
   onSubmit() {
-    this.submitted = true;
-    if (this.registerForm.invalid) return;
-    // Kayıt işlemi burada yapılabilir
-    alert(this.translationService.translate('signup.success'));
-  }
-
-  openPrivacyModal() {
-    this.showPrivacyModal = true;
-  }
-
-  closePrivacyModal() {
-    this.showPrivacyModal = false;
+    if (this.registerForm.valid) {
+      const userData: User = this.registerForm.value;
+      console.log('Kullanıcı verisi:', userData);
+      // API'ye gönderilebilir
+    } else {
+      console.log('Form geçerli değil');
+    }
   }
 }

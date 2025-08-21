@@ -2,13 +2,11 @@ import { NgModule, ErrorHandler, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { userReducer } from '../store/user/user.reducer';
 import { performanceReducer } from '../store/performance/performance.reducer';
-import { UyeOlComponent } from '../pages/uye-ol/uye-ol.component';
 import { PerformanceIndicatorComponent } from '../components/performance-indicator/performance-indicator.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TestComponent } from '../components/test/test.component';
@@ -40,6 +38,7 @@ import { ErrorInterceptor } from '../interceptors/error.interceptor';
 import { CacheInterceptor } from '../interceptors/cache.interceptor';
 import { SecurityInterceptor } from '../services/security.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { RegisterComponent } from '../pages/uye-ol/uye-ol.component';
 
 
 @NgModule({
@@ -62,9 +61,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     VideoGalleryComponent,
     SafeHtmlPipe,
     TruckstoreModalComponent,
-    UyeOlComponent,
+    RegisterComponent,
     TestComponent,
-  GoogleMapComponent,
+    GoogleMapComponent,
     PerformanceIndicatorComponent
   ],
   exports: [
@@ -75,7 +74,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    // CommonModule removed
     AppRoutingModule,
     StoreModule.forRoot({ user: userReducer, performance: performanceReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),

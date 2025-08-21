@@ -17,6 +17,77 @@
     "success": "Registration successful!"
   },
   "common": {
-    "close": "Close"
+    "close": "Close",
+    "prev": "Prev",
+    "next": "Next",
+    "detail": "Detail",
+    "vehicleList": "Vehicle List",
+    "vehicleDetails": "Vehicle Details",
+    "vehicleInfo": "Vehicle Info",
+    "price": "Price",
+    "submit": "Submit",
+    "search": "Search",
+    "filter": "Filter",
+    "brand": "Brand",
+    "location": "Location",
+    "truckType": "Truck Type",
+    "bodyType": "Body Type",
+    "registrationDate": "Registration Date",
+    "kilometer": "Kilometer",
+    "year": "Year",
+    "automobileTransporter": "Automobile Transporter"
+  },
+  "filter": {
+    "lastSearch": "Last Search",
+    "subscriptionLastSearch": "Subscription Last Search",
+    "search": "Search",
+    "location": "Location",
+    "random": "Random",
+    "truckType": "Truck Type",
+    "bodyType": "Body Type",
+    "brand": "Brand",
+    "registrationDate": "Registration Date",
+    "registrationDateMin": "Registration Date Min",
+    "registrationDateMax": "Registration Date Max",
+    "kilometer": "Kilometer",
+    "kilometerMin": "Kilometer Min",
+    "kilometerMax": "Kilometer Max",
+    "price": "Price (TRY)",
+    "priceMin": "Price Min",
+    "priceMax": "Price Max"
+  },
+  "googleMap": {
+    "shrink": "Shrink",
+    "expand": "Expand",
+    "roadAssist": "Road Assistance",
+    "homeMove": "Home-to-Home Transport",
+    "transport": "Transport",
+    "service": "Service"
+  },
+  "navbar": {
+  "home": "Home",
+  "services": "Services",
+  "about": "About Us",
+  "transportRequests": "Transport Requests",
+  "contact": "Contact",
+  "truckStore": "Truck Store",
+  "liveTracking": "Live Tracking",
+  "profile": "Profile",
+  "settings": "Settings",
+  "logout": "Log Out",
+  "truckPortLounge": "TruckPort Lounge",
+  "videoGallery": "Video Gallery",
+  "login": "Log In",
+  "welcome": "Welcome to TruckPort!",
+  "loginPrompt": "Log in to access all features.",
+  "trenLight": "TREN Light",
+  "reservations": "Reservations",
+  "bookings": "Bookings",
+  "favorites": "Favorites",
+  "invoices": "Invoices",
+  "help": "Help"
+  },
+  "login": {
+    "register": "Register"
   }
 }

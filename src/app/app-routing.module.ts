@@ -13,7 +13,7 @@ import { LiveMapComponent } from '../components/live-map/live-map.component';
 import { GoogleMapComponent } from '../components/google-map/google-map.component';
 import { AuthGuard } from '../services/auth.service';
 import { ProfileComponent } from '../pages/profile/profile.component';
-import { UyeOlComponent } from '../pages/uye-ol/uye-ol.component';
+import { RegisterComponent } from '../pages/uye-ol/uye-ol.component';
 import { TestComponent } from '../components/test/test.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { HelpDeskComponent } from '../components/help-desk/help-desk.component';
@@ -44,7 +44,7 @@ const routes: Routes = [
     component: LiveMapComponent,
     canActivate: [AuthGuard]
   },
-  { path: 'uye-ol', component: UyeOlComponent },
+  { path: 'uye-ol', component: RegisterComponent },
   { path: 'help-desk', component: HelpDeskComponent },
   { path: 'test', component: TestComponent },
   { path: 'map', component: GoogleMapComponent },

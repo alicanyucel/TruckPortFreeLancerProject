@@ -1,58 +1,73 @@
-
-<body class="signup-bg">
-  <div class="uyeol-card">
-    <div class="uyeol-header">
-      <svg width="48" height="48" fill="#2563eb" viewBox="0 0 24 24"><path d="M12 12c2.7 0 8 1.34 8 4v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2c0-2.66 5.3-4 8-4zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
-  <h2>{{ 'signup.title' | translate }}</h2>
-  <p class="uyeol-subtitle">{{ 'signup.subtitle' | translate }}</p>
+<h2>Kayıt Ol</h2>
+<p>Hesabınızı oluşturun ve TruckPort'un tüm özelliklerinden faydalanın.</p>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Ad:</label>
+    <input formControlName="fname" />
+    <div *ngIf="registerForm.get('fname')?.invalid && (registerForm.get('fname')?.touched || registerForm.get('fname')?.dirty)">
+      <small *ngIf="registerForm.get('fname')?.errors?.['required']">Ad zorunludur.</small>
     </div>
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="uyeol-form">
-      <div class="uyeol-form-group input-with-icon">
-  <label for="fullName">{{ 'signup.name' | translate }}</label>
-        <div class="input-row">
-          <i class="fa fa-user input-icon" aria-hidden="true"></i>
-          <input id="fullName" type="text" formControlName="fullName" [placeholder]="('signup.namePlaceholder' | translate)" />
-        </div>
-        <div class="error" *ngIf="submitted && f['fullName'].errors">
-          <small *ngIf="f['fullName'].errors['required']">{{ 'signup.name' | translate }} zorunludur.</small>
-          <small *ngIf="f['fullName'].errors['minlength']">{{ 'signup.name' | translate }} en az 3 karakter olmalı.</small>
-        </div>
-      </div>
-      <div class="uyeol-form-group input-with-icon">
-  <label for="email">{{ 'signup.email' | translate }}</label>
-        <div class="input-row">
-          <i class="fa fa-envelope input-icon" aria-hidden="true"></i>
-          <input id="email" type="email" formControlName="email" [placeholder]="('signup.emailPlaceholder' | translate)" />
-        </div>
-        <div class="error" *ngIf="submitted && f['email'].errors">
-          <small *ngIf="f['email'].errors['required']">{{ 'signup.email' | translate }} zorunludur.</small>
-          <small *ngIf="f['email'].errors['email']">{{ 'signup.email' | translate }} geçerli olmalı.</small>
-        </div>
-      </div>
-      <div class="uyeol-form-group input-with-icon">
-  <label for="password">{{ 'signup.password' | translate }}</label>
-        <div class="input-row">
-          <i class="fa fa-lock input-icon" aria-hidden="true"></i>
-          <input id="password" type="password" formControlName="password" [placeholder]="('signup.passwordPlaceholder' | translate)" />
-        </div>
-        <div class="error" *ngIf="submitted && f['password'].errors">
-          <small *ngIf="f['password'].errors['required']">{{ 'signup.password' | translate }} zorunludur.</small>
-          <small *ngIf="f['password'].errors['minlength']">{{ 'signup.password' | translate }} en az 6 karakter olmalı.</small>
-        </div>
-      </div>
-      <div class="privacy-group">
-        <label class="privacy-content">
-          <input type="checkbox" formControlName="privacy" /> <span>{{ 'signup.privacyBtn' | translate }}</span>
-        </label>
-  <div class="error" *ngIf="submitted && f['privacy'].errors">
-          <small>{{ 'signup.privacyBtn' | translate }} zorunludur.</small>
-        </div>
-      </div>
-  <button type="submit" class="uyeol-btn">{{ 'signup.submit' | translate }}</button>
-      <div class="uyeol-already-member">
-        {{ 'signup.alreadyMember' | translate }}
-        <a routerLink="/login" class="uyeol-login-link">{{ 'signup.loginLink' | translate }}</a>
-      </div>
-    </form>
   </div>
-</body>
+
+  <div>
+    <label>Soyad:</label>
+    <input formControlName="lname" />
+    <div *ngIf="registerForm.get('lname')?.invalid && (registerForm.get('lname')?.touched || registerForm.get('lname')?.dirty)">
+      <small *ngIf="registerForm.get('lname')?.errors?.['required']">Soyad zorunludur.</small>
+    </div>
+  </div>
+
+  <div>
+    <label>Kullanıcı Adı (Takım Adı):</label>
+    <input formControlName="name" />
+    <div *ngIf="registerForm.get('name')?.invalid && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)">
+      <small *ngIf="registerForm.get('name')?.errors?.['required']">Kullanıcı adı zorunludur.</small>
+    </div>
+  </div>
+
+  <div>
+    <label>Email:</label>
+    <input formControlName="email" type="email" />
+    <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)">
+      <small *ngIf="registerForm.get('email')?.errors?.['required']">Email zorunludur.</small>
+      <small *ngIf="registerForm.get('email')?.errors?.['email']">Geçerli bir email giriniz.</small>
+    </div>
+  </div>
+
+  <div>
+    <label>Telefon:</label>
+    <input formControlName="mobile" placeholder="5XXXXXXXXX" />
+    <div *ngIf="registerForm.get('mobile')?.invalid && (registerForm.get('mobile')?.touched || registerForm.get('mobile')?.dirty)">
+      <small *ngIf="registerForm.get('mobile')?.errors?.['required']">Telefon zorunludur.</small>
+      <small *ngIf="registerForm.get('mobile')?.errors?.['pattern']">Telefon 10 haneli olmalıdır.</small>
+    </div>
+  </div>
+
+  <div>
+    <label>Profil Resmi URL:</label>
+    <input formControlName="pro_pic" />
+  </div>
+
+  <div>
+    <label>Dil:</label>
+    <input formControlName="language" />
+  </div>
+
+  <!-- Sabit değerler gizli şekilde ya da readonly olarak gösterilebilir -->
+  <input type="hidden" formControlName="cc" />
+  <input type="hidden" formControlName="currency" />
+  <input type="hidden" formControlName="balance_amount" />
+  <input type="hidden" formControlName="rating" />
+  <input type="hidden" formControlName="status" />
+  <input type="hidden" formControlName="trips" />
+  <input type="hidden" formControlName="accept_status" />
+  <input type="hidden" formControlName="wallet" />
+
+  <button type="submit">Kayıt Ol</button>
+  <div *ngIf="registerForm.invalid && registerForm.touched" class="form-error">
+    <small>Lütfen tüm zorunlu alanları doldurun ve hataları düzeltin.</small>
+  </div>
+  <div *ngIf="registerForm.valid && submitted" class="form-success">
+    <small>Kayıt başarılı!</small>
+  </div>
+</form>

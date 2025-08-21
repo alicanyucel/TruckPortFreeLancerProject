@@ -2,7 +2,7 @@
   <!-- Üstteki Kontroller -->
   <div class="map-controls">
     <button class="fullscreen-btn" (click)="toggleFullscreen()">
-      {{ isFullscreen ? 'Küçült' : 'Büyüt' }}
+      {{ isFullscreen ? 'googleMap.shrink' : 'googleMap.expand' }}
     </button>
   </div>
 
@@ -19,10 +19,10 @@
 
   <!-- Türkçe Açıklama: Butonlar tek satırda 4 sütun olacak şekilde grid ile dizildi -->
   <div class="map-fixed-buttons-row">
-    <button class="road-assist-btn" (click)="onRoadAssist()">🚨 Yol Yardım</button>
-    <button class="road-assist-btn" (click)="onHomeMove()">🏠 Evden Eve Taşımacılık</button>
-    <button class="road-assist-btn" (click)="onTransport()">🚚 Nakliye</button>
-    <button class="road-assist-btn" (click)="onService()">🔧 Servis</button>
+  <button class="road-assist-btn" (click)="onRoadAssist()">🚨 {{ 'googleMap.roadAssist' }}</button>
+  <button class="road-assist-btn" (click)="onHomeMove()">🏠 {{ 'googleMap.homeMove' }}</button>
+  <button class="road-assist-btn" (click)="onTransport()">🚚 {{ 'googleMap.transport' }}</button>
+  <button class="road-assist-btn" (click)="onService()">🔧 {{ 'googleMap.service' }}</button>
   </div>
 </div>
 <!---->
