@@ -78,11 +78,6 @@
   min-height: 100%;
 }
 
-
-
-
-
-
 .info-item p {
   color: #7f8c8d;
   margin: 0;
@@ -152,21 +147,56 @@
   background-color: #229954;
 }
 
-@media (max-width: 768px) {
-  .contact-hero h1 {
-    font-size: 2rem;
+/* Mobil cihazlar (320px - 414px) */
+@media (max-width: 414px) {
+  .contact-info, .contact-list {
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  .hero-text {
-    font-size: 1.1rem;
+  .contact-list li {
+    width: 100%;
+    font-size: 1rem;
   }
-  
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+}
+
+/* Tabletler (600px - 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .contact-info {
+    max-width: 700px;
+    margin: 24px auto;
   }
-  
-  .contact-form {
-    padding: 20px;
+  .contact-list {
+    gap: 16px;
   }
+}
+
+/* Dizüstü ve masaüstü (1024px ve üzeri) */
+@media (min-width: 1024px) {
+  .contact-info {
+    max-width: 900px;
+    margin: 32px auto;
+  }
+  .contact-list {
+    gap: 20px;
+  }
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+.contact-list li {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  padding: 18px;
+  font-size: 1.05rem;
 }

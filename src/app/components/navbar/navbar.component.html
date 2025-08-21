@@ -1,131 +1,24 @@
 <nav class="navbar">
-  <div class="navbar-container">
-    <div class="navbar-brand">
-      <a routerLink="/" 
-         class="brand-link" 
-         (click)="navigateToHome()"
-         [attr.aria-label]="'Ana sayfaya git'">
-        <img src="assets/truck.png" alt="TruckPort Logo" class="brand-logo">
-        TruckPort
-      </a>
-    </div>
-  <!-- small test toggle button -->
-  <button class="test-toggle" (click)="toggleTestEmbedded($event)" aria-label="Toggle test component">Test Göster</button>
-    
-    <!-- Mobile Menu Toggle -->
-    <button class="mobile-menu-toggle" 
-            [class.active]="isMobileMenuOpen" 
-            (click)="toggleMobileMenu()"
-            aria-label="Menüyü aç/kapat">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
-    
-    <ul class="navbar-menu" [class.show]="isMobileMenuOpen">
-
-      <li class="navbar-item">
-        <a routerLink="/" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="navigateToHome(); closeMobileMenu()">Ana Sayfa</a>
-      </li>
-      <li class="navbar-item">
-        <a routerLink="/hizmetler" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">Hizmetler</a>
-      </li>
-      <li class="navbar-item">
-        <a routerLink="/hakkimizda" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">Hakkımızda</a>
-      </li>
-      <li class="navbar-item">
-        <a routerLink="/nakliye-talepleri" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">Nakliye Talepleri</a>
-      </li>
-      <li class="navbar-item">
-        <a routerLink="/iletisim" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">İletişim</a>
-      </li>
-      <li class="navbar-item">
-        <a routerLink="/truckstore" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">TruckStore</a>
-      </li>
-      <li class="navbar-item">
-        <a routerLink="/trucks" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">Araç Listesi</a>
-      </li>
-      <li class="navbar-item">
-        <a routerLink="/test" class="navbar-link" routerLinkActive="active" (click)="closeMobileMenu()">Test</a>
-      </li>
-      <!-- Profile dropdown (desktop) -->
-      <li class="navbar-item profile-item" *ngIf="isAuthenticated">
-        <button class="profile-btn" (click)="toggleProfileDropdown($event)" aria-haspopup="true" [attr.aria-expanded]="isProfileDropdownOpen">
-          <img src="assets/truck.png" alt="avatar" class="profile-avatar">
-          <span class="profile-name">{{profileDisplayName}}</span>
-          <i class="fa fa-caret-down profile-caret" aria-hidden="true"></i>
-        </button>
-        <ul class="profile-dropdown" [class.open]="isProfileDropdownOpen" role="menu">
-          <li role="menuitem"><a routerLink="/profil" (click)="closeProfileDropdown(); closeMobileMenu()">Profil</a></li>
-          <li role="menuitem"><a routerLink="/settings" (click)="closeProfileDropdown(); closeMobileMenu()">Ayarlar</a></li>
-          <li role="menuitem"><a routerLink="/reservations" (click)="closeProfileDropdown(); closeMobileMenu()">Rezervasyonlar</a></li>
-          <li role="menuitem"><a routerLink="/bookings" (click)="closeProfileDropdown(); closeMobileMenu()">Book’lar</a></li>
-          <li role="menuitem"><a routerLink="/favorites" (click)="closeProfileDropdown(); closeMobileMenu()">Favoriler</a></li>
-          <li role="menuitem"><a routerLink="/invoices" (click)="closeProfileDropdown(); closeMobileMenu()">Faturalar</a></li>
-          <li role="menuitem"><a routerLink="/help-desk" (click)="closeProfileDropdown(); closeMobileMenu()">help-desk</a></li>
-          <li role="menuitem"><button class="logout-link" (click)="logout(); closeProfileDropdown(); closeMobileMenu()">Çıkış Yap</button></li>
-        </ul>
-      </li>
-      <li class="navbar-item">
-        <a routerLink="/truckport-lounge" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">TruckPort Lounge</a>
-      </li>
-      <li class="navbar-item">
-        <a routerLink="/video-galeri" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">Video Galeri</a>
-      </li>
-      <li class="navbar-item">
-        <a routerLink="/uye-ol" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">Üye Ol</a>
-      </li>
-
-      <!-- Profile links duplicated for mobile menu when authenticated -->
-      <ng-container *ngIf="isAuthenticated">
-        <li class="navbar-item mobile-profile-item">
-          <a routerLink="/profil" class="navbar-link" (click)="closeMobileMenu()">Profil</a>
-        </li>
-        <li class="navbar-item mobile-profile-item">
-          <a routerLink="/settings" class="navbar-link" (click)="closeMobileMenu()">Ayarlar</a>
-        </li>
-        <li class="navbar-item mobile-profile-item">
-          <a routerLink="/reservations" class="navbar-link" (click)="closeMobileMenu()">Rezervasyonlar</a>
-        </li>
-      </ng-container>
-      
-      <!-- Authentication Section -->
-      <li class="navbar-item" *ngIf="!isAuthenticated">
-        <a routerLink="/giris" 
-           class="navbar-link login-btn" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">Giriş Yap</a>
-      </li>
-    </ul>
+  <div class="logo">
+    <a routerLink="/" class="brand-link">
+      <img src="assets/truck.png" alt="TruckPort Logo" class="brand-logo">
+      TruckPort
+    </a>
   </div>
+  <ul class="navbar-menu navbar-menu-top">
+    <li><a routerLink="/">Ana Sayfa</a></li>
+    <li><a routerLink="/hizmetler">Hizmetler</a></li>
+    <li><a routerLink="/hakkimizda">Hakkımızda</a></li>
+    <li><a routerLink="/nakliye-talepleri">Nakliye Talepleri</a></li>
+    <li><a routerLink="/iletisim">İletişim</a></li>
+    <li><a routerLink="/truckstore">TruckStore</a></li>
+    <li><a routerLink="/trucks">Araç Listesi</a></li>
+    <li><a routerLink="/canli-takip">Canlı Takip</a></li>
+  </ul>
+  <ul class="navbar-menu navbar-menu-bottom">
+    <li><a routerLink="/truckport-lounge">TruckPort Lounge</a></li>
+    <li><a routerLink="/video-galeri">Video Galeri</a></li>
+    <li><a routerLink="/uye-ol">Kayıt Ol</a></li>
+    <li><a routerLink="/giris">Giriş Yap</a></li>
+  </ul>
 </nav>

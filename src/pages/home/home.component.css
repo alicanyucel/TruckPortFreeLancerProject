@@ -8,7 +8,10 @@
   padding-top: 0;
   background-color: var(--bg-primary);
   transition: background-color var(--transition-base);
-  overflow-x: hidden;
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .hero-section {
@@ -123,18 +126,19 @@
 }
 
 .services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: clamp(1.25rem, 4vw, 1.875rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
   align-items: start;
 }
 
 .service-card {
-  background: white;
-  padding: clamp(1.5rem, 4vw, 1.875rem);
+  background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  text-align: center;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  padding: 24px;
+  min-width: 220px;
+  flex: 1 1 220px;
   transition: all 0.3s ease;
   border: 1px solid transparent;
   position: relative;
@@ -288,6 +292,21 @@
   }
 }
 
+/* Mobil cihazlar (320px - 414px) */
+@media (max-width: 414px) {
+  .home-container {
+    overflow-x: auto;
+  }
+  .home-container, .services-grid {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .service-card {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
 /* Small Landscape Phones (576px - 767px) */
 @media (min-width: 576px) and (max-width: 767px) {
   .hero-buttons {
@@ -305,6 +324,18 @@
   .services-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
+  }
+}
+
+/* Tabletler (600px - 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .home-container {
+    overflow-x: auto;
+    max-width: 700px;
+    margin: 24px auto;
+  }
+  .services-grid {
+    gap: 18px;
   }
 }
 
@@ -352,6 +383,18 @@
   
   .service-card {
     padding: 2rem;
+  }
+}
+
+/* Dizüstü ve masaüstü (1024px ve üzeri) */
+@media (min-width: 1024px) {
+  .home-container {
+    overflow-x: auto;
+    max-width: 900px;
+    margin: 32px auto;
+  }
+  .services-grid {
+    gap: 24px;
   }
 }
 

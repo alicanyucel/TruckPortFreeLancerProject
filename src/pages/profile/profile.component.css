@@ -1,11 +1,11 @@
 /* Mobil cihazlar (320px - 414px) */
 @media (max-width: 414px) {
-  .references-container {
+  .profile-container {
     flex-direction: column;
     gap: 12px;
     padding: 12px;
   }
-  .reference-card {
+  .profile-card {
     width: 100%;
     font-size: 1rem;
   }
@@ -13,7 +13,7 @@
 
 /* Tabletler (600px - 1024px) */
 @media (min-width: 600px) and (max-width: 1024px) {
-  .references-container {
+  .profile-container {
     max-width: 700px;
     margin: 24px auto;
     gap: 18px;
@@ -22,19 +22,19 @@
 
 /* Dizüstü ve masaüstü (1024px ve üzeri) */
 @media (min-width: 1024px) {
-  .references-container {
+  .profile-container {
     max-width: 900px;
     margin: 32px auto;
     gap: 24px;
   }
 }
 
-.references-container {
+.profile-container {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
-.reference-card {
+.profile-card {
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 16px rgba(0,0,0,0.08);

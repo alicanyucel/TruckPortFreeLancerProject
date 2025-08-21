@@ -669,3 +669,56 @@
     gap: 1rem;
   }
 }
+
+/* Mobil cihazlar (320px - 414px) */
+@media (max-width: 414px) {
+  .services-container, .services-grid {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .service-card {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
+/* Tabletler (600px - 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .services-container {
+    max-width: 700px;
+    margin: 24px auto;
+  }
+  .services-grid {
+    gap: 18px;
+  }
+}
+
+/* Dizüstü ve masaüstü (1024px ve üzeri) */
+@media (min-width: 1024px) {
+  .services-container {
+    max-width: 900px;
+    margin: 32px auto;
+  }
+  .services-grid {
+    gap: 24px;
+  }
+}
+
+.services-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.service-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  padding: 24px;
+  min-width: 220px;
+  flex: 1 1 220px;
+}

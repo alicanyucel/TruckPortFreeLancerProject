@@ -1,5 +1,8 @@
 .about-container {
   min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .about-hero {
@@ -100,22 +103,33 @@
   font-weight: 500;
 }
 
-@media (max-width: 768px) {
-  .about-hero h1 {
-    font-size: 2rem;
+/* Mobil cihazlar (320px - 414px) */
+@media (max-width: 414px) {
+  .about-container {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
   }
-  
-  .hero-text {
-    font-size: 1.1rem;
+  .about-section {
+    width: 100%;
+    font-size: 1rem;
   }
-  
-  .content-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+}
+
+/* Tabletler (600px - 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .about-container {
+    max-width: 700px;
+    margin: 24px auto;
+    gap: 18px;
   }
-  
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+}
+
+/* Dizüstü ve masaüstü (1024px ve üzeri) */
+@media (min-width: 1024px) {
+  .about-container {
+    max-width: 900px;
+    margin: 32px auto;
+    gap: 24px;
   }
 }

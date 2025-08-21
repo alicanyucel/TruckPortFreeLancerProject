@@ -92,6 +92,13 @@
 
 .login-form {
   margin-bottom: clamp(1.5rem, 4vw, 1.875rem);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #fff;
+  padding: 32px 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
 }
 
 .form-group {
@@ -398,6 +405,19 @@
   }
 }
 
+/* Mobil cihazlar (320px - 414px) */
+@media (max-width: 414px) {
+  .login-form, .register-link-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .login-form input, .register-btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
 /* Small Landscape Phones (576px - 767px) */
 @media (min-width: 576px) and (max-width: 767px) {
   .login-container {
@@ -417,6 +437,17 @@
   .checkbox-container,
   .forgot-password {
     width: auto;
+  }
+}
+
+/* Tabletler (600px - 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .login-form {
+    max-width: 480px;
+    margin: 32px auto;
+  }
+  .register-link-row {
+    gap: 16px;
   }
 }
 
@@ -441,6 +472,17 @@
   
   .form-group input {
     padding: 0.875rem 1rem;
+  }
+}
+
+/* Dizüstü ve masaüstü (1024px ve üzeri) */
+@media (min-width: 1024px) {
+  .login-form {
+    max-width: 400px;
+    margin: 48px auto;
+  }
+  .register-link-row {
+    gap: 18px;
   }
 }
 
