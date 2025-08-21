@@ -83,6 +83,9 @@
   font-weight: 500;
   font-size: 14px;
   white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 8px;
 }
 
 .navbar-link:hover {
@@ -103,17 +106,17 @@
 }
 
 .login-btn {
-  background-color: #e74c3c;
-  color: #fff !important;
   font-weight: 600;
+  color: #fff;
+  background: #1976d2;
+  box-shadow: 0 2px 8px rgba(25,118,210,0.08);
+  border: none;
+  transition: background 0.2s, color 0.2s;
 }
 
 .login-btn:hover {
-  background-color: #c0392b;
-}
-
-.login-btn.active {
-  background-color: #c0392b;
+  background: #d32f2f;
+  color: #fff;
 }
 
 /* Admin link styling */
@@ -362,8 +365,9 @@
   font-weight: 500;
   font-size: 14px; /* Fixed font size for better readability on desktop */
   white-space: nowrap;
-  display: block;
-  line-height: 1.2; /* Added line height for better text spacing */
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 8px;
 }
 
 .navbar-link:hover {
@@ -378,19 +382,17 @@
 }
 
 .login-btn {
-  background-color: #e74c3c;
-  color: #fff !important;
   font-weight: 600;
-  border-radius: 8px;
+  color: #fff;
+  background: #1976d2;
+  box-shadow: 0 2px 8px rgba(25,118,210,0.08);
+  border: none;
+  transition: background 0.2s, color 0.2s;
 }
 
 .login-btn:hover {
-  background-color: #c0392b;
-  transform: translateY(-1px);
-}
-
-.login-btn.active {
-  background-color: #c0392b;
+  background: #d32f2f;
+  color: #fff;
 }
 
 /* Admin link styling */
