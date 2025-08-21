@@ -1,0 +1,22 @@
+{
+  "signup": {
+    "title": "Sign Up",
+    "subtitle": "Create your account to get started.",
+    "name": "Name",
+    "namePlaceholder": "Enter your name",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email address",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "privacyBtn": "Privacy Policy",
+    "submit": "Register",
+    "alreadyMember": "Already have an account?",
+    "loginLink": "Log In",
+    "privacyTitle": "Privacy Policy",
+    "privacyText": "Your information is protected and will not be shared.",
+    "success": "Registration successful!"
+  },
+  "common": {
+    "close": "Close"
+  }
+}

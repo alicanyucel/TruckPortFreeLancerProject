@@ -24,5 +24,25 @@
       "destination": "Varış Noktası",
       "cargo": "Yük"
     }
+  },
+  "signup": {
+    "title": "Kayıt Ol",
+    "subtitle": "Başlamak için hesabınızı oluşturun.",
+    "name": "Ad Soyad",
+    "namePlaceholder": "Adınızı girin",
+    "email": "E-posta",
+    "emailPlaceholder": "E-posta adresinizi girin",
+    "password": "Şifre",
+    "passwordPlaceholder": "Şifrenizi girin",
+    "privacyBtn": "Gizlilik Politikası",
+    "submit": "Kayıt Ol",
+    "alreadyMember": "Zaten hesabınız var mı?",
+    "loginLink": "Giriş Yap",
+    "privacyTitle": "Gizlilik Politikası",
+    "privacyText": "Bilgileriniz korunur ve paylaşılmaz.",
+    "success": "Kayıt başarılı!"
+  },
+  "common": {
+    "close": "Kapat"
   }
 }

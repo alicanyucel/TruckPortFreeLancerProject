@@ -49,7 +49,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     FooterComponent,
     NavbarComponent,
     LiveMapComponent,
-  TranslatePipe,
     AdvertisementsComponent,
     LanguageSwitcherComponent,
     ThemeSwitcherComponent,
@@ -76,16 +75,17 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-  // CommonModule removed
+    // CommonModule removed
     AppRoutingModule,
     StoreModule.forRoot({ user: userReducer, performance: performanceReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      registrationStrategy: 'registerWhenStable:30000'
+        enabled: !isDevMode(),
+        registrationStrategy: 'registerWhenStable:30000'
     }),
-    HelpDeskModule
-  ],
+    HelpDeskModule,
+    TranslatePipe
+],
   providers: [
     {
       provide: ErrorHandler,
