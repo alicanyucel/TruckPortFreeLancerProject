@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { FilterPanelComponent } from '../filter-panel/filter-panel.component';
+import { TranslatePipe } from '../../app/pipes/translate.pipe';
 
 @Component({
   standalone: true,
   selector: 'app-truck-list',
-  imports: [CommonModule, FilterPanelComponent],
+  imports: [NgForOf, NgIf, FilterPanelComponent, TranslatePipe],
   templateUrl: './truck-list.component.html',
   styleUrls: ['./truck-list.component.css']
 })

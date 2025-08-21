@@ -2,6 +2,7 @@ import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild, Input, OnCh
 import { environment } from '../../environments/environment';
 import { FirebaseService } from '../../services/firebase.service';
 import { Subscription } from 'rxjs';
+import { TranslatePipe } from "../../app/pipes/translate.pipe";
 
 declare const google: any;
 

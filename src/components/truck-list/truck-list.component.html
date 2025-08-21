@@ -7,8 +7,8 @@
         </div>
       </div>
 
-      <aside class="right-column">
-        <h1 class="page-title">Araç Listesi</h1>
+  <aside class="right-column">
+  <h1 class="page-title">{{ 'tracking.vehicleList' | translate }}</h1>
 
         <div class="truck-grid">
           <div class="truck-card" *ngFor="let t of pagedTrucks">
@@ -18,17 +18,17 @@
               <p class="truck-desc">{{ t.description }}</p>
               <p class="truck-details">{{ t.details }}</p>
               <div class="truck-meta">
-                <div class="price">₺{{ t.price | number }}</div>
-                <button class="btn-primary"><i class="fa fa-info-circle" aria-hidden="true"></i> Detay</button>
+                <div class="price">₺{{ t.price  }}</div>
+                <button class="btn-primary"><i class="fa fa-info-circle" aria-hidden="true"></i> {{ 'common.detail' | translate }}</button>
               </div>
             </div>
           </div>
         </div>
         <!-- Pagination Controls -->
         <div class="pagination-controls" *ngIf="totalPages > 1">
-          <button class="pagination-btn" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">&lt; Önceki</button>
+          <button class="pagination-btn" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">&lt; {{ 'common.prev' | translate }}</button>
           <span class="pagination-info">{{currentPage}} / {{totalPages}}</span>
-          <button class="pagination-btn" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Sonraki &gt;</button>
+          <button class="pagination-btn" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">{{ 'common.next' | translate }} &gt;</button>
         </div>
       </aside>
     </div>

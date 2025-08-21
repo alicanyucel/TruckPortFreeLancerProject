@@ -2,39 +2,39 @@
   <div class="reservation-card" *ngFor="let res of pagedReservations">
     <table class="reservation-full-table">
       <tr>
-        <td class="left-cell"><strong>REZERVASYON NO:</strong></td>
+  <td class="left-cell"><strong>{{ 'liveMap.reservationNo' | translate }}</strong></td>
         <td class="middle-cell"></td>
         <td class="right-cell" rowspan="4">
           <div class="owner-box">
-            <p class="centered"><strong>İlan Sahibi</strong></p>
+            <p class="centered"><strong>{{ 'liveMap.owner' | translate }}</strong></p>
             <p class="centered">{{ res.owner }}</p>
           </div>
         </td>
       </tr>
       <tr>
-        <td class="left-cell"><strong>Araç Tipi:</strong> {{ res.vehicleType }}</td>
+  <td class="left-cell"><strong>{{ 'liveMap.vehicleType' | translate }}</strong> {{ res.vehicleType }}</td>
         <td class="middle-cell"></td>
       </tr>
       <tr>
-        <td class="left-cell"><strong>Tarih:</strong> {{ res.date }}</td>
+  <td class="left-cell"><strong>{{ 'liveMap.date' | translate }}</strong> {{ res.date }}</td>
         <td class="middle-cell"></td>
       </tr>
       <tr>
-        <td class="left-cell"><strong>Yükleme Adresi:</strong> {{ res.loading }}</td>
+  <td class="left-cell"><strong>{{ 'liveMap.loadingAddress' | translate }}</strong> {{ res.loading }}</td>
         <td class="middle-cell"></td>
       </tr>
       <tr>
-        <td class="left-cell"><strong>Teslimat Adresi:</strong> {{ res.delivery }}</td>
+  <td class="left-cell"><strong>{{ 'liveMap.deliveryAddress' | translate }}</strong> {{ res.delivery }}</td>
         <td class="middle-cell"></td>
         <td class="right-cell">
           <button class="whatsapp">
-  <i class="fab fa-whatsapp"></i> WHATSAPP
+  <i class="fab fa-whatsapp"></i> {{ 'liveMap.whatsapp' | translate }}
 </button>
 
         </td>
       </tr>
       <tr>
-        <td class="left-cell"><strong>Mesafe:</strong> {{ res.distance }}</td>
+  <td class="left-cell"><strong>{{ 'liveMap.distance' | translate }}</strong> {{ res.distance }}</td>
         <td class="middle-cell"></td>
         <td class="right-cell">
           <button class="call">

@@ -2,13 +2,11 @@ import { NgModule, ErrorHandler, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { userReducer } from '../store/user/user.reducer';
 import { performanceReducer } from '../store/performance/performance.reducer';
-import { UyeOlComponent } from '../pages/uye-ol/uye-ol.component';
 import { PerformanceIndicatorComponent } from '../components/performance-indicator/performance-indicator.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TestComponent } from '../components/test/test.component';
@@ -35,13 +33,12 @@ import { VideoGalleryComponent } from '../pages/video-gallery/video-gallery.comp
 import { ProfileComponent } from '../pages/profile/profile.component';
 import { SafeHtmlPipe } from '../pipes/safe-html.pipe';
 import { HelpDeskModule } from '../components/help-desk/help-desk.module';
-
-// Senior Level Services & Interceptors
 import { GlobalErrorHandler } from '../services/error-handler.service';
 import { ErrorInterceptor } from '../interceptors/error.interceptor';
 import { CacheInterceptor } from '../interceptors/cache.interceptor';
 import { SecurityInterceptor } from '../services/security.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { RegisterComponent } from '../pages/uye-ol/uye-ol.component';
 
 
 @NgModule({
@@ -51,8 +48,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     FooterComponent,
     NavbarComponent,
     LiveMapComponent,
-  // ChatbotComponent kaldırıldı
-  TranslatePipe,
     AdvertisementsComponent,
     LanguageSwitcherComponent,
     ThemeSwitcherComponent,
@@ -66,10 +61,13 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     VideoGalleryComponent,
     SafeHtmlPipe,
     TruckstoreModalComponent,
-    UyeOlComponent,
+    RegisterComponent,
     TestComponent,
-  GoogleMapComponent,
+    GoogleMapComponent,
     PerformanceIndicatorComponent
+  ],
+  exports: [
+    TranslatePipe
   ],
   imports: [
     BrowserModule,
@@ -77,18 +75,15 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    CommonModule,
-    RouterModule,
     StoreModule.forRoot({ user: userReducer, performance: performanceReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    })
-    ,HelpDeskModule
-  ],
+        enabled: !isDevMode(),
+        registrationStrategy: 'registerWhenStable:30000'
+    }),
+    HelpDeskModule,
+    TranslatePipe
+],
   providers: [
     {
       provide: ErrorHandler,

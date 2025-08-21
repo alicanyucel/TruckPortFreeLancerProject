@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService, User } from '../../services/auth.service';
+import { TranslatePipe } from "../../app/pipes/translate.pipe";
 
 @Component({
   selector: 'app-navbar',
