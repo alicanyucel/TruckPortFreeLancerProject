@@ -6,6 +6,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Components
 import { AppComponent } from './app.component';
@@ -78,6 +80,7 @@ import { SecurityInterceptor } from '../services/security.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -89,7 +92,8 @@ import { SecurityInterceptor } from '../services/security.service';
       registrationStrategy: 'registerWhenStable:30000'
     }),
     HelpDeskModule,
-    TruckListComponent
+    TruckListComponent,
+    ToastrModule.forRoot({ positionClass: 'toast-bottom-right' })
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
