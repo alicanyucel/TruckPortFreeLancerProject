@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService, User } from '../../services/auth.service';
+import { ToastrService } from '../../services/toastr.service';
 import { TranslatePipe } from "../../app/pipes/translate.pipe";
 
 @Component({
@@ -14,7 +15,8 @@ export class NavbarComponent {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   get currentUser(): User | null {
@@ -27,7 +29,14 @@ export class NavbarComponent {
 
   logout(): void {
     this.authService.logout();
+    this.toastr.info('Çıkış yapıldı.', 'Bilgi');
     this.router.navigate(['/']);
+  }
+  // Her girişte toast mesajı göster
+  ngOnInit(): void {
+    if (this.isAuthenticated) {
+      this.toastr.success('Giriş başarılı!', 'Hoşgeldiniz');
+    }
   }
 
   toggleProfileDropdown(event?: Event): void {

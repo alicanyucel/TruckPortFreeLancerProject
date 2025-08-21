@@ -6,7 +6,6 @@
          (click)="navigateToHome()"
          [attr.aria-label]="'Ana sayfaya git'">
   <img src="assets/truck.png" alt="TruckPort Logo" class="brand-logo">
-  {{'navbar.welcome' | translate}}
       </a>
     </div>
     
@@ -30,40 +29,16 @@
            (click)="navigateToHome(); closeMobileMenu()">{{'navbar.home' | translate}}</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/hizmetler" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">{{'navbar.services' | translate}}</a>
-      </li>
-      <li class="navbar-item">
-        <a routerLink="/hakkimizda" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">{{'navbar.about' | translate}}</a>
-      </li>
-      <li class="navbar-item">
         <a routerLink="/nakliye-talepleri" 
            class="navbar-link" 
            routerLinkActive="active"
            (click)="closeMobileMenu()">{{'navbar.transportRequests' | translate}}</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/iletisim" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">{{'navbar.contact' | translate}}</a>
-      </li>
-      <li class="navbar-item">
         <a routerLink="/truckstore" 
            class="navbar-link" 
            routerLinkActive="active"
            (click)="closeMobileMenu()">{{'navbar.truckStore' | translate}}</a>
-      </li>
-      <li class="navbar-item">
-        <a routerLink="/trucks" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">{{ 'tracking.vehicleList' | translate }}</a>
       </li>
       <li class="navbar-item">
         <a routerLink="/map"
@@ -89,12 +64,7 @@
           <li role="menuitem"><button class="logout-link" (click)="logout(); closeProfileDropdown(); closeMobileMenu()">{{'navbar.logout' | translate}}</button></li>
         </ul>
       </li>
-      <li class="navbar-item">
-        <a routerLink="/truckport-lounge" 
-           class="navbar-link" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">{{'navbar.truckPortLounge' | translate}}</a>
-      </li>
+      
       <li class="navbar-item">
         <a routerLink="/video-galeri" 
            class="navbar-link" 
@@ -128,7 +98,9 @@
            routerLinkActive="active"
            (click)="closeMobileMenu()">{{'navbar.login' | translate}}</a>
         <span class="login-prompt">{{'navbar.loginPrompt' | translate}}</span>
-        <span class="tren-light">{{'navbar.trenLight' | translate}}</span>
+      </li>
+      <li class="navbar-item" *ngIf="isAuthenticated">
+        <button class="navbar-link logout-btn" (click)="logout(); closeMobileMenu()">Çıkış Yap</button>
       </li>
     </ul>
   </div>
