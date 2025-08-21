@@ -23,7 +23,16 @@
       "cargoInfo": "Yük Bilgisi",
       "destination": "Varış Noktası",
       "cargo": "Yük"
-    }
+    },
+    "reservationNo": "Rezervasyon No",
+    "vehicleType": "Araç Tipi",
+    "date": "Tarih",
+    "loadingAddress": "Yükleme Adresi",
+    "deliveryAddress": "Teslimat Adresi",
+    "distance": "Mesafe",
+    "owner": "Sahip",
+    "whatsapp": "Whatsapp",
+    "call": "Ara"
   },
   "signup": {
     "title": "Kayıt Ol",

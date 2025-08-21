@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { TranslationService } from '../../services/translation.service';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { TranslationService } from 'src/services/translation.service';
 
 interface Vehicle {
   id: string;
@@ -26,7 +26,7 @@ export class LiveMapComponent implements OnInit, OnDestroy {
   private updateInterval: any;
   private languageSubscription: Subscription = new Subscription();
 
-  constructor(private translationService: TranslationService) {}
+  constructor(@Inject(TranslationService) private translationService: TranslationService) {}
 
   ngOnInit() {
     this.initializeVehicles();

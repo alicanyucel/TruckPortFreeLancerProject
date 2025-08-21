@@ -17,6 +17,7 @@ import { RegisterComponent } from '../pages/uye-ol/uye-ol.component';
 import { TestComponent } from '../components/test/test.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { HelpDeskComponent } from '../components/help-desk/help-desk.component';
+import { ProviderComponent } from './components/provider/provider.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -48,6 +49,7 @@ const routes: Routes = [
   { path: 'help-desk', component: HelpDeskComponent },
   { path: 'test', component: TestComponent },
   { path: 'map', component: GoogleMapComponent },
+  { path: 'provider', component: ProviderComponent },
   // Admin dashboard kaldırıldı
   { path: '**', redirectTo: '' }
 ];

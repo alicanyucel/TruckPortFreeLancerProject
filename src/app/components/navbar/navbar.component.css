@@ -1,3 +1,31 @@
+/* İkinci navbar için özel stil */
+.navbar-secondary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #34495e;
+  padding: 8px 0;
+  border-top: 2px solid #1976d2;
+}
+
+.navbar-menu-secondary {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+}
+
+.navbar-menu-secondary li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 7px 18px;
+  font-size: 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-menu-secondary li a:hover {
+  background-color: #1976d2;
+}
 /* Reset */
 * {
   margin: 0;

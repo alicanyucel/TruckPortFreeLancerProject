@@ -82,10 +82,15 @@ export class FirebaseService {
     return authReady.then(() => remove(ref(db, `${node}/${id}`)));
   }
 
+
   // Özel metodlar
-getBookingTrips(): Observable<any[]> {
-  return this.getAll<any>('booking_trips'); 
-}
+  getBookingTrips(): Observable<any[]> {
+    return this.getAll<any>('booking_trips'); 
+  }
+
+  getProviders(): Observable<any[]> {
+    return this.getAll<any>('providers');
+  }
 
   getDevices(): Observable<any[]> {
     return this.getAll<any>('devices');

@@ -5,6 +5,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,6 +34,7 @@ import { ContactComponent } from '../pages/contact/contact.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { ServicesComponent } from '../pages/services/services.component';
 import { RegisterComponent } from '../pages/uye-ol/uye-ol.component';
+import { ProviderComponent } from './components/provider/provider.component';
 
 // Pipes
 import { TranslatePipe } from '../pipes/translate.pipe';
@@ -75,6 +79,7 @@ import { SecurityInterceptor } from '../services/security.service';
     LoginComponent,
     ServicesComponent,
     RegisterComponent,
+    ProviderComponent,
     TranslatePipe,
     SafeHtmlPipe
   ],
@@ -92,8 +97,10 @@ import { SecurityInterceptor } from '../services/security.service';
       registrationStrategy: 'registerWhenStable:30000'
     }),
     HelpDeskModule,
-    TruckListComponent,
-    ToastrModule.forRoot({ positionClass: 'toast-bottom-right' })
+  TruckListComponent,
+  ToastrModule.forRoot({ positionClass: 'toast-bottom-right' }),
+  AngularFireModule.initializeApp(environment.firebase),
+  AngularFireDatabaseModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },

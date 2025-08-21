@@ -1,0 +1,17 @@
+<div class="provider-grid">
+  <div *ngFor="let provider of pagedProviders" class="provider-card">
+    <h3>{{ provider.fname }} {{ provider.lname }}</h3>
+    <p><strong>E-posta Adresi:</strong> {{ provider.email }}</p>
+    <p><strong>Telefon Numarası:</strong> {{ provider.cc }} {{ provider.mobile }}</p>
+    <p><strong>Kullanılan Dil:</strong> {{ provider.language }}</p>
+    <p><strong>Para Birimi:</strong> {{ provider.currency }}</p>
+    <p><strong>Cüzdan Bakiyesi:</strong> {{ provider.wallet }}</p>
+    <p><strong>Profil Fotoğrafı:</strong></p>
+    <img *ngIf="provider.pro_pic" [src]="provider.pro_pic" alt="Profil Fotoğrafı" class="provider-pic" />
+  </div>
+</div>
+<div class="pagination-controls">
+  <button (click)="prevPage()" [disabled]="page === 1">Önceki</button>
+  <span>Sayfa {{ page }} / {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="page === totalPages">Sonraki</button>
+</div>
