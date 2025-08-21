@@ -35,8 +35,6 @@ import { VideoGalleryComponent } from '../pages/video-gallery/video-gallery.comp
 import { ProfileComponent } from '../pages/profile/profile.component';
 import { SafeHtmlPipe } from '../pipes/safe-html.pipe';
 import { HelpDeskModule } from '../components/help-desk/help-desk.module';
-
-// Senior Level Services & Interceptors
 import { GlobalErrorHandler } from '../services/error-handler.service';
 import { ErrorInterceptor } from '../interceptors/error.interceptor';
 import { CacheInterceptor } from '../interceptors/cache.interceptor';
@@ -51,7 +49,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     FooterComponent,
     NavbarComponent,
     LiveMapComponent,
-  // ChatbotComponent kaldırıldı
   TranslatePipe,
     AdvertisementsComponent,
     LanguageSwitcherComponent,
@@ -71,23 +68,23 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   GoogleMapComponent,
     PerformanceIndicatorComponent
   ],
+  exports: [
+    TranslatePipe
+  ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+  // CommonModule removed
     AppRoutingModule,
-    CommonModule,
-    RouterModule,
     StoreModule.forRoot({ user: userReducer, performance: performanceReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
-    ,HelpDeskModule
+    }),
+    HelpDeskModule
   ],
   providers: [
     {

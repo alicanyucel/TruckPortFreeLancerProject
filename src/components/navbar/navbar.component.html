@@ -10,6 +10,7 @@
       </a>
     </div>
     
+    
     <!-- Mobile Menu Toggle -->
     <button class="mobile-menu-toggle" 
             [class.active]="isMobileMenuOpen" 
@@ -62,13 +63,13 @@
         <a routerLink="/trucks" 
            class="navbar-link" 
            routerLinkActive="active"
-           (click)="closeMobileMenu()">Araç Listesi</a>
+           (click)="closeMobileMenu()">{{ 'tracking.vehicleList' | translate }}</a>
       </li>
       <li class="navbar-item">
         <a routerLink="/map"
            class="navbar-link"
            routerLinkActive="active"
-           (click)="closeMobileMenu()">Harita</a>
+           (click)="closeMobileMenu()">{{ 'navbar.liveTracking' | translate }}</a>
       </li>
       <!-- Profile dropdown (desktop) -->
       <li class="navbar-item profile-item" *ngIf="isAuthenticated">
@@ -104,7 +105,7 @@
         <a routerLink="/uye-ol" 
            class="navbar-link" 
            routerLinkActive="active"
-           (click)="closeMobileMenu()">Üye Ol</a>
+           (click)="closeMobileMenu()">{{ 'login.register' | translate }}</a>
       </li>
 
       <!-- Profile links duplicated for mobile menu when authenticated -->

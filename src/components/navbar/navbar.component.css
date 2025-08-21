@@ -794,3 +794,9 @@
     padding: 8px 12px;
   }
 }
+
+.navbar-language {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+}
