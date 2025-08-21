@@ -6,80 +6,16 @@
     </div>
   </section>
 
-  <section class="services-content">
+  <section class="services-categories">
     <div class="container">
       <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">🚛</div>
-          <h3>{{'services.trucking.title' | translate}}</h3>
-          <p>{{'services.trucking.description' | translate}}</p>
-          <ul>
-            <li>{{'services.trucking.intercity' | translate}}</li>
-            <li>{{'services.trucking.heavyLoad' | translate}}</li>
-            <li>{{'services.trucking.coldChain' | translate}}</li>
-            <li>{{'services.trucking.hazardous' | translate}}</li>
-          </ul>
+        <div class="service-card" *ngFor="let category of categories">
+          <div class="service-icon">🛠️</div>
+          <h3>{{ category }}</h3>
         </div>
-
-        <div class="service-card">
-          <div class="service-icon">📦</div>
-          <h3>{{'services.logistics.title' | translate}}</h3>
-          <p>{{'services.logistics.description' | translate}}</p>
-          <ul>
-            <li>{{'services.logistics.supplyChain' | translate}}</li>
-            <li>{{'services.logistics.routeOptimization' | translate}}</li>
-            <li>{{'services.logistics.stockManagement' | translate}}</li>
-            <li>{{'services.logistics.distributionPlanning' | translate}}</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">🏪</div>
-          <h3>{{'services.storage.title' | translate}}</h3>
-          <p>{{'services.storage.description' | translate}}</p>
-          <ul>
-            <li>{{'services.storage.general' | translate}}</li>
-            <li>{{'services.storage.coldStorage' | translate}}</li>
-            <li>{{'services.storage.bonded' | translate}}</li>
-            <li>{{'services.storage.crossDocking' | translate}}</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">🌍</div>
-          <h3>{{'services.international.title' | translate}}</h3>
-          <p>{{'services.international.description' | translate}}</p>
-          <ul>
-            <li>{{'services.international.europe' | translate}}</li>
-            <li>{{'services.international.centralAsia' | translate}}</li>
-            <li>{{'services.international.customs' | translate}}</li>
-            <li>{{'services.international.tracking' | translate}}</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">⚡</div>
-          <h3>{{'services.express.title' | translate}}</h3>
-          <p>{{'services.express.description' | translate}}</p>
-          <ul>
-            <li>{{'services.express.sameDay' | translate}}</li>
-            <li>{{'services.express.nextDay' | translate}}</li>
-            <li>{{'services.express.sensitive' | translate}}</li>
-            <li>{{'services.express.dedicated' | translate}}</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">📱</div>
-          <h3>{{'services.technology.title' | translate}}</h3>
-          <p>{{'services.technology.description' | translate}}</p>
-          <ul>
-            <li>{{'services.technology.onlineTracking' | translate}}</li>
-            <li>{{'services.technology.priceCalculation' | translate}}</li>
-            <li>{{'services.technology.digitalDocs' | translate}}</li>
-            <li>{{'services.technology.mobileApp' | translate}}</li>
-          </ul>
-        </div>
+      </div>
+      <div *ngIf="!categories.length" class="no-category">
+        <p>Henüz bir kategori bulunamadı.</p>
       </div>
     </div>
   </section>
@@ -92,7 +28,6 @@
     </div>
   </section>
 
-  <!-- Reklam Alanı -->
   <section class="advertisements-section">
     <div class="container">
       <app-advertisements></app-advertisements>
