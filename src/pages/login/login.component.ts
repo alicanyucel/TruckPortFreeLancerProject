@@ -37,7 +37,9 @@ export class LoginComponent {
         this.toastr.success('Giriş başarılı!', 'Hoşgeldiniz');
         // Get return URL from query params or default to home
         const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-        this.router.navigate([returnUrl]);
+        this.router.navigate([returnUrl]).then(() => {
+          setTimeout(() => { this.errorMessage = ''; }, 0);
+        });
       },
       error: (error) => {
         this.isLoading = false;

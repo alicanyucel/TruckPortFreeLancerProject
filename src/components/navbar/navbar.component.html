@@ -28,6 +28,12 @@
            [routerLinkActiveOptions]="{exact: true}"
            (click)="navigateToHome(); closeMobileMenu()">{{'navbar.home' | translate}}</a>
       </li>
+       <li class="navbar-item">
+        <a routerLink="/map"
+           class="navbar-link"
+           routerLinkActive="active"
+           (click)="closeMobileMenu()">{{ 'navbar.services' | translate }}</a>
+      </li>
       <li class="navbar-item">
         <a routerLink="/nakliye-talepleri" 
            class="navbar-link" 
@@ -40,12 +46,7 @@
            routerLinkActive="active"
            (click)="closeMobileMenu()">{{'navbar.truckStore' | translate}}</a>
       </li>
-      <li class="navbar-item">
-        <a routerLink="/map"
-           class="navbar-link"
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">{{ 'navbar.liveTracking' | translate }}</a>
-      </li>
+     
       <!-- Profile dropdown (desktop) -->
       <li class="navbar-item profile-item" *ngIf="isAuthenticated">
         <button class="profile-btn" (click)="toggleProfileDropdown($event)" aria-haspopup="true" [attr.aria-expanded]="isProfileDropdownOpen">
@@ -71,7 +72,7 @@
            routerLinkActive="active"
            (click)="closeMobileMenu()">{{'navbar.videoGallery' | translate}}</a>
       </li>
-      <li class="navbar-item">
+      <li class="navbar-item" *ngIf="!isAuthenticated">
         <a routerLink="/uye-ol" 
            class="navbar-link" 
            routerLinkActive="active"
