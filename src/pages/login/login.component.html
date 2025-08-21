@@ -55,12 +55,7 @@
         <span *ngIf="!isLoading">{{'login.loginButton' | translate}}</span>
       </button>
     </form>
-    
-    <div class="register-section">
-      <p>{{'login.noAccount' | translate}}</p>
-      <button type="button" class="register-btn" (click)="onRegister()">{{'login.register' | translate}}</button>
-    </div>
-
+  
     <div class="register-link-row">
       <span>Hesabınız yok mu?</span>
       <button class="register-btn" (click)="onRegister()">Kayıt Ol</button>
