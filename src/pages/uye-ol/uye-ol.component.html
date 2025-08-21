@@ -1,0 +1,87 @@
+<div class="uyeol-card">
+  <div class="uyeol-header">
+    <h2>Kayıt Ol</h2>
+    <p class="uyeol-subtitle">TruckPort'a katılın ve tüm özelliklerden faydalanın.</p>
+  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="uyeol-form">
+    <div class="uyeol-form-group input-with-icon">
+      <label for="fname">Ad</label>
+      <div class="input-row">
+        <input id="fname" formControlName="fname" placeholder="Adınızı girin" />
+      </div>
+      <div class="error" *ngIf="registerForm.get('fname')?.invalid && (registerForm.get('fname')?.touched || registerForm.get('fname')?.dirty)">
+        <small *ngIf="registerForm.get('fname')?.errors?.['required']">Ad zorunludur.</small>
+      </div>
+    </div>
+    <div class="uyeol-form-group input-with-icon">
+      <label for="lname">Soyad</label>
+      <div class="input-row">
+        <input id="lname" formControlName="lname" placeholder="Soyadınızı girin" />
+      </div>
+      <div class="error" *ngIf="registerForm.get('lname')?.invalid && (registerForm.get('lname')?.touched || registerForm.get('lname')?.dirty)">
+        <small *ngIf="registerForm.get('lname')?.errors?.['required']">Soyad zorunludur.</small>
+      </div>
+    </div>
+    <div class="uyeol-form-group input-with-icon">
+      <label for="name">Kullanıcı Adı (Takım Adı)</label>
+      <div class="input-row">
+        <input id="name" formControlName="name" placeholder="Kullanıcı adınızı girin" />
+      </div>
+      <div class="error" *ngIf="registerForm.get('name')?.invalid && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)">
+        <small *ngIf="registerForm.get('name')?.errors?.['required']">Kullanıcı adı zorunludur.</small>
+      </div>
+    </div>
+    <div class="uyeol-form-group input-with-icon">
+      <label for="email">Email</label>
+      <div class="input-row">
+        <input id="email" formControlName="email" type="email" placeholder="Email adresinizi girin" />
+      </div>
+      <div class="error" *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)">
+        <small *ngIf="registerForm.get('email')?.errors?.['required']">Email zorunludur.</small>
+        <small *ngIf="registerForm.get('email')?.errors?.['email']">Geçerli bir email giriniz.</small>
+      </div>
+    </div>
+    <div class="uyeol-form-group input-with-icon">
+      <label for="mobile">Telefon</label>
+      <div class="input-row">
+        <input id="mobile" formControlName="mobile" placeholder="5XXXXXXXXX" />
+      </div>
+      <div class="error" *ngIf="registerForm.get('mobile')?.invalid && (registerForm.get('mobile')?.touched || registerForm.get('mobile')?.dirty)">
+        <small *ngIf="registerForm.get('mobile')?.errors?.['required']">Telefon zorunludur.</small>
+        <small *ngIf="registerForm.get('mobile')?.errors?.['pattern']">Telefon 10 haneli olmalıdır.</small>
+      </div>
+    </div>
+    <div class="uyeol-form-group input-with-icon">
+      <label for="pro_pic">Profil Resmi URL</label>
+      <div class="input-row">
+        <input id="pro_pic" formControlName="pro_pic" placeholder="Profil resmi URL" />
+      </div>
+    </div>
+    <div class="uyeol-form-group input-with-icon">
+      <label for="language">Dil</label>
+      <div class="input-row">
+        <input id="language" formControlName="language" placeholder="Tercih edilen dil" />
+      </div>
+    </div>
+    <!-- Gizli alanlar -->
+    <input type="hidden" formControlName="cc" />
+    <input type="hidden" formControlName="currency" />
+    <input type="hidden" formControlName="balance_amount" />
+    <input type="hidden" formControlName="rating" />
+    <input type="hidden" formControlName="status" />
+    <input type="hidden" formControlName="trips" />
+    <input type="hidden" formControlName="accept_status" />
+    <input type="hidden" formControlName="wallet" />
+    <button type="submit" class="uyeol-btn">Kayıt Ol</button>
+    <div *ngIf="registerForm.invalid && submitted" class="form-error">
+      <small>Lütfen tüm zorunlu alanları doldurun ve hataları düzeltin.</small>
+    </div>
+    <div *ngIf="registerForm.valid && success" class="form-success">
+      <small>Kayıt başarılı!</small>
+    </div>
+    <div class="uyeol-already-member">
+      Zaten hesabınız var mı?
+      <a routerLink="/giris" class="uyeol-login-link">Giriş Yap</a>
+    </div>
+  </form>
+</div>

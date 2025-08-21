@@ -11,7 +11,7 @@ export class ContactComponent {
   formModel: { name?: string; email?: string; phone?: string; subject?: string; message?: string } = {};
 
   constructor(private toastr: ToastrService) {}
-
+//
   async onSubmit(form?: NgForm) {
     // mark all fields as touched so validation messages appear
     if (form) {
