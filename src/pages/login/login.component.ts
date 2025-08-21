@@ -45,6 +45,6 @@ export class LoginComponent {
   }
   
   onRegister() {
-    alert('Kayıt sayfasına yönlendiriliyorsunuz...');
+    this.router.navigate(['/uye-ol']);
   }
 }
