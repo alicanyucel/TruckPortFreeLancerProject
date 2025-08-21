@@ -3,31 +3,61 @@
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-row">
       <label>Ad:</label>
-      <input formControlName="fname" type="text" required />
+      <div class="input-icon-row">
+        <i class="fa fa-user"></i>
+        <input formControlName="fname" type="text" required placeholder="Adınızı girin" />
+      </div>
+      <div *ngIf="registerForm.get('fname')?.touched && registerForm.get('fname')?.invalid" class="input-warning input-warning-red">Boş bırakmayın</div>
     </div>
     <div class="form-row">
       <label>Soyad:</label>
-      <input formControlName="lname" type="text" required />
+      <div class="input-icon-row">
+        <i class="fa fa-user"></i>
+        <input formControlName="lname" type="text" required placeholder="Soyadınızı girin" />
+      </div>
+      <div *ngIf="registerForm.get('lname')?.touched && registerForm.get('lname')?.invalid" class="input-warning input-warning-red">Boş bırakmayın</div>
     </div>
     <div class="form-row">
       <label>Kullanıcı Adı:</label>
-      <input formControlName="name" type="text" required />
+      <div class="input-icon-row">
+        <i class="fa fa-id-badge"></i>
+        <input formControlName="name" type="text" required placeholder="Kullanıcı adınızı girin" />
+      </div>
+      <div *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid" class="input-warning input-warning-red">Boş bırakmayın</div>
     </div>
     <div class="form-row">
       <label>E-posta:</label>
-      <input formControlName="email" type="email" required />
+      <div class="input-icon-row">
+        <i class="fa fa-envelope"></i>
+        <input formControlName="email" type="email" required placeholder="Geçerli bir e-posta adresi girin" />
+      </div>
+      <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['required']" class="input-warning input-warning-red">Boş bırakmayın</div>
+      <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['email']" class="input-warning input-warning-red">Geçerli bir e-posta adresi girin</div>
     </div>
     <div class="form-row">
       <label>Telefon:</label>
-      <input formControlName="mobile" type="text" required />
+      <div class="input-icon-row">
+        <i class="fa fa-phone"></i>
+        <input formControlName="mobile" type="text" required placeholder="Geçerli bir telefon numarası girin" />
+      </div>
+      <div *ngIf="registerForm.get('mobile')?.touched && registerForm.get('mobile')?.errors?.['required']" class="input-warning input-warning-red">Boş bırakmayın</div>
+      <div *ngIf="registerForm.get('mobile')?.touched && registerForm.get('mobile')?.errors?.['pattern']" class="input-warning input-warning-red">Geçerli bir telefon numarası girin</div>
     </div>
     <div class="form-row">
       <label>Dil:</label>
-      <input formControlName="language" type="text" required />
+      <div class="input-icon-row">
+        <i class="fa fa-language"></i>
+        <input formControlName="language" type="text" required placeholder="Tercih ettiğiniz dili girin" />
+      </div>
+      <div *ngIf="registerForm.get('language')?.touched && registerForm.get('language')?.invalid" class="input-warning input-warning-red">Boş bırakmayın</div>
     </div>
     <div class="form-row">
       <label>Para Birimi:</label>
-      <input formControlName="currency" type="text" required />
+      <div class="input-icon-row">
+        <i class="fa fa-money"></i>
+        <input formControlName="currency" type="text" required placeholder="Tercih ettiğiniz para birimini girin" />
+      </div>
+      <div *ngIf="registerForm.get('currency')?.touched && registerForm.get('currency')?.invalid" class="input-warning input-warning-red">Boş bırakmayın</div>
     </div>
     <!-- Diğer alanlar opsiyonel veya gizli olabilir -->
     <button type="submit" [disabled]="registerForm.invalid">Kayıt Ol</button>

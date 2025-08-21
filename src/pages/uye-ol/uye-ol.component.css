@@ -171,3 +171,24 @@ button[type="submit"]:disabled {
   background: #b0b0b0;
   cursor: not-allowed;
 }
+
+.input-warning-red {
+  color: #d32f2f;
+  font-size: 13px;
+  margin-top: 2px;
+  font-weight: bold;
+}
+
+.input-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.input-icon-row i {
+  font-size: 16px;
+  color: #888;
+  min-width: 18px;
+}
+.input-icon-row input {
+  flex: 1;
+}
