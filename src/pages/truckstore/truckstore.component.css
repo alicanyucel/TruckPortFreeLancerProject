@@ -725,6 +725,49 @@
   gap: 8px;
 }
 
+/* Primary small utility button used in filters/post actions */
+.ts-btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 120ms ease;
+}
+
+/* Success variant for "İlan Ver" */
+.ts-btn-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(5,150,105,0.15), inset 0 -2px 0 rgba(0,0,0,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.ts-btn-success:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(5,150,105,0.18);
+}
+.ts-btn-success:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(5,150,105,0.12);
+}
+.ts-btn-success:focus {
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(16,185,129,0.12);
+}
+
+/* Make filter area buttons stack on small screens */
+@media (max-width: 480px) {
+  .ts-filter-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .ts-btn { width: 100%; justify-content: center; }
+}
+
 /* Price and year inputs */
 .ts-price-input,
 .ts-year-input {
@@ -741,6 +784,35 @@
 .ts-detail-btn {
   margin-top: 8px;
 }
+
+/* Post ad modal styles */
+.ts-post-modal-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+}
+.ts-post-modal {
+  background: #fff;
+  padding: 18px;
+  border-radius: 8px;
+  width: 420px;
+  max-width: calc(100% - 40px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+.ts-post-modal h3 { margin-top: 0; }
+.ts-post-row { margin-bottom: 10px; display: flex; flex-direction: column; }
+.ts-post-row label { font-weight: 600; margin-bottom: 6px; font-size: 0.95rem; }
+.ts-post-row input { padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 6px; }
+.ts-post-actions { display:flex; gap:8px; justify-content:flex-end; margin-top:8px; }
+.ts-post-preview { max-width: 100%; max-height: 160px; border-radius: 6px; object-fit: cover; border: 1px solid #e5e7eb; }
+.ts-field-error { color: #b91c1c; font-size: 0.85rem; margin-top: 6px; }
 
 /* Pagination */
 .ts-pagination {

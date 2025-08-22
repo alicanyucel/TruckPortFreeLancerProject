@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { TranslationService } from '../../services/translation.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { ToastrService } from '../../services/toastr.service';
 
 @Component({
   selector: 'app-truckstore',
@@ -7,6 +11,20 @@ import { TranslationService } from '../../services/translation.service';
   styleUrls: ['./truckstore.component.css']
 })
 export class TruckStoreComponent implements OnInit {
+  // Post form modal state
+  showPostModal: boolean = false;
+  newAd: any = {
+    image: '',
+    title: '',
+    brand: '',
+    model: '',
+    year: null,
+    km: null,
+  price: null,
+  user: null,
+  file: null,
+  previewImage: null
+  };
   // Modal için seçili ilan ve ilan veren
   selectedTruck: any = null;
   showModal: boolean = false;
@@ -200,7 +218,12 @@ export class TruckStoreComponent implements OnInit {
   // Filtrelenmiş araçlar
   filtreliTrucks = [...this.trucks];
 
-  constructor(private translationService: TranslationService) { }
+  constructor(
+    private translationService: TranslationService,
+    private router: Router,
+    private authService: AuthService
+    , private toastr: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this.filtreliTrucks = [...this.trucks];
@@ -210,6 +233,66 @@ export class TruckStoreComponent implements OnInit {
   openModal(truck: any) {
     this.selectedTruck = truck;
     this.showModal = true;
+  }
+
+  openPostForm() {
+    // If user not authenticated, redirect to registration page
+    if (!this.authService.isAuthenticated()) {
+      // send to registration/signup page
+      this.router.navigate(['/uye-ol']);
+      return;
+    }
+    // pre-fill basic user info
+    const user = this.authService.getCurrentUser();
+    this.newAd = { image: '', title: '', brand: '', model: '', year: null, km: null, price: null, user: user };
+    this.showPostModal = true;
+  }
+
+  onImageSelected(event: any) {
+    const file: File = event.target.files && event.target.files[0];
+    if (!file) return;
+    // Basic size limit (5MB)
+    const maxSize = 5 * 1024 * 1024;
+    if (file.size > maxSize) {
+      this.toastr.error('Dosya çok büyük. Maksimum 5MB.', 'Hata');
+      return;
+    }
+    // Read preview
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.newAd.previewImage = e.target.result;
+    };
+    reader.readAsDataURL(file);
+    this.newAd.file = file;
+  }
+
+  submitPost(form?: NgForm) {
+    if (form && form.invalid) {
+      this.toastr.error('Lütfen formu doğru şekilde doldurun.', 'Hata');
+      return;
+    }
+    // basic validation
+    if (!this.newAd.title || !this.newAd.brand || !this.newAd.price) {
+      this.toastr.error('Lütfen ilan başlığı, marka ve fiyat bilgilerini girin.', 'Eksik Bilgi');
+      return;
+    }
+    // append to trucks and refresh filter
+    const ad = {
+      image: this.newAd.previewImage || this.newAd.image || 'https://tso-assets-prd.s3.amazonaws.com/Images/Keyvisuals/Carousel/Redesign/Slider_Frontal_TR_962x555.jpg',
+      title: this.newAd.title,
+      brand: this.newAd.brand,
+      model: this.newAd.model,
+      year: this.newAd.year,
+      km: this.newAd.km,
+      price: Number(this.newAd.price),
+      user: this.newAd.user || { name: 'İlan Sahibi' }
+    };
+    this.trucks.unshift(ad);
+    this.filtrele();
+  this.showPostModal = false;
+    // reset
+    this.newAd = { image: '', title: '', brand: '', model: '', year: null, km: null, price: null, user: null };
+  this.toastr.success('İlanınız başarıyla eklendi. Satış için iyi şanslar!', 'İlan Oluşturuldu');
   }
 
   filtrele() {

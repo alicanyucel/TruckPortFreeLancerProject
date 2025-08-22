@@ -50,9 +50,11 @@
         <input type="number" [(ngModel)]="filterKmMax" (ngModelChange)="filtrele()" placeholder="Max km" />
       </div>
       <div class="ts-filter-buttons">
+        <button class="ts-btn ts-btn-success" (click)="openPostForm()">İlan Ver</button>
         <button class="ts-btn ts-btn-primary" (click)="filtrele()">Filtrele</button>
         <button class="ts-btn ts-btn-secondary" (click)="temizleFiltre()">Temizle</button>
       </div>
+     
     </aside>
     <!-- Araç Kartları -->
     <section class="ts-vehicle-list">
@@ -75,6 +77,54 @@
             </div>
           </div>
           <app-truckstore-modal *ngIf="showModal" [truck]="selectedTruck" [user]="selectedTruck?.user" (close)="showModal=false;selectedTruck=null"></app-truckstore-modal>
+          <!-- Post Ad Modal -->
+          <div *ngIf="showPostModal" class="ts-post-modal-overlay">
+            <div class="ts-post-modal">
+              <h3>Yeni İlan Ver</h3>
+              <form #postForm="ngForm" (ngSubmit)="submitPost(postForm)">
+                <div class="ts-post-row">
+                  <label>Başlık</label>
+                  <input name="title" type="text" [(ngModel)]="newAd.title" #titleModel="ngModel" required placeholder="Örn: Mercedes Actros 1845 - Çok temiz" />
+                  <div *ngIf="(titleModel.invalid && (titleModel.touched || postForm.submitted))" class="ts-field-error">Başlık zorunludur.</div>
+                </div>
+                <div class="ts-post-row">
+                  <label>Marka</label>
+                  <input name="brand" type="text" [(ngModel)]="newAd.brand" #brandModel="ngModel" required placeholder="Örn: Mercedes-Benz" />
+                  <div *ngIf="(brandModel.invalid && (brandModel.touched || postForm.submitted))" class="ts-field-error">Marka giriniz.</div>
+                </div>
+                <div class="ts-post-row">
+                  <label>Model</label>
+                  <input name="model" type="text" [(ngModel)]="newAd.model" #modelModel="ngModel" placeholder="Örn: Actros 1845" />
+                </div>
+                <div class="ts-post-row">
+                  <label>Yıl</label>
+                  <input name="year" type="number" [(ngModel)]="newAd.year" #yearModel="ngModel" min="1900" max="2099" placeholder="Örn: 2021" />
+                  <div *ngIf="(yearModel.invalid && (yearModel.touched || postForm.submitted))" class="ts-field-error">Geçerli bir yıl girin.</div>
+                </div>
+                <div class="ts-post-row">
+                  <label>Km</label>
+                  <input name="km" type="number" [(ngModel)]="newAd.km" #kmModel="ngModel" min="0" placeholder="Örn: 120000" />
+                </div>
+                <div class="ts-post-row">
+                  <label>Fiyat (₺)</label>
+                  <input name="price" type="number" [(ngModel)]="newAd.price" #priceModel="ngModel" required min="1" placeholder="Örn: 2450000" />
+                  <div *ngIf="(priceModel.invalid && (priceModel.touched || postForm.submitted))" class="ts-field-error">Fiyat geçerli ve zorunludur.</div>
+                </div>
+                <div class="ts-post-row">
+                  <label>Resim Yükle (opsiyonel)</label>
+                  <input type="file" accept="image/*" (change)="onImageSelected($event)" />
+                  <small style="color:#6b7280;">PNG/JPG uygundur. 5MB'a kadar.</small>
+                  <div *ngIf="newAd.previewImage" style="margin-top:8px;">
+                    <img [src]="newAd.previewImage" alt="önizleme" class="ts-post-preview" />
+                  </div>
+                </div>
+                <div class="ts-post-actions">
+                  <button type="submit" class="ts-btn ts-btn-primary" [disabled]="postForm.invalid">Gönder</button>
+                  <button type="button" class="ts-btn ts-btn-secondary" (click)="showPostModal=false">İptal</button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       <!-- Pagination Controls -->
       <div class="ts-pagination" *ngIf="totalPages > 1">
