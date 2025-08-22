@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AuthService, User } from '../../services/auth.service';
 import { ToastrService } from '../../services/toastr.service';
 import { TranslatePipe } from "../../app/pipes/translate.pipe";
+import { CookieService } from '../../services/cookie.service';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +19,85 @@ export class NavbarComponent {
     private authService: AuthService,
     private router: Router,
     private toastr: ToastrService
+  , private cookieService: CookieService
+  , private translation: TranslationService
   ) {}
+
+  // Cookie UI state
+  showCookiePanel = false;
+  cookieEmail = '';
+  cookiePassword = '';
+  cookieTheme = '';
+  cookieLang = '';
+  cookieList: { [key: string]: string } = {};
+  showCookiePassword = false;
+
+  toggleCookiePanel() {
+    this.showCookiePanel = !this.showCookiePanel;
+    if (this.showCookiePanel) this.loadCookies();
+  }
+
+  loadCookies() {
+    this.cookieEmail = this.cookieService.getCookie('userEmail') || '';
+    this.cookiePassword = this.cookieService.getCookie('userPassword') || '';
+    this.cookieTheme = this.cookieService.getCookie('theme') || '';
+    this.cookieLang = this.cookieService.getCookie('selectedLanguage') || '';
+    this.cookieList = this.cookieService.listCookies();
+  }
+
+  saveCookies() {
+    if (this.cookieEmail) this.cookieService.setCookie('userEmail', this.cookieEmail);
+    if (this.cookiePassword) this.cookieService.setCookie('userPassword', this.cookiePassword);
+    if (this.cookieTheme) this.cookieService.setCookie('theme', this.cookieTheme);
+    if (this.cookieLang) this.cookieService.setCookie('selectedLanguage', this.cookieLang);
+    this.toastr.success('Çerezler kaydedildi', 'Bilgi');
+    this.loadCookies();
+  }
+
+  toggleCookiePassword() {
+    this.showCookiePassword = !this.showCookiePassword;
+  }
+
+  deleteCookie(key: string) {
+    this.cookieService.deleteCookie(key);
+    this.loadCookies();
+  }
+
+  // Display-friendly label for known cookie keys
+  displayKey(key: string): string {
+    const map: { [k: string]: string } = {
+      'userEmail': this.translation.translate('cookies.email'),
+      'userPassword': this.translation.translate('cookies.password'),
+      'theme': this.translation.translate('cookies.theme'),
+      'selectedLanguage': this.translation.translate('cookies.language')
+    };
+    return map[key] || key;
+  }
+
+  // Display-friendly value for specific known cookie keys
+  displayValue(key: string, value: string): string {
+    if (!value) return '';
+    if (key === 'theme') {
+      return this.translation.translate(value === 'light' ? 'theme.light' : 'theme.dark');
+    }
+    if (key === 'selectedLanguage') {
+      return this.translation.translate(value === 'en' ? 'lang.en' : 'lang.tr');
+    }
+    // For emails, mask partially for privacy
+    if (key === 'userEmail') {
+      const parts = value.split('@');
+      if (parts.length === 2) {
+        const name = parts[0];
+        const domain = parts[1];
+        const visible = name.length > 2 ? name.slice(0, 3) : name.slice(0, 1);
+        return `${visible}...@${domain}`;
+      }
+    }
+    if (key === 'userPassword') {
+      return value ? '••••••' : '';
+    }
+    return value;
+  }
 
   get currentUser(): User | null {
     return this.authService.getCurrentUser();

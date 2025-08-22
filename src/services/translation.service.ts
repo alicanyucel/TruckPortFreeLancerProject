@@ -331,6 +331,19 @@ export class TranslationService {
     'common.cancel': { tr: 'İptal', en: 'Cancel' },
   // Removed duplicate 'common.close' key
 
+  // Cookies / small utilities
+  'cookies.title': { tr: 'Çerezler', en: 'Cookies' },
+  'cookies.email': { tr: 'E-posta', en: 'Email' },
+  'cookies.password': { tr: 'Şifre', en: 'Password' },
+  'cookies.theme': { tr: 'Tema', en: 'Theme' },
+  'cookies.language': { tr: 'Dil', en: 'Language' },
+  'cookies.empty': { tr: 'Kayıtlı çerez bulunamadı', en: 'No cookies saved' },
+  // Theme and language value labels
+  'theme.dark': { tr: 'Koyu', en: 'Dark' },
+  'theme.light': { tr: 'Açık', en: 'Light' },
+  'lang.tr': { tr: 'Türkçe', en: 'Turkish' },
+  'lang.en': { tr: 'İngilizce', en: 'English' },
+
     // Advertisements
     'ads.sponsoredContent': { tr: 'Sponsorlu İçerikler', en: 'Sponsored Content' },
     
