@@ -338,6 +338,7 @@ export class TranslationService {
   'cookies.theme': { tr: 'Tema', en: 'Theme' },
   'cookies.language': { tr: 'Dil', en: 'Language' },
   'cookies.empty': { tr: 'Kayıtlı çerez bulunamadı', en: 'No cookies saved' },
+  'cookies.deleteAll': { tr: 'Tümünü Sil', en: 'Delete All' },
   // Theme and language value labels
   'theme.dark': { tr: 'Koyu', en: 'Dark' },
   'theme.light': { tr: 'Açık', en: 'Light' },

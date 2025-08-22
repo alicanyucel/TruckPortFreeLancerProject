@@ -63,6 +63,13 @@ export class NavbarComponent {
     this.loadCookies();
   }
 
+  deleteAllCookies() {
+    const list = this.cookieService.listCookies();
+    Object.keys(list).forEach(k => this.cookieService.deleteCookie(k));
+    this.loadCookies();
+    this.toastr.info(this.translation.translate('cookies.deleteAll') + ' - OK', 'Bilgi');
+  }
+
   // Display-friendly label for known cookie keys
   displayKey(key: string): string {
     const map: { [k: string]: string } = {

@@ -266,6 +266,8 @@
 .ts-btn { padding:8px 12px; border-radius:6px; border:none; cursor:pointer; font-weight:700; font-size:13px; }
 .cookie-panel .ts-btn.save { background: #3498db; color:#fff; box-shadow: 0 6px 18px rgba(52,152,219,0.18); }
 .cookie-panel .ts-btn.refresh { background: transparent; color: #e6eef8; border:1px solid rgba(255,255,255,0.06); }
+.cookie-panel .ts-btn.delete-all { background: #e74c3c; color: #fff; border: none; box-shadow: 0 6px 18px rgba(231,76,60,0.12); }
+.cookie-panel .ts-btn.delete-all:hover { background: #c0392b; }
 
 .cookie-panel .cookie-list { max-height:180px; overflow:auto; padding-top:6px; }
 .cookie-panel .cookie-list ul { margin:0; padding:0; list-style:none; }
