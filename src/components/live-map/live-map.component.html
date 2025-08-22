@@ -6,17 +6,17 @@
         <td class="middle-cell" rowspan="6">
           <div class="middle-card">
             <div class="center-image">
-              <img [src]="res.image" alt="Araç resmi" />
+              <img [src]="res.image" [alt]="'liveMap.imageAlt.vehicle' | translate" />
             </div>
           </div>
         </td>
         <td class="right-cell" rowspan="6">
           <div class="owner-card">
-            <img [src]="res.ownerImage" alt="Kullanıcı" class="owner-image" />
+            <img [src]="res.ownerImage" [alt]="'liveMap.imageAlt.user' | translate" class="owner-image" />
             <div class="owner-info"><strong>{{ res.owner }}</strong></div>
             <div class="owner-actions">
               <button class="whatsapp"><i class="fab fa-whatsapp"></i> {{ 'liveMap.whatsapp' | translate }}</button>
-              <button class="call"><i class="fas fa-phone"></i> ARA</button>
+              <button class="call"><i class="fas fa-phone"></i> {{ 'liveMap.call' | translate }}</button>
             </div>
           </div>
         </td>
