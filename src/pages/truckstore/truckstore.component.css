@@ -768,6 +768,28 @@
   .ts-btn { width: 100%; justify-content: center; }
 }
 
+/* Primary variant (Filtrele) - polished blue */
+.ts-btn-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(29,78,216,0.12), inset 0 -2px 0 rgba(0,0,0,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.ts-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(29,78,216,0.16); }
+.ts-btn-primary:active { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(29,78,216,0.10); }
+.ts-btn-primary:focus { outline: none; box-shadow: 0 0 0 6px rgba(59,130,246,0.12); }
+
+/* Secondary variant (Temizle) - subtle outline */
+.ts-btn-secondary {
+  background: #ffffff;
+  color: #475569;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 4px 12px rgba(2,6,23,0.03);
+}
+.ts-btn-secondary:hover { background: #f8fafc; transform: translateY(-2px); }
+.ts-btn-secondary:active { transform: translateY(0); }
+.ts-btn-secondary:focus { outline: none; box-shadow: 0 0 0 6px rgba(99,102,241,0.04); }
+
 /* Price and year inputs */
 .ts-price-input,
 .ts-year-input {
