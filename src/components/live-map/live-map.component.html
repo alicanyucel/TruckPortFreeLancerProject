@@ -1,48 +1,48 @@
 <div class="reservation-list">
-  <div class="reservation-card" *ngFor="let res of pagedReservations">
+  <div class="reservation-card" *ngFor="let res of pagedReservations; let i = index">
     <table class="reservation-full-table">
       <tr>
-  <td class="left-cell"><strong>{{ 'liveMap.reservationNo' | translate }}</strong></td>
-        <td class="middle-cell"></td>
-        <td class="right-cell" rowspan="4">
-          <div class="owner-box">
-            <p class="centered"><strong>{{ 'liveMap.owner' | translate }}</strong></p>
-            <p class="centered">{{ res.owner }}</p>
+  <td class="left-cell"><strong>{{ 'liveMap.reservationNo' | translate }}</strong> {{ (currentPage - 1) * pageSize + i + 1 }}</td>
+        <td class="middle-cell" rowspan="6">
+          <div class="middle-card">
+            <div class="center-image">
+              <img [src]="res.image" alt="Araç resmi" />
+            </div>
+          </div>
+        </td>
+        <td class="right-cell" rowspan="6">
+          <div class="owner-card">
+            <img [src]="res.ownerImage" alt="Kullanıcı" class="owner-image" />
+            <div class="owner-info"><strong>{{ res.owner }}</strong></div>
+            <div class="owner-actions">
+              <button class="whatsapp"><i class="fab fa-whatsapp"></i> {{ 'liveMap.whatsapp' | translate }}</button>
+              <button class="call"><i class="fas fa-phone"></i> ARA</button>
+            </div>
           </div>
         </td>
       </tr>
-      <tr>
+  <tr>
   <td class="left-cell"><strong>{{ 'liveMap.vehicleType' | translate }}</strong> {{ res.vehicleType }}</td>
-        <td class="middle-cell"></td>
-      </tr>
-      <tr>
+    <td class="middle-cell"></td>
+  </tr>
+  <tr>
   <td class="left-cell"><strong>{{ 'liveMap.date' | translate }}</strong> {{ res.date }}</td>
-        <td class="middle-cell"></td>
-      </tr>
-      <tr>
+    <td class="middle-cell"></td>
+  </tr>
+  <tr>
   <td class="left-cell"><strong>{{ 'liveMap.loadingAddress' | translate }}</strong> {{ res.loading }}</td>
-        <td class="middle-cell"></td>
-      </tr>
-      <tr>
+    <td class="middle-cell"></td>
+  </tr>
+  <tr>
   <td class="left-cell"><strong>{{ 'liveMap.deliveryAddress' | translate }}</strong> {{ res.delivery }}</td>
-        <td class="middle-cell"></td>
-        <td class="right-cell">
-          <button class="whatsapp">
-  <i class="fab fa-whatsapp"></i> {{ 'liveMap.whatsapp' | translate }}
-</button>
-
-        </td>
-      </tr>
-      <tr>
+    <td class="middle-cell"></td>
+        
+  </tr>
+  <tr>
   <td class="left-cell"><strong>{{ 'liveMap.distance' | translate }}</strong> {{ res.distance }}</td>
-        <td class="middle-cell"></td>
-        <td class="right-cell">
-          <button class="call">
-  <i class="fas fa-phone"></i> ARA
-</button>
-
-        </td>
-      </tr>
+    <td class="middle-cell"></td>
+        
+  </tr>
     </table>
   </div>
   <!-- Pagination Controls -->

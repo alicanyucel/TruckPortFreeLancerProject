@@ -92,5 +92,71 @@ button i {
   font-size: 1.2rem;
 }
 
+/* Center vehicle card */
+.middle-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  height: 320px; /* fixed visual height for the image area */
+  overflow: hidden; /* prevent image from growing the row */
+}
+
+.middle-cell { /* ensure flexible container */
+  display: table-cell; /* keep table flow but allow child flex */
+  vertical-align: middle;
+  padding: 0.4rem; /* keep a little inner spacing while preserving height */
+}
+.center-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.center-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+/* Owner / user card on the right */
+.owner-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+}
+.owner-image {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.owner-info {
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+}
+.owner-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Small responsive tweak */
+@media (max-width: 900px) {
+  .middle-card {
+    flex-direction: column;
+    align-items: center;
+    height: 220px; /* smaller height on narrow screens */
+  }
+  .center-image { max-width: 100%; }
+}
+
 
 
