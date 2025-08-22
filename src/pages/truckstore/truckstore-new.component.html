@@ -5,7 +5,7 @@
   <header class="truckstore-header">
     <div class="header-content">
       <h1 class="header-title">🚛 TruckStore</h1>
-      <p class="header-subtitle">Türkiye'nin En Büyük Kamyon ve Nakliye Araçları Pazarı</p>
+  <p class="header-subtitle">{{ 'truckstore.header.subtitle' | translate }}</p>
     </div>
   </header>
 
@@ -19,12 +19,12 @@
         </div>
       </div>
       
-      <div class="quick-filters">
-        <button class="filter-chip active">Tümü</button>
-        <button class="filter-chip">Çekici</button>
-        <button class="filter-chip">Kamyon</button>
-        <button class="filter-chip">Römork</button>
-        <button class="filter-chip">Yarı Römork</button>
+        <div class="quick-filters">
+        <button class="filter-chip active">{{ 'truckstore.filter.type.all' | translate }}</button>
+        <button class="filter-chip">{{ 'truckstore.filter.type.cekici' | translate }}</button>
+        <button class="filter-chip">{{ 'truckstore.filter.type.kamyon' | translate }}</button>
+        <button class="filter-chip">{{ 'truckstore.filter.type.romork' | translate }}</button>
+        <button class="filter-chip">{{ 'truckstore.filter.type.yariRomork' | translate }}</button>
       </div>
     </div>
   </section>
@@ -84,9 +84,9 @@
                  placeholder="Maksimum km" class="filter-input">
         </div>
 
-        <div class="filter-actions">
-          <button class="btn btn-primary" (click)="filtrele()">🔍 Filtrele</button>
-          <button class="btn btn-secondary" (click)="temizleFiltre()">🗑️ Temizle</button>
+            <div class="filter-actions">
+          <button class="btn btn-primary" (click)="filtrele()">🔍 {{ 'truckstore.button.filter' | translate }}</button>
+          <button class="btn btn-secondary" (click)="temizleFiltre()">🗑️ {{ 'truckstore.button.clear' | translate }}</button>
         </div>
       </div>
     </aside>
@@ -94,7 +94,7 @@
     <!-- Vehicle List -->
     <section class="vehicles-section">
       <div class="section-header">
-        <h2 class="section-title">🚚 Satılık Araçlar</h2>
+  <h2 class="section-title">{{ 'truckstore.section.title' | translate }}</h2>
         <div class="results-info">
           <span class="results-count">{{pagedTrucks?.length || 0}} araç bulundu</span>
           <div class="view-options">
@@ -143,11 +143,11 @@
             <div class="card-footer">
               <div class="price-section">
                 <span class="price">{{truck.price | currency:'TRY':'symbol':'1.0-0'}}</span>
-                <span class="price-label">Satış Fiyatı</span>
+                <span class="price-label">{{ 'truckstore.card.priceLabel' | translate }}</span>
               </div>
               <button class="btn btn-primary detail-btn" (click)="openModal(truck)">
                 <i class="fa fa-clipboard-list" aria-hidden="true"></i>
-                <span>Detay Gör</span>
+                <span>{{ 'truckstore.card.details' | translate }}</span>
               </button>
             </div>
           </div>
@@ -157,7 +157,7 @@
       <!-- Pagination -->
       <div class="pagination-section" *ngIf="totalPages > 1">
         <button class="page-btn prev-btn" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
-          ← Önceki
+          {{ 'common.prev' | translate }}
         </button>
         
         <div class="page-numbers">
@@ -170,7 +170,7 @@
         </div>
         
         <button class="page-btn next-btn" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">
-          Sonraki →
+          {{ 'common.next' | translate }}
         </button>
       </div>
     </section>

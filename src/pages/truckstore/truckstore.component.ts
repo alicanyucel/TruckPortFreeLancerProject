@@ -254,7 +254,7 @@ export class TruckStoreComponent implements OnInit {
     // Basic size limit (5MB)
     const maxSize = 5 * 1024 * 1024;
     if (file.size > maxSize) {
-      this.toastr.error('Dosya çok büyük. Maksimum 5MB.', 'Hata');
+  this.toastr.error(this.translationService.translate('truckstore.post.error.fileTooLarge') || 'File too large. Max 5MB.', this.translationService.translate('common.error') || 'Error');
       return;
     }
     // Read preview
@@ -282,12 +282,12 @@ export class TruckStoreComponent implements OnInit {
 
   submitPost(form?: NgForm) {
     if (form && form.invalid) {
-      this.toastr.error('Lütfen formu doğru şekilde doldurun.', 'Hata');
+  this.toastr.error(this.translationService.translate('truckstore.post.error.fillForm') || 'Please fill the form correctly.', this.translationService.translate('common.error') || 'Error');
       return;
     }
     // stronger validation: require title, brand, price and an image
     if (!this.isPostFormValid()) {
-      this.toastr.error('Lütfen ilan için gerekli tüm bilgileri ve bir resim ekleyin.', 'Eksik Bilgi');
+  this.toastr.error(this.translationService.translate('truckstore.post.error.missingFields') || 'Please add all required information and an image.', this.translationService.translate('common.error') || 'Error');
       return;
     }
     // append to trucks and refresh filter
@@ -306,7 +306,7 @@ export class TruckStoreComponent implements OnInit {
   this.showPostModal = false;
     // reset
     this.newAd = { image: '', title: '', brand: '', model: '', year: null, km: null, price: null, user: null };
-  this.toastr.success('İlanınız başarıyla eklendi. Satış için iyi şanslar!', 'İlan Oluşturuldu');
+  this.toastr.success(this.translationService.translate('truckstore.post.success') || 'Your post was added successfully. Good luck with the sale!', this.translationService.translate('truckstore.post.createdTitle') || 'Post Created');
   }
 
   filtrele() {

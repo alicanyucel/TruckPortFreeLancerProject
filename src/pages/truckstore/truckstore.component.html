@@ -21,9 +21,9 @@
   <div class="ts-main-content">
     <!-- Filtreler -->
     <aside class="ts-filters">
-      <h3>Filtrele</h3>
+  <h3>{{ 'truckstore.filters.title' | translate }}</h3>
       <div class="ts-filter-group">
-        <label>Marka</label>
+  <label>{{ 'truckstore.filter.brand' | translate }}</label>
         <select [(ngModel)]="filterBrand" (ngModelChange)="filtrele()">
           <option value="">Tümü</option>
           <option value="Mercedes-Benz">Mercedes-Benz</option>
@@ -32,32 +32,32 @@
         </select>
       </div>
       <div class="ts-filter-group">
-        <label>Model</label>
-        <input type="text" [(ngModel)]="filterModel" (ngModelChange)="filtrele()" placeholder="Model ara..." />
+  <label>{{ 'truckstore.filter.model' | translate }}</label>
+  <input type="text" [(ngModel)]="filterModel" (ngModelChange)="filtrele()" placeholder="{{ 'truckstore.filter.modelPlaceholder' | translate }}" />
       </div>
       <div class="ts-filter-group">
-        <label>Fiyat (₺)</label>
+  <label>{{ 'truckstore.filter.price' | translate }} (₺)</label>
         <input type="text" [(ngModel)]="filterPriceMin" (ngModelChange)="filtrele()" placeholder="Min" style="width: 70px; display: inline-block;" />
         <input type="text" [(ngModel)]="filterPriceMax" (ngModelChange)="filtrele()" placeholder="Max" style="width: 70px; display: inline-block; margin-left: 8px;" />
       </div>
       <div class="ts-filter-group">
-        <label>Yıl</label>
+  <label>{{ 'truckstore.filter.year' | translate }}</label>
         <input type="text" [(ngModel)]="filterYearMin" (ngModelChange)="filtrele()" placeholder="Min" style="width: 70px; display: inline-block;" />
         <input type="text" [(ngModel)]="filterYearMax" (ngModelChange)="filtrele()" placeholder="Max" style="width: 70px; display: inline-block; margin-left: 8px;" />
       </div>
       <div class="ts-filter-group">
-        <label>Kilometre</label>
+  <label>{{ 'truckstore.filter.km' | translate }}</label>
         <input type="number" [(ngModel)]="filterKmMax" (ngModelChange)="filtrele()" placeholder="Max km" />
       </div>
       <div class="ts-filter-buttons">
-        <button class="ts-btn ts-btn-success" (click)="openPostForm()">İlan Ver</button>
-        <button class="ts-btn ts-btn-secondary" (click)="temizleFiltre()">Temizle</button>
+        <button class="ts-btn ts-btn-success" (click)="openPostForm()">{{ 'truckstore.button.postAd' | translate }}</button>
+        <button class="ts-btn ts-btn-secondary" (click)="temizleFiltre()">{{ 'truckstore.button.clear' | translate }}</button>
       </div>
      
     </aside>
     <!-- Araç Kartları -->
     <section class="ts-vehicle-list">
-      <h2>Satılık Kamyon ve Römorklar</h2>
+  <h2>{{ 'truckstore.section.title' | translate }}</h2>
         <div class="ts-vehicle-list-flex">
           <div class="ts-vehicle-card-horizontal" *ngFor="let truck of pagedTrucks">
             <div class="ts-vehicle-image-horizontal">
@@ -66,62 +66,62 @@
             <div class="ts-vehicle-info-horizontal">
               <h4>{{truck.title}}</h4>
               <ul>
-                <li><strong>Marka:</strong> {{truck.brand}}</li>
-                <li><strong>Model:</strong> {{truck.model}}</li>
-                <li><strong>Yıl:</strong> {{truck.year}}</li>
-                <li><strong>Km:</strong> {{truck.km | number}} km</li>
+                <li><strong>{{ 'truckstore.card.brand' | translate }}:</strong> {{truck.brand}}</li>
+                <li><strong>{{ 'truckstore.card.model' | translate }}:</strong> {{truck.model}}</li>
+                <li><strong>{{ 'truckstore.card.year' | translate }}:</strong> {{truck.year}}</li>
+                <li><strong>{{ 'truckstore.card.km' | translate }}:</strong> {{truck.km | number}} {{ 'truckstore.card.kmUnit' | translate }}</li>
               </ul>
               <div class="ts-vehicle-price">{{truck.price | currency:'TRY':'symbol':'1.0-0'}}</div>
-              <button class="ts-btn ts-btn-primary ts-detail-btn" (click)="openModal(truck)">Detay</button>
+              <button class="ts-btn ts-btn-primary ts-detail-btn" (click)="openModal(truck)">{{ 'truckstore.card.details' | translate }}</button>
             </div>
           </div>
           <app-truckstore-modal *ngIf="showModal" [truck]="selectedTruck" [user]="selectedTruck?.user" (close)="showModal=false;selectedTruck=null"></app-truckstore-modal>
           <!-- Post Ad Modal -->
           <div *ngIf="showPostModal" class="ts-post-modal-overlay">
             <div class="ts-post-modal">
-              <h3>Yeni İlan Ver</h3>
+              <h3>{{ 'truckstore.post.title' | translate }}</h3>
               <form #postForm="ngForm" (ngSubmit)="submitPost(postForm)">
                 <div class="ts-post-row">
-                  <label>Başlık</label>
-                  <input name="title" type="text" [(ngModel)]="newAd.title" #titleModel="ngModel" required placeholder="Örn: Mercedes Actros 1845 - Çok temiz" />
-                  <div *ngIf="(titleModel.invalid && (titleModel.touched || postForm.submitted))" class="ts-field-error">Başlık zorunludur.</div>
+                  <label>{{ 'truckstore.post.label.title' | translate }}</label>
+                  <input name="title" type="text" [(ngModel)]="newAd.title" #titleModel="ngModel" required placeholder="{{ 'truckstore.post.placeholder.title' | translate }}" />
+                  <div *ngIf="(titleModel.invalid && (titleModel.touched || postForm.submitted))" class="ts-field-error">{{ 'truckstore.post.validation.title' | translate }}</div>
                 </div>
                 <div class="ts-post-row">
-                  <label>Marka</label>
-                  <input name="brand" type="text" [(ngModel)]="newAd.brand" #brandModel="ngModel" required placeholder="Örn: Mercedes-Benz" />
-                  <div *ngIf="(brandModel.invalid && (brandModel.touched || postForm.submitted))" class="ts-field-error">Marka giriniz.</div>
+                  <label>{{ 'truckstore.post.label.brand' | translate }}</label>
+                  <input name="brand" type="text" [(ngModel)]="newAd.brand" #brandModel="ngModel" required placeholder="{{ 'truckstore.post.placeholder.brand' | translate }}" />
+                  <div *ngIf="(brandModel.invalid && (brandModel.touched || postForm.submitted))" class="ts-field-error">{{ 'truckstore.post.validation.brand' | translate }}</div>
                 </div>
                 <div class="ts-post-row">
-                  <label>Model</label>
-                  <input name="model" type="text" [(ngModel)]="newAd.model" #modelModel="ngModel" required placeholder="Örn: Actros 1845" />
-                  <div *ngIf="(modelModel.invalid && (modelModel.touched || postForm.submitted))" class="ts-field-error">Model zorunludur.</div>
+                  <label>{{ 'truckstore.post.label.model' | translate }}</label>
+                  <input name="model" type="text" [(ngModel)]="newAd.model" #modelModel="ngModel" required placeholder="{{ 'truckstore.post.placeholder.model' | translate }}" />
+                  <div *ngIf="(modelModel.invalid && (modelModel.touched || postForm.submitted))" class="ts-field-error">{{ 'truckstore.post.validation.model' | translate }}</div>
                 </div>
                 <div class="ts-post-row">
-                  <label>Yıl</label>
+                  <label>{{ 'truckstore.post.label.year' | translate }}</label>
                   <input name="year" type="number" [(ngModel)]="newAd.year" #yearModel="ngModel" required min="1900" max="2099" placeholder="Örn: 2021" />
-                  <div *ngIf="(yearModel.invalid && (yearModel.touched || postForm.submitted))" class="ts-field-error">Geçerli bir yıl girin.</div>
+                  <div *ngIf="(yearModel.invalid && (yearModel.touched || postForm.submitted))" class="ts-field-error">{{ 'truckstore.post.validation.year' | translate }}</div>
                 </div>
                 <div class="ts-post-row">
-                  <label>Km</label>
+                  <label>{{ 'truckstore.post.label.km' | translate }}</label>
                   <input name="km" type="number" [(ngModel)]="newAd.km" #kmModel="ngModel" required min="0" placeholder="Örn: 120000" />
-                  <div *ngIf="(kmModel.invalid && (kmModel.touched || postForm.submitted))" class="ts-field-error">Km bilgisi zorunludur.</div>
+                  <div *ngIf="(kmModel.invalid && (kmModel.touched || postForm.submitted))" class="ts-field-error">{{ 'truckstore.post.validation.km' | translate }}</div>
                 </div>
                 <div class="ts-post-row">
-                  <label>Fiyat (₺)</label>
+                  <label>{{ 'truckstore.post.label.price' | translate }} (₺)</label>
                   <input name="price" type="number" [(ngModel)]="newAd.price" #priceModel="ngModel" required min="1" placeholder="Örn: 2450000" />
-                  <div *ngIf="(priceModel.invalid && (priceModel.touched || postForm.submitted))" class="ts-field-error">Fiyat geçerli ve zorunludur.</div>
+                  <div *ngIf="(priceModel.invalid && (priceModel.touched || postForm.submitted))" class="ts-field-error">{{ 'truckstore.post.validation.price' | translate }}</div>
                 </div>
                 <div class="ts-post-row">
-                  <label>Resim Yükle (zorunlu)</label>
+                  <label>{{ 'truckstore.post.label.image' | translate }}</label>
                   <input #fileInput type="file" accept="image/*" (change)="onImageSelected($event)" />
-                  <small style="color:#6b7280;">PNG/JPG uygundur. Maksimum 5MB.</small>
+                  <small style="color:#6b7280;">{{ 'truckstore.post.help.image' | translate }}</small>
                   <div *ngIf="newAd.previewImage" style="margin-top:8px;">
                     <img [src]="newAd.previewImage" alt="önizleme" class="ts-post-preview" />
                   </div>
                 </div>
                 <div class="ts-post-actions">
-                  <button type="submit" class="ts-btn ts-btn-primary" [disabled]="postForm.invalid || !isPostFormValid()">Gönder</button>
-                  <button type="button" class="ts-btn ts-btn-secondary" (click)="showPostModal=false">İptal</button>
+                  <button type="submit" class="ts-btn ts-btn-primary" [disabled]="postForm.invalid || !isPostFormValid()">{{ 'truckstore.post.submit' | translate }}</button>
+                  <button type="button" class="ts-btn ts-btn-secondary" (click)="showPostModal=false">{{ 'common.cancel' | translate }}</button>
                 </div>
               </form>
             </div>
@@ -129,9 +129,9 @@
         </div>
       <!-- Pagination Controls -->
       <div class="ts-pagination" *ngIf="totalPages > 1">
-        <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Önceki</button>
+  <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">{{ 'common.prev' | translate }}</button>
         <button *ngFor="let page of [].constructor(totalPages); let i = index" (click)="goToPage(i + 1)" [class.active]="currentPage === (i + 1)">{{i + 1}}</button>
-        <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Sonraki</button>
+  <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">{{ 'common.next' | translate }}</button>
       </div>
     </section>
   </div>
