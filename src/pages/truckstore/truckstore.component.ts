@@ -266,14 +266,28 @@ export class TruckStoreComponent implements OnInit {
     this.newAd.file = file;
   }
 
+  /**
+   * Returns true when the minimal required post fields are present.
+   * Used by the template to enable/disable the submit button.
+   */
+  isPostFormValid() {
+    const ad = this.newAd || {};
+    const hasRequiredText = ad.title && ad.title.toString().trim().length > 0
+      && ad.brand && ad.brand.toString().trim().length > 0
+      && ad.model && ad.model.toString().trim().length > 0;
+    const hasNumbers = ad.year !== null && ad.km !== null && ad.price !== null && Number(ad.price) > 0;
+    const hasImage = !!ad.file || !!ad.previewImage;
+    return !!(hasRequiredText && hasNumbers && hasImage);
+  }
+
   submitPost(form?: NgForm) {
     if (form && form.invalid) {
       this.toastr.error('Lütfen formu doğru şekilde doldurun.', 'Hata');
       return;
     }
-    // basic validation
-    if (!this.newAd.title || !this.newAd.brand || !this.newAd.price) {
-      this.toastr.error('Lütfen ilan başlığı, marka ve fiyat bilgilerini girin.', 'Eksik Bilgi');
+    // stronger validation: require title, brand, price and an image
+    if (!this.isPostFormValid()) {
+      this.toastr.error('Lütfen ilan için gerekli tüm bilgileri ve bir resim ekleyin.', 'Eksik Bilgi');
       return;
     }
     // append to trucks and refresh filter

@@ -93,16 +93,18 @@
                 </div>
                 <div class="ts-post-row">
                   <label>Model</label>
-                  <input name="model" type="text" [(ngModel)]="newAd.model" #modelModel="ngModel" placeholder="Örn: Actros 1845" />
+                  <input name="model" type="text" [(ngModel)]="newAd.model" #modelModel="ngModel" required placeholder="Örn: Actros 1845" />
+                  <div *ngIf="(modelModel.invalid && (modelModel.touched || postForm.submitted))" class="ts-field-error">Model zorunludur.</div>
                 </div>
                 <div class="ts-post-row">
                   <label>Yıl</label>
-                  <input name="year" type="number" [(ngModel)]="newAd.year" #yearModel="ngModel" min="1900" max="2099" placeholder="Örn: 2021" />
+                  <input name="year" type="number" [(ngModel)]="newAd.year" #yearModel="ngModel" required min="1900" max="2099" placeholder="Örn: 2021" />
                   <div *ngIf="(yearModel.invalid && (yearModel.touched || postForm.submitted))" class="ts-field-error">Geçerli bir yıl girin.</div>
                 </div>
                 <div class="ts-post-row">
                   <label>Km</label>
-                  <input name="km" type="number" [(ngModel)]="newAd.km" #kmModel="ngModel" min="0" placeholder="Örn: 120000" />
+                  <input name="km" type="number" [(ngModel)]="newAd.km" #kmModel="ngModel" required min="0" placeholder="Örn: 120000" />
+                  <div *ngIf="(kmModel.invalid && (kmModel.touched || postForm.submitted))" class="ts-field-error">Km bilgisi zorunludur.</div>
                 </div>
                 <div class="ts-post-row">
                   <label>Fiyat (₺)</label>
@@ -110,15 +112,15 @@
                   <div *ngIf="(priceModel.invalid && (priceModel.touched || postForm.submitted))" class="ts-field-error">Fiyat geçerli ve zorunludur.</div>
                 </div>
                 <div class="ts-post-row">
-                  <label>Resim Yükle (opsiyonel)</label>
-                  <input type="file" accept="image/*" (change)="onImageSelected($event)" />
-                  <small style="color:#6b7280;">PNG/JPG uygundur. 5MB'a kadar.</small>
+                  <label>Resim Yükle (zorunlu)</label>
+                  <input #fileInput type="file" accept="image/*" (change)="onImageSelected($event)" />
+                  <small style="color:#6b7280;">PNG/JPG uygundur. Maksimum 5MB.</small>
                   <div *ngIf="newAd.previewImage" style="margin-top:8px;">
                     <img [src]="newAd.previewImage" alt="önizleme" class="ts-post-preview" />
                   </div>
                 </div>
                 <div class="ts-post-actions">
-                  <button type="submit" class="ts-btn ts-btn-primary" [disabled]="postForm.invalid">Gönder</button>
+                  <button type="submit" class="ts-btn ts-btn-primary" [disabled]="postForm.invalid || !isPostFormValid()">Gönder</button>
                   <button type="button" class="ts-btn ts-btn-secondary" (click)="showPostModal=false">İptal</button>
                 </div>
               </form>
