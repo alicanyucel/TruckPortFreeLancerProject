@@ -159,4 +159,32 @@ export class LiveMapComponent implements OnInit, OnDestroy {
   getCargo(cargoKey: string): string {
     return this.translationService.translate(cargoKey);
   }
+
+  // Helper used in template instead of missing pipes
+  translate(key: string): string {
+    try {
+      return this.translationService.translate(key);
+    } catch (e) {
+      return key;
+    }
+  }
+
+  // Basic number formatting helper
+  fmtNumber(value: number | null | undefined, decimals: number = 0): string {
+    if (value === null || value === undefined) return '-';
+    return Number(value).toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  }
+
+  // Basic date formatting helper (very small, uses toLocaleString as fallback)
+  fmtDate(value: Date | string | null | undefined, format: string = 'dd/MM/yyyy HH:mm:ss'): string {
+    if (!value) return '-';
+    const d = value instanceof Date ? value : new Date(value);
+    try {
+      // Simple HH:mm:ss case
+      if (format === 'HH:mm:ss') return d.toLocaleTimeString();
+      return d.toLocaleString();
+    } catch (e) {
+      return d.toString();
+    }
+  }
 }

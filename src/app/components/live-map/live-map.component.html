@@ -1,7 +1,7 @@
 <div class="live-map-container">
   <div class="map-header">
-    <h1>🗺️ {{'liveMap.title' | translate}}</h1>
-    <p>{{'liveMap.subtitle' | translate}}</p>
+    <h1>🗺️ {{ translate('liveMap.title') }}</h1>
+    <p>{{ translate('liveMap.subtitle') }}</p>
   </div>
 
   <div class="map-content">
@@ -26,18 +26,18 @@
           </div>
           
           <div class="map-legend">
-            <h4>{{'liveMap.statusIndicators' | translate}}</h4>
+            <h4>{{ translate('liveMap.statusIndicators') }}</h4>
             <div class="legend-item">
               <span class="legend-color" style="background-color: #27ae60;"></span>
-              <strong><span>{{'liveMap.status.active' | translate}}</span></strong>
+              <strong><span>{{ translate('liveMap.status.active') }}</span></strong>
             </div>
             <div class="legend-item">
               <span class="legend-color" style="background-color: #f39c12;"></span>
-              <strong><span>{{'liveMap.status.idle' | translate}}</span></strong>
+              <strong><span>{{ translate('liveMap.status.idle') }}</span></strong>
             </div>
             <div class="legend-item">
               <span class="legend-color" style="background-color: #e74c3c;"></span>
-              <strong><span>{{'liveMap.status.maintenance' | translate}}</span></strong>
+              <strong><span>{{ translate('liveMap.status.maintenance') }}</span></strong>
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="vehicle-list-section">
-      <h3>{{'liveMap.vehicleList' | translate}}</h3>
+    <h3>{{ translate('liveMap.vehicleList') }}</h3>
       <div class="vehicle-list">
         <div *ngFor="let vehicle of vehicles" 
              class="vehicle-card"
@@ -73,10 +73,10 @@
               📦 {{getCargo(vehicle.cargoKey)}}
             </div>
             <div class="info-row" *ngIf="vehicle.status === 'active'">
-              🚀 {{vehicle.speed | number:'1.0-0'}} km/h
+              🚀 {{ fmtNumber(vehicle.speed, 0) }} km/h
             </div>
             <div class="info-row timestamp">
-              🕒 {{vehicle.lastUpdate | date:'HH:mm:ss'}}
+              🕒 {{ fmtDate(vehicle.lastUpdate, 'HH:mm:ss') }}
             </div>
           </div>
         </div>
@@ -86,14 +86,14 @@
 
   <!-- Selected Vehicle Details -->
   <div class="vehicle-details" *ngIf="selectedVehicle">
-    <h3>{{'liveMap.vehicleDetails' | translate}}</h3>
+  <h3>{{ translate('liveMap.vehicleDetails') }}</h3>
     <div class="details-grid">
       <div class="detail-card">
-        <h4>{{'liveMap.details.vehicleInfo' | translate}}</h4>
+    <h4>{{ translate('liveMap.details.vehicleInfo') }}</h4>
         <p><strong>ID:</strong> {{selectedVehicle.id}}</p>
-        <p><strong>{{'liveMap.details.model' | translate}}:</strong> {{selectedVehicle.name}}</p>
-        <p><strong>{{'liveMap.details.driver' | translate}}:</strong> {{getDriverName(selectedVehicle.driverKey)}}</p>
-        <p><strong>{{'liveMap.details.status' | translate}}:</strong> 
+    <p><strong>{{ translate('liveMap.details.model') }}:</strong> {{selectedVehicle.name}}</p>
+    <p><strong>{{ translate('liveMap.details.driver') }}:</strong> {{getDriverName(selectedVehicle.driverKey)}}</p>
+    <p><strong>{{ translate('liveMap.details.status') }}:</strong> 
           <span [style.color]="getStatusColor(selectedVehicle.status)">
             {{getStatusText(selectedVehicle.status)}}
           </span>
@@ -101,23 +101,23 @@
       </div>
       
       <div class="detail-card">
-        <h4>{{'liveMap.details.locationInfo' | translate}}</h4>
-        <p><strong>{{'liveMap.details.latitude' | translate}}:</strong> {{selectedVehicle.lat | number:'1.4-4'}}</p>
-        <p><strong>{{'liveMap.details.longitude' | translate}}:</strong> {{selectedVehicle.lng | number:'1.4-4'}}</p>
-        <p><strong>{{'liveMap.details.speed' | translate}}:</strong> {{selectedVehicle.speed | number:'1.0-0'}} km/h</p>
-        <p><strong>{{'liveMap.details.lastUpdate' | translate}}:</strong> {{selectedVehicle.lastUpdate | date:'dd/MM/yyyy HH:mm:ss'}}</p>
+  <h4>{{ translate('liveMap.details.locationInfo') }}</h4>
+  <p><strong>{{ translate('liveMap.details.latitude') }}:</strong> {{ fmtNumber(selectedVehicle.lat, 4) }}</p>
+  <p><strong>{{ translate('liveMap.details.longitude') }}:</strong> {{ fmtNumber(selectedVehicle.lng, 4) }}</p>
+  <p><strong>{{ translate('liveMap.details.speed') }}:</strong> {{ fmtNumber(selectedVehicle.speed, 0) }} km/h</p>
+  <p><strong>{{ translate('liveMap.details.lastUpdate') }}:</strong> {{ fmtDate(selectedVehicle.lastUpdate, 'dd/MM/yyyy HH:mm:ss') }}</p>
       </div>
       
       <div class="detail-card">
-        <h4>{{'liveMap.details.cargoInfo' | translate}}</h4>
-        <p><strong>{{'liveMap.details.destination' | translate}}:</strong> {{getDestination(selectedVehicle.destinationKey)}}</p>
-        <p><strong>{{'liveMap.details.cargo' | translate}}:</strong> {{getCargo(selectedVehicle.cargoKey)}}</p>
+  <h4>{{ translate('liveMap.details.cargoInfo') }}</h4>
+  <p><strong>{{ translate('liveMap.details.destination') }}:</strong> {{getDestination(selectedVehicle.destinationKey)}}</p>
+  <p><strong>{{ translate('liveMap.details.cargo') }}:</strong> {{getCargo(selectedVehicle.cargoKey)}}</p>
       </div>
     </div>
   </div>
 
   <!-- Reklam Alanı -->
   <div class="advertisements-section">
-    <app-advertisements></app-advertisements>
+    <div class="advertisements-placeholder">Reklam alanı (placeholder)</div>
   </div>
 </div>
