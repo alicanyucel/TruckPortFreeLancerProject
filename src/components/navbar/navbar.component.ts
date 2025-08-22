@@ -30,11 +30,38 @@ export class NavbarComponent {
   cookieTheme = '';
   cookieLang = '';
   cookieList: { [key: string]: string } = {};
+  cookiePanelFlip = false;
   showCookiePassword = false;
 
   toggleCookiePanel() {
     this.showCookiePanel = !this.showCookiePanel;
-    if (this.showCookiePanel) this.loadCookies();
+    if (this.showCookiePanel) {
+      this.loadCookies();
+      // Allow template to render, then adjust position
+      setTimeout(() => this.adjustCookiePanelPosition(), 50);
+    }
+  }
+
+  adjustCookiePanelPosition() {
+    try {
+  // Prefer the register link as anchor if available so the panel appears next to "Kayıt Ol".
+  const registerAnchor = document.getElementById('registerLink') as HTMLElement;
+  const btn = registerAnchor || document.querySelector('.navbar-link.cookie-toggle') as HTMLElement;
+      const panel = document.querySelector('.cookie-panel') as HTMLElement;
+      if (!btn || !panel) return;
+      const btnRect = btn.getBoundingClientRect();
+      const panelRect = panel.getBoundingClientRect();
+      const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+      // If panel would overflow right edge, flip to the right (align panel's right with button's right)
+      if (btnRect.left + panelRect.width > viewportWidth - 16) {
+        this.cookiePanelFlip = true;
+      } else {
+        this.cookiePanelFlip = false;
+      }
+    } catch (e) {
+      console.warn('Could not adjust cookie panel position', e);
+      this.cookiePanelFlip = false;
+    }
   }
 
   loadCookies() {

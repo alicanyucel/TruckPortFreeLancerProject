@@ -212,9 +212,10 @@
 
 /* Cookie panel styles - polished */
 .cookie-panel {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 8px);
+    position: absolute;
+    left: 0; /* anchor to the left of the parent li */
+    right: auto;
+    top: calc(100% + 8px);
   background: linear-gradient(180deg, rgba(17,24,39,0.98), rgba(11,18,32,0.98));
   color: #e6eef8;
   padding: 12px;
@@ -225,6 +226,15 @@
   border: 1px solid rgba(255,255,255,0.04);
   z-index: 100;
 }
+
+/* When flip-right is active align the panel to the parent's right edge */
+.cookie-panel.flip-right {
+  left: auto !important;
+  right: 0 !important;
+}
+
+  /* Ensure each navbar item can be a positioning context for dropdowns like the cookie panel */
+  .navbar-item { position: relative; }
 
 /* little caret */
 .cookie-panel::after {

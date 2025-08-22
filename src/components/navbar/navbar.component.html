@@ -72,40 +72,16 @@
            (click)="closeMobileMenu()">{{'navbar.videoGallery' | translate}}</a>
       </li>
       <li class="navbar-item" *ngIf="!isAuthenticated">
-        <a routerLink="/uye-ol" 
+        <a id="registerLink" routerLink="/uye-ol" 
            class="navbar-link" 
            routerLinkActive="active"
            (click)="closeMobileMenu()">{{ 'login.register' | translate }}</a>
       </li>
 
-      <!-- Profile links duplicated for mobile menu when authenticated -->
-      <ng-container *ngIf="isAuthenticated">
-        <li class="navbar-item mobile-profile-item">
-          <a routerLink="/profil" class="navbar-link" (click)="closeMobileMenu()">{{'navbar.profile' | translate}}</a>
-        </li>
-        <li class="navbar-item mobile-profile-item">
-          <a routerLink="/settings" class="navbar-link" (click)="closeMobileMenu()">{{'navbar.settings' | translate}}</a>
-        </li>
-        <li class="navbar-item mobile-profile-item">
-          <a routerLink="/reservations" class="navbar-link" (click)="closeMobileMenu()">{{'navbar.reservations' | translate}}</a>
-        </li>
-      </ng-container>
-      
-      <!-- Authentication Section -->
-      <li class="navbar-item" *ngIf="!isAuthenticated">
-        <a routerLink="/giris" 
-           class="navbar-link login-btn" 
-           routerLinkActive="active"
-           (click)="closeMobileMenu()">{{'navbar.login' | translate}}</a>
-        <span class="login-prompt">{{'navbar.loginPrompt' | translate}}</span>
-      </li>
-      <li class="navbar-item" *ngIf="isAuthenticated">
-        <button class="navbar-link logout-btn" (click)="logout(); closeMobileMenu()">Çıkış Yap</button>
-      </li>
-    <!-- Cookie quick panel -->
+      <!-- Cookie quick panel placed next to Kayıt Ol (register) for better alignment -->
       <li class="navbar-item">
-  <button class="navbar-link cookie-toggle" (click)="toggleCookiePanel()" aria-expanded="showCookiePanel">{{'cookies.title' | translate}}</button>
-        <div class="cookie-panel" *ngIf="showCookiePanel">
+        <button class="navbar-link cookie-toggle" (click)="toggleCookiePanel()" aria-expanded="showCookiePanel">{{'cookies.title' | translate}}</button>
+        <div class="cookie-panel" *ngIf="showCookiePanel" [ngClass]="{ 'flip-right': cookiePanelFlip }">
           <div class="cookie-header">
             <h4>{{'cookies.title' | translate}}</h4>
             <button class="cookie-close" (click)="toggleCookiePanel()" aria-label="close">✕</button>
@@ -140,6 +116,32 @@
           </div>
         </div>
       </li>
+
+      <!-- Profile links duplicated for mobile menu when authenticated -->
+      <ng-container *ngIf="isAuthenticated">
+        <li class="navbar-item mobile-profile-item">
+          <a routerLink="/profil" class="navbar-link" (click)="closeMobileMenu()">{{'navbar.profile' | translate}}</a>
+        </li>
+        <li class="navbar-item mobile-profile-item">
+          <a routerLink="/settings" class="navbar-link" (click)="closeMobileMenu()">{{'navbar.settings' | translate}}</a>
+        </li>
+        <li class="navbar-item mobile-profile-item">
+          <a routerLink="/reservations" class="navbar-link" (click)="closeMobileMenu()">{{'navbar.reservations' | translate}}</a>
+        </li>
+      </ng-container>
+      
+      <!-- Authentication Section -->
+      <li class="navbar-item" *ngIf="!isAuthenticated">
+        <a routerLink="/giris" 
+           class="navbar-link login-btn" 
+           routerLinkActive="active"
+           (click)="closeMobileMenu()">{{'navbar.login' | translate}}</a>
+        <span class="login-prompt">{{'navbar.loginPrompt' | translate}}</span>
+      </li>
+      <li class="navbar-item" *ngIf="isAuthenticated">
+        <button class="navbar-link logout-btn" (click)="logout(); closeMobileMenu()">Çıkış Yap</button>
+      </li>
+      
     </ul>
   </div>
 </nav>
