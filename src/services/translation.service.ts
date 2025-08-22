@@ -26,6 +26,13 @@ export class TranslationService {
     'navbar.login': { tr: 'Giriş Yap', en: 'Login' },
     'navbar.logout': { tr: 'Çıkış Yap', en: 'Logout' },
     'navbar.welcome': { tr: 'Hoş geldin', en: 'Welcome' },
+  'navbar.profile': { tr: 'Profil', en: 'Profile' },
+  'navbar.settings': { tr: 'Ayarlar', en: 'Settings' },
+  'navbar.reservations': { tr: 'Rezervasyonlar', en: 'Reservations' },
+  'navbar.bookings': { tr: 'Rezervasyonlar', en: 'Bookings' },
+  'navbar.favorites': { tr: 'Favoriler', en: 'Favorites' },
+  'navbar.invoices': { tr: 'Faturalar', en: 'Invoices' },
+  'navbar.help': { tr: 'Yardım', en: 'Help' },
 
     // Home Page
     'home.welcomeTitle': { tr: 'TruckPort\'a Hoş Geldiniz', en: 'Welcome to TruckPort' },

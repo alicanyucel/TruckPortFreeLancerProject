@@ -168,7 +168,7 @@
   position: absolute;
   right: 0;
   top: calc(100% + 8px);
-  background: #0b1220;
+  background: #0b1220; /* dark dropdown background */
   border: 1px solid rgba(255,255,255,0.04);
   box-shadow: 0 8px 24px rgba(2,6,23,0.6);
   padding: 8px 0;
@@ -182,12 +182,29 @@
 .profile-dropdown a, .profile-dropdown .logout-link {
   display: block;
   padding: 10px 14px;
-  color: #e6eef8;
+  color: #e6eef8; /* light text on dark background */
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
 }
 .profile-dropdown a:hover, .profile-dropdown .logout-link:hover { background: rgba(255,255,255,0.02); }
+
+/* If a light theme is applied to the dropdown, ensure readable dark text */
+.profile-dropdown.light {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.06);
+}
+.profile-dropdown.light a, .profile-dropdown.light .logout-link {
+  color: #111111;
+}
+
+/* Make logout-link look like the anchor items and full-width */
+.profile-dropdown .logout-link {
+  background: transparent;
+  border: none;
+  text-align: left;
+  width: 100%;
+}
 
 /* Mobile adjustments: hide desktop profile button and show mobile profile items inside menu */
 .profile-item { display: flex; }
