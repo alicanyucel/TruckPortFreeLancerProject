@@ -251,8 +251,8 @@
 }
 
 .cookie-panel .cookie-header { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:8px; }
-.cookie-panel h4 { margin:0; font-size:14px; font-weight:700; color:#111111; }
-.cookie-panel .cookie-close { background:transparent; border:none; color: rgba(255,255,255,0.6); cursor:pointer; font-size:16px; padding:4px; }
+.cookie-panel h4 { margin:0; font-size:14px; font-weight:700; color:#111111; display:flex; align-items:center; gap:8px; }
+.cookie-panel .cookie-close { background:transparent; border:none; color: rgba(255,255,255,0.6); cursor:pointer; font-size:16px; padding:4px; display:inline-flex; align-items:center; justify-content:center; }
 
 /* Make the cookie toggle label black and prominent */
 .navbar-link.cookie-toggle { color: #111111 !important; font-weight:700; }
@@ -274,6 +274,8 @@
 
 .cookie-panel .cookie-actions { display:flex; gap:8px; margin-bottom:8px; }
 .ts-btn { padding:8px 12px; border-radius:6px; border:none; cursor:pointer; font-weight:700; font-size:13px; }
+.ts-btn.small { padding:6px 8px; font-size:12px; border-radius:6px; }
+.ts-btn i { margin-right:6px; }
 .cookie-panel .ts-btn.save { background: #3498db; color:#fff; box-shadow: 0 6px 18px rgba(52,152,219,0.18); }
 .cookie-panel .ts-btn.refresh { background: transparent; color: #e6eef8; border:1px solid rgba(255,255,255,0.06); }
 .cookie-panel .ts-btn.delete-all { background: #e74c3c; color: #fff; border: none; box-shadow: 0 6px 18px rgba(231,76,60,0.12); }

@@ -80,26 +80,26 @@
 
       <!-- Cookie quick panel placed next to Kayıt Ol (register) for better alignment -->
       <li class="navbar-item">
-        <button class="navbar-link cookie-toggle" (click)="toggleCookiePanel()" aria-expanded="showCookiePanel">{{'cookies.title' | translate}}</button>
+        <button type="button" class="navbar-link cookie-toggle" (click)="toggleCookiePanel()" aria-expanded="showCookiePanel">{{'cookies.title' | translate}}</button>
         <div class="cookie-panel" *ngIf="showCookiePanel" [ngClass]="{ 'flip-right': cookiePanelFlip }">
           <div class="cookie-header">
             <h4>{{'cookies.title' | translate}}</h4>
-            <button class="cookie-close" (click)="toggleCookiePanel()" aria-label="close">✕</button>
+            <button type="button" class="cookie-close" (click)="toggleCookiePanel()" aria-label="close"><i class="fa fa-times" aria-hidden="true"></i></button>
           </div>
 
           <div class="cookie-row"><label>{{'cookies.email' | translate}}</label><input placeholder="example@domain.com" aria-label="email" [(ngModel)]="cookieEmail" /></div>
           <div class="cookie-row" style="position:relative;">
             <label>{{'cookies.password' | translate}}</label>
             <input [type]="showCookiePassword ? 'text' : 'password'" placeholder="••••••••" aria-label="password" [(ngModel)]="cookiePassword" />
-            <button type="button" class="cookie-eye" (click)="toggleCookiePassword()" [attr.aria-pressed]="showCookiePassword" [title]="showCookiePassword ? 'Gizle' : 'Göster'">{{ showCookiePassword ? '🙈' : '👁️' }}</button>
+            <button type="button" class="cookie-eye" (click)="toggleCookiePassword()" [attr.aria-pressed]="showCookiePassword" [title]="showCookiePassword ? 'Gizle' : 'Göster'"><i class="fa" [ngClass]="showCookiePassword ? 'fa-eye-slash' : 'fa-eye'" aria-hidden="true"></i></button>
           </div>
           <div class="cookie-row"><label>{{'cookies.theme' | translate}}</label><input placeholder="dark | light" aria-label="theme" [(ngModel)]="cookieTheme" /></div>
           <div class="cookie-row"><label>{{'cookies.language' | translate}}</label><input placeholder="tr | en" aria-label="language" [(ngModel)]="cookieLang" /></div>
 
           <div class="cookie-actions">
-            <button class="ts-btn save" (click)="saveCookies()">{{'common.save' | translate}}</button>
-            <button class="ts-btn refresh" (click)="loadCookies()">{{'common.cancel' | translate}}</button>
-            <button class="ts-btn delete-all" (click)="deleteAllCookies()">{{'cookies.deleteAll' | translate}}</button>
+            <button type="button" class="ts-btn save" (click)="saveCookies()"><i class="fa fa-save" aria-hidden="true"></i>&nbsp;{{'common.save' | translate}}</button>
+            <button type="button" class="ts-btn refresh" (click)="cancelCookies()"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;{{'common.cancel' | translate}}</button>
+            <button type="button" class="ts-btn delete-all" (click)="deleteAllCookies()"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;{{'cookies.deleteAll' | translate}}</button>
           </div>
 
           <div class="cookie-list">
@@ -110,7 +110,7 @@
                   <span class="cookie-key">{{ displayKey(k.key) }}</span>
                   <span class="cookie-val">{{ displayValue(k.key, k.value) }}</span>
                 </div>
-                <button (click)="deleteCookie(k.key)">{{'common.cancel' | translate}}</button>
+                <button type="button" class="ts-btn small" (click)="deleteCookie(k.key)"><i class="fa fa-times" aria-hidden="true"></i></button>
               </li>
             </ul>
           </div>

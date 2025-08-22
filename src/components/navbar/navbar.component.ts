@@ -81,6 +81,12 @@ export class NavbarComponent {
     this.loadCookies();
   }
 
+  // Cancel/refresh: reload current cookie values and close the panel
+  cancelCookies() {
+    this.loadCookies();
+    this.showCookiePanel = false;
+  }
+
   toggleCookiePassword() {
     this.showCookiePassword = !this.showCookiePassword;
   }
@@ -94,7 +100,8 @@ export class NavbarComponent {
     const list = this.cookieService.listCookies();
     Object.keys(list).forEach(k => this.cookieService.deleteCookie(k));
     this.loadCookies();
-    this.toastr.info(this.translation.translate('cookies.deleteAll') + ' - OK', 'Bilgi');
+  const msg = this.translation.translate('cookies.deletedAll') || 'Tümü silindi';
+  this.toastr.info(msg, 'Bilgi');
   }
 
   // Display-friendly label for known cookie keys
