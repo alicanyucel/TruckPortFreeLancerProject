@@ -57,24 +57,25 @@
     <!-- Araç Kartları -->
     <section class="ts-vehicle-list">
       <h2>Satılık Kamyon ve Römorklar</h2>
-      <div class="ts-vehicle-grid">
-        <div class="ts-vehicle-card" *ngFor="let truck of pagedTrucks">
-          <img [src]="truck.image" [alt]="truck.title" />
-          <div class="ts-vehicle-info">
-            <h4>{{truck.title}}</h4>
-            <ul>
-              <li><strong>Marka:</strong> {{truck.brand}}</li>
-              <li><strong>Model:</strong> {{truck.model}}</li>
-              <li><strong>Yıl:</strong> {{truck.year}}</li>
-              <li><strong>Km:</strong> {{truck.km | number}} km</li>
-            </ul>
-            <div class="ts-vehicle-price">{{truck.price | currency:'TRY':'symbol':'1.0-0'}}</div>
-            <button class="ts-btn ts-btn-primary ts-detail-btn" (click)="openModal(truck)">Detay</button>
+        <div class="ts-vehicle-list-flex">
+          <div class="ts-vehicle-card-horizontal" *ngFor="let truck of pagedTrucks">
+            <div class="ts-vehicle-image-horizontal">
+              <img [src]="truck.image" [alt]="truck.title" />
+            </div>
+            <div class="ts-vehicle-info-horizontal">
+              <h4>{{truck.title}}</h4>
+              <ul>
+                <li><strong>Marka:</strong> {{truck.brand}}</li>
+                <li><strong>Model:</strong> {{truck.model}}</li>
+                <li><strong>Yıl:</strong> {{truck.year}}</li>
+                <li><strong>Km:</strong> {{truck.km | number}} km</li>
+              </ul>
+              <div class="ts-vehicle-price">{{truck.price | currency:'TRY':'symbol':'1.0-0'}}</div>
+              <button class="ts-btn ts-btn-primary ts-detail-btn" (click)="openModal(truck)">Detay</button>
+            </div>
           </div>
+          <app-truckstore-modal *ngIf="showModal" [truck]="selectedTruck" [user]="selectedTruck?.user" (close)="showModal=false;selectedTruck=null"></app-truckstore-modal>
         </div>
-
-        <app-truckstore-modal *ngIf="showModal" [truck]="selectedTruck" [user]="selectedTruck?.user" (close)="showModal=false;selectedTruck=null"></app-truckstore-modal>
-      </div>
       <!-- Pagination Controls -->
       <div class="ts-pagination" *ngIf="totalPages > 1">
         <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Önceki</button>
