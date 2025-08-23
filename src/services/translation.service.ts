@@ -141,6 +141,7 @@ export class TranslationService {
   'liveMap.loadingAddress': { tr: 'Yükleme Adresi', en: 'Loading Address' },
   'liveMap.deliveryAddress': { tr: 'Teslimat Adresi', en: 'Delivery Address' },
   'liveMap.distance': { tr: 'Mesafe', en: 'Distance' },
+  'liveMap.searchPlaceholder': { tr: 'ARA - Rezervasyon No / Araç Tipi / Tarih / Adres / Mesafe', en: 'SEARCH - Reservation No / Vehicle Type / Date / Loading / Delivery / Distance' },
     'liveMap.vehicleList': { tr: 'Araç Listesi', en: 'Vehicle List' },
     'liveMap.vehicleDetails': { tr: 'Araç Detayları', en: 'Vehicle Details' },
     'liveMap.details.vehicleInfo': { tr: 'Araç Bilgileri', en: 'Vehicle Information' },
