@@ -63,6 +63,17 @@ export class LiveMapComponent implements OnInit {
       this.currentPage = 1;
       return;
     }
+
+    // Prefer exact reservation ID match (case-insensitive). If any reservation's id equals the query,
+    // return only those exact matches. Otherwise fall back to substring search across fields.
+    const exactMatches = this.reservations.filter(r => ((r.id || '').toLowerCase().trim() === s));
+    if (exactMatches.length > 0) {
+      this.filteredReservations = exactMatches;
+      this.currentPage = 1;
+      return;
+    }
+
+    // Fallback: substring search across several fields
     this.filteredReservations = this.reservations.filter(r => {
       return (
         (r.id || '').toLowerCase().includes(s) ||
