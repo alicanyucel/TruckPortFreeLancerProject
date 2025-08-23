@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { TranslatePipe } from "../../app/pipes/translate.pipe";
 
 declare const google: any;
-
+//
 @Component({
   selector: 'app-google-map',
   templateUrl: './google-map.component.html',
