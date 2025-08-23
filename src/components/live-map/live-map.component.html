@@ -1,4 +1,13 @@
+
+
+
 <div class="reservation-list">
+  <!-- Search labels/header (static) -->
+  <div class="reservation-search-labels" style="display:block;width:100%;margin-bottom:12px;">
+    <input id="globalSearch" type="text" #q placeholder="ARA - Rezervasyon No / Araç Tipi / Tarih / Adres / Mesafe" 
+           (input)="applySearch(q.value)"
+           style="width:100%;padding:8px 12px;border-radius:4px;border:1px solid #ccc;box-sizing:border-box;" />
+  </div>
   <div class="reservation-card" *ngFor="let res of pagedReservations; let i = index">
     <table class="reservation-full-table">
       <tr>

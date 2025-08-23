@@ -39,6 +39,7 @@ export class LiveMapComponent implements OnInit {
 
   pageSize = 3;
   currentPage = 1;
+  filteredReservations: any[] = [];
 
   get totalPages(): number {
     return Math.ceil(this.reservations.length / this.pageSize);
@@ -46,12 +47,38 @@ export class LiveMapComponent implements OnInit {
 
   get pagedReservations() {
     const start = (this.currentPage - 1) * this.pageSize;
-    return this.reservations.slice(start, start + this.pageSize);
+  return this.filteredReservations.slice(start, start + this.pageSize);
   }
 
   changePage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
     }
+  }
+
+  applySearch(q: string) {
+    const s = (q || '').toLowerCase().trim();
+    if (!s) {
+      this.filteredReservations = [...this.reservations];
+      this.currentPage = 1;
+      return;
+    }
+    this.filteredReservations = this.reservations.filter(r => {
+      return (
+        (r.id || '').toLowerCase().includes(s) ||
+        (r.vehicleType || '').toLowerCase().includes(s) ||
+        (r.date || '').toLowerCase().includes(s) ||
+        (r.loading || '').toLowerCase().includes(s) ||
+        (r.delivery || '').toLowerCase().includes(s) ||
+        (r.distance || '').toLowerCase().includes(s) ||
+        (r.owner || '').toLowerCase().includes(s)
+      );
+    });
+    this.currentPage = 1;
+  }
+
+  // initialize filtered list
+  constructor() {
+    this.filteredReservations = [...this.reservations];
   }
 }
