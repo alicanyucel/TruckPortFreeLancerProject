@@ -77,20 +77,24 @@ export class AppComponent implements OnInit {
 
   getWelcomeMessage(): string {
     if (this.isAuthenticated && this.currentUser) {
-      const timeOfDay = this.getTimeOfDay();
-      return `${timeOfDay} ${this.currentUser.email}! TruckPort'a hoş geldiniz.`;
+      // Determine which time-of-day key to use
+      const tod = this.getTimeOfDay();
+      const timeKey = tod === 'morning' ? 'greeting.time.morning' : (tod === 'afternoon' ? 'greeting.time.afternoon' : 'greeting.time.evening');
+      const timeText = this.translationService.translate(timeKey);
+      const template = this.translationService.translate('welcome.greeting');
+      return template.replace('{time}', timeText).replace('{email}', this.currentUser.email);
     }
-    return 'TruckPort\'a hoş geldiniz! Giriş yaparak tüm özelliklerden faydalanabilirsiniz.';
+    return this.translationService.translate('home.welcomeSubtitle') || 'TruckPort\'a hoş geldiniz! Giriş yaparak tüm özelliklerden faydalanabilirsiniz.';
   }
 
   private getTimeOfDay(): string {
     const hour = new Date().getHours();
     if (hour < 12) {
-      return 'Günaydın';
+  return 'morning';
     } else if (hour < 18) {
-      return 'İyi günler';
+  return 'afternoon';
     } else {
-      return 'İyi akşamlar';
+  return 'evening';
     }
   }
 }

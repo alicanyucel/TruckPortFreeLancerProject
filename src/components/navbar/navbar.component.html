@@ -139,7 +139,7 @@
         <span class="login-prompt">{{'navbar.loginPrompt' | translate}}</span>
       </li>
       <li class="navbar-item" *ngIf="isAuthenticated">
-        <button class="navbar-link logout-btn" (click)="logout(); closeMobileMenu()">Çıkış Yap</button>
+  <button class="navbar-link logout-btn" (click)="logout(); closeMobileMenu()">{{ 'navbar.logout' | translate }}</button>
       </li>
       
     </ul>

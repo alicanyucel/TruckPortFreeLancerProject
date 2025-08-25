@@ -213,6 +213,20 @@ export class TranslationService {
     'chatbot.responses.thanks': { tr: 'Rica ederim! Başka bir sorunuz varsa çekinmeden sorun. İyi günler! 😊', en: 'You\'re welcome! If you have any other questions, feel free to ask. Have a great day! 😊' },
     'chatbot.responses.default': { tr: 'Üzgünüm, bu konuda size yardımcı olamıyorum. Daha detaylı bilgi için İletişim sayfamızdan bizimle iletişime geçebilirsiniz. 📞', en: 'Sorry, I can\'t help you with that. For more detailed information, you can contact us through our Contact page. 📞' },
 
+  // Video Gallery specific translations
+  'video1.title': { tr: 'Tanıtım Videosu 1', en: 'Promotional Video 1' },
+  'video1.desc': { tr: 'Bu video TruckPort platformunun tanıtımıdır.', en: 'This video introduces the TruckPort platform.' },
+  'video2.title': { tr: 'Tanıtım Videosu 2', en: 'Promotional Video 2' },
+  'video2.desc': { tr: 'Bu video TruckPort hizmetlerinin kısa bir özetini verir.', en: 'This video gives a short overview of TruckPort services.' },
+
+    'video3.title': { tr: 'Tan\u0131t\u0131m Videosu 3', en: 'Promotional Video 3' },
+    'video3.desc': { tr: 'Bu video TruckPort hakk\u0131nda daha fazla bilgi sunar.', en: 'This video provides more information about TruckPort.' },
+    'video4.title': { tr: 'Tan\u0131t\u0131m Videosu 4', en: 'Promotional Video 4' },
+    'video4.desc': { tr: 'TruckPort\'un hizmetlerinden bir di\u011feriyle ilgili video.', en: 'Another video showcasing one of TruckPort\'s services.' },
+    'video5.title': { tr: 'Tan\u0131t\u0131m Videosu 5', en: 'Promotional Video 5' },
+    'video5.desc': { tr: 'TruckPort\u0131n tan\u0131t\u0131m serisinden bir video.', en: 'A video from TruckPort\'s promotional series.' },
+  'video6.title': { tr: 'Tan\u0131t\u0131m Videosu 6', en: 'Promotional Video 6' },
+  'video6.desc': { tr: 'TruckPort tan\u0131t\u0131m\u0131ndan bir video.', en: 'Promotional video from TruckPort.' },
     // Additional contact form translations
     'contact.info.title': { tr: 'İletişim Bilgileri', en: 'Contact Information' },
     'contact.info.address.title': { tr: 'Adres', en: 'Address' },
@@ -244,6 +258,10 @@ export class TranslationService {
     'home.hero.subtitle': { tr: 'Lojistik ve Nakliye Hizmetlerinde Güvenilir Çözüm Ortağınız', en: 'Your Reliable Solution Partner in Logistics and Transportation Services' },
     'home.hero.contact': { tr: 'Hemen İletişime Geçin', en: 'Contact Us Now' },
     'home.hero.liveTracking': { tr: '🗺️ Canlı Araç Takibi', en: '🗺️ Live Vehicle Tracking' },
+    'welcome.greeting': { tr: '{time} {email}! TruckPort\'a hoş geldiniz.', en: '{time} {email}! Welcome to TruckPort.' },
+    'greeting.time.morning': { tr: 'Günaydın', en: 'Good morning' },
+    'greeting.time.afternoon': { tr: 'İyi günler', en: 'Good day' },
+    'greeting.time.evening': { tr: 'İyi akşamlar', en: 'Good evening' },
     'home.services.title': { tr: 'Hizmetlerimiz', en: 'Our Services' },
     'home.services.trucking': { tr: 'Kamyon Taşımacılığı', en: 'Truck Transportation' },
     'home.services.truckingDesc': { tr: 'Güvenli ve hızlı kamyon nakliye hizmetleri', en: 'Safe and fast truck transportation services' },
@@ -519,16 +537,25 @@ export class TranslationService {
   };
 
   constructor() {
-    // Load saved language from localStorage
-    const savedLang = localStorage.getItem('selectedLanguage');
-    if (savedLang && (savedLang === 'tr' || savedLang === 'en')) {
-      this.currentLanguage.next(savedLang);
+  // Initialize language from localStorage if present, otherwise default to Turkish
+  try {
+    const saved = localStorage.getItem('selectedLanguage');
+    if (saved === 'en' || saved === 'tr') {
+      this.currentLanguage.next(saved);
+    } else {
+      this.currentLanguage.next('tr');
+      localStorage.setItem('selectedLanguage', 'tr');
     }
+  } catch (e) {
+    this.currentLanguage.next('tr');
+  }
   }
 
   setLanguage(lang: string) {
-    this.currentLanguage.next(lang);
-    localStorage.setItem('selectedLanguage', lang);
+  // Accept 'tr' or 'en' and persist choice
+  if (lang !== 'tr' && lang !== 'en') return;
+  this.currentLanguage.next(lang);
+  try { localStorage.setItem('selectedLanguage', lang); } catch (e) { /* ignore */ }
   }
 
   getCurrentLanguage(): string {
@@ -540,11 +567,11 @@ export class TranslationService {
   }
 
   translate(key: string): string {
-    const currentLang = this.currentLanguage.value;
-    if (this.translations[key] && this.translations[key][currentLang]) {
-      return this.translations[key][currentLang];
+    const lang = this.currentLanguage.value || 'tr';
+    if (this.translations[key] && this.translations[key][lang]) {
+      return this.translations[key][lang];
     }
-    return key; // Return key if translation not found
+    return key; // Fallback to key if translation missing
   }
 
   // Pipe için kullanılacak

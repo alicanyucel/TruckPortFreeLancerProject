@@ -16,7 +16,7 @@ export class GoogleMapComponent implements AfterViewInit, OnDestroy, OnChanges {
   toasts: Array<{ id: number; message: string; type?: 'success' | 'info' | 'error' }> = [];
   private toastSeq = 1;
 
-  private addToast(message: string, type: 'success' | 'info' | 'error' = 'info', timeout = 3000) {
+  private addToast(message: string, type: 'success' | 'info' | 'error' = 'info', timeout = 1000) {
     const id = this.toastSeq++;
     const t = { id, message, type };
     this.toasts.push(t);

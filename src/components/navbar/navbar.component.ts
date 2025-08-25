@@ -150,7 +150,7 @@ export class NavbarComponent {
 
   logout(): void {
     this.authService.logout();
-    this.toastr.info('Çıkış yapıldı.', 'Bilgi');
+  this.toastr.info(this.translation.translate('common.success'), this.translation.translate('navbar.logout'));
     this.router.navigate(['/']);
   }
   // Her girişte toast mesajı göster

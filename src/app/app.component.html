@@ -17,30 +17,30 @@
                 <button (click)="setLanguage('en')" [class.active]="currentLang === 'en'">EN</button>
               </div>
               <div class="theme-switch">
-                <button (click)="toggleTheme()">{{ currentTheme === 'dark' ? 'Light' : 'Dark' }}</button>
+                <button (click)="toggleTheme()">{{ currentTheme === 'dark' ? ('theme.light' | translate) : ('theme.dark' | translate) }}</button>
               </div>
             </div>
         <button 
           *ngIf="isAuthenticated" 
           class="logout-btn"
           (click)="logout()"
-          title="Çıkış Yap">
+          title="{{ 'navbar.logout' | translate }}">
           <span class="logout-icon">🚪</span>
-          Çıkış Yap
+          {{ 'navbar.logout' | translate }}
         </button>
         <button 
           *ngIf="!isAuthenticated" 
           class="login-btn"
           (click)="router.navigate(['/giris'])"
-          title="Giriş Yap">
+          title="{{ 'navbar.login' | translate }}">
           <span class="login-icon">🔑</span>
-          Giriş Yap
+          {{ 'navbar.login' | translate }}
         </button>
         <button 
           class="dismiss-btn"
           (click)="dismissWelcome()"
-          title="Kapat"
-          aria-label="Hoşgeldin mesajını kapat">
+          title="{{ 'common.close' | translate }}"
+          [attr.aria-label]="'common.close' | translate">
           ✕
         </button>
       </div>

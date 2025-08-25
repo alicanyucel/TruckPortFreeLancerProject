@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { TranslationService } from '../../services/translation.service';
 
 interface Video {
-  id: string;
-  titleKey: string;
-  descriptionKey: string;
-  youtubeId: string;
-  thumbnailUrl: string;
+  id?: string;
+  titleKey?: string;
+  descriptionKey?: string;
+  youtubeId?: string;
+  fileUrl?: string;
+  thumbnailUrl?: string;
   category: string;
 }
 
@@ -24,34 +26,44 @@ export class VideoGalleryComponent implements OnInit {
   totalPages = 1;
   selectedVideo: Video | null = null;
 
-  constructor(private translationService: TranslationService) { }
+  constructor(private translationService: TranslationService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.initializeVideos();
+    this.loadVideosFromAssets();
   }
 
-  initializeVideos() {
-    this.videos = [
-      {
-        id: '1',
-        titleKey: 'video1.title',
-        descriptionKey: 'video1.desc',
-        youtubeId: 'abc123',
-        thumbnailUrl: 'https://img.youtube.com/vi/abc123/0.jpg',
-        category: 'education'
+  loadVideosFromAssets() {
+    this.http.get<Video[]>('/assets/videos/videos.json').subscribe({
+      next: (data) => {
+        this.videos = data || [];
+        this.pagedVideos = this.videos;
+        this.totalPages = Math.ceil(this.videos.length / 9) || 1;
       },
-      {
-        id: '2',
-        titleKey: 'video2.title',
-        descriptionKey: 'video2.desc',
-        youtubeId: 'def456',
-        thumbnailUrl: 'https://img.youtube.com/vi/def456/0.jpg',
-        category: 'fun'
+      error: (err) => {
+        // Fallback to hard-coded YouTube-based list if assets JSON isn't present
+        console.warn('Could not load videos.json from assets, falling back to default list.', err);
+        this.videos = [
+          {
+            id: '1',
+            titleKey: 'video1.title',
+            descriptionKey: 'video1.desc',
+            youtubeId: 'abc123',
+            thumbnailUrl: 'https://img.youtube.com/vi/abc123/0.jpg',
+            category: 'education'
+          },
+          {
+            id: '2',
+            titleKey: 'video2.title',
+            descriptionKey: 'video2.desc',
+            youtubeId: 'def456',
+            thumbnailUrl: 'https://img.youtube.com/vi/def456/0.jpg',
+            category: 'fun'
+          }
+        ];
+        this.pagedVideos = this.videos;
+        this.totalPages = Math.ceil(this.videos.length / 9) || 1;
       }
-      // ...daha fazla video eklenebilir
-    ];
-    this.pagedVideos = this.videos;
-    this.totalPages = Math.ceil(this.videos.length / 9);
+    });
   }
 
   filterByCategory(category: string) {
