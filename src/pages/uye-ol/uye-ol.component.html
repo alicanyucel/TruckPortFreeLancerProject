@@ -1,65 +1,195 @@
 <div class="register-container">
-  <h2>Kayıt Ol</h2>
+  <div class="uyeol-header" style="position:relative;">
+          <h2>{{ translate('signup.title') }}</h2>
+  </div>
+
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div class="form-row">
-      <label>Ad:</label>
-      <div class="input-icon-row">
-        <i class="fa fa-user"></i>
-        <input formControlName="fname" type="text" required placeholder="Adınızı girin" />
+    <div class="form-grid">
+      <div class="form-col">
+        <label>{{ translate('firstName') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-user"></i>
+          <input formControlName="fname" type="text" required placeholder="{{ translate('firstName') }}" />
+          <div *ngIf="registerForm.get('fname')?.touched && registerForm.get('fname')?.invalid" class="input-warning input-warning-red">Boş bırakmayın</div>
+        </div>
       </div>
-      <div *ngIf="registerForm.get('fname')?.touched && registerForm.get('fname')?.invalid" class="input-warning input-warning-red">Boş bırakmayın</div>
-    </div>
-    <div class="form-row">
-      <label>Soyad:</label>
-      <div class="input-icon-row">
-        <i class="fa fa-user"></i>
-        <input formControlName="lname" type="text" required placeholder="Soyadınızı girin" />
+
+      <div class="form-col">
+        <label>{{ translate('lastName') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-user"></i>
+          <input formControlName="lname" type="text" required placeholder="{{ translate('lastName') }}" />
+        </div>
+        <div *ngIf="registerForm.get('lname')?.touched && registerForm.get('lname')?.invalid" class="input-warning input-warning-red">Boş bırakmayın</div>
       </div>
-      <div *ngIf="registerForm.get('lname')?.touched && registerForm.get('lname')?.invalid" class="input-warning input-warning-red">Boş bırakmayın</div>
-    </div>
-    <div class="form-row">
-      <label>Kullanıcı Adı:</label>
-      <div class="input-icon-row">
-        <i class="fa fa-id-badge"></i>
-        <input formControlName="name" type="text" required placeholder="Kullanıcı adınızı girin" />
+
+      <div class="form-col">
+        <label>{{ translate('username') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-id-badge"></i>
+          <input formControlName="name" type="text" required placeholder="{{ translate('username') }}" />
+        </div>
+        <div *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid" class="input-warning input-warning-red">Boş bırakmayın</div>
       </div>
-      <div *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid" class="input-warning input-warning-red">Boş bırakmayın</div>
-    </div>
-    <div class="form-row">
-      <label>E-posta:</label>
-      <div class="input-icon-row">
-        <i class="fa fa-envelope"></i>
-        <input formControlName="email" type="email" required placeholder="Geçerli bir e-posta adresi girin" />
+
+      <div class="form-col">
+        <label>{{ translate('email') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-envelope"></i>
+          <input formControlName="email" type="email" required placeholder="{{ translate('email') }}" />
+        </div>
+        <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['required']" class="input-warning input-warning-red">Boş bırakmayın</div>
+        <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['email']" class="input-warning input-warning-red">Geçerli bir e-posta adresi girin</div>
       </div>
-      <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['required']" class="input-warning input-warning-red">Boş bırakmayın</div>
-      <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['email']" class="input-warning input-warning-red">Geçerli bir e-posta adresi girin</div>
-    </div>
-    <div class="form-row">
-      <label>Telefon:</label>
-      <div class="input-icon-row">
-        <i class="fa fa-phone"></i>
-        <input formControlName="mobile" type="text" required placeholder="Geçerli bir telefon numarası girin" />
+
+      <div class="form-col">
+        <label>{{ translate('password') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-lock"></i>
+          <input formControlName="password" type="password" required placeholder="{{ translate('password') }}" />
+        </div>
+        <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['required']" class="input-warning input-warning-red">Boş bırakmayın</div>
+        <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['minlength']" class="input-warning input-warning-red">Şifre en az 6 karakter olmalıdır</div>
       </div>
-      <div *ngIf="registerForm.get('mobile')?.touched && registerForm.get('mobile')?.errors?.['required']" class="input-warning input-warning-red">Boş bırakmayın</div>
-      <div *ngIf="registerForm.get('mobile')?.touched && registerForm.get('mobile')?.errors?.['pattern']" class="input-warning input-warning-red">Geçerli bir telefon numarası girin</div>
-    </div>
-    <div class="form-row">
-      <label>Dil:</label>
-      <div class="input-icon-row">
-        <i class="fa fa-language"></i>
-        <input formControlName="language" type="text" required placeholder="Tercih ettiğiniz dili girin" />
+
+      <div class="form-col">
+        <label>{{ translate('phone') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-phone"></i>
+          <input formControlName="mobile" type="text" required placeholder="{{ translate('phone') }}" />
+        </div>
+        <div *ngIf="registerForm.get('mobile')?.touched && registerForm.get('mobile')?.errors?.['required']" class="input-warning input-warning-red">Boş bırakmayın</div>
+        <div *ngIf="registerForm.get('mobile')?.touched && registerForm.get('mobile')?.errors?.['pattern']" class="input-warning input-warning-red">Geçerli bir telefon numarası girin</div>
       </div>
-      <div *ngIf="registerForm.get('language')?.touched && registerForm.get('language')?.invalid" class="input-warning input-warning-red">Boş bırakmayın</div>
-    </div>
-    <div class="form-row">
-      <label>Para Birimi:</label>
-      <div class="input-icon-row">
-        <i class="fa fa-money"></i>
-        <input formControlName="currency" type="text" required placeholder="Tercih ettiğiniz para birimini girin" />
+
+      <div class="form-col">
+        <label>{{ translate('language') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-language"></i>
+          <input formControlName="language" type="text" required placeholder="{{ translate('language') }}" />
+        </div>
+        <div *ngIf="registerForm.get('language')?.touched && registerForm.get('language')?.invalid" class="input-warning input-warning-red">Boş bırakmayın</div>
       </div>
-      <div *ngIf="registerForm.get('currency')?.touched && registerForm.get('currency')?.invalid" class="input-warning input-warning-red">Boş bırakmayın</div>
+
+      <div class="form-col">
+        <label>{{ translate('currency') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-money"></i>
+          <input formControlName="currency" type="text" required placeholder="{{ translate('currency') }}" />
+        </div>
+        <div *ngIf="registerForm.get('currency')?.touched && registerForm.get('currency')?.invalid" class="input-warning input-warning-red">Boş bırakmayın</div>
+      </div>
+
+      <div class="form-col">
+        <label>{{ translate('role') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-user-tag"></i>
+          <select formControlName="role">
+            <option value="user">Kullanıcı</option>
+            <option value="provider">Provider</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-col">
+        <label>{{ translate('balance') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-wallet"></i>
+          <input formControlName="balance_amount" type="number" step="0.01" placeholder="{{ translate('balance') }}" />
+        </div>
+      </div>
+
+      <div class="form-col">
+        <label>{{ translate('cc') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-credit-card"></i>
+          <input formControlName="cc" type="text" placeholder="{{ translate('cc') }}" />
+        </div>
+      </div>
+
+      <div class="form-col">
+        <label>{{ translate('proPic') }}:</label>
+        <div class="input-icon-row file-input-row">
+          <i class="fa fa-image"></i>
+          <input type="file" accept="image/*" (change)="onProfileFileChange($event)" />
+        </div>
+        <div *ngIf="profilePreview" class="profile-preview">
+          <img [src]="profilePreview" alt="profile preview" />
+        </div>
+      </div>
+
+      <div class="form-col">
+        <label>{{ translate('rating') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-star"></i>
+          <input formControlName="rating" type="number" min="0" max="5" step="0.1" placeholder="{{ translate('rating') }}" />
+        </div>
+      </div>
+
+      <div class="form-col">
+        <label>{{ translate('status') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-info-circle"></i>
+          <input formControlName="status" type="text" placeholder="{{ translate('status') }}" />
+        </div>
+      </div>
+
+      <div class="form-col">
+        <label>{{ translate('trips') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-road"></i>
+          <input formControlName="trips" type="number" min="0" placeholder="{{ translate('trips') }}" />
+        </div>
+      </div>
+
+      <div class="form-col">
+        <label>{{ translate('accept') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-check"></i>
+          <select formControlName="accept_status">
+            <option value="pending">Beklemede</option>
+            <option value="accepted">Kabul</option>
+            <option value="rejected">Reddedildi</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-col wallet-left">
+        <label>{{ translate('wallet') }}:</label>
+        <div class="input-icon-row">
+          <i class="fa fa-wallet"></i>
+          <input formControlName="wallet" type="number" step="0.01" placeholder="{{ translate('wallet') }}" />
+        </div>
+      </div>
+
+      <div class="form-col"></div>
     </div>
-    <!-- Diğer alanlar opsiyonel veya gizli olabilir -->
-    <button type="submit" [disabled]="registerForm.invalid">Kayıt Ol</button>
+
+    <div class="form-actions">
+        <label class="privacy-row">
+          <input type="checkbox" formControlName="acceptedPrivacy" />
+          <span class="privacy-text" (click)="openPrivacy(); $event.stopPropagation(); $event.preventDefault();">{{ translate('signup.privacyAccept') }}</span>
+        </label>
+      <button type="submit" [disabled]="registerForm.invalid">
+        <i class="fa fa-user-plus" aria-hidden="true"></i>
+        <span>{{ translate('submit') }}</span>
+      </button>
+    </div>
+
+    <!-- Privacy / KVKK Modal -->
+      <div class="privacy-modal" *ngIf="showPrivacy">
+        <div class="privacy-backdrop" (click)="closePrivacy()"></div>
+        <div class="privacy-content">
+          <header>
+            <h3>{{ translate('signup.privacyTitle') }}</h3>
+            <button (click)="closePrivacy()">{{ translate('common.close') }}</button>
+          </header>
+          <div class="privacy-body">
+            <p>
+              {{ translate('signup.privacyText') }}
+            </p>
+          </div>
+        </div>
+      </div>
   </form>
 </div>

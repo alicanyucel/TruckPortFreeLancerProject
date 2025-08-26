@@ -21,15 +21,20 @@
         </div>
       </div>
       
-      <div class="form-group">
+      <div class="form-group password-group">
         <label for="password">{{'login.password' | translate}}</label>
-        <input type="password" 
-               id="password" 
-               name="password" 
-               [(ngModel)]="password"
-               [placeholder]="'login.passwordPlaceholder' | translate" 
-               required
-               #passwordInput="ngModel">
+        <div class="password-input-wrapper">
+          <input [type]="showPassword ? 'text' : 'password'"
+                 id="password"
+                 name="password"
+                 [(ngModel)]="password"
+                 [placeholder]="'login.passwordPlaceholder' | translate"
+                 required
+                 #passwordInput="ngModel">
+          <button type="button" class="password-toggle" (click)="toggleShowPassword()" aria-label="Show password">
+            {{ showPassword ? 'Gizle' : 'Göster' }}
+          </button>
+        </div>
         <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error-message">
           Şifre gereklidir
         </div>

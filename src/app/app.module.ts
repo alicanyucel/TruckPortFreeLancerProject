@@ -34,7 +34,9 @@ import { ContactComponent } from '../pages/contact/contact.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { ServicesComponent } from '../pages/services/services.component';
 import { RegisterComponent } from '../pages/uye-ol/uye-ol.component';
+import { RoadAssistComponent } from '../pages/road-assist/road-assist.component';
 import { ProviderComponent } from './components/provider/provider.component';
+import { RoadAssistModalComponent } from '../components/road-assist-modal/road-assist-modal.component';
 
 // Pipes
 import { TranslatePipe } from '../pipes/translate.pipe';
@@ -79,6 +81,8 @@ import { SecurityInterceptor } from '../services/security.service';
     LoginComponent,
     ServicesComponent,
     RegisterComponent,
+  RoadAssistComponent,
+  RoadAssistModalComponent,
     ProviderComponent,
     TranslatePipe,
     SafeHtmlPipe

@@ -8,6 +8,8 @@
 
   <section class="services-categories">
     <div class="container">
+  <!-- Road Assist quick entry removed; map opens the global modal -->
+
       <div class="services-grid">
         <div class="service-card" *ngFor="let category of categories">
           <div class="service-icon">🛠️</div>
@@ -33,4 +35,35 @@
       <app-advertisements></app-advertisements>
     </div>
   </section>
+</div>
+
+<!-- Road Assist Modal -->
+<div class="road-assist-modal" *ngIf="showRoadAssistModal">
+  <div class="modal-backdrop" (click)="closeRoadAssistModal()"></div>
+  <div class="modal-content">
+    <header class="modal-header">
+      <h3>Hizmet Seçin</h3>
+      <button class="close" (click)="closeRoadAssistModal()">✕</button>
+    </header>
+    <div class="modal-body">
+      <div class="modal-grid">
+        <div class="modal-card" (click)="onSelectService('Kamyon Çekici')">
+          <div class="emoji">🚚</div>
+          <div class="label">Kamyon Çekici</div>
+        </div>
+        <div class="modal-card" (click)="onSelectService('Oto Lastik')">
+          <div class="emoji">🔧</div>
+          <div class="label">Oto Lastik</div>
+        </div>
+        <div class="modal-card" (click)="onSelectService('Otomobil Çekici')">
+          <div class="emoji">🚗</div>
+          <div class="label">Otomobil Çekici</div>
+        </div>
+        <div class="modal-card" (click)="onSelectService('Kamyon Lastik')">
+          <div class="emoji">🛞</div>
+          <div class="label">Kamyon Lastik</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

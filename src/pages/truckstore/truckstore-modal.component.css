@@ -1,5 +1,3 @@
-
-/* Yeni modal stilleri */
 .custom-modal-overlay {
   position: fixed;
   top: 0;
@@ -12,6 +10,7 @@
   justify-content: center;
   z-index: 1000;
 }
+
 .custom-modal {
   background: #fff;
   border-radius: 14px;

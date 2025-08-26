@@ -1,6 +1,8 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService, User } from '../../../services/auth.service';
+import { TranslationService } from '../../../services/translation.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -16,7 +18,23 @@ export class NavbarComponent {
   constructor(
     private authService: AuthService,
     private router: Router
-  ) {}
+    , private translationService: TranslationService
+  ) {
+    // subscribe to language changes
+    this.langSub = this.translationService.getLanguage$().subscribe(l => {
+      if (l === 'tr' || l === 'en') this.currentLang = l;
+    });
+  }
+
+  onLangChange(event: Event) {
+    const val = (event.target as HTMLSelectElement).value;
+    if (val === 'tr' || val === 'en') {
+      this.translationService.setLanguage(val);
+    }
+  }
+
+  currentLang = 'tr';
+  private langSub: Subscription | null = null;
 
   get currentUser(): User | null {
     return this.authService.getCurrentUser();
@@ -71,6 +89,10 @@ export class NavbarComponent {
 
   closeMobileMenu(): void {
     this.isMobileMenuOpen = false;
+  }
+
+  ngOnDestroy(): void {
+    if (this.langSub) { this.langSub.unsubscribe(); this.langSub = null; }
   }
 
   // Dışarı tıklandığında menüyü kapat

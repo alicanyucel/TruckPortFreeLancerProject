@@ -1,0 +1,32 @@
+<div class="road-assist-page container">
+  <header class="hero">
+    <h1>{{ 'Yol Yardım' | translate }}</h1>
+    <p>Yol yardım taleplerinizi buradan oluşturabilirsiniz. Ekiplerimiz konumunuza yönlendirilecektir.</p>
+  </header>
+
+  <section class="assist-grid">
+    <div class="card" (click)="selectService('Kamyon Çekici')">
+      <div class="icon">🚚</div>
+      <div class="title">Kamyon Çekici</div>
+    </div>
+
+    <div class="card" (click)="selectService('Oto Lastik')">
+      <div class="icon">🔧</div>
+      <div class="title">Oto Lastik</div>
+    </div>
+
+    <div class="card" (click)="selectService('Otomobil Çekici')">
+      <div class="icon">🚗</div>
+      <div class="title">Otomobil Çekici</div>
+    </div>
+
+    <div class="card" (click)="selectService('Kamyon Lastik')">
+      <div class="icon">🛞</div>
+      <div class="title">Kamyon Lastik</div>
+    </div>
+  </section>
+
+  <section class="actions">
+    <button class="primary" (click)="goBack()">{{ 'services.contactButton' | translate }}</button>
+  </section>
+</div>

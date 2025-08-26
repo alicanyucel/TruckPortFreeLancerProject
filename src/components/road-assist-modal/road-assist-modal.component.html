@@ -1,0 +1,22 @@
+<div class="ra-backdrop" *ngIf="show" (click)="close()">
+  <div class="ra-modal" (click)="$event.stopPropagation()">
+    <header class="ra-header">
+      <h2>Hizmet Seçin</h2>
+      <button class="ra-close" (click)="close()">✕</button>
+    </header>
+    <div class="ra-grid">
+      <div class="ra-card" (click)="selectService('Kamyon Çekici')">🚚
+        <div class="ra-title">Kamyon Çekici</div>
+      </div>
+      <div class="ra-card" (click)="selectService('Oto Lastik')">🔧
+        <div class="ra-title">Oto Lastik</div>
+      </div>
+      <div class="ra-card" (click)="selectService('Otomobil Çekici')">🚗
+        <div class="ra-title">Otomobil Çekici</div>
+      </div>
+      <div class="ra-card" (click)="selectService('Kamyon Lastik')">🛞
+        <div class="ra-title">Kamyon Lastik</div>
+      </div>
+    </div>
+  </div>
+</div>

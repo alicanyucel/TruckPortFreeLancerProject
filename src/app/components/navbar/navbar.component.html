@@ -21,6 +21,12 @@
     <li><a routerLink="/uye-ol">Kayıt Ol</a></li>
     <li><a routerLink="/giris">Giriş Yap</a></li>
   <li><a routerLink="/provider">Provider</a></li>
+    <li class="lang-switch">
+      <select (change)="onLangChange($event)" [value]="currentLang">
+        <option value="tr">TR</option>
+        <option value="en">EN</option>
+      </select>
+    </li>
   </ul>
   </nav>
 

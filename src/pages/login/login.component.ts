@@ -11,6 +11,7 @@ import { ToastrService } from '../../services/toastr.service';
 export class LoginComponent {
   email: string = '';
   password: string = '';
+  showPassword: boolean = false;
   isLoading: boolean = false;
   errorMessage: string = '';
 
@@ -21,7 +22,7 @@ export class LoginComponent {
     private toastr: ToastrService
   ) {}
   
-  onLogin() {
+  async onLogin() {
     if (!this.email || !this.password) {
       this.errorMessage = 'E-posta ve şifre gereklidir.';
       return;
@@ -30,24 +31,47 @@ export class LoginComponent {
     this.isLoading = true;
     this.errorMessage = '';
 
-    this.authService.login(this.email, this.password).subscribe({
-      next: (user) => {
-        this.isLoading = false;
-        this.errorMessage = '';
-        this.toastr.success('Giriş başarılı!', 'Hoşgeldiniz');
-        // Get return URL from query params or default to home
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-        this.router.navigate([returnUrl]).then(() => {
-          setTimeout(() => { this.errorMessage = ''; }, 0);
-        });
-      },
-      error: (error) => {
-        this.isLoading = false;
-        this.errorMessage = 'Geçersiz e-posta veya şifre. Lütfen tekrar deneyin.';
-        this.toastr.error('Giriş başarısız! Lütfen bilgilerinizi kontrol edin.', 'Hata');
-        console.error('Login error:', error);
-      }
-    });
+    try {
+      const uid = await this.authService.login(this.email, this.password);
+      this.isLoading = false;
+      this.errorMessage = '';
+      this.toastr.success('Giriş başarılı!', 'Hoşgeldiniz');
+      const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+      await this.router.navigate([returnUrl]);
+      setTimeout(() => { this.errorMessage = ''; }, 0);
+    } catch (error) {
+      this.isLoading = false;
+      // Map Firebase error codes to friendly messages
+      const e = error as any;
+      const code: string | undefined = e && e.code ? e.code : undefined;
+      const friendly = this.mapAuthError(code, e && e.message);
+      this.errorMessage = friendly;
+      this.toastr.error(friendly, 'Giriş başarısız');
+      console.error('Login error:', error);
+    }
+  }
+
+  private mapAuthError(code?: string, fallback?: string): string {
+    switch (code) {
+      case 'auth/wrong-password':
+        return 'Şifre yanlış. Lütfen tekrar deneyin.';
+      case 'auth/user-not-found':
+        return 'Bu e-posta ile kayıtlı kullanıcı bulunamadı.';
+      case 'auth/invalid-email':
+        return 'Geçersiz e-posta adresi.';
+      case 'auth/user-disabled':
+        return 'Hesabınız devre dışı bırakılmış. Destek ile iletişime geçin.';
+      case 'auth/too-many-requests':
+        return 'Çok fazla başarısız giriş denemesi. Lütfen bir süre sonra tekrar deneyin.';
+      case 'auth/network-request-failed':
+        return 'Ağ hatası. İnternet bağlantınızı kontrol edin.';
+      default:
+        return fallback || 'Giriş sırasında bir hata oluştu. Lütfen tekrar deneyin.';
+    }
+  }
+
+  toggleShowPassword() {
+    this.showPassword = !this.showPassword;
   }
   
   onRegister() {

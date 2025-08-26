@@ -5,9 +5,9 @@ import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
 import { environment } from '../environments/environment';
 import { Observable, BehaviorSubject } from 'rxjs';
 
-const firebaseApp = initializeApp(environment.firebase);
-const db = getDatabase(firebaseApp);
-const auth = getAuth(firebaseApp);
+export const firebaseApp = initializeApp(environment.firebase);
+export const db = getDatabase(firebaseApp);
+export const auth = getAuth(firebaseApp);
 
 const authStateSubject = new BehaviorSubject<any>(null);
 const authErrorSubject = new BehaviorSubject<Error | null>(null);

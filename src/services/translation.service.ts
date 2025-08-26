@@ -157,6 +157,14 @@ export class TranslationService {
     'liveMap.details.destination': { tr: 'Hedef', en: 'Destination' },
     'liveMap.details.cargo': { tr: 'Yük', en: 'Cargo' },
 
+  // Google Map / Map Buttons
+  'googleMap.roadAssist': { tr: 'Yol Yardım', en: 'Road Assist' },
+  'googleMap.homeMove': { tr: 'Ev Taşıma', en: 'Home Move' },
+  'googleMap.transport': { tr: 'Nakliye', en: 'Transport' },
+  'googleMap.service': { tr: 'Servis', en: 'Service' },
+  'googleMap.expand': { tr: 'Büyüt', en: 'Expand' },
+  'googleMap.shrink': { tr: 'Küçült', en: 'Shrink' },
+
   // Signup Page
   'signup.title': { tr: 'Kayıt Ol', en: 'Sign Up' },
   'signup.subtitle': { tr: 'Başlamak için hesabınızı oluşturun.', en: 'Create your account to get started.' },
@@ -171,7 +179,8 @@ export class TranslationService {
   'signup.alreadyMember': { tr: 'Zaten hesabınız var mı?', en: 'Already have an account?' },
   'signup.loginLink': { tr: 'Giriş Yap', en: 'Log In' },
   'signup.privacyTitle': { tr: 'Gizlilik Politikası', en: 'Privacy Policy' },
-  'signup.privacyText': { tr: 'Bilgileriniz korunur ve paylaşılmaz.', en: 'Your information is protected and will not be shared.' },
+  'signup.privacyText': { tr: 'Kişisel verileriniz, hizmetlerin sunulması, müşteri desteği ve yasal yükümlülüklerin yerine getirilmesi amacıyla işlenebilir. Lütfen metni dikkatlice okuyun.', en: 'Your personal data may be processed for providing services, customer support and legal obligations. Please read the policy carefully.' },
+  'signup.privacyAccept': { tr: 'Gizlilik politikasını okudum ve kabul ediyorum', en: 'I have read and accept the Privacy Policy' },
   'signup.success': { tr: 'Kayıt başarılı!', en: 'Registration successful!' },
   'common.close': { tr: 'Kapat', en: 'Close' },
   // Vehicle Data Translations

@@ -11,13 +11,13 @@ import { TruckStoreLoungeComponent } from '../pages/truckstore-lounge/truckstore
 import { VideoGalleryComponent } from '../pages/video-gallery/video-gallery.component';
 import { LiveMapComponent } from '../components/live-map/live-map.component';
 import { GoogleMapComponent } from '../components/google-map/google-map.component';
-import { AuthGuard } from '../services/auth.service';
 import { ProfileComponent } from '../pages/profile/profile.component';
 import { RegisterComponent } from '../pages/uye-ol/uye-ol.component';
 import { TestComponent } from '../components/test/test.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { HelpDeskComponent } from '../components/help-desk/help-desk.component';
 import { ProviderComponent } from './components/provider/provider.component';
+import { RoadAssistComponent } from '../pages/road-assist/road-assist.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,23 +29,22 @@ const routes: Routes = [
   { path: 'iletisim', component: ContactComponent },
   { 
     path: 'truckstore', 
-    component: TruckStoreComponent,
-    canActivate: [AuthGuard]
+    component: TruckStoreComponent
   },
   { path: 'trucks', component: TruckListComponent },
   { 
     path: 'truckport-lounge', 
-    component: TruckStoreLoungeComponent,
-    canActivate: [AuthGuard]
+    component: TruckStoreLoungeComponent
   },
   { path: 'video-galeri', component: VideoGalleryComponent },
   { path: 'giris', component: LoginComponent },
   { 
     path: 'nakliye-talepleri', 
-    component: LiveMapComponent,
-    canActivate: [AuthGuard]
+    component: LiveMapComponent
   },
   { path: 'uye-ol', component: RegisterComponent },
+  { path: 'yol-yardim', component: RoadAssistComponent },
+  { path: 'road-assist', component: RoadAssistComponent },
   { path: 'help-desk', component: HelpDeskComponent },
   { path: 'test', component: TestComponent },
   { path: 'map', component: GoogleMapComponent },

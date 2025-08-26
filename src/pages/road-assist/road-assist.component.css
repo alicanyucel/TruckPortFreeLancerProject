@@ -1,0 +1,44 @@
+.road-assist-page {
+  padding: 24px;
+}
+.road-assist-page .hero h1 {
+  margin: 0 0 8px 0;
+}
+.road-assist-page .actions {
+  margin-top: 18px;
+}
+.road-assist-page .primary {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* 2x2 card grid for road assist services */
+.assist-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+}
+.assist-grid .card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.assist-grid .card .icon { font-size: 40px; margin-bottom: 10px; }
+.assist-grid .card .title { font-weight: 700; text-align: center; }
+.assist-grid .card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.10); }
+
+@media (max-width:600px) {
+  .assist-grid { grid-template-columns: 1fr 1fr; }
+}

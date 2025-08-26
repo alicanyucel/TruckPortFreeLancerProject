@@ -1,8 +1,10 @@
 import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { FirebaseService } from '../../services/firebase.service';
 import { Subscription } from 'rxjs';
-import { TranslatePipe } from "../../app/pipes/translate.pipe";
+import { UiService } from '../../services/ui.service';
+import { TranslationService } from '../../services/translation.service';
 
 declare const google: any;
 //
@@ -57,7 +59,7 @@ export class GoogleMapComponent implements AfterViewInit, OnDestroy, OnChanges {
   isFullscreen = false;
   private subs: Subscription[] = [];
 
-  constructor(private firebaseService: FirebaseService) {}
+  constructor(private firebaseService: FirebaseService, private router: Router, private uiService: UiService) {}
 
   ngAfterViewInit(): void {
     this.loadScript().then(() => {
@@ -78,7 +80,12 @@ export class GoogleMapComponent implements AfterViewInit, OnDestroy, OnChanges {
     // Türkçe Açıklama: Yol Yardım butonu tıklandığında çalışacak fonksiyon
     onRoadAssist() {
       this.addToast('Yol Yardım talebiniz alındı. Yol tarifi ve yardım ekibi yönlendiriliyor.', 'success');
-      // Buraya istediğiniz başka işlemleri ekleyebilirsiniz.
+        // signal app UI to open the services' road-assist modal if someone is listening
+        try {
+          this.uiService.openRoadAssist();
+        } catch (e) {
+          // ignore
+        }
     }
 
   toggleFullscreen() {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { ref, get } from 'firebase/database';
+import { auth, db } from './firebase.service';
 
 export interface User {
   id: string;
@@ -8,52 +9,64 @@ export interface User {
   name?: string;
   role: 'driver' | 'user';
   isAuthenticated: boolean;
+  mobile?: string;
+  currency?: string;
+  pro_pic?: string;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
   private currentUser: User | null = null;
 
   constructor() {
-    // Check if user is logged in from localStorage
     const savedUser = localStorage.getItem('currentUser');
     if (savedUser) {
       this.currentUser = JSON.parse(savedUser);
     }
   }
 
-  login(email: string, password: string): Observable<User> {
-    // Simulate API call
-    return new Observable(observer => {
-      setTimeout(() => {
-        if (email === 'user@truckport.com' && password === 'user123') {
-          const user: User = {
-            id: '1',
-            email: email,
-            role: 'user',
-            isAuthenticated: true
-          };
-          this.currentUser = user;
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          observer.next(user);
-        } else if (email === 'driver@truckport.com' && password === 'driver123') {
-          const user: User = {
-            id: '2',
-            email: email,
-            role: 'driver',
-            isAuthenticated: true
-          };
-          this.currentUser = user;
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          observer.next(user);
-        } else {
-          observer.error('Invalid credentials');
-        }
-        observer.complete();
-      }, 1000);
-    });
+  async login(email: string, password: string): Promise<string> {
+    try {
+      const cred = await signInWithEmailAndPassword(auth, email, password);
+      const uid = cred.user?.uid;
+      if (!uid) throw new Error('Firebase kimlik doğrulama başarısız.');
+
+  const snapshot = await get(ref(db, `users/${uid}`));
+  const userData = snapshot && snapshot.exists() ? snapshot.val() : {};
+
+      const user: User = {
+        id: uid,
+        email,
+        name: userData.name || '',
+        role: userData.role || 'user',
+        isAuthenticated: true,
+        mobile: userData.mobile || '',
+        currency: userData.currency || '',
+        pro_pic: userData.pro_pic || ''
+      };
+
+      this.currentUser = user;
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      return uid;
+    } catch (error: any) {
+      const code = error?.code;
+      switch (code) {
+        case 'auth/wrong-password':
+          throw new Error('Şifre yanlış. Lütfen tekrar deneyin.');
+        case 'auth/user-not-found':
+          throw new Error('Bu e-posta ile kayıtlı kullanıcı bulunamadı.');
+        case 'auth/invalid-email':
+          throw new Error('Geçersiz e-posta adresi.');
+        case 'auth/user-disabled':
+          throw new Error('Hesabınız devre dışı bırakılmış.');
+        case 'auth/too-many-requests':
+          throw new Error('Çok fazla deneme yapıldı. Lütfen biraz bekleyin.');
+        case 'auth/network-request-failed':
+          throw new Error('Ağ hatası. Bağlantınızı kontrol edin.');
+        default:
+          throw new Error(error?.message || 'Giriş sırasında bir hata oluştu.');
+      }
+    }
   }
 
   logout(): void {
@@ -74,35 +87,3 @@ export class AuthService {
   }
 }
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuard implements CanActivate {
-
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
-
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
-    
-    if (this.authService.isAuthenticated()) {
-      // Check if route requires specific role
-      const requiredRole = route.data['role'];
-      if (requiredRole && !this.authService.hasRole(requiredRole)) {
-        this.router.navigate(['/']);
-        return false;
-      }
-      return true;
-    }
-
-    // Redirect to login page
-    this.router.navigate(['/giris'], { 
-      queryParams: { returnUrl: state.url } 
-    });
-    return false;
-  }
-}

@@ -143,6 +143,31 @@
   border-color: #27ae60;
 }
 
+.password-group .password-input-wrapper {
+  position: relative;
+}
+
+.password-group .password-input-wrapper input {
+  padding-right: 3.5rem; /* space for the toggle */
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #34495e;
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 6px 8px;
+}
+
+.password-toggle:focus {
+  outline: none;
+}
+
 .form-options {
   display: flex;
   justify-content: space-between;
