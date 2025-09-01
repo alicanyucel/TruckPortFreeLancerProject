@@ -44,7 +44,9 @@ RUN addgroup -g 101 -S nginx-custom && \
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy built application from build stage
-COPY --from=build /app/dist/truck-port /usr/share/nginx/html
+## The Angular CLI produces `dist/TruckPort/browser` (project name + browser).
+## Ensure we copy the correct folder into nginx html root.
+COPY --from=build /app/dist/TruckPort/browser /usr/share/nginx/html
 
 # Create logs directory
 RUN mkdir -p /var/log/nginx && \
